@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DRG数据精细化治理</title>
+    <meta charset="UTF-8" />
+    <link type="image/x-icon" href="logo.ico" rel="shortcut icon" />
+    <link href="logo.ico" rel="bookmark icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body ms-controller="native">
+    <div class="page-title page-card">
+      <div class="page-title_content">DRG数据精细化治理</div>
+    </div>
+    <div class="page-center page-card">
+      <div class="top">
+        <span class="row-item">
+          <span class="item-content">{{@name}}</span>
+          <span class="item-content">{{@sex}}</span>
+          <span class="item-content">{{@age}}</span>
+        </span>
+        <span class="row-item"
+          >住院号：<span class="item-content">{{@hospitalNumber}}</span></span
+        >
+        <span class="row-item"
+          >流水号：<span class="item-content">{{@serialNumber}}</span></span
+        >
+        <span class="row-item"
+          >入院时间：<span class="item-content">{{@inHospitalTime}}</span></span
+        >
+      </div>
+      <div class="center">
+        <img
+          class="warn-img"
+          src="../source/img/warning.png"
+          width="18px"
+          height="18px"
+          alt=""
+        />
+        医疗费用为DRG付费标准的<span id="feePec">91%</span
+        >，住院天数为DRG天数标准的<span id="daysPec">115%</span>
+      </div>
+      <div class="bottom">
+        <div class="center-row">
+          <span class="center-row-item">
+            <span class="item-icon">1</span>
+            <span class="item-label">主要诊断：</span>
+            <span class="item-val">Jd1.1233 的阶级菲菲姐二级风</span>
+          </span>
+          <span class="center-row-item">
+            <span class="item-label">次要诊断：</span>
+            <span class="item-val">A01fjf就飞机飞</span>
+          </span>
+        </div>
+        <div class="center-row">
+          <span class="center-row-item">
+            <span class="item-icon">2</span>
+            <span class="item-label">主要手术：</span>
+            <span class="item-val">Jd1.1233 的阶级菲菲姐二级风</span>
+          </span>
+          <span class="center-row-item">
+            <span class="item-label">次要手术：</span>
+            <span class="item-val">A01fjf就飞机飞</span>
+          </span>
+        </div>
+        <div class="center-row">
+          <span class="center-row-item">
+            <span class="item-icon">3</span>
+            <span class="item-label">住院天数：</span>
+            <span class="item-val val2">1122</span>
+            <span class="item-unit">天</span>
+          </span>
+          <span class="center-row-item">
+            <span class="item-label">医疗费用：</span>
+            <span class="item-val val2">3344</span>
+            <span class="item-unit">元</span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="page-bottom page-card">
+      <div id="tabs">
+        <ul class="tabs-ul clearfix">
+          <li
+            class="ui-state-default ui-tabs-nav"
+            ms-click="@tabClick($event, 1) | prevent"
+          >
+            <a href="#tabs-1"
+              ><img
+                src="../source/img/tab1.png"
+                width="18px"
+                height="18px"
+              />实时分组预警
+            </a>
+          </li>
+          <li
+            class="ui-state-default ui-tabs-nav"
+            ms-click="@tabClick($event, 2) | prevent"
+          >
+            <a href="#tabs-2"
+              ><img
+                src="../source/img/tab2.png"
+                width="18px"
+                height="18px"
+              />分组数据治理</a
+            >
+          </li>
+          <li
+            class="ui-state-default ui-tabs-nav"
+            ms-click="@tabClick($event, 3) | prevent"
+          >
+            <a href="#tabs-3"
+              ><img
+                src="../source/img/tab3.png"
+                width="18px"
+                height="18px"
+              />MDC/ADRG查询</a
+            >
+          </li>
+          <li
+            class="ui-state-default ui-tabs-nav"
+            ms-click="@tabClick($event, 4) | prevent"
+          >
+            <a href="#tabs-3"
+              ><img
+                src="../source/img/tab3.png"
+                width="18px"
+                height="18px"
+              />ADRG条件查询</a
+            >
+          </li>
+          <li
+            class="ui-state-default ui-tabs-nav"
+            ms-click="@tabClick($event, 1) | prevent"
+          >
+            <a href="#tabs-3"
+              ><img
+                src="../source/img/tab3.png"
+                width="18px"
+                height="18px"
+              />MCC/CC查询</a
+            >
+          </li>
+          <li
+            class="ui-state-default ui-tabs-nav"
+            ms-click="@tabClick($event, 1) | prevent"
+          >
+            <a href="#tabs-3"
+              ><img
+                src="../source/img/tab3.png"
+                width="18px"
+                height="18px"
+              />多发创伤查询</a
+            >
+          </li>
+          <li
+            class="ui-state-default ui-tabs-nav"
+            ms-click="@tabClick($event, 1) | prevent"
+          >
+            <a href="#tabs-3"
+              ><img
+                src="../source/img/tab3.png"
+                width="18px"
+                height="18px"
+              />临床路径指南</a
+            >
+          </li>
+        </ul>
+        <div
+          id="tabs-1"
+          class="ui-tabs-panel"
+          ms-visible="@tabConfig.tabVisible1"
+        >
+          <div class="result-grp" id="resultGrp">
+            EJJ 呼吸系统其他手术，伴严重并发症或合并症
+          </div>
+          <div class="result-progress">
+            <div class="outer">
+              <div class="inner" id="resultProgress"></div>
+            </div>
+            <div class="split split-1"></div>
+            <div class="split split-2"></div>
+            <div class="desp">
+              <div class="desp-item low">低倍</div>
+              <div class="desp-item num1">1211212</div>
+              <div class="desp-item normal">正常</div>
+              <div class="desp-item num2">38383</div>
+              <div class="desp-item high">高倍</div>
+            </div>
+          </div>
+          <div class="result-table">
+            <table class="table-esp">
+              <tbody>
+                <tr class="table-tr">
+                  <td>
+                    <span class="item">
+                      <span class="item-title">病组均费：</span>
+                      <span class="item-val">11.44</span>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="item">
+                      <span class="item-title">基准点数：</span>
+                      <span class="item-val">11.44</span>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="item">
+                      <span class="item-title">调准系数：</span>
+                      <span class="item-val">11.44</span>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="item">
+                      <span class="item-title">DRG费用标准：</span>
+                      <span class="item-val">11.44</span>
+                    </span>
+                  </td>
+                </tr>
+                <tr class="table-tr">
+                  <td>
+                    <span class="item">
+                      <span class="item-title">病例类型：</span>
+                      <span class="item-val">11.44</span>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="item">
+                      <span class="item-title">费用比例：</span>
+                      <span class="item-val">11.44</span>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="item">
+                      <span class="item-title">标准差额：</span>
+                      <span class="item-val">11.44</span>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="item">
+                      <span class="item-title">DRG天数标准：</span>
+                      <span class="item-val">11.44</span>
+                    </span>
+                  </td>
+                </tr>
+                <tr class="table-tr">
+                  <td>
+                    <span class="item">
+                      <span class="item-title">预测点数：</span>
+                      <span class="item-val">11.44</span>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="item">
+                      <span class="item-title">预测费用：</span>
+                      <span class="item-val">11.44</span>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="item">
+                      <span class="item-title">预测盈利：</span>
+                      <span class="item-val">11.44</span>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="item">
+                      <span class="item-title">DRG天数差额：</span>
+                      <span class="item-val">11.44</span>
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="result-bot">
+            <div class="bot-left">
+              <div class="bot-left-item">
+                <div class="item-inner">MCC-判定</div>
+              </div>
+              <div class="bot-left-item">
+                <div class="item-inner">CC-判定</div>
+              </div>
+              <div class="bot-left-item">
+                <div class="item-inner">主诊断-ADRG</div>
+              </div>
+              <div class="bot-left-item">
+                <div class="item-inner">主手术-ADRG</div>
+              </div>
+            </div>
+            <div class="bot-center">
+              <div class="bot-center-item">
+                <div class="item-inner">A02.494对附件二级</div>
+              </div>
+              <div class="bot-center-item">
+                <div class="item-inner">A02.494对附件二级</div>
+              </div>
+              <div class="bot-center-item">
+                <div class="item-inner">A02.494对附件二级</div>
+              </div>
+              <div class="bot-center-item">
+                <div class="item-inner">A02.494对附件二级</div>
+              </div>
+            </div>
+            <div class="bot-right">
+              <p>1. 主诊断...</p>
+              <p>2. 主诊断...</p>
+              <p>3. 主诊断...</p>
+              <p>4. 主诊断...</p>
+              <p>5. 主诊断...</p>
+              <p>6. 主诊断...</p>
+              <p>7. 主诊断...</p>
+              <p>8. 主诊断...</p>
+              <p>9. 主诊断...</p>
+              <p>10. 主诊断...</p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div
+          id="tabs-2"
+          class="ui-tabs-panel"
+          ms-visible="@tabConfig.tabVisible2"
+        >
+          <ms-view>
+            <div slot="content">这是tab2内容</div>
+          </ms-view>
+        </div>
+        <div
+          id="tabs-3"
+          class="ui-tabs-panel"
+          ms-visible="@tabConfig.tabVisible3"
+        >
+          <ms-view>
+            <div slot="content">这是tab3内容</div>
+          </ms-view>
+        </div>
+        <div
+          id="tabs-4"
+          class="ui-tabs-panel"
+          ms-visible="@tabConfig.tabVisible4"
+        >
+          <ms-view>
+            <div slot="content">这是tab4内容</div>
+          </ms-view>
+        </div>
+        <!-- <div id="pdfContent" style="height: 1000px"></div> -->
+      </div>
+    </div>
+  </body>
+</html>
