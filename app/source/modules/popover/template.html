@@ -1,0 +1,19 @@
+<div class="ms-pop">
+  <input class="pop-input" type="text" name="name" ms-on-click="@onClick" />
+  <div class="pop-content" ms-visible="@show">
+    <div class="search-content clearfix">
+      <div class="search-input-prefix">替换</div>
+      <div class="search-input-content">
+        <input
+          class="search-input"
+          type="text"
+          name="name"
+          ms-on-click="@onClick"
+        />
+      </div>
+    </div>
+    <div class="list-content">
+      <slot name="content" class="content-inner" />
+    </div>
+  </div>
+</div>
