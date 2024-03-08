@@ -1,5 +1,10 @@
 <div class="ms-pop">
-  <input class="pop-input" type="text" name="name" ms-on-click="@onClick" />
+  <input
+    class="pop-input"
+    type="text"
+    name="name"
+    ms-on-click="@onClick |stop"
+  />
   <div class="pop-content" ms-visible="@show">
     <div class="search-content clearfix">
       <div class="search-input-prefix">替换</div>
@@ -8,12 +13,23 @@
           class="search-input"
           type="text"
           name="name"
-          ms-on-click="@onClick"
+          ms-on-change="@onChange"
         />
       </div>
     </div>
     <div class="list-content">
-      <slot name="content" class="content-inner" />
+      <ul class="list-ul">
+        <li
+          ms-for="row in @list"
+          class="clearfix"
+          ms-on-click="@onSelectRow($event,row) |stop"
+        >
+          <div style="font-size: 0; width: 100%">
+            <div class="item left"><div class="item-inner">{{@row}}</div></div>
+            <div class="item right"><div class="item-inner">{{@row}}</div></div>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

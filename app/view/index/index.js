@@ -3,7 +3,9 @@ var tab1img = require('../../source/img/tab1.png');
 var tab2img = require('../../source/img/tab2.png');
 var tab3img = require('../../source/img/tab3.png');
 var warningimg = require('../../source/img/warning.png');
+require('../../source/js/main.js')
 require('../../source/js/console.js')
+require('../../source/js/fix.js')
 require('../../source/modules/content/index')
 require('../../source/modules/popover/index')
 // require('json3')
@@ -43,6 +45,6 @@ var vm = avalon.define({
     },
     title: '这是测试'
   },
-  
+
 });
 
