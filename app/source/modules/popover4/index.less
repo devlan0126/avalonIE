@@ -1,0 +1,118 @@
+.ms-pop {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  &.ms-pop4 {
+    z-index: 400;
+    .pop-content {
+      z-index: 401;
+    }
+  }
+  .pop-input {
+    box-sizing: border-box;
+    border: 2px solid #b9d6f6;
+    padding: 8px 0;
+    color: #6a88c5;
+    border-radius: 3px;
+    width: 100%;
+    display: inline-block;
+    .input-content {
+      margin-left: 10px;
+    }
+  }
+  .pop-content {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    margin-top: 12px;
+    min-height: 100px;
+    border: 2px solid #b9d6f6;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 0;
+    &::before {
+      content: "▲";
+      position: absolute;
+      top: -15px;
+      left: 0;
+      font-size: 15px;
+      color: #b9d6f6;
+      font-weight: bold;
+    }
+    .search-content {
+      width: 100%;
+      margin-right: 0 !important;
+      .search-input-prefix {
+        background-color: #5d7ec0;
+        color: #fff;
+        font-size: 16px;
+        border: 1px solid #b89d9d;
+        width: 50px;
+        height: 32px;
+        text-align: center;
+      }
+      .search-input-content {
+        border: none;
+        height: 32px;
+        .search-input {
+          height: 32px;
+          width: 100%;
+          line-height: 32px;
+          box-sizing: border-box;
+          &:hover {
+            border: 1px solid #b89d9d;
+          }
+        }
+      }
+    }
+    .list-content {
+      padding: 10px 0;
+      max-height: 300px;
+      height: 300px; /*兼容ie6*/
+      overflow: auto;
+      .list-ul {
+        border: 1px solid #ccc6bd;
+        width: 100%;
+        border-collapse: collapse;
+        .row {
+          font-size: 0;
+          .item {
+            font-size: 15px;
+            border: 1px solid #c7c3bc;
+            cursor: pointer;
+            .item-inner {
+              padding: 10px;
+              &:hover {
+                cursor: pointer;
+                color: #6a88c5;
+              }
+            }
+          }
+          .left {
+            float: left;
+            width: 30%;
+          }
+          .right {
+            width: 68%;
+            float: left;
+          }
+          a {
+            color: #000;
+            text-decoration: none;
+          }
+          a:hover {
+            cursor: pointer;
+            color: #6a88c5;
+          }
+        }
+      }
+    }
+  }
+}
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}

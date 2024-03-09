@@ -11,6 +11,8 @@ require('../../source/js/fix.js')
 require('../../source/modules/content/index')
 require('../../source/modules/popover/index')
 require('../../source/modules/popover2/index')
+require('../../source/modules/popover3/index')
+require('../../source/modules/popover4/index')
 
 
 
