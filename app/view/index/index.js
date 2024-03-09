@@ -32,6 +32,9 @@ var vm = avalon.define({
     tabVisible2: false,
     tabVisible3: false,
     tabVisible4: false,
+    tabVisible5: false,
+    tabVisible6: false,
+    tabVisible7: false,
   },
   tabClick: function ($event, index) {
     const visible = this.tabConfig['tabVisible' + index]
@@ -39,7 +42,10 @@ var vm = avalon.define({
     this.tabConfig.tabVisible2 = false
     this.tabConfig.tabVisible3 = false
     this.tabConfig.tabVisible4 = false
-    this.tabConfig['tabVisible' + index] = !visible
+    this.tabConfig.tabVisible5 = false
+    this.tabConfig.tabVisible6 = false
+    this.tabConfig.tabVisible7 = false
+    this.tabConfig['tabVisible' + index] = true
   },
   config: {
     isShow: false,
