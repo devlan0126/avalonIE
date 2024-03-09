@@ -1,15 +1,16 @@
 // 引入图片资源
-var tab1img = require('../../source/img/tab1.png');
-var tab2img = require('../../source/img/tab2.png');
-var tab3img = require('../../source/img/tab3.png');
-var warningimg = require('../../source/img/warning.png');
+require('../../source/img/tab1.png');
+require('../../source/img/tab2.png');
+require('../../source/img/tab3.png');
+require('../../source/img/warning.png');
+require('../../source/img/row.png');
+
 require('../../source/js/main.js')
 require('../../source/js/console.js')
 require('../../source/js/fix.js')
 require('../../source/modules/content/index')
 require('../../source/modules/popover/index')
 require('../../source/modules/popover2/index')
-// require('json3')
 
 
 
@@ -22,8 +23,8 @@ var vm = avalon.define({
   serialNumber: '18293943845959000',//流水号
   inHospitalTime: '2024年3月7日 19点24分',//入院时间
   array: [11, 22, 33],
-  mainDiagnose:'J18.903,重症肺炎',
-  mainOperation:'31.1x00x005,暂时性气管切开术',
+  mainDiagnose: 'J18.903,重症肺炎',
+  mainOperation: '31.1x00x005,暂时性气管切开术',
   tabConfig: {
     tabVisible1: true,
     tabVisible2: false,
