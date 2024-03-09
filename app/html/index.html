@@ -10,10 +10,10 @@
 </head>
 
 <body ms-controller="native">
-  <div class="page-title page-card">
+  <div class="page-title page-card" id="pageTitle">
     <div class="page-title_content">DRG数据精细化治理</div>
   </div>
-  <div class="page-center page-card">
+  <div class="page-center page-card" id="pageCenter">
     <div class="top">
       <span class="row-item">
         <span class="item-content">{{@name}}</span>
@@ -101,9 +101,9 @@
       </tr>
     </table>
   </div>
-  <div class="page-bottom page-card">
+  <div class="page-bottom page-card" id="pageBottom">
     <div id="tabs">
-      <div class="tabs-ul">
+      <div class="tabs-ul" id="tabsUl">
         <div class="ui-state-default ui-tabs-nav" :class="[@tabConfig.tabVisible1 && 'acitve-tab']"
           ms-click="@tabClick($event, 1) | prevent">
           <div class="ui-tab-content">
@@ -148,165 +148,185 @@
           </div>
         </div>
       </div>
-      <div id="tabs-1" class="ui-tabs-panel" ms-visible="@tabConfig.tabVisible1">
-        <div class="result-grp" id="resultGrp">
-          EJJ 呼吸系统其他手术，伴严重并发症或合并症
-        </div>
-        <div class="result-progress">
-          <div class="outer">
-            <div class="inner" id="resultProgress"></div>
+      <div class="tab-ul-content" id="tabContent">
+        <div id="tabs-1" class="ui-tabs-panel" ms-visible="@tabConfig.tabVisible1">
+          <div class="result-grp" id="resultGrp">
+            EJJ 呼吸系统其他手术，伴严重并发症或合并症
           </div>
-          <div class="split split-1"></div>
-          <div class="split split-2"></div>
-          <div class="desp">
-            <div class="desp-item low">低倍</div>
-            <div class="desp-item num1">1211212</div>
-            <div class="desp-item normal">正常</div>
-            <div class="desp-item num2">38383</div>
-            <div class="desp-item high">高倍</div>
+          <div class="result-progress" id="resultProgress">
+            <div class="outer">
+              <div class="inner" id="resultProgress"></div>
+            </div>
+            <div class="split split-1"></div>
+            <div class="split split-2"></div>
+            <div class="desp">
+              <div class="desp-item low">低倍</div>
+              <div class="desp-item num1">1211212</div>
+              <div class="desp-item normal">正常</div>
+              <div class="desp-item num2">38383</div>
+              <div class="desp-item high">高倍</div>
+            </div>
           </div>
-        </div>
-        <div class="result-table">
-          <table class="table-esp">
-            <tbody>
-              <tr class="table-tr">
-                <td>
-                  <span class="item">
-                    <span class="item-title">病组均费：</span>
-                    <span class="item-val">11.44</span>
-                  </span>
-                </td>
-                <td>
-                  <span class="item">
-                    <span class="item-title">基准点数：</span>
-                    <span class="item-val">11.44</span>
-                  </span>
-                </td>
-                <td>
-                  <span class="item">
-                    <span class="item-title">调准系数：</span>
-                    <span class="item-val">11.44</span>
-                  </span>
-                </td>
-                <td>
-                  <span class="item">
-                    <span class="item-title">DRG费用标准：</span>
-                    <span class="item-val">11.44</span>
-                  </span>
-                </td>
-              </tr>
-              <tr class="table-tr">
-                <td>
-                  <span class="item">
-                    <span class="item-title">病例类型：</span>
-                    <span class="item-val">11.44</span>
-                  </span>
-                </td>
-                <td>
-                  <span class="item">
-                    <span class="item-title">费用比例：</span>
-                    <span class="item-val">11.44</span>
-                  </span>
-                </td>
-                <td>
-                  <span class="item">
-                    <span class="item-title">标准差额：</span>
-                    <span class="item-val">11.44</span>
-                  </span>
-                </td>
-                <td>
-                  <span class="item">
-                    <span class="item-title">DRG天数标准：</span>
-                    <span class="item-val">11.44</span>
-                  </span>
-                </td>
-              </tr>
-              <tr class="table-tr">
-                <td>
-                  <span class="item">
-                    <span class="item-title">预测点数：</span>
-                    <span class="item-val">11.44</span>
-                  </span>
-                </td>
-                <td>
-                  <span class="item">
-                    <span class="item-title">预测费用：</span>
-                    <span class="item-val">11.44</span>
-                  </span>
-                </td>
-                <td>
-                  <span class="item">
-                    <span class="item-title">预测盈利：</span>
-                    <span class="item-val">11.44</span>
-                  </span>
-                </td>
-                <td>
-                  <span class="item">
-                    <span class="item-title">DRG天数差额：</span>
-                    <span class="item-val">11.44</span>
-                  </span>
-                </td>
-              </tr>
-            </tbody>
+          <div class="result-table" id="resultTable">
+            <table class="table-esp">
+              <tbody>
+                <tr class="table-tr">
+                  <td>
+                    <span class="item">
+                      <span class="item-title">病组均费：</span>
+                      <span class="item-val">11.44</span>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="item">
+                      <span class="item-title">基准点数：</span>
+                      <span class="item-val">11.44</span>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="item">
+                      <span class="item-title">调准系数：</span>
+                      <span class="item-val">11.44</span>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="item">
+                      <span class="item-title">DRG费用标准：</span>
+                      <span class="item-val">11.44</span>
+                    </span>
+                  </td>
+                </tr>
+                <tr class="table-tr">
+                  <td>
+                    <span class="item">
+                      <span class="item-title">病例类型：</span>
+                      <span class="item-val">11.44</span>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="item">
+                      <span class="item-title">费用比例：</span>
+                      <span class="item-val">11.44</span>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="item">
+                      <span class="item-title">标准差额：</span>
+                      <span class="item-val">11.44</span>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="item">
+                      <span class="item-title">DRG天数标准：</span>
+                      <span class="item-val">11.44</span>
+                    </span>
+                  </td>
+                </tr>
+                <tr class="table-tr">
+                  <td>
+                    <span class="item">
+                      <span class="item-title">预测点数：</span>
+                      <span class="item-val">11.44</span>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="item">
+                      <span class="item-title">预测费用：</span>
+                      <span class="item-val">11.44</span>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="item">
+                      <span class="item-title">预测盈利：</span>
+                      <span class="item-val">11.44</span>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="item">
+                      <span class="item-title">DRG天数差额：</span>
+                      <span class="item-val">11.44</span>
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <table class="full-width result-bot" id="resultBot">
+            <tr>
+              <td style="width: 200px">
+                <div class="bot-left">
+                  <div class="bot-left-item">
+                    <div class="item-inner">MCC-判定</div>
+                  </div>
+                  <div class="bot-left-item">
+                    <div class="item-inner">CC-判定</div>
+                  </div>
+                  <div class="bot-left-item">
+                    <div class="item-inner">主诊断-ADRG</div>
+                  </div>
+                  <div class="bot-left-item">
+                    <div class="item-inner">主手术-ADRG</div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <table class="full-width">
+                  <tr>
+                    <td style="width: 50%">
+                      <div class="bot-center">
+                        <div class="bot-center-item">
+                          <div class="item-inner">A02.494对附件二级</div>
+                        </div>
+                        <div class="bot-center-item">
+                          <div class="item-inner">A02.494对附件二级</div>
+                        </div>
+                        <div class="bot-center-item">
+                          <div class="item-inner">A02.494对附件二级</div>
+                        </div>
+                        <div class="bot-center-item">
+                          <div class="item-inner">A02.494对附件二级</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td style="width: 50%">
+                      <div class="bot-right">
+                        <p>1. 主诊断...</p>
+                        <p>2. 主诊断...</p>
+                        <p>3. 主诊断...</p>
+                        <p>4. 主诊断...</p>
+                        <p>5. 主诊断...</p>
+                        <p>6. 主诊断...</p>
+                        <p>7. 主诊断...</p>
+                        <p>8. 主诊断...</p>
+                        <p>9. 主诊断...</p>
+                        <p>10. 主诊断...</p>
+                        <p>11. 主诊断...</p>
+                        <p>12. 主诊断...</p>
+                        <p>13. 主诊断...</p>
+                        <p>14. 主诊断...</p>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
           </table>
         </div>
-        <div class="result-bot">
-          <div class="bot-left">
-            <div class="bot-left-item">
-              <div class="item-inner">MCC-判定</div>
-            </div>
-            <div class="bot-left-item">
-              <div class="item-inner">CC-判定</div>
-            </div>
-            <div class="bot-left-item">
-              <div class="item-inner">主诊断-ADRG</div>
-            </div>
-            <div class="bot-left-item">
-              <div class="item-inner">主手术-ADRG</div>
-            </div>
-          </div>
-          <div class="bot-center">
-            <div class="bot-center-item">
-              <div class="item-inner">A02.494对附件二级</div>
-            </div>
-            <div class="bot-center-item">
-              <div class="item-inner">A02.494对附件二级</div>
-            </div>
-            <div class="bot-center-item">
-              <div class="item-inner">A02.494对附件二级</div>
-            </div>
-            <div class="bot-center-item">
-              <div class="item-inner">A02.494对附件二级</div>
-            </div>
-          </div>
-          <div class="bot-right">
-            <p>1. 主诊断...</p>
-            <p>2. 主诊断...</p>
-            <p>3. 主诊断...</p>
-            <p>4. 主诊断...</p>
-            <p>5. 主诊断...</p>
-            <p>6. 主诊断...</p>
-            <p>7. 主诊断...</p>
-            <p>8. 主诊断...</p>
-            <p>9. 主诊断...</p>
-            <p>10. 主诊断...</p>
-          </div>
+        <div id="tabs-2" class="ui-tabs-panel" ms-visible="@tabConfig.tabVisible2">
+          <ms-view>
+            <div slot="content">这是tab2内容</div>
+          </ms-view>
         </div>
-      </div>
-      <div id="tabs-2" class="ui-tabs-panel" ms-visible="@tabConfig.tabVisible2">
-        <ms-view>
-          <div slot="content">这是tab2内容</div>
-        </ms-view>
-      </div>
-      <div id="tabs-3" class="ui-tabs-panel" ms-visible="@tabConfig.tabVisible3">
-        <ms-view>
-          <div slot="content">这是tab3内容</div>
-        </ms-view>
-      </div>
-      <div id="tabs-4" class="ui-tabs-panel" ms-visible="@tabConfig.tabVisible4">
-        <ms-view>
-          <div slot="content">这是tab4内容</div>
-        </ms-view>
+        <div id="tabs-3" class="ui-tabs-panel" ms-visible="@tabConfig.tabVisible3">
+          <ms-view>
+            <div slot="content">这是tab3内容</div>
+          </ms-view>
+        </div>
+        <div id="tabs-4" class="ui-tabs-panel" ms-visible="@tabConfig.tabVisible4">
+          <ms-view>
+            <div slot="content">这是tab4内容</div>
+          </ms-view>
+        </div>
       </div>
       <!-- <div id="pdfContent" style="height: 1000px"></div> -->
     </div>

@@ -37,7 +37,7 @@ var vm = avalon.define({
     tabVisible7: false,
   },
   tabClick: function ($event, index) {
-    const visible = this.tabConfig['tabVisible' + index]
+    var visible = this.tabConfig['tabVisible' + index]
     this.tabConfig.tabVisible1 = false
     this.tabConfig.tabVisible2 = false
     this.tabConfig.tabVisible3 = false
@@ -57,6 +57,43 @@ var vm = avalon.define({
     },
     title: '这是测试'
   },
-
+  onReady: function (v) {
+  },
 });
+
+vm.$watch('onReady', function (v) {
+  //当test这个区域第⼀次扫描后会被执⾏
+  resetBottomHeight()
+})
+
+function resetBottomHeight() {
+  var $bottom = document.getElementById('pageBottom')
+  var $title = document.getElementById('pageTitle')
+  var $center = document.getElementById('pageCenter')
+  var titleHeight = $title.offsetHeight
+  var centerHeight = $center.offsetHeight
+  var pageHeight = document.body.clientHeight
+  var bottomHeight = pageHeight - titleHeight - centerHeight
+  $bottom.style.height = bottomHeight + 'px'
+
+  const $tabsUl = document.getElementById('tabsUl')
+  const h = bottomHeight - $tabsUl.offsetHeight
+  document.getElementById('tabContent').style.height = h + 'px'
+
+
+
+  const $tabs1 = document.getElementById('tabs-1')
+  const tabs1Height = $tabs1.offsetHeight
+  var $resultGrp = document.getElementById('resultGrp')
+  var resultGrpH = $resultGrp.offsetHeight
+  var $resultProgress = document.getElementById('resultProgress')
+  var resultProgressH = $resultProgress.offsetHeight
+  var $resultTable = document.getElementById('resultTable')
+  var resultTableH = $resultTable.offsetHeight
+
+  const h2 = h - resultGrpH - resultProgressH - resultTableH - 60 -20
+  var $resultBot = document.getElementById('resultBot')
+  $resultBot.style.height = h2 + 'px'
+
+}
 
