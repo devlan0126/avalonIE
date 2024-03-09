@@ -21,6 +21,8 @@ var vm = avalon.define({
   serialNumber: '18293943845959000',//流水号
   inHospitalTime: '2024年3月7日 19点24分',//入院时间
   array: [11, 22, 33],
+  mainDiagnose:'J18.903,重症肺炎',
+  mainOperation:'31.1x00x005,暂时性气管切开术',
   tabConfig: {
     tabVisible1: true,
     tabVisible2: false,

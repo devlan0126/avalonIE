@@ -1,11 +1,10 @@
-// require('./index.less')
-
 avalon.component("ms-pop", {
     template: require("./template.html"),
     defaults: {
         show: false,
-        content: "***弹框内容***",
+        data: "J18.903,重症肺炎",
         list: [],
+        zIndex: 1,
         onClick: function ($event) {
             this.show = true;
         },
@@ -20,9 +19,11 @@ avalon.component("ms-pop", {
         },
         onSelectRow: function ($event, row) {
             console.log('select row:', row)
+            this.data = row
         },
         onInit: function () {
             var that = this;
+            console.log('zIndex:', that.zIndex)
             window.addEvent(document
                 .getElementsByTagName("body")[0], 'click', function ($event) {
                     var $child = $event.srcElement;

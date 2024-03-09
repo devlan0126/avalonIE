@@ -40,46 +40,83 @@
         医疗费用为DRG付费标准的<span id="feePec">91%</span
         >，住院天数为DRG天数标准的<span id="daysPec">115%</span>
       </div>
-      <div class="bottom">
-        <div class="center-row">
-          <span class="center-row-item">
-            <span class="item-icon">1</span>
-            <span class="item-label">主要诊断：</span>
-            <span class="item-val">Jd1.1233 的阶级菲菲姐二级风</span>
-          </span>
-          <span class="center-row-item">
-            <span class="item-label">次要诊断：</span>
-            <span class="item-val">A01fjf就飞机飞</span>
-          </span>
-        </div>
-        <div class="center-row">
-          <span class="center-row-item">
-            <span class="item-icon">2</span>
-            <span class="item-label">主要手术：</span>
-            <span class="item-val">Jd1.1233 的阶级菲菲姐二级风</span>
-          </span>
-          <span class="center-row-item">
-            <span class="item-label">次要手术：</span>
-            <span class="item-val">A01fjf就飞机飞</span>
-          </span>
-        </div>
-        <div class="center-row">
-          <span class="center-row-item">
-            <span class="item-icon">3</span>
-            <span class="item-label">住院天数：</span>
-            <span class="item-val val2">1122</span>
-            <span class="item-unit">天</span>
-          </span>
-          <span class="center-row-item">
-            <span class="item-label">医疗费用：</span>
-            <span class="item-val val2">3344</span>
-            <span class="item-unit">元</span>
-          </span>
-        </div>
-        <div class="center-row" style="width: 50%">
-          <ms-pop> </ms-pop>
-        </div>
-      </div>
+      <table class="bottom full-width">
+        <tr class="center-row">
+          <td class="center-row-item left">
+            <table class="full-width">
+              <tr>
+                <td style="width: 100px" class="text-right">主要诊断：</td>
+                <td>
+                  <xmp
+                    ms-widget="{is:'ms-pop',data:@mainDiagnose,zIndex:10}"
+                  ></xmp>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td class="center-row-item right">
+            <table class="full-width">
+              <tr>
+                <td style="width: 100px" class="text-right">次要诊断：</td>
+                <td>
+                  <xmp
+                    ms-widget="{is:'ms-pop',data:@mainDiagnose,zIndex:10}"
+                  ></xmp>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr class="center-row">
+          <td class="center-row-item left">
+            <table class="full-width">
+              <tr>
+                <td style="width: 100px" class="text-right">主要手术：</td>
+                <td>
+                  <xmp
+                    ms-widget="{is:'ms-pop',data:@mainDiagnose,zIndex:10}"
+                  ></xmp>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td class="center-row-item right">
+            <table class="full-width">
+              <tr>
+                <td style="width: 100px" class="text-right">次要手术：</td>
+                <td>
+                  <xmp
+                    ms-widget="{is:'ms-pop',data:@mainDiagnose,zIndex:10}"
+                  ></xmp>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr class="center-row">
+          <td class="center-row-item left text-right"> 
+            <table class="full-width">
+              <tr>
+                <td style="width: 100px" class="text-right">住院天数：</td>
+                <td class="text-left">
+                 112
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td class="center-row-item right text-right">
+
+            <table class="full-width">
+              <tr>
+                <td style="width: 100px" class="text-right">医疗费用：</td>
+                <td class="text-left">
+                 3333
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
     </div>
     <div class="page-bottom page-card">
       <div id="tabs">

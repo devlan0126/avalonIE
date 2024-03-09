@@ -1,12 +1,23 @@
 <div class="ms-pop">
-  <input
-    class="pop-input"
-    type="text"
-    name="name"
-    ms-on-click="@onClick |stop"
-  />
+  <div class="pop-input" ms-on-click="@onClick |stop">
+    <div class="input-content">{{@data}}</div>
+  </div>
   <div class="pop-content" ms-visible="@show">
-    <div class="search-content clearfix">
+    <table class="search-content">
+      <tr>
+        <td class="search-input-prefix">替换</td>
+        <td class="search-input-content">
+          <input
+            class="search-input"
+            type="text"
+            name="name"
+            ms-on-change="@onChange"
+            ms-on-input="@onChange"
+          />
+        </td>
+      </tr>
+    </table>
+    <!-- <div class="search-content clearfix">
       <div class="search-input-prefix">替换</div>
       <div class="search-input-content">
         <input
@@ -14,22 +25,21 @@
           type="text"
           name="name"
           ms-on-change="@onChange"
+          ms-on-input="@onChange"
         />
       </div>
-    </div>
+    </div> -->
     <div class="list-content">
-      <ul class="list-ul">
-        <li
+      <table class="list-ul">
+        <tr
           ms-for="row in @list"
-          class="clearfix"
+          class="row"
           ms-on-click="@onSelectRow($event,row) |stop"
         >
-          <a href="#" style="font-size: 0; width: 100%">
-            <div class="item left"><div class="item-inner">{{@row}}</div></div>
-            <div class="item right"><div class="item-inner">{{@row}}</div></div>
-          </a>
-        </li>
-      </ul>
+          <td class="item left"><div class="item-inner">{{@row}}</div></td>
+          <td class="item right"><div class="item-inner">{{@row}}</div></td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>

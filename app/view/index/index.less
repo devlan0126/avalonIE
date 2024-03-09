@@ -1,4 +1,5 @@
 body {
+  box-sizing: border-box;
 }
 
 #content {
@@ -75,19 +76,26 @@ body {
 
 .page-center .bottom {
   font-size: 16px;
+  display: table;
+  width: 100%;
 }
 
 .page-center .bottom .center-row {
+  display: table-row;
   span {
     display: inline-block;
+  }
+  td{
+    height: 50px;
   }
 }
 
 .page-center .bottom .center-row .center-row-item {
-  display: inline-block;
-  width: 48%;
   margin-bottom: 10px;
   margin-top: 10px;
+  &.left {
+    width: 600px;
+  }
 }
 
 .page-center .bottom .center-row .center-row-item .item-icon {
@@ -96,17 +104,16 @@ body {
 }
 
 .page-center .bottom .center-row .center-row-item .item-label {
-  width: 90px;
+  width: 100px;
   display: inline-block;
   color: #485467;
 }
 
 .page-center .bottom .center-row .center-row-item .item-val {
-  border: 1px solid #b9d6f6;
-  padding: 4px 10px;
+  padding: 4px 0;
   color: #6a88c5;
   border-radius: 3px;
-  width: calc(100% - 180px);
+  width: calc(100% - 100px);
   display: inline-block;
 }
 

@@ -1,15 +1,18 @@
 .ms-pop {
   position: relative;
   width: 100%;
+  box-sizing: border-box;
   .pop-input {
-    border: 1px solid #b9d6f6;
-    padding: 4px 0;
+    box-sizing: border-box;
+    border: 2px solid #b9d6f6;
+    padding: 8px 0;
     color: #6a88c5;
     border-radius: 3px;
     width: 100%;
     display: inline-block;
-    height: 30px;
-    line-height: 30px;
+    .input-content {
+      margin-left: 10px;
+    }
   }
   .pop-content {
     display: block;
@@ -17,29 +20,41 @@
     top: 100%;
     left: 0;
     width: 100%;
+    margin-top: 12px;
     min-height: 100px;
-    border: 1px solid #b9d6f6;
+    border: 2px solid #b9d6f6;
     background-color: #fff;
-    z-index: 999;
-    padding: 10px;
+    z-index: 11;
+    box-sizing: border-box;
+    padding: 0;
+    &::before {
+      content: "▲";
+      position: absolute;
+      top: -15px;
+      left: 0;
+      font-size: 15px;
+      color: #b9d6f6;
+      font-weight: bold;
+    }
     .search-content {
+      width: 100%;
+      margin-right: 0 !important;
       .search-input-prefix {
-        float: left;
         background-color: #5d7ec0;
         color: #fff;
         font-size: 16px;
         padding: 8px;
         border: 1px solid #b89d9d;
+        width: 50px;
       }
       .search-input-content {
-        float: left;
         border: none;
         height: 32px;
-        width: calc(100% - 52px);
         .search-input {
           height: 32px;
           width: 100%;
           line-height: 32px;
+          box-sizing: border-box;
           &:hover {
             border: 1px solid #b89d9d;
           }
@@ -53,19 +68,25 @@
       overflow: auto;
       .list-ul {
         border: 1px solid #ccc6bd;
-        li {
-          border-bottom: 1px dashed #ccc7be;
+        width: 100%;
+        border-collapse: collapse;
+        .row {
           font-size: 0;
           .item {
             font-size: 15px;
+            border: 1px solid #c7c3bc;
+            cursor: pointer;
             .item-inner {
               padding: 10px;
+              &:hover {
+                cursor: pointer;
+                color: #6a88c5;
+              }
             }
           }
           .left {
             float: left;
             width: 30%;
-            border-right: 1px dashed #ccc7be;
           }
           .right {
             width: 68%;
