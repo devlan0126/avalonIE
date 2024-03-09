@@ -8,6 +8,7 @@ require('../../source/js/console.js')
 require('../../source/js/fix.js')
 require('../../source/modules/content/index')
 require('../../source/modules/popover/index')
+require('../../source/modules/popover2/index')
 // require('json3')
 
 

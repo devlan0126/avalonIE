@@ -1,8 +1,20 @@
+/*
+ * @Date: 2024-03-09 11:39:44
+ * @LastEditors: devlan0126 wyang0126@163.com
+ * @LastEditTime: 2024-03-09 11:47:29
+ * @FilePath: \avalonIE\app\source\modules\popover2\index.less
+ * @Description: 文档描述
+ */
 .ms-pop {
   position: relative;
   width: 100%;
   box-sizing: border-box;
-  z-index: 100;
+  &.ms-pop2 {
+    z-index: 200;
+    .pop-content {
+      z-index: 201;
+    }
+  }
   .pop-input {
     box-sizing: border-box;
     border: 2px solid #b9d6f6;
@@ -25,7 +37,7 @@
     min-height: 100px;
     border: 2px solid #b9d6f6;
     background-color: #fff;
-    z-index: 101;
+    z-index: 201;
     box-sizing: border-box;
     padding: 0;
     &::before {
