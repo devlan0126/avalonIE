@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-09 13:01:38
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-03-09 13:11:34
+ * @LastEditTime: 2024-03-09 14:40:09
  * @FilePath: \avalonIE\app\source\modules\popover3\index.less
  * @Description: 文档描述
  */
@@ -49,6 +49,85 @@
       color: #b9d6f6;
       font-weight: bold;
     }
+    .pop-content-table {
+      background-color: #f3f6fa;
+      box-sizing: border-box;
+      .pop-content-child {
+        background-color: #f3f6fa;
+        width: 50%;
+        &.left {
+          .list-content {
+            padding: 0;
+            max-height: 300px;
+            height: 300px; /*兼容ie6*/
+            .list-ul {
+              border: 1px dashed #ccc6bd;
+              width: 100%;
+              height: 100%;
+              border-collapse: collapse;
+              tr {
+                table-layout: fixed;
+                table-layout: fixed;
+                display: table;
+                width: 100%;
+              }
+              thead {
+                th {
+                  padding: 10px 0;
+                }
+              }
+              .item {
+                font-size: 15px;
+                border: 1px dashed #c7c3bc;
+                cursor: pointer;
+                &.item1 {
+                  width: 40px;
+                  text-align: center;
+                }
+                &.item2 {
+                  width: 120px;
+                }
+                &.item3 {
+                }
+                &.item4 {
+                  width: 60px;
+                  text-align: center;
+                  text-decoration: underline;
+                  color: #5d7ec0;
+                  cursor: pointer;
+                }
+              }
+              .left {
+                float: left;
+                width: 30%;
+              }
+              .right {
+                width: 68%;
+                float: left;
+              }
+              a {
+                color: #000;
+                text-decoration: none;
+              }
+              a:hover {
+                cursor: pointer;
+                color: #6a88c5;
+              }
+            }
+          }
+        }
+        &.right {
+          height: 100%;
+        }
+        .pop-content-child-blank {
+          width: 10px;
+          background-color: #f3f6fa;
+        }
+        .pop-content-child-cc {
+          background-color: #fff;
+        }
+      }
+    }
     .search-content {
       width: 100%;
       margin-right: 0 !important;
@@ -76,7 +155,6 @@
       }
     }
     .list-content {
-      padding: 10px 0;
       max-height: 300px;
       height: 300px; /*兼容ie6*/
       overflow: auto;

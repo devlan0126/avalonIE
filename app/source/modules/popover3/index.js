@@ -12,6 +12,7 @@ avalon.component("ms-pop3", {
             var srcElement = $event.srcElement;
             if (srcElement) {
                 var value = srcElement.value;
+                this.list = []
                 for (var index = 0; index < 22; index++) {
                     this.list.push(new Date().getTime());
                 }
