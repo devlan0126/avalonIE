@@ -13,6 +13,7 @@ require('../../source/modules/popover/index')
 require('../../source/modules/popover2/index')
 require('../../source/modules/popover3/index')
 require('../../source/modules/popover4/index')
+require('../../source/modules/fzzl/index')
 
 
 
@@ -91,7 +92,7 @@ function resetBottomHeight() {
   var $resultTable = document.getElementById('resultTable')
   var resultTableH = $resultTable.offsetHeight
 
-  const h2 = h - resultGrpH - resultProgressH - resultTableH - 60 -20
+  const h2 = h - resultGrpH - resultProgressH - resultTableH - 60 - 20
   var $resultBot = document.getElementById('resultBot')
   $resultBot.style.height = h2 + 'px'
 
