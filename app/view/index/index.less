@@ -1,5 +1,6 @@
 body {
   box-sizing: border-box;
+  position: relative;
 }
 
 #content {
@@ -25,7 +26,7 @@ img {
 }
 
 body {
-  font-family: "微软雅黑", "Arial", "Helvetica", "Verdana", "sans-serif";
+  font-family: "Microsoft YaHei", "Arial", "Helvetica", "Verdana", "sans-serif";
   background: #f3f5fa;
 }
 
@@ -370,7 +371,7 @@ body {
     float: left;
     background-color: #f3f5fa;
     border-bottom: 2px solid #fff;
-    &.acitve-tab {
+    &.active-tab {
       border-color: #536fdb;
       background-color: #fff;
       .ui-tab-content {
@@ -400,4 +401,11 @@ body {
   content: "";
   display: table;
   clear: both;
+}
+
+.large-btn {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  cursor: pointer;
 }

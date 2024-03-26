@@ -1,5 +1,5 @@
-const base  = require('../base/base'),
-      files = require('../base/files');
+const base = require('../base/base'),
+  files = require('../base/files');
 
 module.exports = (dev) => {
   let Config = {
@@ -60,7 +60,19 @@ module.exports = (dev) => {
             }
           }
         ]
-      }
+      },
+      {
+        test: /\.(htc)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: '',
+            },
+          },
+        ],
+      },
     ]
   };
 
@@ -71,22 +83,22 @@ module.exports = (dev) => {
       loaders: require('extract-text-webpack-plugin').extract({
         fallback: 'style-loader',
         use: loader ? [{
-            loader: 'css-loader',
-            query: {
-              modules: false,
-              outputStyle: 'expanded',
-              sourceMap: dev,
-              sourceMapContents: dev
-            }
-          }, loader, 'postcss-loader'] : [{
-            loader: 'css-loader',
-            query: {
-              modules: false,
-              outputStyle: 'expanded',
-              sourceMap: dev,
-              sourceMapContents: dev
-            }
-          }, 'postcss-loader']
+          loader: 'css-loader',
+          query: {
+            modules: false,
+            outputStyle: 'expanded',
+            sourceMap: dev,
+            sourceMapContents: dev
+          }
+        }, loader, 'postcss-loader'] : [{
+          loader: 'css-loader',
+          query: {
+            modules: false,
+            outputStyle: 'expanded',
+            sourceMap: dev,
+            sourceMapContents: dev
+          }
+        }, 'postcss-loader']
       })
     })
   }

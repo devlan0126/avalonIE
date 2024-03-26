@@ -1,9 +1,9 @@
-const base              = require('./base/base.js'),
-      files             = require('./base/files'),
-      path              = require('path'),
-      glob              = require('glob'),
-      HtmlWebpackPlugin = require('html-webpack-plugin'),
-      ExtractTextPlugin = require('extract-text-webpack-plugin');
+const base = require('./base/base.js'),
+  files = require('./base/files'),
+  path = require('path'),
+  glob = require('glob'),
+  HtmlWebpackPlugin = require('html-webpack-plugin'),
+  ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = (option = { dev: process.env.NODE_ENV === 'development' }) => ((Glob, objConcat, createHtml) => {
 
@@ -45,15 +45,15 @@ module.exports = (option = { dev: process.env.NODE_ENV === 'development' }) => (
 
     function getEntry(option, VIEWS) {
       let pathDir = option.pathDir,
-          files   = glob.sync(option.globPath);
+        files = glob.sync(option.globPath);
 
       let entries = {},
-          entry, // 文件完整路径
-          dirName, // 传入的文件夹路径
-          baseName, // 文件名
-          pathName, // 文件夹路劲
-          relativeName, // 键名所需,相对传入文件地址路径
-          extName; // 文件格式
+        entry, // 文件完整路径
+        dirName, // 传入的文件夹路径
+        baseName, // 文件名
+        pathName, // 文件夹路劲
+        relativeName, // 键名所需,相对传入文件地址路径
+        extName; // 文件格式
 
       for (let i = 0; i < files.length; i++) {
         entry = files[i];
@@ -82,20 +82,20 @@ module.exports = (option = { dev: process.env.NODE_ENV === 'development' }) => (
       return entries;
     }
 
-    let fileHtml  = Object.keys(getEntry({
-          globPath: files.htmlPath + '/**/*',
-          pathDir: files.htmlPath + '/'
-        }, VIEWS)),
-        fileJs    = getEntry({
-          globPath: files.viewPath + '/**/*.?(js|jsx)',
-          pathDir: files.viewPath + '/'
-        }, VIEWS),
-        fileCss   = getEntry({
-          globPath: files.viewPath + '/**/*.?(css|pcss|sass|scss|less)',
-          pathDir: files.viewPath + '/'
-        }, VIEWS),
-        jsBundle  = debug ? `${files.jsName}/[name].js` : `${files.jsName}/[name].[chunkhash:8].js`,
-        cssBundle = debug ? `${files.cssName}/[name].css` : `${files.cssName}/[name].[contenthash:8].css`;
+    let fileHtml = Object.keys(getEntry({
+      globPath: files.htmlPath + '/**/*',
+      pathDir: files.htmlPath + '/'
+    }, VIEWS)),
+      fileJs = getEntry({
+        globPath: files.viewPath + '/**/*.?(js|jsx)',
+        pathDir: files.viewPath + '/'
+      }, VIEWS),
+      fileCss = getEntry({
+        globPath: files.viewPath + '/**/*.?(css|pcss|sass|scss|less)',
+        pathDir: files.viewPath + '/'
+      }, VIEWS),
+      jsBundle = debug ? `${files.jsName}/[name].js` : `${files.jsName}/[name].[chunkhash:8].js`,
+      cssBundle = debug ? `${files.cssName}/[name].css` : `${files.cssName}/[name].[contenthash:8].css`;
     return {
       'fileHtml': fileHtml,
       'fileJs': fileJs,
@@ -137,6 +137,10 @@ module.exports = (option = { dev: process.env.NODE_ENV === 'development' }) => (
         )
       });
     }
+    console.log('-----------------htmlFiles------------------------')
+    console.log(htmlFiles)
+    console.log(htmlPath)
+    console.log('-----------------htmlFiles------------------------')
 
     // 遍历创建所有HTML
     htmlFiles.forEach(function (pathname) {
@@ -166,12 +170,12 @@ module.exports = (option = { dev: process.env.NODE_ENV === 'development' }) => (
       }
       conf.chunksSortMode = function (a, b) { // 按照配置排序
         let index = {}, i = 1,
-            len           = conf.chunks.length;
+          len = conf.chunks.length;
         for (; i <= len; i++) {
           index[conf.chunks[len - i]] = i;
         }
         let aI = index[a.origins[0].name],
-            bI = index[b.origins[0].name];
+          bI = index[b.origins[0].name];
         return aI && bI ? bI - aI : -1;
       };
       config.plugins.push(new HtmlWebpackPlugin(conf));

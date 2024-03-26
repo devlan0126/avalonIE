@@ -14,6 +14,7 @@ require('../../source/modules/popover2/index')
 require('../../source/modules/popover3/index')
 require('../../source/modules/popover4/index')
 require('../../source/modules/fzzl/index')
+require('../../source/modules/mdcAdrg/index')
 
 
 
@@ -37,6 +38,7 @@ var vm = avalon.define({
     tabVisible6: false,
     tabVisible7: false,
   },
+  isLarge: false,
   tabClick: function ($event, index) {
     var visible = this.tabConfig['tabVisible' + index]
     this.tabConfig.tabVisible1 = false
@@ -47,6 +49,15 @@ var vm = avalon.define({
     this.tabConfig.tabVisible6 = false
     this.tabConfig.tabVisible7 = false
     this.tabConfig['tabVisible' + index] = true
+    setTimeout(function () {
+      setLargeBtnHeight()
+    }, 100)
+  },
+  enlarge: function () {
+    this.isLarge = !this.isLarge
+    setTimeout(function () {
+      setLargeBtnHeight()
+    }, 100)
   },
   config: {
     isShow: false,
@@ -97,4 +108,26 @@ function resetBottomHeight() {
   $resultBot.style.height = h2 + 'px'
 
 }
+
+function setLargeBtnHeight() {
+  var $largeBtn = document.getElementById('largeBtn')
+  var $pageBottom = document.getElementById('pageBottom')
+  var $tabsUl = document.getElementById('tabsUl').children
+  var $activeTab = null;
+  for (var i = 0; i < $tabsUl.length; i++) {
+    if ($tabsUl[i].classList.contains('active-tab')) {
+      $activeTab = $tabsUl[i]
+      break;
+    }
+  }
+  var activatTabRect = $activeTab.getBoundingClientRect();
+  var activeTabLeft = activatTabRect.left
+  var activeTabWidth = activatTabRect.width
+  var activeTabTop = activatTabRect.top
+  $largeBtn.style.top =
+    activeTabTop - 13 + "px";
+  $largeBtn.style.left = activeTabLeft + activeTabWidth / 2 + "px";
+
+}
+
 

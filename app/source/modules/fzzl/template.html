@@ -7,7 +7,9 @@
     </thead>
     <tr ms-for="(index,row) in @list" class="row">
       <td ms-for="column in @columns" class="item left">
-        <div class="item-inner">{{row[column.prop]}}</div>
+        <div class="item-inner">
+          <i class="icon-sliderL"></i> {{row[column.prop]}}
+        </div>
       </td>
     </tr>
   </table>
