@@ -111,23 +111,14 @@ function resetBottomHeight() {
 
 function setLargeBtnHeight() {
   var $largeBtn = document.getElementById('largeBtn')
-  var $pageBottom = document.getElementById('pageBottom')
-  var $tabsUl = document.getElementById('tabsUl').children
-  var $activeTab = null;
-  for (var i = 0; i < $tabsUl.length; i++) {
-    if ($tabsUl[i].classList.contains('active-tab')) {
-      $activeTab = $tabsUl[i]
-      break;
-    }
-  }
+  var $activeTab = document.getElementsByClassName('active-tab')[0];
   var activatTabRect = $activeTab.getBoundingClientRect();
   var activeTabLeft = activatTabRect.left
-  var activeTabWidth = activatTabRect.width
   var activeTabTop = activatTabRect.top
+  alert('activeTabLeft:' + activeTabLeft)
+  alert('$largeBtn.style.top:' + $largeBtn.style.top)
   $largeBtn.style.top =
     activeTabTop - 13 + "px";
-  $largeBtn.style.left = activeTabLeft + activeTabWidth / 2 + "px";
-
+  $largeBtn.style.left = activeTabLeft + 50 + "px";
 }
-
 
