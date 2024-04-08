@@ -9,7 +9,7 @@ avalon.component("ms-pop2", {
     template: require("./template.html"),
     defaults: {
         show: false,
-        data: "J18.903,重症肺炎",
+        data: "",
         list: [],
         source: [],
         zIndex: 1,

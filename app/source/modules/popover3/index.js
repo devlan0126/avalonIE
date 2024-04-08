@@ -2,7 +2,7 @@ avalon.component("ms-pop3", {
     template: require("./template.html"),
     defaults: {
         show: false,
-        data: "J18.903,重症肺炎",
+        data: "",
         list: [],
         source: [],
         selection: [],

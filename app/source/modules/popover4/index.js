@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-09 13:02:16
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-08 14:33:45
+ * @LastEditTime: 2024-04-08 15:06:40
  * @FilePath: \avalonIE\app\source\modules\popover4\index.js
  * @Description: 文档描述
  */
@@ -9,7 +9,7 @@ avalon.component("ms-pop4", {
     template: require("./template.html"),
     defaults: {
         show: false,
-        data: "J18.903,重症肺炎",
+        data: "",
         list: [],
         source: [],
         selection: [],

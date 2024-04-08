@@ -2,28 +2,34 @@ avalon.component("ms-pop", {
     template: require("./template.html"),
     defaults: {
         show: false,
-        data: "J18.903,重症肺炎",
+        data: "",
         list: [],
         source: [],
         zIndex: 1,
+        timer: null,
         onClick: function ($event) {
             this.show = true;
         },
         onChange: function ($event) {
-            var srcElement = $event.srcElement;
-            if (srcElement) {
-                var value = srcElement.value;
-                if (value) {
-                    var temp = this.source.filter(function (item) {
-                        return item.operationName.indexOf(value) > -1;
-                    })
-                    this.list = temp.slice(0, 100)
+            var that = this
+            clearTimeout(that.timer);
+            that.timer = setTimeout(function () {
+                console.log('input change .........................');
+                var srcElement = $event.srcElement;
+                if (srcElement) {
+                    var value = srcElement.value;
+                    if (value) {
+                        var temp = that.source.filter(function (item) {
+                            return item.operationName.indexOf(value) > -1;
+                        })
+                        that.list = temp.slice(0, 100)
+                    } else {
+                        that.list = []
+                    }
                 } else {
-                    this.list = []
+                    that.list = []
                 }
-            } else {
-                this.list = []
-            }
+            }, 1000)
         },
         onSelectRow: function ($event, row) {
             this.data = row.operationCode + "  " + row.operationName
