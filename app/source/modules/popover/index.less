@@ -27,7 +27,7 @@
     background-color: #fff;
     z-index: 101;
     box-sizing: border-box;
-    padding: 0;
+    padding: 10px 5px;
     &::before {
       content: "▲";
       position: absolute;
@@ -69,14 +69,17 @@
       height: 300px; /*兼容ie6*/
       overflow: auto;
       .list-ul {
-        border: 1px solid #ccc6bd;
+        border: 1px dashed #ccc6bd;
         width: 100%;
         border-collapse: collapse;
         .row {
           font-size: 0;
+          td {
+            height: unset;
+          }
           .item {
             font-size: 15px;
-            border: 1px solid #c7c3bc;
+            border: 1px dashed #c7c3bc;
             cursor: pointer;
             .item-inner {
               padding: 10px;
@@ -87,12 +90,7 @@
             }
           }
           .left {
-            float: left;
-            width: 30%;
-          }
-          .right {
-            width: 68%;
-            float: left;
+            width: 150px;
           }
           a {
             color: #000;
@@ -103,6 +101,47 @@
             color: #6a88c5;
           }
         }
+      }
+    }
+
+    .left-table {
+      width: 100%;
+      border-collapse: collapse;
+      thead {
+        th {
+          height: unset;
+          padding: 10px;
+          background-color: #f4f3f1;
+          border: 1px solid #c7c3bc;
+          color: #617b9f;
+          font-size: 15px;
+        }
+      }
+      tbody {
+        td {
+          font-size: 15px;
+          text-align: center;
+          height: unset;
+          padding: 10px;
+          border: 0.5px dashed #c7c3bc;
+        }
+      }
+      tbody {
+        display: block;
+        max-height: 320px;
+        height: 320px;
+        overflow-y: auto;
+      }
+
+      thead tr,
+      tbody tr,
+      tfoot tr {
+        box-sizing: border-box;
+        table-layout: fixed;
+        display: table;
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
       }
     }
   }

@@ -4,6 +4,7 @@ avalon.component("ms-pop", {
         show: false,
         data: "J18.903,重症肺炎",
         list: [],
+        source: [],
         zIndex: 1,
         onClick: function ($event) {
             this.show = true;
@@ -12,18 +13,27 @@ avalon.component("ms-pop", {
             var srcElement = $event.srcElement;
             if (srcElement) {
                 var value = srcElement.value;
-                for (var index = 0; index < 22; index++) {
-                    this.list.push(new Date().getTime());
+                if (value) {
+                    var temp = this.source.filter(function (item) {
+                        return item.operationName.indexOf(value) > -1;
+                    })
+                    this.list = temp.slice(0, 100)
+                } else {
+                    this.list = []
                 }
+            } else {
+                this.list = []
             }
         },
         onSelectRow: function ($event, row) {
-            console.log('select row:', row)
-            this.data = row
+            this.data = row.operationCode + "  " + row.operationName
         },
         onInit: function () {
             var that = this;
-            console.log('zIndex:', that.zIndex)
+            var data = require("./mock.json")
+            if (data.code === 200) {
+                that.source = data.data.list;
+            }
             window.addEvent(document
                 .getElementsByTagName("body")[0], 'click', function ($event) {
                     var $child = $event.srcElement;

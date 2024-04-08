@@ -115,8 +115,6 @@ function setLargeBtnHeight() {
   var activatTabRect = $activeTab.getBoundingClientRect();
   var activeTabLeft = activatTabRect.left
   var activeTabTop = activatTabRect.top
-  alert('activeTabLeft:' + activeTabLeft)
-  alert('$largeBtn.style.top:' + $largeBtn.style.top)
   $largeBtn.style.top =
     activeTabTop - 13 + "px";
   $largeBtn.style.left = activeTabLeft + 50 + "px";

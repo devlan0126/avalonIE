@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-09 11:39:44
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-03-09 11:39:57
+ * @LastEditTime: 2024-04-08 11:13:44
  * @FilePath: \avalonIE\app\source\modules\popover2\index.js
  * @Description: 文档描述
  */
@@ -11,6 +11,7 @@ avalon.component("ms-pop2", {
         show: false,
         data: "J18.903,重症肺炎",
         list: [],
+        source: [],
         zIndex: 1,
         onClick: function ($event) {
             this.show = true;
@@ -19,17 +20,27 @@ avalon.component("ms-pop2", {
             var srcElement = $event.srcElement;
             if (srcElement) {
                 var value = srcElement.value;
-                for (var index = 0; index < 22; index++) {
-                    this.list.push(new Date().getTime());
+                if (value) {
+                    var temp = this.source.filter(function (item) {
+                        return item.diagnoseName.indexOf(value) > -1;
+                    })
+                    this.list = temp.slice(0, 100)
+                } else {
+                    this.list = []
                 }
+            } else {
+                this.list = []
             }
         },
         onSelectRow: function ($event, row) {
-            console.log('select row:', row)
-            this.data = row
+            this.data = row.diagnoseCode + "  " + row.diagnoseName
         },
         onInit: function () {
             var that = this;
+            var data = require("./mock.json")
+            if (data.code === 200) {
+                that.source = data.data.list;
+            }
             console.log('zIndex:', that.zIndex)
             window.addEvent(document
                 .getElementsByTagName("body")[0], 'click', function ($event) {

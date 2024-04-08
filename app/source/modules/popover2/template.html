@@ -17,18 +17,6 @@
         </td>
       </tr>
     </table>
-    <!-- <div class="search-content clearfix">
-      <div class="search-input-prefix">替换</div>
-      <div class="search-input-content">
-        <input
-          class="search-input"
-          type="text"
-          name="name"
-          ms-on-change="@onChange"
-          ms-on-input="@onChange"
-        />
-      </div>
-    </div> -->
     <div class="list-content">
       <table class="list-ul">
         <tr
@@ -36,8 +24,12 @@
           class="row"
           ms-on-click="@onSelectRow($event,row) |stop"
         >
-          <td class="item left"><div class="item-inner">{{@row}}</div></td>
-          <td class="item right"><div class="item-inner">{{@row}}</div></td>
+          <td class="item left">
+            <div class="item-inner">{{@row.diagnoseCode}}</div>
+          </td>
+          <td class="item right">
+            <div class="item-inner">{{@row.diagnoseName}}</div>
+          </td>
         </tr>
       </table>
     </div>

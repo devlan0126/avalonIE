@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-09 13:02:16
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-03-09 13:05:35
+ * @LastEditTime: 2024-04-08 14:33:45
  * @FilePath: \avalonIE\app\source\modules\popover4\index.js
  * @Description: 文档描述
  */
@@ -11,26 +11,59 @@ avalon.component("ms-pop4", {
         show: false,
         data: "J18.903,重症肺炎",
         list: [],
+        source: [],
+        selection: [],
         zIndex: 1,
         onClick: function ($event) {
             this.show = true;
         },
         onChange: function ($event) {
+            var that = this;
             var srcElement = $event.srcElement;
             if (srcElement) {
                 var value = srcElement.value;
-                for (var index = 0; index < 22; index++) {
-                    this.list.push(new Date().getTime());
+                if (value) {
+                    var temp = this.source.filter(function (item) {
+                        return item.diagnoseName.indexOf(value) > -1 || item.diagnoseCode.indexOf(value) > -1;
+                    })
+                    var temp2 = temp.filter(function (item) {
+                        return that.selection.indexOf(item) === -1
+                    })
+                    this.list = temp2.slice(0, 120)
+                } else {
+                    this.list = []
                 }
+            } else {
+                this.list = []
             }
         },
-        onSelectRow: function ($event, row) {
-            console.log('select row:', row)
-            this.data = row
+        onSelectRow: function ($event, row, index) {
+            this.selection.push(row)
+            this.list.splice(index, 1)
+            this.setData()
+        },
+        onRemoveRow: function ($event, index) {
+            this.list.unshift(this.selection[index])
+            this.selection.splice(index, 1)
+            this.setData()
+        },
+        setData: function () {
+            if (this.selection.length > 0) {
+                var temp = []
+                for (var i = 0; i < this.selection.length; i++) {
+                    temp.push(this.selection[i].diagnoseCode + ',' + this.selection[i].diagnoseName)
+                }
+                this.data = temp.join(' | ');
+            } else {
+                this.data = ''
+            }
         },
         onInit: function () {
             var that = this;
-            console.log('zIndex:', that.zIndex)
+            var data = require("./mock.json")
+            if (data.code === 200) {
+                that.source = data.data.list;
+            }
             window.addEvent(document
                 .getElementsByTagName("body")[0], 'click', function ($event) {
                     var $child = $event.srcElement;
@@ -59,6 +92,8 @@ avalon.component("ms-pop4", {
         },
     },
 });
+
+
 
 
 
