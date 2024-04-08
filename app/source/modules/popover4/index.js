@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-09 13:02:16
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-08 15:06:40
+ * @LastEditTime: 2024-04-08 17:20:00
  * @FilePath: \avalonIE\app\source\modules\popover4\index.js
  * @Description: 文档描述
  */
@@ -14,28 +14,32 @@ avalon.component("ms-pop4", {
         source: [],
         selection: [],
         zIndex: 1,
+        timer: null,
         onClick: function ($event) {
             this.show = true;
         },
         onChange: function ($event) {
-            var that = this;
-            var srcElement = $event.srcElement;
-            if (srcElement) {
-                var value = srcElement.value;
-                if (value) {
-                    var temp = this.source.filter(function (item) {
-                        return item.diagnoseName.indexOf(value) > -1 || item.diagnoseCode.indexOf(value) > -1;
-                    })
-                    var temp2 = temp.filter(function (item) {
-                        return that.selection.indexOf(item) === -1
-                    })
-                    this.list = temp2.slice(0, 120)
+            var that = this
+            clearTimeout(that.timer);
+            that.timer = setTimeout(function () {
+                var srcElement = $event.srcElement;
+                if (srcElement) {
+                    var value = srcElement.value;
+                    if (value) {
+                        var temp = that.source.filter(function (item) {
+                            return item.diagnoseName.indexOf(value) > -1 || item.diagnoseCode.indexOf(value) > -1;
+                        })
+                        var temp2 = temp.filter(function (item) {
+                            return that.selection.indexOf(item) === -1
+                        })
+                        that.list = temp2.slice(0, 120)
+                    } else {
+                        that.list = []
+                    }
                 } else {
-                    this.list = []
+                    that.list = []
                 }
-            } else {
-                this.list = []
-            }
+            }, 1000)
         },
         onSelectRow: function ($event, row, index) {
             this.selection.push(row)

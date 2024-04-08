@@ -7,28 +7,32 @@ avalon.component("ms-pop3", {
         source: [],
         selection: [],
         zIndex: 1,
+        timer: null,
         onClick: function ($event) {
             this.show = true;
         },
         onChange: function ($event) {
-            var that = this;
-            var srcElement = $event.srcElement;
-            if (srcElement) {
-                var value = srcElement.value;
-                if (value) {
-                    var temp = this.source.filter(function (item) {
-                        return item.operationName.indexOf(value) > -1 || item.operationCode.indexOf(value) > -1;
-                    })
-                    var temp2 = temp.filter(function (item) {
-                        return that.selection.indexOf(item) === -1
-                    })
-                    this.list = temp2.slice(0, 120)
+            var that = this
+            clearTimeout(that.timer);
+            that.timer = setTimeout(function () {
+                var srcElement = $event.srcElement;
+                if (srcElement) {
+                    var value = srcElement.value;
+                    if (value) {
+                        var temp = that.source.filter(function (item) {
+                            return item.operationName.indexOf(value) > -1 || item.operationCode.indexOf(value) > -1;
+                        })
+                        var temp2 = temp.filter(function (item) {
+                            return that.selection.indexOf(item) === -1
+                        })
+                        that.list = temp2.slice(0, 120)
+                    } else {
+                        that.list = []
+                    }
                 } else {
-                    this.list = []
+                    that.list = []
                 }
-            } else {
-                this.list = []
-            }
+            }, 1000)
         },
         onSelectRow: function ($event, row, index) {
             this.selection.push(row)

@@ -14,13 +14,12 @@ avalon.component("ms-pop", {
             var that = this
             clearTimeout(that.timer);
             that.timer = setTimeout(function () {
-                console.log('input change .........................');
                 var srcElement = $event.srcElement;
                 if (srcElement) {
                     var value = srcElement.value;
                     if (value) {
                         var temp = that.source.filter(function (item) {
-                            return item.operationName.indexOf(value) > -1;
+                            return item.operationName.indexOf(value) > -1 || item.operationCode.indexOf(value) > -1;
                         })
                         that.list = temp.slice(0, 100)
                     } else {
@@ -33,6 +32,7 @@ avalon.component("ms-pop", {
         },
         onSelectRow: function ($event, row) {
             this.data = row.operationCode + "  " + row.operationName
+            this.show = false;
         },
         onInit: function () {
             var that = this;

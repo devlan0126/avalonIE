@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-09 11:39:44
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-08 11:13:44
+ * @LastEditTime: 2024-04-08 17:21:55
  * @FilePath: \avalonIE\app\source\modules\popover2\index.js
  * @Description: 文档描述
  */
@@ -13,27 +13,33 @@ avalon.component("ms-pop2", {
         list: [],
         source: [],
         zIndex: 1,
+        timer: null,
         onClick: function ($event) {
             this.show = true;
         },
         onChange: function ($event) {
-            var srcElement = $event.srcElement;
-            if (srcElement) {
-                var value = srcElement.value;
-                if (value) {
-                    var temp = this.source.filter(function (item) {
-                        return item.diagnoseName.indexOf(value) > -1;
-                    })
-                    this.list = temp.slice(0, 100)
+            var that = this
+            clearTimeout(that.timer);
+            that.timer = setTimeout(function () {
+                var srcElement = $event.srcElement;
+                if (srcElement) {
+                    var value = srcElement.value;
+                    if (value) {
+                        var temp = that.source.filter(function (item) {
+                            return item.diagnoseName.indexOf(value) > -1 || item.diagnoseCode.indexOf(value) > -1;
+                        })
+                        that.list = temp.slice(0, 100)
+                    } else {
+                        that.list = []
+                    }
                 } else {
-                    this.list = []
+                    that.list = []
                 }
-            } else {
-                this.list = []
-            }
+            }, 1000)
         },
         onSelectRow: function ($event, row) {
             this.data = row.diagnoseCode + "  " + row.diagnoseName
+            this.show = false;
         },
         onInit: function () {
             var that = this;
