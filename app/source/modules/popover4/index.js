@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-09 13:02:16
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-09 18:30:13
+ * @LastEditTime: 2024-04-09 19:21:32
  * @FilePath: \avalonIE\app\source\modules\popover4\index.js
  * @Description: 文档描述
  */
@@ -91,6 +91,9 @@ avalon.component("ms-pop4", {
                 })
         },
         onReady: function (v) {
+            var $inputContent = $('.ms-pop4 .input-content')
+            var width = $inputContent.width()
+            $inputContent.css("width", width + 'px');
             console.log("onReady:", v);
         },
         onViewChange: function (v) {

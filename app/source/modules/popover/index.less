@@ -15,6 +15,8 @@
       margin-left: 10px;
       overflow: hidden;
       word-break: break-all;
+      white-space: unset !important;
+      white-space: nowrap;
       /* break-all(允许在单词内换行。) */
       text-overflow: ellipsis;
       /* 超出部分省略号 */
@@ -114,9 +116,15 @@
       }
     }
 
+    .left-table-wrap {
+      max-height: 350px;
+      height: 350px; /*兼容ie6*/
+      overflow-y: auto;
+    }
     .left-table {
       width: 100%;
       border-collapse: collapse;
+
       thead {
         th {
           height: unset;
@@ -131,28 +139,34 @@
         td {
           font-size: 15px;
           text-align: center;
-          height: unset;
-          padding: 10px;
           border: 0.5px dashed #c7c3bc;
+          height: unset;
+          .item-inner {
+            padding: 10px;
+            &:hover {
+              cursor: pointer;
+              color: #6a88c5;
+            }
+          }
         }
       }
-      tbody {
-        display: block;
-        max-height: 320px;
-        height: 320px;
-        overflow-y: auto;
-      }
+      // tbody {
+      //   display: block;
+      //   max-height: 320px;
+      //   height: 320px;
+      //   overflow-y: auto;
+      // }
 
-      thead tr,
-      tbody tr,
-      tfoot tr {
-        box-sizing: border-box;
-        table-layout: fixed;
-        display: table;
-        width: 100%;
-        border-collapse: collapse;
-        border-spacing: 0;
-      }
+      // thead tr,
+      // tbody tr,
+      // tfoot tr {
+      //   box-sizing: border-box;
+      //   table-layout: fixed;
+      //   display: table;
+      //   width: 100%;
+      //   border-collapse: collapse;
+      //   border-spacing: 0;
+      // }
     }
   }
 }

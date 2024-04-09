@@ -6,32 +6,38 @@
     <table style="width: 100%">
       <tr>
         <td style="width: 50%">
-          <table class="left-table">
-            <thead>
-              <tr>
-                <th class="title" style="width: 50px">排序</th>
-                <th class="content" style="width: 120px">编码</th>
-                <th class="content">名称</th>
-                <th class="content" style="width: 50px">删除</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ms-for="(index,row) in @selection">
-                <td class="title" style="width: 50px">{{@index+1}}</td>
-                <td class="content" style="width: 120px">
-                  {{@row.operationCode}}
-                </td>
-                <td class="content">{{@row.operationName}}</td>
-                <td
-                  class="content"
-                  style="width: 50px; cursor: pointer"
-                  ms-on-click="@onRemoveRow($event,index)"
-                >
-                  删除
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="left-table-wrap">
+            <table class="left-table">
+              <thead>
+                <tr>
+                  <th class="title" style="width: 50px">排序</th>
+                  <th class="content" style="width: 120px">编码</th>
+                  <th class="content">名称</th>
+                  <th class="content" style="width: 50px">删除</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ms-for="(index,row) in @selection">
+                  <td class="title" style="width: 50px">
+                    <div class="item-inner">{{@index+1}}</div>
+                  </td>
+                  <td class="content" style="width: 120px">
+                    <div class="item-inner">{{@row.operationCode}}</div>
+                  </td>
+                  <td class="content">
+                    <div class="item-inner">{{@row.operationName}}</div>
+                  </td>
+                  <td
+                    class="content"
+                    style="width: 50px; cursor: pointer"
+                    ms-on-click="@onRemoveRow($event,index)"
+                  >
+                    <div class="item-inner">删除</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </td>
         <td style="width: 100px">--</td>
         <td>

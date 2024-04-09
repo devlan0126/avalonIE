@@ -84,6 +84,9 @@ avalon.component("ms-pop3", {
                 })
         },
         onReady: function (v) {
+            var $inputContent = $('.ms-pop3 .input-content')
+            var width = $inputContent.width()
+            $inputContent.css("width", width + 'px');
             console.log("onReady:", v);
         },
         onViewChange: function (v) {

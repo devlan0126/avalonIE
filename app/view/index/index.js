@@ -59,6 +59,13 @@ var vm = avalon.define({
       setLargeBtnHeight()
     }, 100)
   },
+  onSubmit: function () { 
+
+    
+  },
+  onRest: function () {
+    window.location.reload()
+  },
   config: {
     isShow: false,
     onCancel: function () {
