@@ -74,7 +74,10 @@ var vm = avalon.define({
 });
 
 vm.$watch('onReady', function (v) {
-  //当test这个区域第⼀次扫描后会被执⾏
+  window.lonsOperations = []
+  window.lonsDiagnoses = []
+  getOperationList()
+  getDiagnoseList()
   resetBottomHeight()
 })
 
@@ -95,7 +98,6 @@ function resetBottomHeight() {
 
 
   const $tabs1 = document.getElementById('tabs-1')
-  const tabs1Height = $tabs1.offsetHeight
   var $resultGrp = document.getElementById('resultGrp')
   var resultGrpH = $resultGrp.offsetHeight
   var $resultProgress = document.getElementById('resultProgress')
@@ -120,3 +122,41 @@ function setLargeBtnHeight() {
   $largeBtn.style.left = activeTabLeft + 50 + "px";
 }
 
+
+
+
+function getOperationList() {
+  $.ajax({
+    url: '/hprs/operation/pageList',
+    type: 'POST',
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    dataType: 'json',
+    data: '{"pageNum":1,"pageSize":100}',
+    success: function (res) {
+      if (res.code === 200) {
+        window.lonsOperations = res.data.list;
+      }
+    }
+  });
+}
+
+function getDiagnoseList() {
+  $.ajax({
+    url: '/hprs/diagnose/pageList',
+    type: 'POST',
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    dataType: 'json',
+    data: '{"pageNum":1,"pageSize":100}',
+    success: function (res) {
+      if (res.code === 200) {
+        window.lonsDiagnoses = res.data.list;
+      }
+    }
+  });
+}

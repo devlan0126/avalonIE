@@ -9,39 +9,41 @@ avalon.component("ms-pop", {
         timer: null,
         onClick: function ($event) {
             this.show = true;
+            this.source = window.lonsOperations
         },
         onChange: function ($event) {
-            var that = this
+            var that = this;
             clearTimeout(that.timer);
             that.timer = setTimeout(function () {
                 var srcElement = $event.srcElement;
                 if (srcElement) {
                     var value = srcElement.value;
                     if (value) {
-                        var temp = that.source.filter(function (item) {
-                            return item.operationName.indexOf(value) > -1 || item.operationCode.indexOf(value) > -1;
-                        })
-                        that.list = temp.slice(0, 100)
+                        var temp = []
+                        for (var i = 0; that.source.length > i; i++) {
+                            if (that.source[i].operationCode.indexOf(value) > -1 || that.source[i].operationName.indexOf(value) > -1) {
+                                temp.push(that.source[i])
+                            }
+                        }
+                        that.list = temp.slice(0, 100);
                     } else {
-                        that.list = []
+                        that.list = [];
                     }
                 } else {
-                    that.list = []
+                    that.list = [];
                 }
-            }, 1000)
+            }, 1000);
         },
         onSelectRow: function ($event, row) {
-            this.data = row.operationCode + "  " + row.operationName
+            this.data = row.operationCode + "  " + row.operationName;
             this.show = false;
         },
         onInit: function () {
             var that = this;
-            var data = require("./mock.json")
-            if (data.code === 200) {
-                that.source = data.data.list;
-            }
-            window.addEvent(document
-                .getElementsByTagName("body")[0], 'click', function ($event) {
+            window.addEvent(
+                document.getElementsByTagName("body")[0],
+                "click",
+                function ($event) {
                     var $child = $event.srcElement;
                     var $parent = that.$element;
                     if ($parent.contains) {
@@ -55,7 +57,8 @@ avalon.component("ms-pop", {
                     } else {
                         that.show = true;
                     }
-                })
+                }
+            );
         },
         onReady: function (v) {
             console.log("onReady:", v);
@@ -68,8 +71,6 @@ avalon.component("ms-pop", {
         },
     },
 });
-
-
 
 function isChildOf(child, parent) {
     var parentNode;

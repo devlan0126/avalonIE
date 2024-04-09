@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-09 11:39:44
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-08 17:21:55
+ * @LastEditTime: 2024-04-09 18:24:15
  * @FilePath: \avalonIE\app\source\modules\popover2\index.js
  * @Description: 文档描述
  */
@@ -16,6 +16,7 @@ avalon.component("ms-pop2", {
         timer: null,
         onClick: function ($event) {
             this.show = true;
+            this.source = window.lonsDiagnoses
         },
         onChange: function ($event) {
             var that = this
@@ -25,9 +26,12 @@ avalon.component("ms-pop2", {
                 if (srcElement) {
                     var value = srcElement.value;
                     if (value) {
-                        var temp = that.source.filter(function (item) {
-                            return item.diagnoseName.indexOf(value) > -1 || item.diagnoseCode.indexOf(value) > -1;
-                        })
+                        var temp = []
+                        for (var i = 0; that.source.length > i; i++) {
+                            if (that.source[i].diagnoseCode.indexOf(value) > -1 || that.source[i].diagnoseName.indexOf(value) > -1) {
+                                temp.push(that.source[i])
+                            }
+                        }
                         that.list = temp.slice(0, 100)
                     } else {
                         that.list = []
@@ -43,11 +47,6 @@ avalon.component("ms-pop2", {
         },
         onInit: function () {
             var that = this;
-            var data = require("./mock.json")
-            if (data.code === 200) {
-                that.source = data.data.list;
-            }
-            console.log('zIndex:', that.zIndex)
             window.addEvent(document
                 .getElementsByTagName("body")[0], 'click', function ($event) {
                     var $child = $event.srcElement;

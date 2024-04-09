@@ -10,6 +10,7 @@ avalon.component("ms-pop3", {
         timer: null,
         onClick: function ($event) {
             this.show = true;
+            this.source = window.lonsOperations
         },
         onChange: function ($event) {
             var that = this
@@ -19,13 +20,21 @@ avalon.component("ms-pop3", {
                 if (srcElement) {
                     var value = srcElement.value;
                     if (value) {
-                        var temp = that.source.filter(function (item) {
-                            return item.operationName.indexOf(value) > -1 || item.operationCode.indexOf(value) > -1;
-                        })
-                        var temp2 = temp.filter(function (item) {
-                            return that.selection.indexOf(item) === -1
-                        })
-                        that.list = temp2.slice(0, 120)
+                        var temp = []
+                        for (var i = 0; that.source.length > i; i++) {
+                            var flag = false
+                            for (var j = 0; j < that.selection.length; j++) {
+                                if (that.selection[j].operationCode === that.source[i].operationCode) {
+                                    flag = true
+                                    break
+                                }
+                            }
+
+                            if (!flag && that.source[i].operationCode.indexOf(value) > -1 || that.source[i].operationName.indexOf(value) > -1) {
+                                temp.push(that.source[i])
+                            }
+                        }
+                        that.list = temp
                     } else {
                         that.list = []
                     }
@@ -57,10 +66,6 @@ avalon.component("ms-pop3", {
         },
         onInit: function () {
             var that = this;
-            var data = require("./mock.json")
-            if (data.code === 200) {
-                that.source = data.data.list;
-            }
             window.addEvent(document
                 .getElementsByTagName("body")[0], 'click', function ($event) {
                     var $child = $event.srcElement;
