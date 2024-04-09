@@ -27,21 +27,21 @@ avalon.component("ms-pop4", {
                 if (srcElement) {
                     var value = srcElement.value;
                     if (value) {
-                        var temp = []
-                        for (var i = 0; that.source.length > i; i++) {
-                            var flag = false
-                            for (var j = 0; j < that.selection.length; j++) {
-                                if (that.selection[j].diagnoseCode === that.source[i].diagnoseCode) {
-                                    flag = true
-                                    break
+                        $.ajax({
+                            url: '/hprs/diagnose/pageList',
+                            type: 'POST',
+                            headers: {
+                                Accept: "application/json",
+                                "Content-Type": "application/json",
+                            },
+                            dataType: 'json',
+                            data: '{"pageNum":1,"pageSize":20,"diagnose":"' + value + '"}',
+                            success: function (res) {
+                                if (res.code === 200) {
+                                    that.list = res.data.list;
                                 }
                             }
-
-                            if (!flag && that.source[i].diagnoseCode.indexOf(value) > -1 || that.source[i].diagnoseName.indexOf(value) > -1) {
-                                temp.push(that.source[i])
-                            }
-                        }
-                        that.list = temp
+                        });
                     } else {
                         that.list = []
                     }

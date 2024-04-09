@@ -20,21 +20,21 @@ avalon.component("ms-pop3", {
                 if (srcElement) {
                     var value = srcElement.value;
                     if (value) {
-                        var temp = []
-                        for (var i = 0; that.source.length > i; i++) {
-                            var flag = false
-                            for (var j = 0; j < that.selection.length; j++) {
-                                if (that.selection[j].operationCode === that.source[i].operationCode) {
-                                    flag = true
-                                    break
+                        $.ajax({
+                            url: '/hprs/operation/pageList',
+                            type: 'POST',
+                            headers: {
+                                Accept: "application/json",
+                                "Content-Type": "application/json",
+                            },
+                            dataType: 'json',
+                            data: '{"pageNum":1,"pageSize":20,"operation":"' + value + '"}',
+                            success: function (res) {
+                                if (res.code === 200) {
+                                    that.list = res.data.list;
                                 }
                             }
-
-                            if (!flag && that.source[i].operationCode.indexOf(value) > -1 || that.source[i].operationName.indexOf(value) > -1) {
-                                temp.push(that.source[i])
-                            }
-                        }
-                        that.list = temp
+                        });
                     } else {
                         that.list = []
                     }

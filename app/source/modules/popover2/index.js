@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-09 11:39:44
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-09 18:24:15
+ * @LastEditTime: 2024-04-09 18:57:46
  * @FilePath: \avalonIE\app\source\modules\popover2\index.js
  * @Description: 文档描述
  */
@@ -26,13 +26,21 @@ avalon.component("ms-pop2", {
                 if (srcElement) {
                     var value = srcElement.value;
                     if (value) {
-                        var temp = []
-                        for (var i = 0; that.source.length > i; i++) {
-                            if (that.source[i].diagnoseCode.indexOf(value) > -1 || that.source[i].diagnoseName.indexOf(value) > -1) {
-                                temp.push(that.source[i])
+                        $.ajax({
+                            url: '/hprs/diagnose/pageList',
+                            type: 'POST',
+                            headers: {
+                                Accept: "application/json",
+                                "Content-Type": "application/json",
+                            },
+                            dataType: 'json',
+                            data: '{"pageNum":1,"pageSize":20,"diagnose":"' + value + '"}',
+                            success: function (res) {
+                                if (res.code === 200) {
+                                    that.list = res.data.list;
+                                }
                             }
-                        }
-                        that.list = temp.slice(0, 100)
+                        });
                     } else {
                         that.list = []
                     }

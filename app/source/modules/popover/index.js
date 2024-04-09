@@ -19,13 +19,21 @@ avalon.component("ms-pop", {
                 if (srcElement) {
                     var value = srcElement.value;
                     if (value) {
-                        var temp = []
-                        for (var i = 0; that.source.length > i; i++) {
-                            if (that.source[i].operationCode.indexOf(value) > -1 || that.source[i].operationName.indexOf(value) > -1) {
-                                temp.push(that.source[i])
+                        $.ajax({
+                            url: '/hprs/operation/pageList',
+                            type: 'POST',
+                            headers: {
+                                Accept: "application/json",
+                                "Content-Type": "application/json",
+                            },
+                            dataType: 'json',
+                            data: '{"pageNum":1,"pageSize":20,"operation":"' + value + '"}',
+                            success: function (res) {
+                                if (res.code === 200) {
+                                    that.list = res.data.list;
+                                }
                             }
-                        }
-                        that.list = temp.slice(0, 100);
+                        });
                     } else {
                         that.list = [];
                     }
