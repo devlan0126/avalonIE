@@ -13,26 +13,45 @@
       <div class="page-title_content">DRG数据精细化治理</div>
     </div>
     <div ms-visible="!@isLarge" class="page-center page-card" id="pageCenter">
-      <div class="top clearfix">
-        <span class="row-item">
-          <span class="item-content">{{@name}}</span>
-          <span class="item-content">{{@sex}}</span>
-          <span class="item-content">{{@age}}</span>
-        </span>
-        <span class="row-item"
-          >住院号：<span class="item-content">{{@hospitalNumber}}</span></span
-        >
-        <span class="row-item"
-          >流水号：<span class="item-content">{{@serialNumber}}</span></span
-        >
-        <span class="row-item"
-          >入院时间：<span class="item-content">{{@inHospitalTime}}</span></span
-        >
-        <span class="action-btns clearfix">
-          <span class="submit-btn" ms-on-click="@onSubmit |stop">模拟查询</span>
-          <span class="reset-btn" ms-on-click="@onRest |stop">重置</span>
-        </span>
-      </div>
+      <table
+        class="top-layout full-width"
+      >
+        <tr>
+          <td class="left">
+            <div class="top">
+              <span class="row-item">
+                <span class="item-content">{{@name}}</span>
+                <span class="item-content">{{@sex}}</span>
+                <span class="item-content">{{@age}}</span>
+              </span>
+              <span class="row-item"
+                >住院号：<span class="item-content"
+                  >{{@hospitalNumber}}</span
+                ></span
+              >
+              <span class="row-item"
+                >流水号：<span class="item-content"
+                  >{{@serialNumber}}</span
+                ></span
+              >
+              <span class="row-item"
+                >入院时间：<span class="item-content"
+                  >{{@inHospitalTime}}</span
+                ></span
+              >
+            </div>
+          </td>
+          <td class="right">
+            <span class="action-btns">
+              <span class="submit-btn" ms-on-click="@onSubmit |stop"
+                >模拟查询</span
+              >
+              <span class="reset-btn" ms-on-click="@onRest |stop">重置</span>
+            </span>
+          </td>
+        </tr>
+      </table>
+
       <div class="center">
         <i class="icon-warning" style="color: #c00000"></i>
         医疗费用为DRG付费标准的<span id="feePec">91%</span
