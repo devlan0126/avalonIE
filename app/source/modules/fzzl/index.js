@@ -6,27 +6,63 @@ avalon.component("ms-fzzl", {
         columns: [
             {
                 label: "主诊断编码",
-                prop: "mainDiagCode",
+                prop: "主诊断编码",
             },
             {
                 label: "主诊断名称",
-                prop: "mainDiagName",
+                prop: "主诊断名称",
             },
             {
                 label: "主手术编码",
-                prop: "mainOprnCode",
+                prop: "主手术编码",
             },
             {
                 label: "主手术名称",
-                prop: "mainOprnName",
+                prop: "主手术编码",
             },
             {
                 label: "DRG编码",
-                prop: "drgCode",
+                prop: "主手术编码",
             },
             {
                 label: "DRG名称",
-                prop: "drgName",
+                prop: "主手术编码",
+            },
+            {
+                label: "DRG类型",
+                prop: "主手术编码",
+            },
+            {
+                label: "病组均费",
+                prop: "主手术编码",
+            },
+            {
+                label: "基准点数",
+                prop: "主手术编码",
+            },
+            {
+                label: "调整系数",
+                prop: "主手术编码",
+            },
+            {
+                label: "病例类型",
+                prop: "主手术编码",
+            },
+            {
+                label: "预测点数",
+                prop: "主手术编码",
+            },
+            {
+                label: "预测费用",
+                prop: "主手术编码",
+            },
+            {
+                label: "预测盈亏",
+                prop: "主手术编码",
+            },
+            {
+                label: "治理提升",
+                prop: "主手术编码",
             },
         ],
 

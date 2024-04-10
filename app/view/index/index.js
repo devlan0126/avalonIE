@@ -122,17 +122,21 @@ function resetBottomHeight() {
   var $bottom = document.getElementById('pageBottom')
   var $title = document.getElementById('pageTitle')
   var $center = document.getElementById('pageCenter')
-  var titleHeight = $title.offsetHeight
-  var centerHeight = $center.offsetHeight
-  var pageHeight = document.body.clientHeight
-  var bottomHeight = pageHeight - titleHeight - centerHeight
-  $bottom.style.height = bottomHeight + 'px'
+  var titleHeight = $title.offsetHeight + 16
+  var centerHeight = $center.offsetHeight + 16
+  var pageHeight = document.documentElement.clientHeight
+
+  if (window.IEVersion === 6 || window.IEVersion === 8) {
+    var bottomHeight = pageHeight - titleHeight - centerHeight - 20 - 20
+    $bottom.style.height = bottomHeight + 'px'
+  } else {
+    var bottomHeight = pageHeight - titleHeight - centerHeight - 20
+    $bottom.style.height = bottomHeight + 'px'
+  }
 
   const $tabsUl = document.getElementById('tabsUl')
   const h = bottomHeight - $tabsUl.offsetHeight
   document.getElementById('tabContent').style.height = h + 'px'
-
-
 
   const $tabs1 = document.getElementById('tabs-1')
   var $resultGrp = document.getElementById('resultGrp')
