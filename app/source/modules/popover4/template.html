@@ -19,10 +19,18 @@
               <tbody>
                 <tr ms-for="(index,row) in @selection">
                   <td class="title" style="width: 50px">{{@index+1}}</td>
-                  <td class="content" style="width: 120px">
-                    {{@row.diagnoseCode}}
+                  <td
+                    class="content diagnose-code"
+                    ms-attr="{title: @row.diagnoseCode}"
+                  >
+                    <div class="item-inner">{{@row.diagnoseCode}}</div>
                   </td>
-                  <td class="content">{{@row.diagnoseName}}</td>
+                  <td
+                    class="content diagnose-name"
+                    ms-attr="{title: @row.diagnoseName}"
+                  >
+                    <div class="item-inner">{{@row.diagnoseName}}</div>
+                  </td>
                   <td
                     class="content"
                     style="width: 50px; cursor: pointer"
@@ -70,10 +78,14 @@
                 ms-on-click="@onSelectRow($event,row,index) |stop"
               >
                 <td class="item left">
-                  <div class="item-inner">{{@row.diagnoseCode}}</div>
+                  <div class="item-inner" ms-attr="{title: @row.diagnoseCode}">
+                    {{@row.diagnoseCode}}
+                  </div>
                 </td>
                 <td class="item right">
-                  <div class="item-inner">{{@row.diagnoseName}}</div>
+                  <div class="item-inner" ms-attr="{title: @row.diagnoseName}">
+                    {{@row.diagnoseName}}
+                  </div>
                 </td>
               </tr>
             </table>
