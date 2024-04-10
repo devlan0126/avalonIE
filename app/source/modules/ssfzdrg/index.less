@@ -1,40 +1,49 @@
 .ssfzdrg-template {
+  td {
+    border: 0;
+    border-bottom: 5px solid #fff;
+  }
+  #ltTableWrap {
+    margin-top: 20px;
+  }
   #ltTable {
     border-collapse: collapse;
-    td {
-      border: 5px solid #fff;
-    }
     .item-inner {
       font-size: 14px;
       &.left {
+        border-right: 10px solid #fff;
         color: #707070;
         background-color: #d5dce2;
         height: 30px;
         line-height: 30px;
-        border: 1px solid #d5dce2;
         text-align: center;
       }
       &.center {
-        border: 1px solid #c9c3ba;
+        border: 1px solid #d5dce2;
         height: 30px;
         line-height: 30px;
         padding-left: 15px;
       }
       &.right {
         height: 135px;
-        width: 100%;
-        .lt-list {
-          height: 100%;
-          width: 100%;
-          overflow: auto;
-        }
       }
     }
-    .combined-td {
-      background-color: #9bafc7;
-      padding: 10px;
+  }
+  .combined-td {
+    color: #a1272b;
+    line-height: 20px;
+    border: 0;
+    background-color: #9bafc7;
+    border-bottom: 15px solid #fff !important;
+    border-bottom: 10px solid #fff;
+
+    .lt-list {
       color: #a1272b;
       line-height: 20px;
+      height: 100%;
+      width: 100%;
+      overflow: auto;
+      padding-left: 10px;
     }
   }
 }
