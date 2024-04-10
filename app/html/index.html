@@ -222,7 +222,7 @@
           <div
             class="ui-state-default ui-tabs-nav"
             :class="[@tabConfig.tabVisible5 && 'active-tab']"
-            ms-click="@tabClick($event, 1) | prevent"
+            ms-click="@tabClick($event, 5) | prevent"
             ms-visible="@showTabs.ccmccEnabled"
           >
             <div class="ui-tab-content">
@@ -234,7 +234,7 @@
           <div
             class="ui-state-default ui-tabs-nav"
             :class="[@tabConfig.tabVisible6 && 'active-tab']"
-            ms-click="@tabClick($event, 1) | prevent"
+            ms-click="@tabClick($event, 6) | prevent"
             ms-visible="@showTabs.multiTraumaEnabled"
           >
             <div class="ui-tab-content">
@@ -246,7 +246,7 @@
           <div
             class="ui-state-default ui-tabs-nav"
             :class="[@tabConfig.tabVisible7 && 'active-tab']"
-            ms-click="@tabClick($event, 1) | prevent"
+            ms-click="@tabClick($event, 7) | prevent"
             ms-visible="@showTabs.clinPathEnabled"
           >
             <div class="ui-tab-content">
@@ -307,6 +307,18 @@
                 <xmp ms-widget="{is:'ms-adrg'}"></xmp>
               </div>
             </ms-view>
+          </div>
+          <div
+              id="tabs-5"
+              class="ui-tabs-panel"
+              ms-visible="@tabConfig.tabVisible5"
+            >
+              <ms-view>
+                <div slot="content" class="ui-tabs-panel-content">
+                  <xmp ms-widget="{is:'ms-mcc'}"></xmp>
+                </div>
+              </ms-view>
+            </div>
           </div>
         </div>
         <!-- <div id="pdfContent" style="height: 1000px"></div> -->

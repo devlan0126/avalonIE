@@ -21,6 +21,7 @@ require('../../source/modules/mdcAdrg/index')
 require('../../source/modules/ssfzdrg/index')
 require('../../source/modules/ssfzdip/index')
 require('../../source/modules/adrg/index')
+require('../../source/modules/mcc/index')
 
 
 
