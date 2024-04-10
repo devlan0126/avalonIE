@@ -179,7 +179,7 @@
           >
             <div class="ui-tab-content">
               <a href="#tabs-1"
-                ><i class="icon-bg icon-framework"></i> 实时分组预警
+                ><i class="icon-bg icon-framework"></i> 实时分组预警DRG
               </a>
             </div>
           </div>
@@ -187,6 +187,7 @@
             class="ui-state-default ui-tabs-nav"
             :class="[@tabConfig.tabVisible2 && 'active-tab']"
             ms-click="@tabClick($event, 2) | prevent"
+            ms-visible="@showTabs.loopGroupEnabled"
           >
             <div class="ui-tab-content">
               <a href="#tabs-2"
@@ -198,6 +199,7 @@
             class="ui-state-default ui-tabs-nav"
             :class="[@tabConfig.tabVisible3 && 'active-tab']"
             ms-click="@tabClick($event, 3) | prevent"
+            ms-visible="@showTabs.mdcAdrgEnabled"
           >
             <div class="ui-tab-content">
               <a href="#tabs-3"
@@ -209,6 +211,7 @@
             class="ui-state-default ui-tabs-nav"
             :class="[@tabConfig.tabVisible4 && 'active-tab']"
             ms-click="@tabClick($event, 4) | prevent"
+            ms-visible="@showTabs.adrgCondEnabled"
           >
             <div class="ui-tab-content">
               <a href="#tabs-3"
@@ -220,6 +223,7 @@
             class="ui-state-default ui-tabs-nav"
             :class="[@tabConfig.tabVisible5 && 'active-tab']"
             ms-click="@tabClick($event, 1) | prevent"
+            ms-visible="@showTabs.ccmccEnabled"
           >
             <div class="ui-tab-content">
               <a href="#tabs-3"
@@ -231,6 +235,7 @@
             class="ui-state-default ui-tabs-nav"
             :class="[@tabConfig.tabVisible6 && 'active-tab']"
             ms-click="@tabClick($event, 1) | prevent"
+            ms-visible="@showTabs.multiTraumaEnabled"
           >
             <div class="ui-tab-content">
               <a href="#tabs-3"
@@ -242,6 +247,7 @@
             class="ui-state-default ui-tabs-nav"
             :class="[@tabConfig.tabVisible7 && 'active-tab']"
             ms-click="@tabClick($event, 1) | prevent"
+            ms-visible="@showTabs.clinPathEnabled"
           >
             <div class="ui-tab-content">
               <a href="#tabs-3"
@@ -256,171 +262,18 @@
             class="ui-tabs-panel"
             ms-visible="@tabConfig.tabVisible1"
           >
-            <div class="result-grp" id="resultGrp">
-              EJJ 呼吸系统其他手术，伴严重并发症或合并症
-            </div>
-            <div class="result-progress" id="resultProgress">
-              <div class="outer">
-                <div class="inner" id="resultProgress"></div>
+            <ms-view>
+              <div slot="content">
+                <xmp
+                  ms-visible="@clrWay === '40'"
+                  ms-widget="{is:'ms-ssfzdrg'}"
+                ></xmp>
+                <xmp
+                  ms-visible="@clrWay === '50'"
+                  ms-widget="{is:'ms-ssfzdip'}"
+                ></xmp>
               </div>
-              <div class="split split-1"></div>
-              <div class="split split-2"></div>
-              <div class="desp">
-                <div class="desp-item low">低倍</div>
-                <div class="desp-item num1">1211212</div>
-                <div class="desp-item normal">正常</div>
-                <div class="desp-item num2">38383</div>
-                <div class="desp-item high">高倍</div>
-              </div>
-            </div>
-            <div class="result-table" id="resultTable">
-              <table class="table-esp">
-                <tbody>
-                  <tr class="table-tr">
-                    <td>
-                      <span class="item">
-                        <span class="item-title">病组均费：</span>
-                        <span class="item-val">11.44</span>
-                      </span>
-                    </td>
-                    <td>
-                      <span class="item">
-                        <span class="item-title">基准点数：</span>
-                        <span class="item-val">11.44</span>
-                      </span>
-                    </td>
-                    <td>
-                      <span class="item">
-                        <span class="item-title">病例类型：</span>
-                        <span class="item-val">11.44</span>
-                      </span>
-                    </td>
-                    <td
-                      style="
-                        background-color: rgb(206, 162, 154);
-                        text-align: center;
-                      "
-                    >
-                      <span class="item">
-                        <span class="item-title" style="color: #fff"
-                          >预测盈亏</span
-                        >
-                        <span class="item-val"></span>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr class="table-tr">
-                    <td>
-                      <span class="item">
-                        <span class="item-title">费用比例：</span>
-                        <span class="item-val">11.44</span>
-                      </span>
-                    </td>
-                    <td>
-                      <span class="item">
-                        <span class="item-title">调整系数：</span>
-                        <span class="item-val">11.44</span>
-                      </span>
-                    </td>
-                    <td>
-                      <span class="item">
-                        <span class="item-title">预测点数：</span>
-                        <span class="item-val">11.44</span>
-                      </span>
-                    </td>
-                    <td
-                      rowspan="2"
-                      style="text-align: center; vertical-align: middle"
-                    >
-                      <span class="item">
-                        <span class="item-title"> </span>
-                        <span class="item-val">11.44</span>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr class="table-tr">
-                    <td>
-                      <span class="item">
-                        <span class="item-title">标准差额：</span>
-                        <span class="item-val">11.44</span>
-                      </span>
-                    </td>
-                    <td>
-                      <span class="item">
-                        <span class="item-title">费用标准：</span>
-                        <span class="item-val">11.44</span>
-                      </span>
-                    </td>
-                    <td>
-                      <span class="item">
-                        <span class="item-title">预测费用：</span>
-                        <span class="item-val">11.44</span>
-                      </span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <table class="full-width result-bot" id="resultBot">
-              <tr>
-                <td style="width: 200px">
-                  <div class="bot-left">
-                    <div class="bot-left-item">
-                      <div class="item-inner">MCC-判定</div>
-                    </div>
-                    <div class="bot-left-item">
-                      <div class="item-inner">CC-判定</div>
-                    </div>
-                    <div class="bot-left-item">
-                      <div class="item-inner">主诊断-ADRG</div>
-                    </div>
-                    <div class="bot-left-item">
-                      <div class="item-inner">主手术-ADRG</div>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <table class="full-width">
-                    <tr>
-                      <td style="width: 50%">
-                        <div class="bot-center">
-                          <div class="bot-center-item">
-                            <div class="item-inner">A02.494对附件二级</div>
-                          </div>
-                          <div class="bot-center-item">
-                            <div class="item-inner">A02.494对附件二级</div>
-                          </div>
-                          <div class="bot-center-item">
-                            <div class="item-inner">A02.494对附件二级</div>
-                          </div>
-                          <div class="bot-center-item">
-                            <div class="item-inner">A02.494对附件二级</div>
-                          </div>
-                        </div>
-                      </td>
-                      <td style="width: 50%">
-                        <div class="bot-right">
-                          <p>1. 主诊断...</p>
-                          <p>2. 主诊断...</p>
-                          <p>3. 主诊断...</p>
-                          <p>4. 主诊断...</p>
-                          <p>5. 主诊断...</p>
-                          <p>6. 主诊断...</p>
-                          <p>7. 主诊断...</p>
-                          <p>8. 主诊断...</p>
-                          <p>9. 主诊断...</p>
-                          <p>10. 主诊断...</p>
-                          <p>11. 主诊断...</p>
-                          <p>12. 主诊断...</p>
-                          <p>13. 主诊断...</p>
-                          <p>14. 主诊断...</p>
-                        </div>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
+            </ms-view>
           </div>
           <div
             id="tabs-2"

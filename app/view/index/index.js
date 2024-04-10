@@ -18,6 +18,8 @@ require('../../source/modules/popover3/index')
 require('../../source/modules/popover4/index')
 require('../../source/modules/fzzl/index')
 require('../../source/modules/mdcAdrg/index')
+require('../../source/modules/ssfzdrg/index')
+require('../../source/modules/ssfzdip/index')
 
 
 
@@ -32,6 +34,7 @@ var vm = avalon.define({
   array: [11, 22, 33],
   mainDiagnose: 'J18.903,重症肺炎',
   mainOperation: '31.1x00x005,暂时性气管切开术',
+  clrWay: '40',
   tabConfig: {
     tabVisible1: true,
     tabVisible2: false,
@@ -40,6 +43,15 @@ var vm = avalon.define({
     tabVisible5: false,
     tabVisible6: false,
     tabVisible7: false,
+  },
+  showTabs: {
+    queryResetEnabled: true, // 是否开启查询重置功能
+    loopGroupEnabled: true, // 是否开启分组数据治理
+    mdcAdrgEnabled: true, // 是否开启MDC/ADRG查询功能
+    adrgCondEnabled: true, // 是否开启ADRG条件查
+    ccmccEnabled: true, // 是否开启MCC/CC查询功
+    multiTraumaEnabled: true, // 是否开启多发创伤查询
+    clinPathEnabled: true, // 是否开启临床路径指南查
   },
   isLarge: false,
   tabClick: function ($event, index) {
@@ -84,6 +96,21 @@ var vm = avalon.define({
 });
 
 vm.$watch('onReady', function (v) {
+  getSysConfig(function (data) {
+    console.log('getSysConfig>', data)
+    this.showTabs = {
+      queryResetEnabled: data.queryResetEnabled == '1', // 是否开启查询重置功能
+      loopGroupEnabled: data.loopGroupEnabled == '1', // 是否开启分组数据治理
+      mdcAdrgEnabled: data.mdcAdrgEnabled == '1', // 是否开启MDC/ADRG查询功能
+      adrgCondEnabled: data.adrgCondEnabled == '1', // 是否开启ADRG条件查
+      ccmccEnabled: data.ccmccEnabled == '1', // 是否开启MCC/CC查询功
+      multiTraumaEnabled: data.multiTraumaEnabled == '1', // 是否开启多发创伤查询
+      clinPathEnabled: data.clinPathEnabled == '1', // 是否开启临床路径指南查
+    }
+  })
+  getClrWay(function (data) {
+    this.clrWay = data
+  })
   window.lonsOperations = []
   window.lonsDiagnoses = []
   getOperationList()
@@ -166,6 +193,41 @@ function getDiagnoseList() {
     success: function (res) {
       if (res.code === 200) {
         window.lonsDiagnoses = res.data.list;
+      }
+    }
+  });
+}
+
+
+function getSysConfig(callback) {
+  $.ajax({
+    url: '/hprs/api/pop/getSysConfig',
+    type: 'GET',
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    dataType: 'json',
+    success: function (res) {
+      if (res.code === 200) {
+        callback(res.data)
+      }
+    }
+  });
+}
+
+function getClrWay(callback) {
+  $.ajax({
+    url: '/hprs/system/config/configKey/clr_way',
+    type: 'GET',
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    dataType: 'json',
+    success: function (res) {
+      if (res.code === 200) {
+        callback(res.data)
       }
     }
   });
