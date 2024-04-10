@@ -38,18 +38,18 @@
     </tr>
   </table>
 
-  <table class="list-ul">
-    <thead>
-      <tr>
-        <th ms-for="column in @columns" class="head-th">{{column.label}}</th>
+  <div class="list-ul">
+    <table class="full-width">
+      <thead>
+        <tr>
+          <th ms-for="column in @columns" class="head-th">{{column.label}}</th>
+        </tr>
+      </thead>
+      <tr ms-for="(index,row) in @list" class="row">
+        <td ms-for="column in @columns" class="item left">
+          <div class="item-inner">{{row[column.prop]}}</div>
+        </td>
       </tr>
-    </thead>
-    <tr ms-for="(index,row) in @list" class="row">
-      <td ms-for="column in @columns" class="item left">
-        <div class="item-inner">
-          <i class="icon-sliderL"></i> {{row[column.prop]}}
-        </div>
-      </td>
-    </tr>
-  </table>
+    </table>
+  </div>
 </div>
