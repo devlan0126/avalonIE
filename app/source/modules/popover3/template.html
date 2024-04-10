@@ -3,7 +3,7 @@
     <div class="input-content" ms-attr="{title: @data}">{{@data}}</div>
   </div>
   <div class="pop-content" ms-visible="@show">
-    <table style="width: 100%">
+    <table style="width: 100%; margin-top: 10px">
       <tr>
         <td style="width: 50%">
           <div class="left-table-wrap">
@@ -32,18 +32,31 @@
                     style="width: 50px; cursor: pointer"
                     ms-on-click="@onRemoveRow($event,index)"
                   >
-                    <div class="item-inner">删除</div>
+                    <div class="item-inner">
+                      <img src="./del.jpg" style="width: 12px; height: 15px" />
+                    </div>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
         </td>
-        <td style="width: 100px">--</td>
+        <td
+          style="
+            width: 50px;
+            vertical-align: top;
+            padding: 10px 0;
+            text-align: center;
+          "
+        >
+          <div class="left-arrow">
+            <img src="./left-arrow.png" />
+          </div>
+        </td>
         <td>
           <table class="search-content">
             <tr>
-              <td class="search-input-prefix">替换</td>
+              <td class="search-input-prefix">新增</td>
               <td class="search-input-content">
                 <input
                   class="search-input"

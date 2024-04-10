@@ -56,8 +56,10 @@ body {
     background-color: #abb2f4;
     margin-right: 10px;
     cursor: pointer;
+    border-radius: 5px;
   }
   .reset-btn {
+    border-radius: 5px;
     display: inline-block;
     padding: 7px 15px;
     background-color: rgb(204, 172, 172);
@@ -88,6 +90,27 @@ body {
   font-weight: bold;
   font-size: 20px;
   text-align: center;
+  position: relative;
+  width: 100%;
+  padding: 10px 0;
+  .page-title-imgs {
+    background-color: #fff;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    .page-title_logo {
+      display: inline-block;
+      margin-right: 10px;
+      background-color: #fff;
+      _background: none;
+      _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='css/images/png24.png',sizingMethod='crop');
+    }
+    .cz-logo {
+      _background: none;
+      _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='css/images/png24.png',sizingMethod='crop');
+      display: inline-block;
+    }
+  }
 }
 
 .page-title .page-title_content {
@@ -164,10 +187,6 @@ body {
   display: inline-block;
 }
 
-.page-center .top {
-  // padding-bottom: 16px;
-}
-
 .page-center .center {
   padding: 10px;
   background: #ead4d1;
@@ -176,6 +195,7 @@ body {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  width: 100%;
 }
 
 .page-center .center span {
@@ -441,3 +461,4 @@ body {
   // background-color: red;
   padding: 0 20px;
 }
+

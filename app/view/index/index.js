@@ -4,6 +4,9 @@ require('../../source/img/tab2.png');
 require('../../source/img/tab3.png');
 require('../../source/img/warning.png');
 require('../../source/img/row.png');
+require('../../source/img/bjcz-logo.png');
+require('../../source/img/left-arrow.png');
+
 
 require('../../source/js/main.js')
 require('../../source/js/console.js')
@@ -59,9 +62,9 @@ var vm = avalon.define({
       setLargeBtnHeight()
     }, 100)
   },
-  onSubmit: function () { 
+  onSubmit: function () {
 
-    
+
   },
   onRest: function () {
     window.location.reload()
@@ -166,4 +169,53 @@ function getDiagnoseList() {
       }
     }
   });
+}
+
+
+// download("/hprs/api/pop/logo");
+
+function download(url, data) {
+  if (window.XMLHttpRequest) {
+    var xhr = new XMLHttpRequest();
+  } else {
+    var xhr = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xhr.open('GET', url, true);     // 请求方式，看具体接口情况决定
+  xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8'); // 内容类型，看具体接口情况决定
+  if (window.XMLHttpRequest) {
+    xhr.responseType = "blob";  // 返回类型blob
+  }
+  // xhr.onload = function () {
+  //   // 请求完成
+  //   if (this.status === 200) {
+  //     // 返回200
+  //     var blob = this.response;
+  //     var reader = new FileReader();
+  //     reader.readAsDataURL(blob);  // 转换为base64，可以直接放入ahref
+  //     reader.onload = function (e) {
+  //       $("#logo").attr('src', e.target.result)
+  //     }
+  //   }
+  // };
+  // xhr.onerror = function () { alert("下载失败") };
+  // // 发送ajax请求
+  // xhr.send(); // 数据格式，看具体接口情况决定
+
+  if (xhr != null) {
+    xhr.onreadystatechange = state_Change;
+    xhr.send();
+  }
+  else {
+    alert("Your browser does not support XMLHTTP.");
+  }
+  function state_Change() {
+    if (xhr.readyState == 4) {// 4 = "loaded"
+      if (xhr.status == 200) {// 200 = OK
+        alert(xhr)
+      }
+      else {
+        alert("Problem retrieving XML data");
+      }
+    }
+  }
 }
