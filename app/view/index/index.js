@@ -20,6 +20,7 @@ require('../../source/modules/fzzl/index')
 require('../../source/modules/mdcAdrg/index')
 require('../../source/modules/ssfzdrg/index')
 require('../../source/modules/ssfzdip/index')
+require('../../source/modules/adrg/index')
 
 
 
@@ -34,7 +35,7 @@ var vm = avalon.define({
   array: [11, 22, 33],
   mainDiagnose: 'J18.903,重症肺炎',
   mainOperation: '31.1x00x005,暂时性气管切开术',
-  clrWay: '40',
+  clrWay: '50',
   tabConfig: {
     tabVisible1: true,
     tabVisible2: false,
@@ -147,8 +148,8 @@ function resetBottomHeight() {
   var resultTableH = $resultTable.offsetHeight
 
   const h2 = h - resultGrpH - resultProgressH - resultTableH - 60 - 20
-  var $resultBot = document.getElementById('resultBot')
-  $resultBot.style.height = h2 + 'px'
+  // var $resultBot = document.getElementById('resultBot')
+  // $resultBot.style.height = h2 + 'px'
 
 }
 

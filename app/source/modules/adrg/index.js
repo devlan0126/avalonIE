@@ -1,4 +1,4 @@
-avalon.component("ms-mdcAdrg", {
+avalon.component("ms-adrg", {
     template: require("./template.html"),
     defaults: {
         show: false,
@@ -62,6 +62,6 @@ avalon.component("ms-mdcAdrg", {
 function resetListHeight() {
     var $tab = $('.ui-tabs-panel')
     var h = $tab.height() - 50;
-    $('.mdc-fzzl-tab__list').css('height', h + 'px');
+    $('.mdc-adrg-tab__list').css('height', h + 'px');
 
 }

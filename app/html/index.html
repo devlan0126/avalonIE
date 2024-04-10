@@ -179,7 +179,7 @@
           >
             <div class="ui-tab-content">
               <a href="#tabs-1"
-                ><i class="icon-bg icon-framework"></i> 实时分组预警DRG
+                ><i class="icon-bg icon-framework"></i> 实时分组预警
               </a>
             </div>
           </div>
@@ -263,7 +263,7 @@
             ms-visible="@tabConfig.tabVisible1"
           >
             <ms-view>
-              <div slot="content">
+              <div slot="content" class="ui-tabs-panel-content">
                 <xmp
                   ms-visible="@clrWay === '40'"
                   ms-widget="{is:'ms-ssfzdrg'}"
@@ -281,7 +281,7 @@
             ms-visible="@tabConfig.tabVisible2"
           >
             <ms-view>
-              <div slot="content">
+              <div slot="content" class="ui-tabs-panel-content">
                 <xmp ms-widget="{is:'ms-fzzl'}"></xmp>
               </div>
             </ms-view>
@@ -292,7 +292,7 @@
             ms-visible="@tabConfig.tabVisible3"
           >
             <ms-view>
-              <div slot="content">
+              <div slot="content" class="ui-tabs-panel-content">
                 <xmp ms-widget="{is:'ms-mdcAdrg'}"></xmp>
               </div>
             </ms-view>
@@ -303,7 +303,9 @@
             ms-visible="@tabConfig.tabVisible4"
           >
             <ms-view>
-              <div slot="content">这是tab4内容</div>
+              <div slot="content" class="ui-tabs-panel-content">
+                <xmp ms-widget="{is:'ms-adrg'}"></xmp>
+              </div>
             </ms-view>
           </div>
         </div>
