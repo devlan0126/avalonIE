@@ -1,0 +1,55 @@
+<div class="ms-dfcs-tab">
+  <table class="dfcs-search-layout">
+    <tr>
+      <td class="search-td">
+        <table class="search-content">
+          <tbody>
+            <tr>
+              <td class="search-input-prefix">诊断</td>
+              <td class="search-input-content">
+                <input
+                  class="search-input"
+                  type="text"
+                  name="name"
+                  placeholder="请输入诊断编码或名称，可模糊查询"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+      <td class="search-td">
+        <table class="search-content">
+          <tbody>
+            <tr>
+              <td class="search-input-prefix">部位</td>
+              <td class="search-input-content">
+                <input
+                  class="search-input"
+                  type="text"
+                  name="name"
+                  placeholder="请输入部位编码或名称，可模糊查询"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </table>
+
+  <table class="list-ul">
+    <thead>
+      <tr>
+        <th ms-for="column in @columns" class="head-th">{{column.label}}</th>
+      </tr>
+    </thead>
+    <tr ms-for="(index,row) in @list" class="row">
+      <td ms-for="column in @columns" class="item left">
+        <div class="item-inner">
+          <i class="icon-sliderL"></i> {{row[column.prop]}}
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

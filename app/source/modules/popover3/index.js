@@ -28,7 +28,7 @@ avalon.component("ms-pop3", {
                                 "Content-Type": "application/json",
                             },
                             dataType: 'json',
-                            data: '{"pageNum":1,"pageSize":20,"operation":"' + value + '"}',
+                            data: '{"pageNum":1,"pageSize":100,"operation":"' + value + '"}',
                             success: function (res) {
                                 if (res.code === 200) {
                                     that.list = res.data.list;

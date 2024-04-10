@@ -22,6 +22,7 @@ require('../../source/modules/ssfzdrg/index')
 require('../../source/modules/ssfzdip/index')
 require('../../source/modules/adrg/index')
 require('../../source/modules/mcc/index')
+require('../../source/modules/dfcs/index')
 
 
 
@@ -36,7 +37,7 @@ var vm = avalon.define({
   array: [11, 22, 33],
   mainDiagnose: 'J18.903,重症肺炎',
   mainOperation: '31.1x00x005,暂时性气管切开术',
-  clrWay: '50',
+  clrWay: '40',
   tabConfig: {
     tabVisible1: true,
     tabVisible2: false,
