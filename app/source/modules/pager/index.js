@@ -41,6 +41,7 @@ avalon.component("ms-pager", {
                 return //disabled, active不会触发
             }
             var cur = this.toPage(p)
+            this.currentPage = cur
             this.render(cur)
             return this.onPageClick(e, cur)
         },
