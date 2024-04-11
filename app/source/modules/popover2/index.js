@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-09 11:39:44
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-11 20:40:44
+ * @LastEditTime: 2024-04-11 20:51:13
  * @FilePath: \avalonIE\app\source\modules\popover2\index.js
  * @Description: 文档描述
  */
@@ -16,6 +16,7 @@ avalon.component("ms-pop2", {
         timer: null,
         total: 1,
         currentPage: 1,
+        searchValue: "",
         onClick: function ($event) {
             this.show = true;
             this.source = window.lonsDiagnoses
@@ -27,23 +28,10 @@ avalon.component("ms-pop2", {
                 var srcElement = $event.srcElement;
                 if (srcElement) {
                     var value = srcElement.value;
+                    that.searchValue = value
                     if (value) {
-                        $.ajax({
-                            url: '/hprs/diagnose/pageList',
-                            type: 'POST',
-                            headers: {
-                                Accept: "application/json",
-                                "Content-Type": "application/json",
-                            },
-                            dataType: 'json',
-                            data: '{"pageNum":1,"pageSize":20,"diagnose":"' + value + '"}',
-                            success: function (res) {
-                                if (res.code === 200) {
-                                    that.list = res.data.list;
-                                    that.total = res.data.total;
-                                }
-                            }
-                        });
+                        that.currentPage = 1;
+                        that.requestList()
                     } else {
                         that.list = []
                     }
@@ -52,8 +40,29 @@ avalon.component("ms-pop2", {
                 }
             }, 1000)
         },
+        requestList: function () {
+            var that = this
+            $.ajax({
+                url: '/hprs/diagnose/pageList',
+                type: 'POST',
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                dataType: 'json',
+                data: '{"pageNum":' + this.currentPage + ',"pageSize":10,"diagnose":"' + this.searchValue + '"}',
+                success: function (res) {
+                    if (res.code === 200) {
+                        that.list = res.data.list;
+                        that.total = res.data.total;
+                    }
+                }
+            });
+        },
         onPageClick: function ($event, page) {
             console.log("onPageClick:", page)
+            this.currentPage = page;
+            this.requestList()
         },
         onSelectRow: function ($event, row) {
             this.data = row.diagnoseCode + "  " + row.diagnoseName
