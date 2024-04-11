@@ -11,6 +11,9 @@ require('../../source/img/left-arrow.png');
 require('../../source/js/main.js')
 require('../../source/js/console.js')
 require('../../source/js/fix.js')
+require('../../source/bootstrap/bootstrap-ie.js')
+require('../../source/bootstrap/bootstrap.min.js')
+
 require('../../source/modules/content/index')
 require('../../source/modules/popover/index')
 require('../../source/modules/popover2/index')
@@ -23,6 +26,8 @@ require('../../source/modules/ssfzdip/index')
 require('../../source/modules/adrg/index')
 require('../../source/modules/mcc/index')
 require('../../source/modules/dfcs/index')
+
+require('../../utils/tools/paginationUtil.js')
 
 
 

@@ -1,3 +1,10 @@
+/*
+ * @Date: 2024-03-08 13:24:46
+ * @LastEditors: devlan0126 wyang0126@163.com
+ * @LastEditTime: 2024-04-11 10:28:21
+ * @FilePath: \avalonIE\app\source\modules\popover\index.js
+ * @Description: 文档描述
+ */
 avalon.component("ms-pop", {
     template: require("./template.html"),
     defaults: {
