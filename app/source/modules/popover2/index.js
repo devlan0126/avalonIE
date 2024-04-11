@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-09 11:39:44
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-09 18:57:46
+ * @LastEditTime: 2024-04-11 20:40:44
  * @FilePath: \avalonIE\app\source\modules\popover2\index.js
  * @Description: 文档描述
  */
@@ -14,6 +14,8 @@ avalon.component("ms-pop2", {
         source: [],
         zIndex: 1,
         timer: null,
+        total: 1,
+        currentPage: 1,
         onClick: function ($event) {
             this.show = true;
             this.source = window.lonsDiagnoses
@@ -38,6 +40,7 @@ avalon.component("ms-pop2", {
                             success: function (res) {
                                 if (res.code === 200) {
                                     that.list = res.data.list;
+                                    that.total = res.data.total;
                                 }
                             }
                         });
@@ -48,6 +51,9 @@ avalon.component("ms-pop2", {
                     that.list = []
                 }
             }, 1000)
+        },
+        onPageClick: function ($event, page) {
+            console.log("onPageClick:", page)
         },
         onSelectRow: function ($event, row) {
             this.data = row.diagnoseCode + "  " + row.diagnoseName

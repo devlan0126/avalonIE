@@ -15,6 +15,7 @@ require('../../source/bootstrap/bootstrap-ie.js')
 require('../../source/bootstrap/bootstrap.min.js')
 
 require('../../source/modules/content/index')
+require('../../source/modules/pager/index')
 require('../../source/modules/popover/index')
 require('../../source/modules/popover2/index')
 require('../../source/modules/popover3/index')
@@ -27,7 +28,7 @@ require('../../source/modules/adrg/index')
 require('../../source/modules/mcc/index')
 require('../../source/modules/dfcs/index')
 
-require('../../utils/tools/paginationUtil.js')
+// require('../../utils/tools/paginationUtil.js')
 
 
 

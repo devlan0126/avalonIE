@@ -4249,6 +4249,11 @@ move-concurrently@^1.0.1:
     rimraf "^2.5.4"
     run-queue "^1.0.3"
 
+ms-pager@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.npmmirror.com/ms-pager/-/ms-pager-1.0.4.tgz#5b68e57c12434bfff31e7608c5e0a37c0444007a"
+  integrity sha512-/MI/j3TgORoogm+x6JW/lxzCH8UvPKWOgXZXHk18hvVL764P6rsftkVqFTHi3+LDeYWiH3NSakB0waZVQjVbew==
+
 ms@0.7.1:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/ms/-/ms-0.7.1.tgz#9cd13c03adbff25b65effde7ce864ee952017098"
