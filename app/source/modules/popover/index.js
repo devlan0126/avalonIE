@@ -28,6 +28,7 @@ avalon.component("ms-pop", {
                 var srcElement = $event.srcElement;
                 if (srcElement) {
                     var value = srcElement.value;
+                    that.searchValue = value
                     if (value) {
                         that.currentPage = 1;
                         that.requestList()

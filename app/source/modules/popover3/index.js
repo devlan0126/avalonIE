@@ -8,6 +8,9 @@ avalon.component("ms-pop3", {
         selection: [],
         zIndex: 1,
         timer: null,
+        total: 1,
+        currentPage: 1,
+        searchValue: "",
         onClick: function ($event) {
             this.show = true;
             this.source = window.lonsOperations
@@ -19,22 +22,10 @@ avalon.component("ms-pop3", {
                 var srcElement = $event.srcElement;
                 if (srcElement) {
                     var value = srcElement.value;
+                    that.searchValue = value
                     if (value) {
-                        $.ajax({
-                            url: '/hprs/operation/pageList',
-                            type: 'POST',
-                            headers: {
-                                Accept: "application/json",
-                                "Content-Type": "application/json",
-                            },
-                            dataType: 'json',
-                            data: '{"pageNum":1,"pageSize":100,"operation":"' + value + '"}',
-                            success: function (res) {
-                                if (res.code === 200) {
-                                    that.list = res.data.list;
-                                }
-                            }
-                        });
+                        that.currentPage = 1;
+                        that.requestList()
                     } else {
                         that.list = []
                     }
@@ -42,6 +33,30 @@ avalon.component("ms-pop3", {
                     that.list = []
                 }
             }, 1000)
+        },
+        requestList: function () {
+            var that = this
+            $.ajax({
+                url: '/hprs/operation/pageList',
+                type: 'POST',
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                dataType: 'json',
+                data: '{"pageNum":' + this.currentPage + ',"pageSize":10,"operation":"' + this.searchValue + '"}',
+                success: function (res) {
+                    if (res.code === 200) {
+                        that.list = res.data.list;
+                        that.total = res.data.total;
+                    }
+                }
+            });
+        },
+        onPageClick: function ($event, page) {
+            console.log("onPageClick:", page)
+            this.currentPage = page;
+            this.requestList()
         },
         onSelectRow: function ($event, row, index) {
             this.selection.push(row)
