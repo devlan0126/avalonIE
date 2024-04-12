@@ -38,7 +38,7 @@ avalon.component("ms-mcc", {
         ],
 
         onInit: function () {
-            console.log("init tab2 fzzl...................");
+
             var that = this;
             // query the list data
             setTimeout(function () {
@@ -49,12 +49,12 @@ avalon.component("ms-mcc", {
                     { mainDiagCode: "item1", mainDiagName: "mainDiagName", mainOprnCode: 'mainOprnCode', mainOprnName: 'mainOprnName', drgCode: 'drgCode', drgName: 'drgName' },
                 ];
                 that.show = true;
-                console.log('list:', that.list);
+                ;
             }, 1000);
         },
         onReady: function (v) {
             resetListHeight()
-            console.log("onReady:", v);
+                ;
         },
         onViewChange: function (v) {
             console.log("onViewChange:", v);

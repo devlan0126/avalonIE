@@ -8,7 +8,7 @@ avalon.component("ms-pop3", {
         selection: [],
         zIndex: 1,
         timer: null,
-        total: 1,
+        total: 0,
         currentPage: 1,
         searchValue: "",
         onClick: function ($event) {
@@ -102,7 +102,7 @@ avalon.component("ms-pop3", {
             var $inputContent = $('.ms-pop3 .input-content')
             var width = $inputContent.width()
             $inputContent.css("width", width + 'px');
-            console.log("onReady:", v);
+            ;
         },
         onViewChange: function (v) {
             console.log("onViewChange:", v);

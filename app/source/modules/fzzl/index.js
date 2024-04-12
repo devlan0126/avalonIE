@@ -1,3 +1,10 @@
+/*
+ * @Date: 2024-03-16 13:26:06
+ * @LastEditors: devlan0126 wyang0126@163.com
+ * @LastEditTime: 2024-04-12 10:07:25
+ * @FilePath: \avalonIE\app\source\modules\fzzl\index.js
+ * @Description: 文档描述
+ */
 avalon.component("ms-fzzl", {
     template: require("./template.html"),
     defaults: {
@@ -67,7 +74,7 @@ avalon.component("ms-fzzl", {
         ],
 
         onInit: function () {
-            console.log("init tab2 fzzl...................");
+
             var that = this;
             // query the list data
             setTimeout(function () {
@@ -78,11 +85,11 @@ avalon.component("ms-fzzl", {
                     { mainDiagCode: "item1", mainDiagName: "mainDiagName", mainOprnCode: 'mainOprnCode', mainOprnName: 'mainOprnName', drgCode: 'drgCode', drgName: 'drgName' },
                 ];
                 that.show = true;
-                console.log('list:', that.list);
+                ;
             }, 1000);
         },
         onReady: function (v) {
-            console.log("onReady:", v);
+            ;
         },
         onViewChange: function (v) {
             console.log("onViewChange:", v);

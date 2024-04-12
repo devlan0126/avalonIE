@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-09 13:02:16
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-12 09:35:56
+ * @LastEditTime: 2024-04-12 10:06:21
  * @FilePath: \avalonIE\app\source\modules\popover4\index.js
  * @Description: 文档描述
  */
@@ -15,7 +15,7 @@ avalon.component("ms-pop4", {
         selection: [],
         zIndex: 1,
         timer: null,
-        total: 1,
+        total: 0,
         currentPage: 1,
         searchValue: "",
         onClick: function ($event) {
@@ -26,6 +26,7 @@ avalon.component("ms-pop4", {
             var that = this
             clearTimeout(that.timer);
             that.timer = setTimeout(function () {
+                that.resetTableData()
                 var srcElement = $event.srcElement;
                 if (srcElement) {
                     var value = srcElement.value;
@@ -33,11 +34,7 @@ avalon.component("ms-pop4", {
                     if (value) {
                         that.currentPage = 1;
                         that.requestList()
-                    } else {
-                        that.list = []
                     }
-                } else {
-                    that.list = []
                 }
             }, 1000)
         },
@@ -59,6 +56,12 @@ avalon.component("ms-pop4", {
                     }
                 }
             });
+        },
+        resetTableData: function () {
+            this.list = []
+            this.total = 0
+            this.currentPage = 1
+            this.searchValue = ""
         },
         onPageClick: function ($event, page) {
             console.log("onPageClick:", page)
@@ -109,7 +112,7 @@ avalon.component("ms-pop4", {
             var $inputContent = $('.ms-pop4 .input-content')
             var width = $inputContent.width()
             $inputContent.css("width", width + 'px');
-            console.log("onReady:", v);
+            ;
         },
         onViewChange: function (v) {
             console.log("onViewChange:", v);

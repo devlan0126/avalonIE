@@ -14,7 +14,7 @@ avalon.component("ms-pop2", {
         source: [],
         zIndex: 1,
         timer: null,
-        total: 1,
+        total: 0,
         currentPage: 1,
         searchValue: "",
         onClick: function ($event) {
@@ -88,7 +88,7 @@ avalon.component("ms-pop2", {
                 })
         },
         onReady: function (v) {
-            console.log("onReady:", v);
+            ;
         },
         onViewChange: function (v) {
             console.log("onViewChange:", v);

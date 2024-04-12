@@ -5,17 +5,22 @@ avalon.component("ms-pager", {
             return title
         },
         isDisabled: function (name, page) {
-            return this.$buttons[name] = (this.currentPage === page)
+            var disabled = true
+            if (this.total !== 0) {
+                disabled = this.currentPage === page
+            }
+            this.$buttons[name] = disabled
+            return disabled
         },
         $buttons: {},
         showPages: 5,
         pages: [],
-        totalPages: 1,
+        totalPages: 0,
         currentPage: 1,
-        firstText: '<<',
+        firstText: '≪',
         prevText: '<',
         nextText: '>',
-        lastText: '>>',
+        lastText: '≫',
         pageSize: 10,
         total: 0,
         onPageClick: avalon.noop,
@@ -65,13 +70,11 @@ avalon.component("ms-pager", {
             that.render(cur)
         },
         onReady: function (v) {
-            console.log("onReady:", v);
+            ;
         },
         onViewChange: function (v) {
-            console.log("onViewChange:", v);
         },
         onDispose: function (v) {
-            console.log("onDispose:", v);
         },
     },
 });
@@ -83,9 +86,11 @@ function getTotalPages(total, pageSize) {
 function getPages(currentPage, total) {
     var pages = []
     var s = this.showPages
+    console.log('getPages>>', s, total)
     if (s > total) {
         itPage = 1
-        while (itPage <= total) {
+        var lst = total === 0 ? 1 : total
+        while (itPage <= lst) {
             pages.push(itPage)
             itPage++
         }

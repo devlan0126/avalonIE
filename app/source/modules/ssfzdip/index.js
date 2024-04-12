@@ -24,7 +24,7 @@ avalon.component("ms-ssfzdip", {
             var that = this;
         },
         onReady: function (v) {
-            console.log("onReady:", v);
+            ;
         },
         onViewChange: function (v) {
             console.log("onViewChange:", v);

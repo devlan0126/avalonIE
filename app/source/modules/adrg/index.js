@@ -1,3 +1,10 @@
+/*
+ * @Date: 2024-04-10 17:59:09
+ * @LastEditors: devlan0126 wyang0126@163.com
+ * @LastEditTime: 2024-04-12 10:08:30
+ * @FilePath: \avalonIE\app\source\modules\adrg\index.js
+ * @Description: 文档描述
+ */
 avalon.component("ms-adrg", {
     template: require("./template.html"),
     defaults: {
@@ -31,7 +38,7 @@ avalon.component("ms-adrg", {
         ],
 
         onInit: function () {
-            console.log("init tab2 fzzl...................");
+
             var that = this;
             // query the list data
             setTimeout(function () {
@@ -42,12 +49,12 @@ avalon.component("ms-adrg", {
                     { mainDiagCode: "item1", mainDiagName: "mainDiagName", mainOprnCode: 'mainOprnCode', mainOprnName: 'mainOprnName', drgCode: 'drgCode', drgName: 'drgName' },
                 ];
                 that.show = true;
-                console.log('list:', that.list);
+                ;
             }, 1000);
         },
         onReady: function (v) {
             resetListHeight()
-            console.log("onReady:", v);
+                ;
         },
         onViewChange: function (v) {
             console.log("onViewChange:", v);
