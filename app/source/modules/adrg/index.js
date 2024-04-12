@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-04-10 17:59:09
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-12 17:42:15
+ * @LastEditTime: 2024-04-12 17:53:58
  * @FilePath: \avalonIE\app\source\modules\adrg\index.js
  * @Description: 文档描述
  */
@@ -96,7 +96,6 @@ avalon.component("ms-adrg", {
                 }
             }, 1000)
         },
-
         onAdrgPageClick: function ($event, page) {
             this.adrgCurrentPage = page;
             this.requestAdrgList()
