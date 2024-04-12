@@ -24,13 +24,11 @@ avalon.component("ms-ssfzdip", {
             var that = this;
         },
         onReady: function (v) {
-            ;
         },
         onViewChange: function (v) {
-             
         },
         onDispose: function (v) {
-             
+
         },
     },
 });

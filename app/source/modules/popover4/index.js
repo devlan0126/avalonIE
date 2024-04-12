@@ -112,10 +112,8 @@ avalon.component("ms-pop4", {
             var $inputContent = $('.ms-pop4 .input-content')
             var width = $inputContent.width()
             $inputContent.css("width", width + 'px');
-            ;
         },
         onViewChange: function (v) {
-
         },
         onDispose: function (v) {
 

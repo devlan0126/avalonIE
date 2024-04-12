@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-04-10 14:53:21
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-10 15:08:38
+ * @LastEditTime: 2024-04-12 16:52:46
  * @FilePath: \avalonIE\app\source\modules\ssfzdrg\index.js
  * @Description: 文档描述
  */
@@ -21,13 +21,10 @@ avalon.component("ms-ssfzdrg", {
         onSelectRow: function ($event, row) {
         },
         onInit: function () {
-            var that = this;
         },
         onReady: function (v) {
-            ;
         },
         onViewChange: function (v) {
-
         },
         onDispose: function (v) {
             console.log("onDispose:", v);

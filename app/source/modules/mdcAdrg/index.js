@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-19 21:01:59
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-12 16:48:31
+ * @LastEditTime: 2024-04-12 16:50:56
  * @FilePath: \avalonIE\app\source\modules\mdcAdrg\index.js
  * @Description: 文档描述
  */
@@ -112,10 +112,8 @@ avalon.component("ms-mdcAdrg", {
         },
         onReady: function (v) {
             resetListHeight()
-                ;
         },
         onViewChange: function (v) {
-
         },
         onDispose: function (v) {
 

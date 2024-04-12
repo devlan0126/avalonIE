@@ -89,10 +89,8 @@ avalon.component("ms-fzzl", {
             }, 1000);
         },
         onReady: function (v) {
-            ;
         },
         onViewChange: function (v) {
-
         },
         onDispose: function (v) {
             console.log("onDispose:", v);

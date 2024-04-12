@@ -54,10 +54,8 @@ avalon.component("ms-mcc", {
         },
         onReady: function (v) {
             resetListHeight()
-                ;
         },
         onViewChange: function (v) {
-
         },
         onDispose: function (v) {
             console.log("onDispose:", v);

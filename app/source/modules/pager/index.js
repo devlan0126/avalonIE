@@ -70,7 +70,6 @@ avalon.component("ms-pager", {
             that.render(cur)
         },
         onReady: function (v) {
-            ;
         },
         onViewChange: function (v) {
         },

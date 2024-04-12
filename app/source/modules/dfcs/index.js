@@ -83,10 +83,8 @@ avalon.component("ms-dfcs", {
         },
         onReady: function (v) {
             resetListHeight()
-                ;
         },
         onViewChange: function (v) {
-
         },
         onDispose: function (v) {
             console.log("onDispose:", v);

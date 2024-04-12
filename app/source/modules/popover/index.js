@@ -91,10 +91,8 @@ avalon.component("ms-pop", {
             );
         },
         onReady: function (v) {
-            ;
         },
         onViewChange: function (v) {
-
         },
         onDispose: function (v) {
 

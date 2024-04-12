@@ -29,10 +29,8 @@ avalon.component("ms-adrg", {
         },
         onReady: function (v) {
             resetListHeight()
-                ;
         },
         onViewChange: function (v) {
-
         },
         onDispose: function (v) {
 
