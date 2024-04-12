@@ -14,6 +14,7 @@
     "clean": "rimraf build",
     "build": "better-npm-run build && gulp",
     "deploy": "npm run clean && npm run build",
+    "deploy-IE": "http-server './build/'  --proxy http://120.46.187.83:8080",
     "test": "better-npm-run test",
     "test:dev": "better-npm-run test:dev",
     "test:coveralls": "cat ./build/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
