@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-04-10 17:59:09
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-12 16:39:19
+ * @LastEditTime: 2024-04-12 17:42:15
  * @FilePath: \avalonIE\app\source\modules\adrg\index.js
  * @Description: 文档描述
  */
@@ -171,11 +171,11 @@ avalon.component("ms-adrg", {
             this.operCurrentPage = 1
             this.searchOperValue = ""
         },
-        onDiagClick($event, row) {
+        onDiagClick: function ($event, row) {
             this.adrgCurrentPage = 1;
             this.requestAdrgList('ver=CHS628&pageNum=1&pageSize=10&diagnoseCode=' + row.code)
         },
-        onOperClick($event, row) {
+        onOperClick: function ($event, row) {
             this.adrgCurrentPage = 1;
             this.requestAdrgList('ver=CHS628&pageNum=1&pageSize=10&operationCode=' + row.code)
         }
