@@ -117,9 +117,7 @@ vm.$watch('onReady', function (v) {
       clinPathEnabled: data.clinPathEnabled == '1', // 是否开启临床路径指南查
     }
   })
-  getClrWay(function (data) {
-    this.clrWay = data
-  })
+  this.clrWay = getUrlParam('clrWay') || '40'
   window.lonsOperations = []
   window.lonsDiagnoses = []
   getOperationList()
@@ -146,19 +144,6 @@ function resetBottomHeight() {
   const $tabsUl = document.getElementById('tabsUl')
   const h = bottomHeight - $tabsUl.offsetHeight
   document.getElementById('tabContent').style.height = h + 'px'
-
-  const $tabs1 = document.getElementById('tabs-1')
-  var $resultGrp = document.getElementById('resultGrp')
-  var resultGrpH = $resultGrp.offsetHeight
-  var $resultProgress = document.getElementById('resultProgress')
-  var resultProgressH = $resultProgress.offsetHeight
-  var $resultTable = document.getElementById('resultTable')
-  var resultTableH = $resultTable.offsetHeight
-
-  const h2 = h - resultGrpH - resultProgressH - resultTableH - 60 - 20
-  // var $resultBot = document.getElementById('resultBot')
-  // $resultBot.style.height = h2 + 'px'
-
 }
 
 function setLargeBtnHeight() {
@@ -229,19 +214,8 @@ function getSysConfig(callback) {
   });
 }
 
-function getClrWay(callback) {
-  $.ajax({
-    url: '/hprs/system/config/configKey/clr_way',
-    type: 'GET',
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    dataType: 'json',
-    success: function (res) {
-      if (res.code === 200) {
-        callback(res.data)
-      }
-    }
-  });
+function getUrlParam(name) {
+  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+  var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+  if (r != null) return unescape(r[2]); return null; //返回参数值
 }

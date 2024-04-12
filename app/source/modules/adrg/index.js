@@ -1,41 +1,13 @@
 /*
  * @Date: 2024-04-10 17:59:09
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-12 13:33:24
+ * @LastEditTime: 2024-04-12 15:18:25
  * @FilePath: \avalonIE\app\source\modules\adrg\index.js
  * @Description: 文档描述
  */
 avalon.component("ms-adrg", {
     template: require("./template.html"),
     defaults: {
-        show: false,
-        list: [],
-        columns: [
-            {
-                label: "主诊断编码",
-                prop: "mainDiagCode",
-            },
-            {
-                label: "主诊断名称",
-                prop: "mainDiagName",
-            },
-            {
-                label: "主手术编码",
-                prop: "mainOprnCode",
-            },
-            {
-                label: "主手术名称",
-                prop: "mainOprnName",
-            },
-            {
-                label: "DRG编码",
-                prop: "drgCode",
-            },
-            {
-                label: "DRG名称",
-                prop: "drgName",
-            },
-        ],
         diagList: [],
         diagTotal: 0,
         diagCurrentPage: 1,
@@ -54,19 +26,6 @@ avalon.component("ms-adrg", {
         operTimer: null,
         searchOperValue: "",
         onInit: function () {
-
-            var that = this;
-            // query the list data
-            setTimeout(function () {
-                that.list = [
-                    { mainDiagCode: "item1", mainDiagName: "mainDiagName", mainOprnCode: 'mainOprnCode', mainOprnName: 'mainOprnName', drgCode: 'drgCode', drgName: 'drgName' },
-                    { mainDiagCode: "item1", mainDiagName: "mainDiagName", mainOprnCode: 'mainOprnCode', mainOprnName: 'mainOprnName', drgCode: 'drgCode', drgName: 'drgName' },
-                    { mainDiagCode: "item1", mainDiagName: "mainDiagName", mainOprnCode: 'mainOprnCode', mainOprnName: 'mainOprnName', drgCode: 'drgCode', drgName: 'drgName' },
-                    { mainDiagCode: "item1", mainDiagName: "mainDiagName", mainOprnCode: 'mainOprnCode', mainOprnName: 'mainOprnName', drgCode: 'drgCode', drgName: 'drgName' },
-                ];
-                that.show = true;
-                ;
-            }, 1000);
         },
         onReady: function (v) {
             resetListHeight()
@@ -112,7 +71,7 @@ avalon.component("ms-adrg", {
                 success: function (res) {
                     if (res.code === 200) {
                         that.diagList = res.data
-                        that.diagTotal = res.data.length;
+                        that.diagTotal = res.total;
                     }
                 }
             });
@@ -158,7 +117,7 @@ avalon.component("ms-adrg", {
                 success: function (res) {
                     if (res.code === 200) {
                         that.adrgList = res.data
-                        that.adrgTotal = res.data.length;
+                        that.adrgTotal = res.total;
                     }
                 }
             });
@@ -203,7 +162,7 @@ avalon.component("ms-adrg", {
                 success: function (res) {
                     if (res.code === 200) {
                         that.operList = res.data
-                        that.operTotal = res.data.length;
+                        that.operTotal = res.total;
                     }
                 }
             });

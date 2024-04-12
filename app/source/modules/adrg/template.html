@@ -23,7 +23,41 @@
             </table>
           </div>
           <div></div>
-          <div class="mdc-adrg-tab__list"></div>
+          <div class="mdc-adrg-tab__list">
+            <table class="list-ul">
+              <thead>
+                <tr>
+                  <th>
+                    <div class="item-inner">ADRG编码</div>
+                  </th>
+                  <th>
+                    <div class="item-inner">ADRG名称</div>
+                  </th>
+                  <th>
+                    <div class="item-inner">ADRG条件</div>
+                  </th>
+                </tr>
+              </thead>
+              <tr ms-for="row in @adrgList" class="row">
+                <td class="item left">
+                  <div class="item-inner" ms-attr="{title: @row.code}">
+                    {{@row.code}}
+                  </div>
+                </td>
+                <td class="item right">
+                  <div class="item-inner" ms-attr="{title: @row.name}">
+                    {{@row.name}}
+                  </div>
+                </td>
+
+                <td class="item right">
+                  <div class="item-inner" ms-attr="{title: @row.condition}">
+                    {{@row.condition}}
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
           <div class="pagination-wrap" style="float: right">
             <xmp
               ms-widget="{is:'ms-pager',total:@adrgTotal,currentPage:@adrgCurrentPage,onPageClick:@onAdrgPageClick}"
@@ -53,7 +87,49 @@
             </table>
           </div>
           <div></div>
-          <div class="mdc-adrg-tab__list"></div>
+          <div class="mdc-adrg-tab__list">
+            <table class="list-ul">
+              <thead>
+                <tr>
+                  <th>
+                    <div class="item-inner">诊断编码</div>
+                  </th>
+                  <th>
+                    <div class="item-inner">诊断名称</div>
+                  </th>
+                  <th>
+                    <div class="item-inner">主要诊断</div>
+                  </th>
+                  <th>
+                    <div class="item-inner">其他诊断</div>
+                  </th>
+                </tr>
+              </thead>
+              <tr ms-for="row in @diagList" class="row">
+                <td class="item left">
+                  <div class="item-inner" ms-attr="{title: @row.code}">
+                    {{@row.code}}
+                  </div>
+                </td>
+                <td class="item right">
+                  <div class="item-inner" ms-attr="{title: @row.name}">
+                    {{@row.name}}
+                  </div>
+                </td>
+
+                <td class="item right">
+                  <div class="item-inner" ms-attr="{title: @row.operationName}">
+                    {{@row.mainFlag}}
+                  </div>
+                </td>
+                <td class="item right">
+                  <div class="item-inner" ms-attr="{title: @row.operationName}">
+                    {{@row.otherFlag}}
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
           <div class="pagination-wrap" style="float: right">
             <xmp
               ms-widget="{is:'ms-pager',total:@diagTotal,currentPage:@diagCurrentPage,onPageClick:@onDiagPageClick}"
@@ -83,7 +159,65 @@
             </table>
           </div>
           <div></div>
-          <div class="mdc-adrg-tab__list"></div>
+          <div class="mdc-adrg-tab__list">
+            <table class="list-ul">
+              <thead>
+                <tr>
+                  <th>
+                    <div class="item-inner">手术编码</div>
+                  </th>
+                  <th>
+                    <div class="item-inner">手术名称</div>
+                  </th>
+                  <th>
+                    <div class="item-inner">表1</div>
+                  </th>
+                  <th>
+                    <div class="item-inner">表2</div>
+                  </th>
+                  <th>
+                    <div class="item-inner">表3</div>
+                  </th>
+                  <th>
+                    <div class="item-inner">表4</div>
+                  </th>
+                </tr>
+              </thead>
+              <tr ms-for="row in @operList" class="row">
+                <td class="item left">
+                  <div class="item-inner" ms-attr="{title: @row.operationCode}">
+                    {{@row.code}}
+                  </div>
+                </td>
+                <td class="item right">
+                  <div class="item-inner" ms-attr="{title: @row.operationName}">
+                    {{@row.name}}
+                  </div>
+                </td>
+
+                <td class="item right">
+                  <div class="item-inner" ms-attr="{title: @row.operation1}">
+                    {{@row.operation1}}
+                  </div>
+                </td>
+                <td class="item right">
+                  <div class="item-inner" ms-attr="{title: @row.operation2}">
+                    {{@row.operation2}}
+                  </div>
+                </td>
+                <td class="item right">
+                  <div class="item-inner" ms-attr="{title: @row.operation3}">
+                    {{@row.operation3}}
+                  </div>
+                </td>
+                <td class="item right">
+                  <div class="item-inner" ms-attr="{title: @row.operation4}">
+                    {{@row.operation4}}
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
           <div class="pagination-wrap" style="float: right">
             <xmp
               ms-widget="{is:'ms-pager',total:@operTotal,currentPage:@operCurrentPage,onPageClick:@onOperPageClick}"

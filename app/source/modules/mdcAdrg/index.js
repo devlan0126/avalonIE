@@ -1,14 +1,13 @@
 /*
  * @Date: 2024-03-19 21:01:59
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-12 11:31:41
+ * @LastEditTime: 2024-04-12 15:19:23
  * @FilePath: \avalonIE\app\source\modules\mdcAdrg\index.js
  * @Description: 文档描述
  */
 avalon.component("ms-mdcAdrg", {
     template: require("./template.html"),
     defaults: {
-        show: false,
         diagList: [],
         diagTotal: 0,
         diagCurrentPage: 1,
@@ -53,7 +52,7 @@ avalon.component("ms-mdcAdrg", {
                 success: function (res) {
                     if (res.code === 200) {
                         that.diagList = res.data
-                        that.diagTotal = res.data.length;
+                        that.diagTotal = res.total;
                     }
                 }
             });
@@ -98,7 +97,7 @@ avalon.component("ms-mdcAdrg", {
                 success: function (res) {
                     if (res.code === 200) {
                         that.operList = res.data;
-                        that.operTotal = res.data.length;
+                        that.operTotal = res.total;
                     }
                 }
             });
@@ -110,17 +109,6 @@ avalon.component("ms-mdcAdrg", {
             this.searchOperValue = ""
         },
         onInit: function () {
-            var that = this;
-            setTimeout(function () {
-                that.list = [
-                    { mainDiagCode: "item1", mainDiagName: "mainDiagName", mainOprnCode: 'mainOprnCode', mainOprnName: 'mainOprnName', drgCode: 'drgCode', drgName: 'drgName' },
-                    { mainDiagCode: "item1", mainDiagName: "mainDiagName", mainOprnCode: 'mainOprnCode', mainOprnName: 'mainOprnName', drgCode: 'drgCode', drgName: 'drgName' },
-                    { mainDiagCode: "item1", mainDiagName: "mainDiagName", mainOprnCode: 'mainOprnCode', mainOprnName: 'mainOprnName', drgCode: 'drgCode', drgName: 'drgName' },
-                    { mainDiagCode: "item1", mainDiagName: "mainDiagName", mainOprnCode: 'mainOprnCode', mainOprnName: 'mainOprnName', drgCode: 'drgCode', drgName: 'drgName' },
-                ];
-                that.show = true;
-                ;
-            }, 1000);
         },
         onReady: function (v) {
             resetListHeight()
