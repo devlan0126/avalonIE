@@ -1,9 +1,9 @@
-<div class="mdc-fzzl-tab">
-  <table class="ffzzl-table">
+<div class="mdc-mdcAdrg-tab">
+  <table class="mdcAdrg-table">
     <tr>
-      <td class="ffzzl-table-cell">
-        <div class="mdc-fzzl-tab__content">
-          <div class="mdc-fzzl-tab__input">
+      <td class="mdcAdrg-table-cell">
+        <div class="mdc-mdcAdrg-tab__content">
+          <div class="mdc-mdcAdrg-tab__input">
             <table class="search-content">
               <tbody>
                 <tr>
@@ -14,19 +14,50 @@
                       type="text"
                       name="name"
                       placeholder="请输入诊断编码或名称，可模糊查询"
+                      ms-on-change="@onDiagChange"
+                      ms-on-input="@onDiagChange"
                     />
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <div></div>
-          <div class="mdc-fzzl-tab__list"></div>
+          <div class="mdc-mdcAdrg-tab__list">
+            <table class="mdcAdrg-table">
+              <tr ms-for="row in @diagList">
+                <td class="mdcAdrg-table-cell code">
+                  <div class="item-inner" ms-attr="{title: @row.code}">
+                    {{row.code}}
+                  </div>
+                </td>
+                <td class="mdcAdrg-table-cell name">
+                  <div class="item-inner" ms-attr="{title: @row.name}">
+                    {{row.name}}
+                  </div>
+                </td>
+                <td class="mdcAdrg-table-cell mdc">
+                  <div class="item-inner" ms-attr="{title: @row.mdc}">
+                    {{row.mdc}}
+                  </div>
+                </td>
+                <td class="mdcAdrg-table-cell adrg">
+                  <div class="item-inner" ms-attr="{title: @row.adrg}">
+                    {{row.adrg}}
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="pagination-wrap" style="float: right">
+            <xmp
+              ms-widget="{is:'ms-pager',total:@diagTotal,currentPage:@diagCurrentPage,onPageClick:@onDiagPageClick}"
+            ></xmp>
+          </div>
         </div>
       </td>
-      <td class="ffzzl-table-cell">
-        <div class="mdc-fzzl-tab__content">
-          <div class="mdc-fzzl-tab__input">
+      <td class="mdcAdrg-table-cell">
+        <div class="mdc-mdcAdrg-tab__content">
+          <div class="mdc-mdcAdrg-tab__input">
             <table class="search-content">
               <tbody>
                 <tr>
@@ -37,14 +68,45 @@
                       type="text"
                       name="name"
                       placeholder="请输入诊断编码或名称，可模糊查询"
+                      ms-on-change="@onOperChange"
+                      ms-on-input="@onOperChange"
                     />
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <div></div>
-          <div class="mdc-fzzl-tab__list"></div>
+          <div class="mdc-mdcAdrg-tab__list">
+            <table class="mdcAdrg-table">
+              <tr ms-for="row in @operList">
+                <td class="mdcAdrg-table-cell code">
+                  <div class="item-inner" ms-attr="{title: @row.code}">
+                    {{row.code}}
+                  </div>
+                </td>
+                <td class="mdcAdrg-table-cell name">
+                  <div class="item-inner" ms-attr="{title: @row.name}">
+                    {{row.name}}
+                  </div>
+                </td>
+                <td class="mdcAdrg-table-cell mdc">
+                  <div class="item-inner" ms-attr="{title: @row.mdc}">
+                    {{row.mdc}}
+                  </div>
+                </td>
+                <td class="mdcAdrg-table-cell adrg">
+                  <div class="item-inner" ms-attr="{title: @row.adrg}">
+                    {{row.adrg}}
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="pagination-wrap" style="float: right">
+            <xmp
+              ms-widget="{is:'ms-pager',total:@operTotal,currentPage:@operCurrentPage,onPageClick:@onOperPageClick}"
+            ></xmp>
+          </div>
         </div>
       </td>
     </tr>

@@ -25,10 +25,14 @@
           ms-on-click="@onSelectRow($event,row) |stop"
         >
           <td class="item left">
-            <div class="item-inner">{{@row.operationCode}}</div>
+            <div class="item-inner" ms-attr="{title: @row.operationCode}">
+              {{@row.operationCode}}
+            </div>
           </td>
           <td class="item right">
-            <div class="item-inner">{{@row.operationName}}</div>
+            <div class="item-inner" ms-attr="{title: @row.operationName}">
+              {{@row.operationName}}
+            </div>
           </td>
         </tr>
       </table>
