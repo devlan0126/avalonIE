@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-19 21:01:59
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-12 15:19:23
+ * @LastEditTime: 2024-04-12 16:48:31
  * @FilePath: \avalonIE\app\source\modules\mdcAdrg\index.js
  * @Description: 文档描述
  */
@@ -14,8 +14,8 @@ avalon.component("ms-mdcAdrg", {
         operList: [],
         operTotal: 0,
         operCurrentPage: 1,
-        diagTimer: null,
-        operTimer: null,
+        diagTimer: {},
+        operTimer: {},
         searchDiagValue: "",
         searchOperValue: "",
         onDiagChange: function ($event) {
@@ -115,10 +115,10 @@ avalon.component("ms-mdcAdrg", {
                 ;
         },
         onViewChange: function (v) {
-            console.log("onViewChange:", v);
+
         },
         onDispose: function (v) {
-            console.log("onDispose:", v);
+
         },
     },
 });

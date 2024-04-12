@@ -57,7 +57,7 @@ avalon.component("ms-mcc", {
                 ;
         },
         onViewChange: function (v) {
-            console.log("onViewChange:", v);
+
         },
         onDispose: function (v) {
             console.log("onDispose:", v);

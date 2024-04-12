@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-09 13:02:16
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-12 10:06:21
+ * @LastEditTime: 2024-04-12 16:43:17
  * @FilePath: \avalonIE\app\source\modules\popover4\index.js
  * @Description: 文档描述
  */
@@ -14,7 +14,7 @@ avalon.component("ms-pop4", {
         source: [],
         selection: [],
         zIndex: 1,
-        timer: null,
+        timer: {},
         total: 0,
         currentPage: 1,
         searchValue: "",
@@ -115,10 +115,10 @@ avalon.component("ms-pop4", {
             ;
         },
         onViewChange: function (v) {
-            console.log("onViewChange:", v);
+
         },
         onDispose: function (v) {
-            console.log("onDispose:", v);
+
         },
     },
 });

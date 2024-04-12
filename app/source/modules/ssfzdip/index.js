@@ -1,8 +1,8 @@
 /*
  * @Date: 2024-04-10 14:53:21
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-10 14:57:20
- * @FilePath: \avalonIE\app\source\modules\ssfzdrg\index.js
+ * @LastEditTime: 2024-04-12 16:44:09
+ * @FilePath: \avalonIE\app\source\modules\ssfzdip\index.js
  * @Description: 文档描述
  */
 avalon.component("ms-ssfzdip", {
@@ -13,7 +13,7 @@ avalon.component("ms-ssfzdip", {
         list: [],
         source: [],
         zIndex: 1,
-        timer: null,
+        timer: {},
         onClick: function ($event) {
         },
         onChange: function ($event) {
@@ -27,10 +27,10 @@ avalon.component("ms-ssfzdip", {
             ;
         },
         onViewChange: function (v) {
-            console.log("onViewChange:", v);
+             
         },
         onDispose: function (v) {
-            console.log("onDispose:", v);
+             
         },
     },
 });

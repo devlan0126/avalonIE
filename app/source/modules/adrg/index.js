@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-04-10 17:59:09
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-12 16:31:46
+ * @LastEditTime: 2024-04-12 16:39:19
  * @FilePath: \avalonIE\app\source\modules\adrg\index.js
  * @Description: 文档描述
  */
@@ -11,19 +11,19 @@ avalon.component("ms-adrg", {
         diagList: [],
         diagTotal: 0,
         diagCurrentPage: 1,
-        diagTimer: null,
+        diagTimer: {},
         searchDiagValue: "",
 
         adrgList: [],
         adrgTotal: 0,
         adrgCurrentPage: 1,
-        adrgTimer: null,
+        adrgTimer: {},
         searchAdrgValue: "",
 
         operList: [],
         operTotal: 0,
         operCurrentPage: 1,
-        operTimer: null,
+        operTimer: {},
         searchOperValue: "",
         onInit: function () {
         },
@@ -32,10 +32,10 @@ avalon.component("ms-adrg", {
                 ;
         },
         onViewChange: function (v) {
-            console.log("onViewChange:", v);
+
         },
         onDispose: function (v) {
-            console.log("onDispose:", v);
+
         },
         onDiagChange: function ($event) {
             var that = this

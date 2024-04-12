@@ -7,7 +7,7 @@ avalon.component("ms-pop3", {
         source: [],
         selection: [],
         zIndex: 1,
-        timer: null,
+        timer: {},
         total: 0,
         currentPage: 1,
         searchValue: "",
@@ -105,10 +105,10 @@ avalon.component("ms-pop3", {
             ;
         },
         onViewChange: function (v) {
-            console.log("onViewChange:", v);
+
         },
         onDispose: function (v) {
-            console.log("onDispose:", v);
+
         },
     },
 });

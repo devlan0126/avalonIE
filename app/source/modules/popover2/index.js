@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-09 11:39:44
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-11 20:51:13
+ * @LastEditTime: 2024-04-12 16:43:08
  * @FilePath: \avalonIE\app\source\modules\popover2\index.js
  * @Description: 文档描述
  */
@@ -13,7 +13,7 @@ avalon.component("ms-pop2", {
         list: [],
         source: [],
         zIndex: 1,
-        timer: null,
+        timer: {},
         total: 0,
         currentPage: 1,
         searchValue: "",
@@ -91,10 +91,10 @@ avalon.component("ms-pop2", {
             ;
         },
         onViewChange: function (v) {
-            console.log("onViewChange:", v);
+
         },
         onDispose: function (v) {
-            console.log("onDispose:", v);
+
         },
     },
 });

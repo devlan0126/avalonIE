@@ -86,7 +86,6 @@ function getTotalPages(total, pageSize) {
 function getPages(currentPage, total) {
     var pages = []
     var s = this.showPages
-    console.log('getPages>>', s, total)
     if (s > total) {
         itPage = 1
         var lst = total === 0 ? 1 : total
