@@ -1,5 +1,5 @@
 <div class="mdc-adrg-tab">
-  <table class="adrg-table">
+  <table class="tables">
     <tr>
       <td class="adrg-table-cell">
         <div class="mdc-adrg-tab__content">
@@ -22,35 +22,34 @@
               </tbody>
             </table>
           </div>
-          <div></div>
-          <div class="mdc-adrg-tab__list">
+          <div class="mdc-adrg-tab__list adrg-table">
             <table class="list-ul">
               <thead>
                 <tr>
-                  <th>
+                  <th class="th1">
                     <div class="item-inner">ADRG编码</div>
                   </th>
-                  <th>
+                  <th class="th2">
                     <div class="item-inner">ADRG名称</div>
                   </th>
-                  <th>
+                  <th class="th3">
                     <div class="item-inner">ADRG条件</div>
                   </th>
                 </tr>
               </thead>
-              <tr ms-for="row in @adrgList" class="row">
-                <td class="item left">
+              <tr ms-for="row in @adrgList" class="tr-row">
+                <td class="item td1">
                   <div class="item-inner" ms-attr="{title: @row.code}">
                     {{@row.code}}
                   </div>
                 </td>
-                <td class="item right">
+                <td class="item td2">
                   <div class="item-inner" ms-attr="{title: @row.name}">
                     {{@row.name}}
                   </div>
                 </td>
 
-                <td class="item right">
+                <td class="item td3">
                   <div class="item-inner" ms-attr="{title: @row.condition}">
                     {{@row.condition}}
                   </div>
@@ -86,8 +85,7 @@
               </tbody>
             </table>
           </div>
-          <div></div>
-          <div class="mdc-adrg-tab__list">
+          <div class="mdc-adrg-tab__list dialog-table">
             <table class="list-ul">
               <thead>
                 <tr>
@@ -105,26 +103,40 @@
                   </th>
                 </tr>
               </thead>
-              <tr ms-for="row in @diagList" class="row">
-                <td class="item left">
+              <tr
+                ms-for="row in @diagList"
+                class="tr-row"
+                ms-click="@onDiagClick($event, row)"
+              >
+                <td class="item td1">
                   <div class="item-inner" ms-attr="{title: @row.code}">
                     {{@row.code}}
                   </div>
                 </td>
-                <td class="item right">
+                <td class="item td2">
                   <div class="item-inner" ms-attr="{title: @row.name}">
                     {{@row.name}}
                   </div>
                 </td>
 
-                <td class="item right">
-                  <div class="item-inner" ms-attr="{title: @row.operationName}">
-                    {{@row.mainFlag}}
+                <td class="item td3">
+                  <div class="item-inner" ms-attr="{title: @row.mainDise1Flag}">
+                    <input
+                      class="form-check-input"
+                      disabled
+                      ms-attr="{checked: @row.mainDise1Flag == 1? 'checked' : false}"
+                      type="radio"
+                    />
                   </div>
                 </td>
-                <td class="item right">
-                  <div class="item-inner" ms-attr="{title: @row.operationName}">
-                    {{@row.otherFlag}}
+                <td class="item td4">
+                  <div class="item-inner" ms-attr="{title: @row.othDise1Flag}">
+                    <input
+                      class="form-check-input"
+                      disabled
+                      ms-attr="{checked: @row.othDise1Flag == 1? 'checked' : false}"
+                      type="radio"
+                    />
                   </div>
                 </td>
               </tr>
@@ -158,8 +170,7 @@
               </tbody>
             </table>
           </div>
-          <div></div>
-          <div class="mdc-adrg-tab__list">
+          <div class="mdc-adrg-tab__list operation-table">
             <table class="list-ul">
               <thead>
                 <tr>
@@ -183,36 +194,60 @@
                   </th>
                 </tr>
               </thead>
-              <tr ms-for="row in @operList" class="row">
-                <td class="item left">
+              <tr
+                ms-for="row in @operList"
+                class="tr-row"
+                ms-click="@onOperClick($event, row)"
+              >
+                <td class="item td1">
                   <div class="item-inner" ms-attr="{title: @row.operationCode}">
                     {{@row.code}}
                   </div>
                 </td>
-                <td class="item right">
+                <td class="item td2">
                   <div class="item-inner" ms-attr="{title: @row.operationName}">
                     {{@row.name}}
                   </div>
                 </td>
 
-                <td class="item right">
+                <td class="item td3">
                   <div class="item-inner" ms-attr="{title: @row.operation1}">
-                    {{@row.operation1}}
+                    <input
+                      class="form-check-input"
+                      disabled
+                      ms-attr="{checked: @row.operation1 == 1? 'checked' : false}"
+                      type="radio"
+                    />
                   </div>
                 </td>
-                <td class="item right">
+                <td class="item td4">
                   <div class="item-inner" ms-attr="{title: @row.operation2}">
-                    {{@row.operation2}}
+                    <input
+                      class="form-check-input"
+                      disabled
+                      ms-attr="{checked: @row.operation2 == 1? 'checked' : false}"
+                      type="radio"
+                    />
                   </div>
                 </td>
-                <td class="item right">
+                <td class="item td5">
                   <div class="item-inner" ms-attr="{title: @row.operation3}">
-                    {{@row.operation3}}
+                    <input
+                      class="form-check-input"
+                      disabled
+                      ms-attr="{checked: @row.operation3 == 1? 'checked' : false}"
+                      type="radio"
+                    />
                   </div>
                 </td>
-                <td class="item right">
+                <td class="item td6">
                   <div class="item-inner" ms-attr="{title: @row.operation4}">
-                    {{@row.operation4}}
+                    <input
+                      class="form-check-input"
+                      disabled
+                      ms-attr="{checked: @row.operation4 == 1? 'checked' : false}"
+                      type="radio"
+                    />
                   </div>
                 </td>
               </tr>

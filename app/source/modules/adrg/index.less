@@ -1,7 +1,7 @@
 .mdc-adrg-tab {
   width: 100%;
   height: 100%;
-  .adrg-table {
+  .tables {
     height: 100%;
     width: 100%;
     .adrg-table-cell {
@@ -45,6 +45,85 @@
         position: relative;
         margin-left: 50px;
         margin-top: 10px;
+        .item-inner {
+          overflow: hidden;
+          word-break: break-all;
+          white-space: unset !important;
+          white-space: nowrap;
+          /* break-all(允许在单词内换行。) */
+          text-overflow: ellipsis;
+          /* 超出部分省略号 */
+          display: -webkit-box;
+          /** 对象作为伸缩盒子模型显示 **/
+          -webkit-box-orient: vertical;
+          /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+          -webkit-line-clamp: 1;
+        }
+        th,
+        td {
+          border: 1px solid #c9c3ba;
+          text-align: left;
+          padding: 5px 0 5px 10px;
+        }
+        .list-ul {
+          width: 100%;
+        }
+        &.adrg-table {
+          table.list-ul {
+            .tr-row {
+              .td1 {
+                width: 100px;
+              }
+              .td2 {
+                width: 150px;
+              }
+              .td3 {
+              }
+            }
+          }
+        }
+        &.dialog-table {
+          table.list-ul {
+            .tr-row {
+              cursor: pointer;
+              .td1 {
+                width: 100px;
+              }
+              .td2 {
+              }
+              .td3 {
+                width: 70px;
+              }
+              .td4 {
+                width: 70px;
+              }
+            }
+          }
+        }
+        &.operation-table {
+          table.list-ul {
+            .tr-row {
+              cursor: pointer;
+              .td1 {
+                width: 100px;
+              }
+              .td2 {
+              }
+              .td3 {
+                width: 40px;
+              }
+              .td4 {
+                width: 40px;
+              }
+              .td5 {
+                width: 40px;
+              }
+              .td6 {
+                width: 40px;
+              }
+            }
+          }
+        }
       }
     }
   }

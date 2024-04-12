@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-04-10 17:59:09
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-12 15:18:25
+ * @LastEditTime: 2024-04-12 16:31:46
  * @FilePath: \avalonIE\app\source\modules\adrg\index.js
  * @Description: 文档描述
  */
@@ -103,7 +103,7 @@ avalon.component("ms-adrg", {
             this.adrgCurrentPage = page;
             this.requestAdrgList()
         },
-        requestAdrgList: function () {
+        requestAdrgList: function (params) {
             var that = this
             $.ajax({
                 url: '/hprs/sim/adrg',
@@ -113,7 +113,7 @@ avalon.component("ms-adrg", {
                     "Content-Type": "application/json",
                 },
                 dataType: 'json',
-                data: 'ver=CHS628&pageNum=' + that.adrgCurrentPage + '&pageSize=10&data=' + that.searchAdrgValue,
+                data: params || 'ver=CHS628&pageNum=' + that.adrgCurrentPage + '&pageSize=10&data=' + that.searchAdrgValue,
                 success: function (res) {
                     if (res.code === 200) {
                         that.adrgList = res.data
@@ -172,6 +172,14 @@ avalon.component("ms-adrg", {
             this.operTotal = 0
             this.operCurrentPage = 1
             this.searchOperValue = ""
+        },
+        onDiagClick($event, row) {
+            this.adrgCurrentPage = 1;
+            this.requestAdrgList('ver=CHS628&pageNum=1&pageSize=10&diagnoseCode=' + row.code)
+        },
+        onOperClick($event, row) {
+            this.adrgCurrentPage = 1;
+            this.requestAdrgList('ver=CHS628&pageNum=1&pageSize=10&operationCode=' + row.code)
         }
     }
 });
