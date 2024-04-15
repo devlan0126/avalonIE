@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-04-10 18:20:40
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-15 11:36:58
+ * @LastEditTime: 2024-04-15 11:48:55
  * @FilePath: \avalonIE\app\source\modules\dfcs\index.js
  * @Description: 文档描述
  */
@@ -56,7 +56,7 @@ avalon.component("ms-dfcs", {
                 }
             }, 1000)
         },
-        onDiagBlur() {
+        onDiagBlur: function () {
             // this.searchDiagValue = ""
             $('#dfDiagInput').val('')
         },
@@ -106,7 +106,7 @@ avalon.component("ms-dfcs", {
             this.searchDiagValue = ""
             this.searchPartValue = ""
         },
-        onPartBlur() {
+        onPartBlur: function () {
             // this.searchPartValue = ""
             $('#dfPartInput').val('')
         }

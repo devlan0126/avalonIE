@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-16 13:26:06
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-15 10:39:04
+ * @LastEditTime: 2024-04-15 11:51:18
  * @FilePath: \avalonIE\app\source\modules\fzzl\index.js
  * @Description: 文档描述
  */
@@ -83,7 +83,7 @@ avalon.component("ms-fzzl", {
         onDispose: function (v) {
             console.log("onDispose:", v);
         },
-        requestList() {
+        requestList: function () {
             var that = this;
             $.ajax({
                 url: '/hprs/sim/grpAdvice',
