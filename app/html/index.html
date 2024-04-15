@@ -6,6 +6,25 @@
     <link type="image/x-icon" href="logo.ico" rel="shortcut icon" />
     <link href="cz-icon.ico" rel="bookmark icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      var clientWidth = document.documentElement.clientWidth;
+      // 分辨率大于等于1680，大部分为1920的情况下，调用此css
+      if(clientWidth >= 1680){
+          document.write('<link rel="stylesheet" href="css/index_1920.css">');
+      }
+      // 分辨率再在1600-1680的情况下，调用此css
+      else if(clientWidth >= 1600){
+          document.write('<link rel="stylesheet" href="css/index_1600.css">');
+      }
+      // 分辨率再在1366-1600的情况下，调用此css
+      else if(clientWidth >= 1366){
+          document.write('<link rel="stylesheet" href="css/index_1366.css">');
+      }
+      // 分辨率小于1366的情况下，调用此css
+      else{
+          document.write('<link rel="stylesheet" href="css/index_mini.css">');
+      }
+  </script>
   </head>
 
   <body ms-controller="native" ms-class="@pageClass">
