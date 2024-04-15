@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-16 13:26:06
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-12 10:07:25
+ * @LastEditTime: 2024-04-15 10:39:04
  * @FilePath: \avalonIE\app\source\modules\fzzl\index.js
  * @Description: 文档描述
  */
@@ -74,26 +74,32 @@ avalon.component("ms-fzzl", {
         ],
 
         onInit: function () {
-
-            var that = this;
-            // query the list data
-            setTimeout(function () {
-                that.list = [
-                    { mainDiagCode: "item1", mainDiagName: "mainDiagName", mainOprnCode: 'mainOprnCode', mainOprnName: 'mainOprnName', drgCode: 'drgCode', drgName: 'drgName' },
-                    { mainDiagCode: "item1", mainDiagName: "mainDiagName", mainOprnCode: 'mainOprnCode', mainOprnName: 'mainOprnName', drgCode: 'drgCode', drgName: 'drgName' },
-                    { mainDiagCode: "item1", mainDiagName: "mainDiagName", mainOprnCode: 'mainOprnCode', mainOprnName: 'mainOprnName', drgCode: 'drgCode', drgName: 'drgName' },
-                    { mainDiagCode: "item1", mainDiagName: "mainDiagName", mainOprnCode: 'mainOprnCode', mainOprnName: 'mainOprnName', drgCode: 'drgCode', drgName: 'drgName' },
-                ];
-                that.show = true;
-                ;
-            }, 1000);
         },
         onReady: function (v) {
+            this.requestList()
         },
         onViewChange: function (v) {
         },
         onDispose: function (v) {
             console.log("onDispose:", v);
         },
+        requestList() {
+            var that = this;
+            $.ajax({
+                url: '/hprs/sim/grpAdvice',
+                type: 'POST',
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                dataType: 'json',
+                data: 'ver=CHS628&pageNum=' + that.diagCurrentPage + '&pageSize=10&data=' + that.searchDiagValue,
+                success: function (res) {
+                    if (res.code === 200) {
+                        that.list = res.data
+                    }
+                }
+            });
+        }
     },
 });

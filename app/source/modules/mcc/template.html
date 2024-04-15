@@ -14,6 +14,8 @@
                       type="text"
                       name="name"
                       placeholder="请输入诊断编码或名称，可模糊查询"
+                      ms-on-change="@onMccChange"
+                      ms-on-input="@onMccChange"
                     />
                   </td>
                 </tr>
@@ -21,7 +23,37 @@
             </table>
           </div>
           <div></div>
-          <div class="mdc-mcc-tab__list"></div>
+          <div class="mdc-mcc-tab__list">
+            <table class="mdcAdrg-table">
+              <tr ms-for="row in @mccList">
+                <td class="mdcAdrg-table-cell code">
+                  <div class="item-inner" ms-attr="{title: @row.code}">
+                    {{row.code}}
+                  </div>
+                </td>
+                <td class="mdcAdrg-table-cell name">
+                  <div class="item-inner" ms-attr="{title: @row.name}">
+                    {{row.name}}
+                  </div>
+                </td>
+                <td class="mdcAdrg-table-cell mdc">
+                  <div class="item-inner" ms-attr="{title: @row.mdc}">
+                    {{row.mdc}}
+                  </div>
+                </td>
+                <td class="mdcAdrg-table-cell adrg">
+                  <div class="item-inner" ms-attr="{title: @row.adrg}">
+                    {{row.adrg}}
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="pagination-wrap" style="float: right">
+            <xmp
+              ms-widget="{is:'ms-pager',total:@mccTotal,currentPage:@mccCurrentPage,onPageClick:@onMccPageClick}"
+            ></xmp>
+          </div>
         </div>
       </td>
       <td class="mcc-table-cell">
@@ -37,6 +69,8 @@
                       type="text"
                       name="name"
                       placeholder="请输入诊断编码或名称，可模糊查询"
+                      ms-on-change="@onCcChange"
+                      ms-on-input="@onMCcChange"
                     />
                   </td>
                 </tr>
@@ -44,7 +78,37 @@
             </table>
           </div>
           <div></div>
-          <div class="mdc-mcc-tab__list"></div>
+          <div class="mdc-mcc-tab__list">
+            <table class="mdcAdrg-table">
+              <tr ms-for="row in @ccList">
+                <td class="mdcAdrg-table-cell code">
+                  <div class="item-inner" ms-attr="{title: @row.code}">
+                    {{row.code}}
+                  </div>
+                </td>
+                <td class="mdcAdrg-table-cell name">
+                  <div class="item-inner" ms-attr="{title: @row.name}">
+                    {{row.name}}
+                  </div>
+                </td>
+                <td class="mdcAdrg-table-cell mdc">
+                  <div class="item-inner" ms-attr="{title: @row.mdc}">
+                    {{row.mdc}}
+                  </div>
+                </td>
+                <td class="mdcAdrg-table-cell adrg">
+                  <div class="item-inner" ms-attr="{title: @row.adrg}">
+                    {{row.adrg}}
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="pagination-wrap" style="float: right">
+            <xmp
+              ms-widget="{is:'ms-pager',total:@ccTotal,currentPage:@ccCurrentPage,onPageClick:@onCcPageClick}"
+            ></xmp>
+          </div>
         </div>
       </td>
     </tr>
