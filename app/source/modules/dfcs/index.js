@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-04-10 18:20:40
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-15 11:15:06
+ * @LastEditTime: 2024-04-15 11:36:58
  * @FilePath: \avalonIE\app\source\modules\dfcs\index.js
  * @Description: 文档描述
  */
@@ -42,19 +42,23 @@ avalon.component("ms-dfcs", {
         },
         onDiagChange: function ($event) {
             var that = this
-            clearTimeout(that.diagTimer);
-            that.diagTimer = setTimeout(function () {
+            clearTimeout(that.timer);
+            that.timer = setTimeout(function () {
                 that.resetTableData()
                 var srcElement = $event.srcElement;
                 if (srcElement) {
                     var value = srcElement.value;
                     that.searchDiagValue = value
                     if (value) {
-                        that.diagCurrentPage = 1;
+                        that.currentPage = 1;
                         that.requestList()
                     }
                 }
             }, 1000)
+        },
+        onDiagBlur() {
+            // this.searchDiagValue = ""
+            $('#dfDiagInput').val('')
         },
         onPartChange: function ($event) {
             var that = this
@@ -64,17 +68,17 @@ avalon.component("ms-dfcs", {
                 var srcElement = $event.srcElement;
                 if (srcElement) {
                     var value = srcElement.value;
-                    that.searchPartgValue = value
+                    that.searchPartValue = value
                     if (value) {
-                        that.diagCurrentPage = 1;
+                        that.currentPage = 1;
                         that.requestList()
                     }
                 }
             }, 1000)
         },
-        onDiagPageClick: function ($event, page) {
-            this.diagCurrentPage = page;
-            this.requestDiagList()
+        onPageClick: function ($event, page) {
+            this.currentPage = page;
+            this.requestList()
         },
         requestList: function () {
             var that = this
@@ -102,6 +106,10 @@ avalon.component("ms-dfcs", {
             this.searchDiagValue = ""
             this.searchPartValue = ""
         },
+        onPartBlur() {
+            // this.searchPartValue = ""
+            $('#dfPartInput').val('')
+        }
     },
 });
 

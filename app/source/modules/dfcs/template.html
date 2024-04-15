@@ -10,10 +10,12 @@
                 <input
                   class="search-input"
                   type="text"
-                  name="name"
+                  id="dfDiagInput"
+                  name="dfDiagInput"
                   placeholder="请输入诊断编码或名称，可模糊查询"
                   ms-on-change="@onDiagChange"
                   ms-on-input="@onDiagChange"
+                  ms-on-blur="@onDiagBlur"
                 />
               </td>
             </tr>
@@ -29,10 +31,12 @@
                 <input
                   class="search-input"
                   type="text"
-                  name="name"
+                  id="dfPartInput"
+                  name="dfPartInput"
                   placeholder="请输入部位编码或名称，可模糊查询"
                   ms-on-change="@onPartChange"
                   ms-on-input="@onPartChange"
+                  ms-on-blur="@onPartBlur"
                 />
               </td>
             </tr>
@@ -58,7 +62,7 @@
   </div>
   <div class="pagination-wrap" style="float: right">
     <xmp
-      ms-widget="{is:'ms-pager',total:@operTotal,currentPage:@operCurrentPage,onPageClick:@onOperPageClick}"
+      ms-widget="{is:'ms-pager',total:@total,currentPage:@currentPage,onPageClick:@onPageClick}"
     ></xmp>
   </div>
 </div>
