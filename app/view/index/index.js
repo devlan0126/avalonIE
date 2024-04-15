@@ -44,6 +44,7 @@ var vm = avalon.define({
   mainDiagnose: 'J18.903,重症肺炎',
   mainOperation: '31.1x00x005,暂时性气管切开术',
   clrWay: '40',
+  pageClass: 'w-1366',
   tabConfig: {
     tabVisible1: true,
     tabVisible2: false,
@@ -105,6 +106,21 @@ var vm = avalon.define({
 });
 
 vm.$watch('onReady', function (v) {
+  if (window.clientWidth < 1367) {
+    // 1366*768
+    this.pageClass = 'w-1366'
+  } else if (window.clientWidth < 1441) {
+    // 1440*900
+    this.pageClass = 'w-1440'
+  } else if (window.clientWidth < 1601) {
+    // 1600*1024
+    this.pageClass = 'w-1600'
+  } else if (window.clientWidth < 1921) {
+    // 1920*1080
+    this.pageClass = 'w-1920'
+  }
+
+
   getSysConfig(function (data) {
     console.log('getSysConfig>', data)
     this.showTabs = {

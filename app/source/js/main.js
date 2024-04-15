@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-07 17:57:16
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-03-26 21:05:17
+ * @LastEditTime: 2024-04-15 10:20:45
  * @FilePath: \avalonIE\app\source\js\main.js
  * @Description: 文档描述
  */
@@ -58,3 +58,13 @@ function IEVersion() {
     }
 }
 window.IEVersion = IEVersion();
+
+//获取屏幕的高度和宽度
+(function getClientSize() {
+    var clientHeight = document.documentElement.clientHeight;
+    var clientWidth = document.documentElement.clientWidth;
+    window.clientHeight = clientHeight;
+    window.clientWidth = clientWidth;
+})()
+
+
