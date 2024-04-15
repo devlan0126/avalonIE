@@ -12,6 +12,8 @@
                   type="text"
                   name="name"
                   placeholder="请输入诊断编码或名称，可模糊查询"
+                  ms-on-change="@onDiagChange"
+                  ms-on-input="@onDiagChange"
                 />
               </td>
             </tr>
@@ -29,6 +31,8 @@
                   type="text"
                   name="name"
                   placeholder="请输入部位编码或名称，可模糊查询"
+                  ms-on-change="@onPartChange"
+                  ms-on-input="@onPartChange"
                 />
               </td>
             </tr>
@@ -45,11 +49,16 @@
           <th ms-for="column in @columns" class="head-th">{{column.label}}</th>
         </tr>
       </thead>
-      <tr ms-for="(index,row) in @list" class="row">
-        <td ms-for="column in @columns" class="item left">
+      <tr ms-for="(index,row) in @list" class="row-tr">
+        <td ms-for="column in @columns" class="item">
           <div class="item-inner">{{row[column.prop]}}</div>
         </td>
       </tr>
     </table>
+  </div>
+  <div class="pagination-wrap" style="float: right">
+    <xmp
+      ms-widget="{is:'ms-pager',total:@operTotal,currentPage:@operCurrentPage,onPageClick:@onOperPageClick}"
+    ></xmp>
   </div>
 </div>

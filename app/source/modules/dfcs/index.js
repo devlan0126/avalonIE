@@ -1,85 +1,36 @@
+/*
+ * @Date: 2024-04-10 18:20:40
+ * @LastEditors: devlan0126 wyang0126@163.com
+ * @LastEditTime: 2024-04-15 11:15:06
+ * @FilePath: \avalonIE\app\source\modules\dfcs\index.js
+ * @Description: 文档描述
+ */
 avalon.component("ms-dfcs", {
     template: require("./template.html"),
     defaults: {
         show: false,
         list: [],
+        total: 0,
+        currentPage: 1,
+        searchDiagValue: "",
+        searchPartValue: "",
+        timer: {},
         columns: [
             {
-                label: "主诊断编码",
-                prop: "主诊断编码",
+                label: "诊断编码",
+                prop: "code",
             },
             {
-                label: "主诊断名称",
-                prop: "主诊断名称",
+                label: "诊断名称",
+                prop: "name",
             },
             {
-                label: "主手术编码",
-                prop: "主手术编码",
-            },
-            {
-                label: "主手术名称",
-                prop: "主手术编码",
-            },
-            {
-                label: "DRG编码",
-                prop: "主手术编码",
-            },
-            {
-                label: "DRG名称",
-                prop: "主手术编码",
-            },
-            {
-                label: "DRG类型",
-                prop: "主手术编码",
-            },
-            {
-                label: "病组均费",
-                prop: "主手术编码",
-            },
-            {
-                label: "基准点数",
-                prop: "主手术编码",
-            },
-            {
-                label: "调整系数",
-                prop: "主手术编码",
-            },
-            {
-                label: "病例类型",
-                prop: "主手术编码",
-            },
-            {
-                label: "预测点数",
-                prop: "主手术编码",
-            },
-            {
-                label: "预测费用",
-                prop: "主手术编码",
-            },
-            {
-                label: "预测盈亏",
-                prop: "主手术编码",
-            },
-            {
-                label: "治理提升",
-                prop: "主手术编码",
+                label: "创伤部位",
+                prop: "part",
             },
         ],
 
         onInit: function () {
-
-            var that = this;
-            // query the list data
-            setTimeout(function () {
-                that.list = [
-                    { mainDiagCode: "item1", mainDiagName: "mainDiagName", mainOprnCode: 'mainOprnCode', mainOprnName: 'mainOprnName', drgCode: 'drgCode', drgName: 'drgName' },
-                    { mainDiagCode: "item1", mainDiagName: "mainDiagName", mainOprnCode: 'mainOprnCode', mainOprnName: 'mainOprnName', drgCode: 'drgCode', drgName: 'drgName' },
-                    { mainDiagCode: "item1", mainDiagName: "mainDiagName", mainOprnCode: 'mainOprnCode', mainOprnName: 'mainOprnName', drgCode: 'drgCode', drgName: 'drgName' },
-                    { mainDiagCode: "item1", mainDiagName: "mainDiagName", mainOprnCode: 'mainOprnCode', mainOprnName: 'mainOprnName', drgCode: 'drgCode', drgName: 'drgName' },
-                ];
-                that.show = true;
-                ;
-            }, 1000);
         },
         onReady: function (v) {
             resetListHeight()
@@ -89,11 +40,73 @@ avalon.component("ms-dfcs", {
         onDispose: function (v) {
             console.log("onDispose:", v);
         },
+        onDiagChange: function ($event) {
+            var that = this
+            clearTimeout(that.diagTimer);
+            that.diagTimer = setTimeout(function () {
+                that.resetTableData()
+                var srcElement = $event.srcElement;
+                if (srcElement) {
+                    var value = srcElement.value;
+                    that.searchDiagValue = value
+                    if (value) {
+                        that.diagCurrentPage = 1;
+                        that.requestList()
+                    }
+                }
+            }, 1000)
+        },
+        onPartChange: function ($event) {
+            var that = this
+            clearTimeout(that.diagTimer);
+            that.diagTimer = setTimeout(function () {
+                that.resetTableData()
+                var srcElement = $event.srcElement;
+                if (srcElement) {
+                    var value = srcElement.value;
+                    that.searchPartgValue = value
+                    if (value) {
+                        that.diagCurrentPage = 1;
+                        that.requestList()
+                    }
+                }
+            }, 1000)
+        },
+        onDiagPageClick: function ($event, page) {
+            this.diagCurrentPage = page;
+            this.requestDiagList()
+        },
+        requestList: function () {
+            var that = this
+            $.ajax({
+                url: '/hprs/sim/mdcz',
+                type: 'GET',
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                dataType: 'json',
+                data: 'ver=CHS628&pageNum=' + that.currentPage + '&pageSize=10&data=' + that.searchDiagValue + '&part=' + that.searchPartValue,
+                success: function (res) {
+                    if (res.code === 200) {
+                        that.list = res.data
+                        that.total = res.total;
+                    }
+                }
+            });
+        },
+        resetTableData: function () {
+            this.list = []
+            this.total = 0
+            this.currentPage = 1
+            this.searchDiagValue = ""
+            this.searchPartValue = ""
+        },
     },
 });
 
 function resetListHeight() {
     var $tab = $('.ui-tabs-panel')
-    var h = $tab.height() - 50;
+    var h = $tab.height() - 50 - 45;
     $('.ms-dfcs-tab .list-ul').css('height', h + 'px');
 }
