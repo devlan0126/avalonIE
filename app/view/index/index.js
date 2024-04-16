@@ -33,8 +33,10 @@ require('../../source/modules/dfcs/index')
 var vm = avalon.define({
   $id: "native",
   serialNo: '',
-  mainDiagnose: 'J18.903,重症肺炎',
+  mainDiagnose: 'J18.90311,重症肺炎',
   mainOperation: '31.1x00x005,暂时性气管切开术',
+  qtzd: '',
+  qtss: '',
   clrWay: '40',
   pageClass: 'w-1366',
   tabConfig: {
@@ -274,22 +276,44 @@ vm.$watch('onReady', function (v) {
   that.serialNo = getUrlParam('serialNo') || 'ZY020000667561'
 
   getPageInfo(that.serialNo, function (data) {
+    var req = data.req
+    var res = data.res
     that.dataForm = {
-      name: '经典可乐',
-      medFeeAmt: 2273.22,// 医疗费用
-      actIptDays: 12,// 住院天数
-      age: 23,
-      insuType: '01',
-      setlMon: '202404',
-      fixmedinsCode: 'H118282',
-      ventUsedHCnt: '11',
-      sex: "1",
+      name: req.xm,
+      medFeeAmt: req.zfy,// 医疗费用
+      actIptDays: req.sjzyts,// 住院天数
+      age: req.nl,
+      insuType: req.insurTypeId,
+      setlMon: req.settlTime,
+      fixmedinsCode: req.fixmedinsCode,
+      sex: req.xb,
       serialNo: that.serialNo,
-      hospitalNo: '2983930',
-      inHospitalTime: '2024年3月7日 19点24分',
+      hospitalNo: req.bah,
+      inHospitalTime: req.admTime || '-'
     }
     that.pageTitle = '医院DRG/DIP数据精细化治理'
+    that.mainDiagnose = req.jbdm + ',' + req.zyzd
+    var qtzdList = req.qtzdList || []
+    var qtzdTemp = []
+    for (var i = 0; i < qtzdList.length; i++) {
+      qtzdTemp.push(qtzdList[i].qtzddm + ',' + qtzdList[i].qtzdmc)
+    }
+    that.qtzd = qtzdTemp.join(' | ')
 
+    var zyssjczList = req.zyssjczList || []
+    var zyssTemp = []
+
+    for (var i = 0; i < zyssjczList.length; i++) {
+      zyssTemp.push(zyssjczList[i].ssjczbm + ',' + zyssjczList[i].ssjczmc)
+    }
+    that.mainOperation = zyssTemp.join(' | ')
+
+    var ssjczList = req.ssjczList || []
+    var ssTemp = []
+    for (var i = 0; i < ssjczList.length; i++) {
+      ssTemp.push(ssjczList[i].ssjczbm + ',' + ssjczList[i].ssjczmc)
+    }
+    that.qtss = ssTemp.join(' | ')
     that.onSubmit()
   })
 
@@ -412,12 +436,12 @@ function getPageInfo(serialNo, callback) {
     data: 'serialNo=' + serialNo,
     dataType: 'json',
     success: function (res) {
+      callback(res)
       if (res.code === 200) {
-        callback(res.data)
+        callback(res)
       }
     }
   });
-  callback()
 }
 
 function getUrlParam(name) {
