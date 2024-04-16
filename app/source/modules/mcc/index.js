@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-04-10 18:13:59
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-15 10:58:56
+ * @LastEditTime: 2024-04-16 11:14:57
  * @FilePath: \avalonIE\app\source\modules\mcc\index.js
  * @Description: 文档描述
  */
@@ -21,19 +21,6 @@ avalon.component("ms-mcc", {
         ccTimer: {},
 
         onInit: function () {
-
-            var that = this;
-            // query the list data
-            setTimeout(function () {
-                that.list = [
-                    { mainDiagCode: "item1", mainDiagName: "mainDiagName", mainOprnCode: 'mainOprnCode', mainOprnName: 'mainOprnName', drgCode: 'drgCode', drgName: 'drgName' },
-                    { mainDiagCode: "item1", mainDiagName: "mainDiagName", mainOprnCode: 'mainOprnCode', mainOprnName: 'mainOprnName', drgCode: 'drgCode', drgName: 'drgName' },
-                    { mainDiagCode: "item1", mainDiagName: "mainDiagName", mainOprnCode: 'mainOprnCode', mainOprnName: 'mainOprnName', drgCode: 'drgCode', drgName: 'drgName' },
-                    { mainDiagCode: "item1", mainDiagName: "mainDiagName", mainOprnCode: 'mainOprnCode', mainOprnName: 'mainOprnName', drgCode: 'drgCode', drgName: 'drgName' },
-                ];
-                that.show = true;
-                ;
-            }, 1000);
         },
         onReady: function (v) {
             resetListHeight()

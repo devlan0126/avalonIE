@@ -10,4 +10,5 @@ require('es6-promise/auto');
 var jquery = require('./tools/jquery.min');
 window.$ = jquery;
 window.jQuery = jquery;
+require('./tools/json2.js')
 require('avalon2');

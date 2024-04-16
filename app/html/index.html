@@ -49,9 +49,9 @@
           <td class="left">
             <div class="top">
               <span class="row-item">
-                <span class="item-content">{{@name}}</span>
-                <span class="item-content">{{@sex}}</span>
-                <span class="item-content">{{@age}}</span>
+                <span class="item-content">{{@dataForm.name}}</span>
+                <span class="item-content">{{@dataForm.sex =='1'?'男':'女'}}</span>
+                <span class="item-content">{{@dataForm.age}}</span>
               </span>
               <span class="row-item"
                 >住院号：<span class="item-content"
@@ -150,7 +150,7 @@
                 <td style="width: 100px; line-height: 32px" class="text-right">
                   住院天数：
                 </td>
-                <td class="text-left" style="line-height: 32px">112</td>
+                <td class="text-left" style="line-height: 32px">{{@dataForm.actIptDays}}</td>
               </tr>
             </table>
           </td>
@@ -160,7 +160,7 @@
                 <td style="width: 100px; line-height: 32px" class="text-right">
                   医疗费用：
                 </td>
-                <td class="text-left" style="line-height: 32px">3333</td>
+                <td class="text-left" style="line-height: 32px">{{@dataForm.medFeeAmt}}</td>
               </tr>
             </table>
           </td>
@@ -341,7 +341,6 @@
             </div>
           </div>
         </div>
-        <!-- <div id="pdfContent" style="height: 1000px"></div> -->
       </div>
     </div>
   </body>

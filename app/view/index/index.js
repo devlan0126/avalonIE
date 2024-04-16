@@ -28,15 +28,11 @@ require('../../source/modules/adrg/index')
 require('../../source/modules/mcc/index')
 require('../../source/modules/dfcs/index')
 
-// require('../../utils/tools/paginationUtil.js')
-
 
 
 var vm = avalon.define({
   $id: "native",
   name: "司徒正美",// 姓名
-  sex: '男',// 性别
-  age: '28岁',// 年龄
   hospitalNumber: '2983930',//住院号
   serialNumber: '18293943845959000',//流水号
   inHospitalTime: '2024年3月7日 19点24分',//入院时间
@@ -64,6 +60,17 @@ var vm = avalon.define({
     clinPathEnabled: true, // 是否开启临床路径指南查
   },
   isLarge: false,
+  dataForm: {
+    name: '司徒正美',
+    medFeeAmt: 2273.22,// 医疗费用
+    actIptDays: 12,// 住院天数
+    age: 11,
+    insuType: '01',
+    setlMon: '202404',
+    fixmedinsCode: 'H118282',
+    ventUsedHCnt: '11',
+    sex: "1"
+  },
   tabClick: function ($event, index) {
     var visible = this.tabConfig['tabVisible' + index]
     this.tabConfig.tabVisible1 = false
@@ -84,9 +91,62 @@ var vm = avalon.define({
       setLargeBtnHeight()
     }, 100)
   },
+  getParams: function () {
+    var mainDiagCode = "";
+    var mainOprnCodeList = [];
+    var othDiagCodeList = [];
+    var othOprnCodeList = [];
+    this.diagTableData.body.forEach((ele) => {
+      if (ele.isMajor) {
+        mainDiagCode = ele.code;
+      } else {
+        othDiagCodeList.push(ele.code);
+      }
+    });
+    this.operTableData.body.forEach((ele) => {
+      if (ele.isMajor) {
+        mainOprnCodeList.push(ele.code);
+      } else {
+        othOprnCodeList.push(ele.code);
+      }
+    });
+    return {
+      actIptDays: this.dataForm.actIptDays,
+      age: this.dataForm.age,
+      ageDays: this.dataForm.ageDays,
+      dscgWay: this.dataForm.dscgWay,
+      insuType: this.dataForm.insuType,
+      mainDiagCode: mainDiagCode,
+      mainOprnCodeList: mainOprnCodeList,
+      medFeeAmt: this.dataForm.medFeeAmt,
+      nwbBirWt: this.dataForm.nwbBirWt,
+      othDiagCodeList: othDiagCodeList,
+      othOprnCodeList: othOprnCodeList,
+      sex: this.dataForm.sex,
+      ventUsedHCnt: this.dataForm.ventUsedHCnt,
+      setlMon: this.dataForm.setlMon,
+      fixmedinsCode: this.fixmedinsCode,
+    };
+  },
   onSubmit: function () {
-
-
+    var that = this
+    $.ajax({
+      url: '/hprs/sim/grpsetl',
+      type: 'POST',
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      dataType: 'json',
+      success: function (res) {
+        if (res.code === 200) {
+          that.groupInfo = {
+            ...data,
+            medFeeAmt: that.dataForm.medFeeAmt,
+          };
+        }
+      }
+    });
   },
   onRest: function () {
     window.location.reload()
@@ -106,6 +166,7 @@ var vm = avalon.define({
 });
 
 vm.$watch('onReady', function (v) {
+  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', JSON.stringify([{ a: "诶" }, { b: "比" }]));
   if (window.clientWidth < 1367) {
     // 1366*768
     this.pageClass = 'w-1366'
@@ -120,10 +181,10 @@ vm.$watch('onReady', function (v) {
     this.pageClass = 'w-1920'
   }
 
-
+  var that = this
   getSysConfig(function (data) {
     console.log('getSysConfig>', data)
-    this.showTabs = {
+    that.showTabs = {
       queryResetEnabled: data.queryResetEnabled == '1', // 是否开启查询重置功能
       loopGroupEnabled: data.loopGroupEnabled == '1', // 是否开启分组数据治理
       mdcAdrgEnabled: data.mdcAdrgEnabled == '1', // 是否开启MDC/ADRG查询功能
