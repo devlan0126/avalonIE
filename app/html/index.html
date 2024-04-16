@@ -29,7 +29,7 @@
 
   <body ms-controller="native" ms-class="@pageClass">
     <div class="page-title page-card" id="pageTitle">
-      <div class="page-title_content">DRG数据精细化治理</div>
+      <div class="page-title_content">{{@pageTitle}}</div>
       <div class="page-title-imgs">
         <span class="page-title_logo">
           <img id="logo" src="/hprs/api/pop/logo" style="height: 25px" />
@@ -55,17 +55,17 @@
               </span>
               <span class="row-item"
                 >住院号：<span class="item-content"
-                  >{{@hospitalNumber}}</span
+                  >{{@dataForm.hospitalNo}}</span
                 ></span
               >
               <span class="row-item"
                 >流水号：<span class="item-content"
-                  >{{@serialNumber}}</span
+                  >{{@dataForm.serialNo}}</span
                 ></span
               >
               <span class="row-item"
                 >入院时间：<span class="item-content"
-                  >{{@inHospitalTime}}</span
+                  >{{@dataForm.inHospitalTime}}</span
                 ></span
               >
             </div>
@@ -274,11 +274,11 @@
               <div slot="content" class="ui-tabs-panel-content">
                 <xmp
                   ms-visible="@clrWay === '40'"
-                  ms-widget="{is:'ms-ssfzdrg'}"
+                  ms-widget="{is:'ms-ssfzdrg',groupInfo:@groupInfo,setlInfo:@setlInfo,warnMsgList:@warnMsgList}"
                 ></xmp>
                 <xmp
                   ms-visible="@clrWay === '50'"
-                  ms-widget="{is:'ms-ssfzdip'}"
+                  ms-widget="{is:'ms-ssfzdip',groupInfo:@groupInfo,setlInfo:@setlInfo}"
                 ></xmp>
               </div>
             </ms-view>
