@@ -96,60 +96,80 @@ var vm = avalon.define({
   },
   getParams: function () {
     var mainDiagCode = "";
-    var mainOprnCodeList = [];
-    var othDiagCodeList = [];
-    var othOprnCodeList = [];
-    this.diagTableData.body.forEach((ele) => {
-      if (ele.isMajor) {
-        mainDiagCode = ele.code;
-      } else {
-        othDiagCodeList.push(ele.code);
-      }
-    });
-    this.operTableData.body.forEach((ele) => {
-      if (ele.isMajor) {
-        mainOprnCodeList.push(ele.code);
-      } else {
-        othOprnCodeList.push(ele.code);
-      }
-    });
-    return {
+    var mainOprnCodeList = ['O1', 'O2'];
+    var othDiagCodeList = ['D1', 'D2'];
+    var othOprnCodeList = ['OO1', 'OO2'];
+    var obj = {
       actIptDays: this.dataForm.actIptDays,
       age: this.dataForm.age,
-      ageDays: this.dataForm.ageDays,
-      dscgWay: this.dataForm.dscgWay,
+      ageDays: this.dataForm.ageDays || 0,
+      dscgWay: this.dataForm.dscgWay || '1',
       insuType: this.dataForm.insuType,
       mainDiagCode: mainDiagCode,
       mainOprnCodeList: mainOprnCodeList,
       medFeeAmt: this.dataForm.medFeeAmt,
-      nwbBirWt: this.dataForm.nwbBirWt,
+      nwbBirWt: this.dataForm.nwbBirWt || '1',
       othDiagCodeList: othDiagCodeList,
       othOprnCodeList: othOprnCodeList,
       sex: this.dataForm.sex,
       ventUsedHCnt: this.dataForm.ventUsedHCnt,
       setlMon: this.dataForm.setlMon,
-      fixmedinsCode: this.fixmedinsCode,
+      fixmedinsCode: this.fixmedinsCode || 'H',
     };
+
+    var mainOprnCodeList = ''
+    for (var i = 0; i < obj.mainOprnCodeList.length; i++) {
+      mainOprnCodeList += '"' + obj.mainOprnCodeList[i] + '",'
+    }
+    mainOprnCodeList = mainOprnCodeList.substring(0, mainOprnCodeList.length - 1)
+
+    var othDiagCodeList = ''
+    for (var i = 0; i < obj.othDiagCodeList.length; i++) {
+      othDiagCodeList += '"' + obj.othDiagCodeList[i] + '",'
+    }
+    othDiagCodeList = othDiagCodeList.substring(0, othDiagCodeList.length - 1)
+
+    var othOprnCodeList = ''
+    for (var i = 0; i < obj.othOprnCodeList.length; i++) {
+      othOprnCodeList += '"' + obj.othOprnCodeList[i] + '",'
+    }
+    othOprnCodeList = othOprnCodeList.substring(0, othOprnCodeList.length - 1)
+
+    var str = '{'
+    str += '"actIptDays":"' + obj.actIptDays + '",'
+    str += '"age":"' + obj.age + '",'
+    str += '"ageDays":"' + obj.ageDays + '",'
+    str += '"dscgWay":"' + obj.dscgWay + '",'
+    str += '"insuType":"' + obj.insuType + '",'
+    str += '"mainDiagCode":"' + obj.mainDiagCode + '",'
+    str += '"mainOprnCodeList":[' + mainOprnCodeList + '],'
+    str += '"medFeeAmt":"' + obj.medFeeAmt + '",'
+    str += '"nwbBirWt":"' + obj.nwbBirWt + '",'
+    str += '"othDiagCodeList":[' + othDiagCodeList + '],'
+    str += '"othOprnCodeList":[' + othOprnCodeList + '],'
+    str += '"sex":"' + obj.sex + '",'
+    str += '"ventUsedHCnt":"' + obj.ventUsedHCnt + '",'
+    str += '"setlMon":"' + obj.setlMon + '",'
+    str += '"fixmedinsCode":"' + obj.fixmedinsCode + '"'
+    str += '}'
+    return str
   },
   onSubmit: function () {
     var that = this
-    // $.ajax({
-    //   url: '/hprs/sim/grpsetl',
-    //   type: 'POST',
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "application/json",
-    //   },
-    //   dataType: 'json',
-    //   success: function (res) {
-    //     if (res.code === 200) {
-    //       that.groupInfo = {
-    //         ...data,
-    //         medFeeAmt: that.dataForm.medFeeAmt,
-    //       };
-    //     }
-    //   }
-    // });
+    $.ajax({
+      url: '/hprs/api/pop/regroup',
+      type: 'POST',
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      data: that.getParams(),
+      dataType: 'json',
+      success: function (response) {
+        if (response.code === 200) {
+        }
+      }
+    });
     var res = {
       "msg": "成功",
       "code": 200,
@@ -251,7 +271,7 @@ vm.$watch('onReady', function (v) {
 
   var that = this
   that.clrWay = getUrlParam('clrWay') || '40';
-  that.serialNo = getUrlParam('serialNo') || '18293943845959000'
+  that.serialNo = getUrlParam('serialNo') || 'ZY020000667561'
 
   getPageInfo(that.serialNo, function (data) {
     that.dataForm = {
@@ -382,22 +402,22 @@ function getSysConfig(callback) {
 }
 
 function getPageInfo(serialNo, callback) {
-  // $.ajax({
-  //   url: '/hprs/api/pop/getSysConfig',
-  //   type: 'GET',
-  //   headers: {
-  //     Accept: "application/json",
-  //     "Content-Type": "application/json",
-  //   },
-  //   dataType: 'json',
-  //   success: function (res) {
-  //     if (res.code === 200) {
-  //       callback(res.data)
-  //     }
-  //   }
-  // });
+  $.ajax({
+    url: '/hprs/api/pop/getSmtGrpInfo',
+    type: 'GET',
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    data: 'serialNo=' + serialNo,
+    dataType: 'json',
+    success: function (res) {
+      if (res.code === 200) {
+        callback(res.data)
+      }
+    }
+  });
   callback()
-
 }
 
 function getUrlParam(name) {
