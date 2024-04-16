@@ -241,6 +241,22 @@ var vm = avalon.define({
     }
     console.log('groupInfo>', that.groupInfo)
   },
+  onUpdateMainDiagnose: function (data) {
+    console.log('onUpdateMainDiagnose>>', data);
+    this.mainDiagnose = data
+  },
+  onUpdateQtzd: function (qtzd) {
+    console.log('qtzd>>', qtzd);
+    this.qtss = qtzd
+  },
+  onUpdateMainOperation: function (data) {
+    console.log('mainOperation>>', data);
+    this.mainOperation = data
+  },
+  onupdateQtss: function (data) {
+    console.log('mainOperation>>', data);
+    this.qtss = data
+  },
   onRest: function () {
     window.location.reload()
   },

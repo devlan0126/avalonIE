@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-08 13:24:46
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-12 10:16:18
+ * @LastEditTime: 2024-04-16 18:27:48
  * @FilePath: \avalonIE\app\source\modules\popover\index.js
  * @Description: 文档描述
  */
@@ -17,6 +17,7 @@ avalon.component("ms-pop", {
         total: 0,
         currentPage: 1,
         searchValue: "",
+        onUpdateSelect: avalon.noop,
         onClick: function ($event) {
             this.show = true;
             this.source = window.lonsOperations
@@ -66,7 +67,11 @@ avalon.component("ms-pop", {
         },
         onSelectRow: function ($event, row) {
             this.data = row.operationCode + "  " + row.operationName;
+            this.updateValue()
             this.show = false;
+        },
+        updateValue: function () {
+            return this.onUpdateSelect(this.data)
         },
         onInit: function () {
             var that = this;
