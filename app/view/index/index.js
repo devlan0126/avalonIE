@@ -37,6 +37,8 @@ var vm = avalon.define({
   mainOperation: '31.1x00x005,暂时性气管切开术',
   qtzd: '',
   qtss: '',
+  dayPercent: 0,
+  feePercent: 0,
   clrWay: '40',
   pageClass: 'w-1366',
   tabConfig: {
@@ -231,9 +233,9 @@ var vm = avalon.define({
       }
     }
 
-    res.data.medFeeAmt = that.dataForm.medFeeAmt;
-    that.groupInfo = res.data;
     if (res.code === 200) {
+      res.data.medFeeAmt = that.dataForm.medFeeAmt;
+      that.groupInfo = res.data;
       that.setlInfo = encodeGroupInfo(res.data);
       that.warnMsgList = res.data.warnMsgList || [];
     }
@@ -291,7 +293,9 @@ vm.$watch('onReady', function (v) {
       hospitalNo: req.bah,
       inHospitalTime: req.admTime || '-'
     }
-    that.pageTitle = '医院DRG/DIP数据精细化治理'
+    that.pageTitle = data.title || '医院DRG/DIP数据精细化治理'
+    that.dayPercent = data.dayPercent || 0
+    that.feePercent = data.feePercent || 0
     that.mainDiagnose = req.jbdm + ',' + req.zyzd
     var qtzdList = req.qtzdList || []
     var qtzdTemp = []
@@ -314,7 +318,11 @@ vm.$watch('onReady', function (v) {
       ssTemp.push(ssjczList[i].ssjczbm + ',' + ssjczList[i].ssjczmc)
     }
     that.qtss = ssTemp.join(' | ')
-    that.onSubmit()
+
+    res.medFeeAmt = req.zfy;
+    that.groupInfo = res;
+    that.setlInfo = encodeGroupInfo(res);
+    that.warnMsgList = res.adviceList || [];
   })
 
   getSysConfig(function (data) {
@@ -367,9 +375,6 @@ function setLargeBtnHeight() {
     activeTabTop - 13 + "px";
   $largeBtn.style.left = activeTabLeft + 50 + "px";
 }
-
-
-
 
 function getOperationList() {
   $.ajax({

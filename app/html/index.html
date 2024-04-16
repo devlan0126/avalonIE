@@ -83,8 +83,8 @@
 
       <div class="center">
         <i class="icon-warning" style="color: #c00000; margin-left: 10px"></i>
-        医疗费用为DRG付费标准的<span id="feePec">91%</span
-        >，住院天数为DRG天数标准的<span id="daysPec">115%</span>
+        医疗费用为DRG付费标准的<span id="feePec" ms-class="{'fee-pec-warn': @feePercent > 100}">{{@feePercent}}%</span
+        >，住院天数为DRG天数标准的<span id="daysPec" ms-class="{'day-pec-warn': @dayPercent > 0}">{{@dayPercent}}%</span>
       </div>
       <table class="bottom full-width">
         <tr class="center-row">
