@@ -11,6 +11,7 @@ avalon.component("ms-pop3", {
         total: 0,
         currentPage: 1,
         searchValue: "",
+        onUpdateSelect: avalon.noop,
         onClick: function ($event) {
             this.show = true;
             this.source = window.lonsOperations
@@ -78,6 +79,14 @@ avalon.component("ms-pop3", {
             } else {
                 this.data = ''
             }
+            this.updateValue()
+        },
+        updateValue: function () {
+            var operationCodes = []
+            for (var i = 0; i < this.selection.length; i++) {
+                operationCodes.push(this.selection[i].operationCode)
+            }
+            return this.onUpdateSelect(operationCodes)
         },
         onInit: function () {
             var that = this;

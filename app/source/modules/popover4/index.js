@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-09 13:02:16
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-12 16:43:17
+ * @LastEditTime: 2024-04-17 10:16:24
  * @FilePath: \avalonIE\app\source\modules\popover4\index.js
  * @Description: 文档描述
  */
@@ -18,6 +18,7 @@ avalon.component("ms-pop4", {
         total: 0,
         currentPage: 1,
         searchValue: "",
+        onUpdateSelect: avalon.noop,
         onClick: function ($event) {
             this.show = true;
             this.source = window.lonsDiagnoses
@@ -88,6 +89,14 @@ avalon.component("ms-pop4", {
             } else {
                 this.data = ''
             }
+            this.updateValue()
+        },
+        updateValue: function () {
+            var diagnoseCodes = []
+            for (var i = 0; i < this.selection.length; i++) {
+                diagnoseCodes.push(this.selection[i].diagnoseCode)
+            }
+            return this.onUpdateSelect(diagnoseCodes)
         },
         onInit: function () {
             var that = this;

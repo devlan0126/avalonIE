@@ -17,6 +17,7 @@ avalon.component("ms-pop2", {
         total: 0,
         currentPage: 1,
         searchValue: "",
+        onUpdateSelect: avalon.noop,
         onClick: function ($event) {
             this.show = true;
             this.source = window.lonsDiagnoses
@@ -67,6 +68,10 @@ avalon.component("ms-pop2", {
         onSelectRow: function ($event, row) {
             this.data = row.diagnoseCode + "  " + row.diagnoseName
             this.show = false;
+            this.updateValue(row.diagnoseCode)
+        },
+        updateValue: function (diagnoseCode) {
+            return this.onUpdateSelect(diagnoseCode)
         },
         onInit: function () {
             var that = this;
