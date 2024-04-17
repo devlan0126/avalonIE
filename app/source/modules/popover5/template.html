@@ -1,0 +1,110 @@
+<div class="ms-pop ms-pop5">
+  <div class="pop-input" ms-on-click="@onClick |stop">
+    <div class="input-content" ms-attr="{title: @data}">{{@data}}</div>
+  </div>
+  <div class="pop-content" ms-visible="@show">
+    <table style="width: 100%; margin-top: 10px">
+      <tr>
+        <td style="width: 50%">
+          <div class="left-table-wrap">
+            <table class="left-table">
+              <thead>
+                <tr>
+                  <th class="title" style="width: 50px">排序</th>
+                  <th class="content" style="width: 120px">编码</th>
+                  <th class="content">名称</th>
+                  <th class="content" style="width: 50px">删除</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ms-for="(index,row) in @selection">
+                  <td class="title" style="width: 50px">
+                    <div class="item-inner">{{@index+1}}</div>
+                  </td>
+                  <td class="content diagnose-code" style="width: 120px">
+                    <div
+                      class="item-inner"
+                      ms-attr="{title: @row.operationCode}"
+                    >
+                      {{@row.operationCode}}
+                    </div>
+                  </td>
+                  <td class="content diagnose-name">
+                    <div
+                      class="item-inner"
+                      ms-attr="{title: @row.operationName}"
+                    >
+                      {{@row.operationName}}
+                    </div>
+                  </td>
+                  <td
+                    class="content"
+                    style="width: 50px; cursor: pointer"
+                    ms-on-click="@onRemoveRow($event,index)"
+                  >
+                    <div class="item-inner">
+                      <img src="./del.jpg" style="width: 12px; height: 15px" />
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </td>
+        <td
+          style="
+            width: 50px;
+            vertical-align: top;
+            padding: 10px 0;
+            text-align: center;
+          "
+        >
+          <div class="left-arrow">
+            <img src="./left-arrow.png" />
+          </div>
+        </td>
+        <td>
+          <table class="search-content">
+            <tr>
+              <td class="search-input-prefix">新增</td>
+              <td class="search-input-content">
+                <input
+                  class="search-input"
+                  type="text"
+                  name="name"
+                  ms-on-change="@onChange"
+                  ms-on-input="@onChange"
+                />
+              </td>
+            </tr>
+          </table>
+          <div class="list-content">
+            <table class="list-ul">
+              <tr
+                ms-for="(index,row) in @list"
+                class="row"
+                ms-on-click="@onSelectRow($event,row,index) |stop"
+              >
+                <td class="item left">
+                  <div class="item-inner" ms-attr="{title: @row.operationCode}">
+                    {{@row.operationCode}}
+                  </div>
+                </td>
+                <td class="item right">
+                  <div class="item-inner" ms-attr="{title: @row.operationName}">
+                    {{@row.operationName}}
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="pagination-wrap">
+            <xmp
+              ms-widget="{is:'ms-pager',total:@total,currentPage:@currentPage,onPageClick:@onPageClick}"
+            ></xmp>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

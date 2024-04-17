@@ -16,7 +16,7 @@ require('../../source/bootstrap/bootstrap.min.js')
 
 require('../../source/modules/content/index')
 require('../../source/modules/pager/index')
-require('../../source/modules/popover/index')
+require('../../source/modules/popover5/index')
 require('../../source/modules/popover2/index')
 require('../../source/modules/popover3/index')
 require('../../source/modules/popover4/index')
@@ -119,6 +119,7 @@ var vm = avalon.define({
       ventUsedHCnt: this.dataForm.ventUsedHCnt || '',
       setlMon: this.dataForm.setlMon,
       fixmedinsCode: this.dataForm.fixmedinsCode || '',
+      serialNo: this.serialNo,
     };
 
     var mainOprnCodeList = ''
@@ -140,6 +141,7 @@ var vm = avalon.define({
     othOprnCodeList = othOprnCodeList.substring(0, othOprnCodeList.length - 1)
 
     var str = '{'
+    str += '"serialNo":"' + obj.serialNo + '",'
     str += '"actIptDays":"' + obj.actIptDays + '",'
     str += '"age":"' + obj.age + '",'
     str += '"ageDays":"' + obj.ageDays + '",'
@@ -248,11 +250,9 @@ var vm = avalon.define({
     this.dataForm.othDiagCodeList = othDiagCodeList
   },
   onUpdateMainOperation: function (mainOprnCodeList) {
-    console.log('update mainOperation>>', mainOprnCodeList);
     this.dataForm.mainOprnCodeList = mainOprnCodeList
   },
   onupdateQtss: function (othOprnCodeList) {
-    console.log('update othOprnCodeList>>', othOprnCodeList);
     this.dataForm.othOprnCodeList = othOprnCodeList
   },
   onRest: function () {
@@ -307,6 +307,10 @@ vm.$watch('onReady', function (v) {
       hospitalNo: req.bah,
       inHospitalTime: req.admTime || '-',
       dscgWay: req.lyfs,
+      mainDiagCode: '',
+      othDiagCodeList: [],
+      mainOprnCodeList: [],
+      othOprnCodeList: [],
     }
     that.pageTitle = data.title || '医院DRG/DIP数据精细化治理'
     that.dayPercent = data.dayPercent || 0
