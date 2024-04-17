@@ -3,20 +3,7 @@
     {{ @groupInfo.drgInfo.drgCode || "" }} {{ @groupInfo.drgInfo.drgName || ""
     }}
   </div>
-  <div class="result-progress" id="resultProgress">
-    <div class="outer">
-      <div class="inner" id="resultProgress"></div>
-    </div>
-    <div class="split split-1"></div>
-    <div class="split split-2"></div>
-    <div class="desp">
-      <div class="desp-item low">低倍</div>
-      <div class="desp-item num1">1211212</div>
-      <div class="desp-item normal">正常</div>
-      <div class="desp-item num2">38383</div>
-      <div class="desp-item high">高倍</div>
-    </div>
-  </div>
+  <xmp ms-widget="{is:'ms-progress',processInfo:@processInfo}"></xmp>
   <div class="result-table" id="resultTable">
     <table class="table-esp">
       <tbody>

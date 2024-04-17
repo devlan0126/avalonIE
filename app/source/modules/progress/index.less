@@ -1,0 +1,117 @@
+.progress-container {
+  padding-left: 12px;
+  padding-right: 12px;
+  .posR {
+    position: relative;
+  }
+}
+
+.progress-container .progress-bar {
+  height: 22px;
+  line-height: 22px;
+  background: #ebeef5;
+  border-radius: 12px;
+}
+
+.progress-container .progress-bar .progress-bar-active {
+  width: 0;
+  height: 22px;
+  line-height: 22px;
+  border-radius: 12px;
+}
+
+.progress-container .progress-tipbar {
+  flex-direction: row;
+  border-radius: 12px;
+  padding-top: 8px;
+}
+
+.progress-container .progress-tipbar .progress-item {
+  height: 22px;
+  line-height: 22px;
+  display: inline-block;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-align: center;
+  color: #999999;
+  border-right: 0 solid #fff;
+  width: 100%;
+}
+
+.progress-container .progress-tipbar .progress-item .label {
+  background-color: #2a66bb;
+  padding: 2px 10px;
+  font-size: 12px;
+  border-radius: 10px;
+}
+
+.progress-container .progress-tipbar .progress-item .label1 {
+  background-color: #e4d9d1;
+  color: #976848;
+}
+
+.progress-container .progress-tipbar .progress-item .label2 {
+  background-color: #d4dce3;
+  color: #66819d;
+}
+
+.progress-container .progress-tipbar .progress-item .label3 {
+  background-color: #efd3d0;
+  color: #bf4a43;
+}
+
+.progress-container .progress-tipbar tbody {
+  width: 100%;
+}
+
+.progress-container .progress-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+
+.progress-container .progress-label .progress-item {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  color: #455469;
+  text-align: center;
+  /*height: 22px;
+  line-height: 22px;*/
+}
+
+.progress-container .progress-label .progress-item span.line {
+  width: 1px;
+  height: 10px;
+  background-color: #999999;
+  display: inline-block;
+  line-height: 0;
+  vertical-align: top;
+}
+
+.progress-container .progress-label span.text {
+  min-width: 50px;
+  height: 100%;
+  display: block;
+  line-height: 0;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.progress-container .progress-label .progress-item-c {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 22px;
+  line-height: 22px;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}

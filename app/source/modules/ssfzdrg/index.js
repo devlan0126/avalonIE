@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-04-10 14:53:21
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-16 15:32:18
+ * @LastEditTime: 2024-04-17 11:03:28
  * @FilePath: \avalonIE\app\source\modules\ssfzdrg\index.js
  * @Description: 文档描述
  */
@@ -38,6 +38,11 @@ avalon.component("ms-ssfzdrg", {
             medFeeAmt: 0,// 总费用
         },
         warnMsgList: [],
+        processInfo: {
+            real_short_amount: 0,
+            drg_limit: 0,
+            total_amount: 0,
+        },
         onClick: function ($event) {
         },
         onChange: function ($event) {

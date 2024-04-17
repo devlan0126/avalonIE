@@ -6,8 +6,6 @@ require('../../source/img/warning.png');
 require('../../source/img/row.png');
 require('../../source/img/bjcz-logo.png');
 require('../../source/img/left-arrow.png');
-
-
 require('../../source/js/main.js')
 require('../../source/js/console.js')
 require('../../source/js/fix.js')
@@ -16,6 +14,7 @@ require('../../source/bootstrap/bootstrap.min.js')
 
 require('../../source/modules/content/index')
 require('../../source/modules/pager/index')
+require('../../source/modules/progress/index')
 require('../../source/modules/popover5/index')
 require('../../source/modules/popover2/index')
 require('../../source/modules/popover3/index')
@@ -27,8 +26,6 @@ require('../../source/modules/ssfzdip/index')
 require('../../source/modules/adrg/index')
 require('../../source/modules/mcc/index')
 require('../../source/modules/dfcs/index')
-
-
 
 var vm = avalon.define({
   $id: "native",
@@ -82,6 +79,11 @@ var vm = avalon.define({
   groupInfo: {},
   setlInfo: {},
   warnMsgList: [],
+  processInfo: {
+    real_short_amount: 0,
+    drg_limit: 0,
+    total_amount: 0,
+  },
   tabClick: function ($event, index) {
     var visible = this.tabConfig['tabVisible' + index]
     this.tabConfig.tabVisible1 = false
@@ -119,7 +121,7 @@ var vm = avalon.define({
       ventUsedHCnt: this.dataForm.ventUsedHCnt || '',
       setlMon: this.dataForm.setlMon,
       fixmedinsCode: this.dataForm.fixmedinsCode || '',
-      serialNo: this.serialNo,
+      setlId: this.serialNo,
     };
 
     var mainOprnCodeList = ''
@@ -240,6 +242,11 @@ var vm = avalon.define({
       that.groupInfo = res.data;
       that.setlInfo = encodeGroupInfo(res.data);
       that.warnMsgList = res.data.warnMsgList || [];
+      that.processInfo = {
+        real_short_amount: that.setlInfo.lowAmt || 0,
+        drg_limit: that.setlInfo.highAmt || 0,
+        total_amount: that.dataForm.medFeeAmt || 0,
+      }
     }
     console.log('groupInfo>', that.groupInfo)
   },
@@ -355,6 +362,11 @@ vm.$watch('onReady', function (v) {
     that.groupInfo = res;
     that.setlInfo = encodeGroupInfo(res);
     that.warnMsgList = res.adviceList || [];
+    that.processInfo = {
+      real_short_amount: that.setlInfo.lowAmt || 0,
+      drg_limit: that.setlInfo.highAmt || 0,
+      total_amount: res.medFeeAmt || 0,
+    }
   })
 
   getSysConfig(function (data) {
@@ -503,6 +515,9 @@ function encodeGroupInfo(groupInfo) {
       predictAmt: setlInfo.predictAmt,// 预测费用
       predictProfit: setlInfo.predictProfit,// 预测盈亏
       medFeeAmt: groupInfo.medFeeAmt,// 总费用
+      lowAmt: setlInfo.lowAmt,// 低限金额
+      highAmt: setlInfo.highAmt,// 高限金额
+      medFeeAmt: setlInfo.medFeeAmt
     };
   }
   return {
