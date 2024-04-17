@@ -16,7 +16,8 @@ require('../../source/bootstrap/bootstrap.min.js')
 
 require('../../source/modules/content/index')
 require('../../source/modules/pager/index')
-require('../../source/modules/popover/index')
+require('../../source/modules/progress/index')
+require('../../source/modules/popover5/index')
 require('../../source/modules/popover2/index')
 require('../../source/modules/popover3/index')
 require('../../source/modules/popover4/index')
@@ -65,19 +66,31 @@ var vm = avalon.define({
     medFeeAmt: 0,// 医疗费用
     actIptDays: 0,// 住院天数
     age: 0,
+    ageDays: 0,
+    dscgWay: '',
     insuType: '',
     setlMon: '',
     fixmedinsCode: '',
     ventUsedHCnt: '',
+    nwbBirWt: 0,
     sex: "1",
     serialNo: '',
     hospitalNo: '',
     inHospitalTime: '',
+    mainDiagCode: '',
+    mainOprnCodeList: [],
+    othDiagCodeList: [],
+    othOprnCodeList: [],
   },
   pageTitle: '医院DRG/DIP数据精细化治理',
   groupInfo: {},
   setlInfo: {},
   warnMsgList: [],
+  processInfo: {
+    real_short_amount: 0,
+    drg_limit: 0,
+    total_amount: 0,
+  },
   tabClick: function ($event, index) {
     var visible = this.tabConfig['tabVisible' + index]
     this.tabConfig.tabVisible1 = false
@@ -99,26 +112,23 @@ var vm = avalon.define({
     }, 100)
   },
   getParams: function () {
-    var mainDiagCode = "";
-    var mainOprnCodeList = ['O1', 'O2'];
-    var othDiagCodeList = ['D1', 'D2'];
-    var othOprnCodeList = ['OO1', 'OO2'];
     var obj = {
       actIptDays: this.dataForm.actIptDays,
       age: this.dataForm.age,
       ageDays: this.dataForm.ageDays || 0,
-      dscgWay: this.dataForm.dscgWay || '1',
+      dscgWay: this.dataForm.dscgWay || '',
       insuType: this.dataForm.insuType,
-      mainDiagCode: mainDiagCode,
-      mainOprnCodeList: mainOprnCodeList,
+      mainDiagCode: this.dataForm.mainDiagCode,
+      mainOprnCodeList: this.dataForm.mainOprnCodeList,
       medFeeAmt: this.dataForm.medFeeAmt,
-      nwbBirWt: this.dataForm.nwbBirWt || '1',
-      othDiagCodeList: othDiagCodeList,
-      othOprnCodeList: othOprnCodeList,
+      nwbBirWt: this.dataForm.nwbBirWt || '',
+      othDiagCodeList: this.dataForm.othDiagCodeList,
+      othOprnCodeList: this.dataForm.othOprnCodeList,
       sex: this.dataForm.sex,
-      ventUsedHCnt: this.dataForm.ventUsedHCnt,
+      ventUsedHCnt: this.dataForm.ventUsedHCnt || '',
       setlMon: this.dataForm.setlMon,
-      fixmedinsCode: this.fixmedinsCode || 'H',
+      fixmedinsCode: this.dataForm.fixmedinsCode || '',
+      setlId: this.serialNo,
     };
 
     var mainOprnCodeList = ''
@@ -140,6 +150,7 @@ var vm = avalon.define({
     othOprnCodeList = othOprnCodeList.substring(0, othOprnCodeList.length - 1)
 
     var str = '{'
+    str += '"serialNo":"' + obj.serialNo + '",'
     str += '"actIptDays":"' + obj.actIptDays + '",'
     str += '"age":"' + obj.age + '",'
     str += '"ageDays":"' + obj.ageDays + '",'
@@ -238,24 +249,25 @@ var vm = avalon.define({
       that.groupInfo = res.data;
       that.setlInfo = encodeGroupInfo(res.data);
       that.warnMsgList = res.data.warnMsgList || [];
+      that.processInfo = {
+        real_short_amount: that.setlInfo.lowAmt || 0,
+        drg_limit: that.setlInfo.highAmt || 0,
+        total_amount: that.dataForm.medFeeAmt || 0,
+      }
     }
     console.log('groupInfo>', that.groupInfo)
   },
-  onUpdateMainDiagnose: function (data) {
-    console.log('onUpdateMainDiagnose>>', data);
-    this.mainDiagnose = data
+  onUpdateMainDiagnose: function (mainDiagCode) {
+    this.dataForm.mainDiagCode = mainDiagCode
   },
-  onUpdateQtzd: function (qtzd) {
-    console.log('qtzd>>', qtzd);
-    this.qtss = qtzd
+  onUpdateQtzd: function (othDiagCodeList) {
+    this.dataForm.othDiagCodeList = othDiagCodeList
   },
-  onUpdateMainOperation: function (data) {
-    console.log('mainOperation>>', data);
-    this.mainOperation = data
+  onUpdateMainOperation: function (mainOprnCodeList) {
+    this.dataForm.mainOprnCodeList = mainOprnCodeList
   },
-  onupdateQtss: function (data) {
-    console.log('mainOperation>>', data);
-    this.qtss = data
+  onupdateQtss: function (othOprnCodeList) {
+    this.dataForm.othOprnCodeList = othOprnCodeList
   },
   onRest: function () {
     window.location.reload()
@@ -298,8 +310,8 @@ vm.$watch('onReady', function (v) {
     var res = data.res
     that.dataForm = {
       name: req.xm,
-      medFeeAmt: req.zfy,// 医疗费用
-      actIptDays: req.sjzyts,// 住院天数
+      medFeeAmt: req.zfy,
+      actIptDays: req.sjzyts,
       age: req.nl,
       insuType: req.insurTypeId,
       setlMon: req.settlTime,
@@ -307,38 +319,61 @@ vm.$watch('onReady', function (v) {
       sex: req.xb,
       serialNo: that.serialNo,
       hospitalNo: req.bah,
-      inHospitalTime: req.admTime || '-'
+      inHospitalTime: req.admTime || '-',
+      dscgWay: req.lyfs,
+      mainDiagCode: '',
+      othDiagCodeList: [],
+      mainOprnCodeList: [],
+      othOprnCodeList: [],
     }
     that.pageTitle = data.title || '医院DRG/DIP数据精细化治理'
     that.dayPercent = data.dayPercent || 0
     that.feePercent = data.feePercent || 0
     that.mainDiagnose = req.jbdm + ',' + req.zyzd
+    that.dataForm.mainDiagCode = req.jbdm
+
     var qtzdList = req.qtzdList || []
+    var othDiagCodeList = []
     var qtzdTemp = []
     for (var i = 0; i < qtzdList.length; i++) {
       qtzdTemp.push(qtzdList[i].qtzddm + ',' + qtzdList[i].qtzdmc)
+      othDiagCodeList.push(qtzdList[i].qtzddm)
     }
     that.qtzd = qtzdTemp.join(' | ')
+    that.dataForm.othDiagCodeList = othDiagCodeList
 
     var zyssjczList = req.zyssjczList || []
+    var mainOprnCodeList = []
     var zyssTemp = []
 
     for (var i = 0; i < zyssjczList.length; i++) {
       zyssTemp.push(zyssjczList[i].ssjczbm + ',' + zyssjczList[i].ssjczmc)
+      mainOprnCodeList.push(zyssjczList[i].ssjczbm)
     }
     that.mainOperation = zyssTemp.join(' | ')
+    that.dataForm.mainOprnCodeList = mainOprnCodeList
 
     var ssjczList = req.ssjczList || []
+    var othOprnCodeList = []
     var ssTemp = []
     for (var i = 0; i < ssjczList.length; i++) {
       ssTemp.push(ssjczList[i].ssjczbm + ',' + ssjczList[i].ssjczmc)
+      othOprnCodeList.push(ssjczList[i].ssjczbm)
     }
     that.qtss = ssTemp.join(' | ')
+    that.dataForm.othOprnCodeList = othOprnCodeList
+
+    console.log('that.dataForm>', that.dataForm);
 
     res.medFeeAmt = req.zfy;
     that.groupInfo = res;
     that.setlInfo = encodeGroupInfo(res);
     that.warnMsgList = res.adviceList || [];
+    that.processInfo = {
+      real_short_amount: that.setlInfo.lowAmt || 0,
+      drg_limit: that.setlInfo.highAmt || 0,
+      total_amount: res.medFeeAmt || 0,
+    }
   })
 
   getSysConfig(function (data) {
@@ -487,6 +522,8 @@ function encodeGroupInfo(groupInfo) {
       predictAmt: setlInfo.predictAmt,// 预测费用
       predictProfit: setlInfo.predictProfit,// 预测盈亏
       medFeeAmt: groupInfo.medFeeAmt,// 总费用
+      lowAmt: setlInfo.lowAmt,// 低限金额
+      highAmt: setlInfo.highAmt,// 高限金额
     };
   }
   return {
@@ -501,5 +538,7 @@ function encodeGroupInfo(groupInfo) {
     predictAmt: '0',// 预测费用
     predictProfit: 0,// 预测盈亏
     medFeeAmt: 0,// 总费用
+    lowAmt: 0,// 低限金额
+    highAmt: 0,// 高限金额
   };
 }

@@ -1,11 +1,4 @@
-/*
- * @Date: 2024-03-09 13:02:16
- * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-17 10:16:24
- * @FilePath: \avalonIE\app\source\modules\popover4\index.js
- * @Description: 文档描述
- */
-avalon.component("ms-pop4", {
+avalon.component("ms-pop5", {
     template: require("./template.html"),
     defaults: {
         show: false,
@@ -21,13 +14,12 @@ avalon.component("ms-pop4", {
         onUpdateSelect: avalon.noop,
         onClick: function ($event) {
             this.show = true;
-            this.source = window.lonsDiagnoses
+            this.source = window.lonsOperations
         },
         onChange: function ($event) {
             var that = this
             clearTimeout(that.timer);
             that.timer = setTimeout(function () {
-                that.resetTableData()
                 var srcElement = $event.srcElement;
                 if (srcElement) {
                     var value = srcElement.value;
@@ -35,21 +27,25 @@ avalon.component("ms-pop4", {
                     if (value) {
                         that.currentPage = 1;
                         that.requestList()
+                    } else {
+                        that.list = []
                     }
+                } else {
+                    that.list = []
                 }
             }, 1000)
         },
         requestList: function () {
             var that = this
             $.ajax({
-                url: '/hprs/diagnose/pageList',
+                url: '/hprs/operation/pageList',
                 type: 'POST',
                 headers: {
                     Accept: "application/json",
                     "Content-Type": "application/json",
                 },
                 dataType: 'json',
-                data: '{"pageNum":' + this.currentPage + ',"pageSize":10,"diagnose":"' + this.searchValue + '"}',
+                data: '{"pageNum":' + this.currentPage + ',"pageSize":10,"operation":"' + this.searchValue + '"}',
                 success: function (res) {
                     if (res.code === 200) {
                         that.list = res.data.list;
@@ -57,12 +53,6 @@ avalon.component("ms-pop4", {
                     }
                 }
             });
-        },
-        resetTableData: function () {
-            this.list = []
-            this.total = 0
-            this.currentPage = 1
-            this.searchValue = ""
         },
         onPageClick: function ($event, page) {
             console.log("onPageClick:", page)
@@ -83,7 +73,7 @@ avalon.component("ms-pop4", {
             if (this.selection.length > 0) {
                 var temp = []
                 for (var i = 0; i < this.selection.length; i++) {
-                    temp.push(this.selection[i].diagnoseCode + ',' + this.selection[i].diagnoseName)
+                    temp.push(this.selection[i].operationCode + ',' + this.selection[i].operationName)
                 }
                 this.data = temp.join(' | ');
             } else {
@@ -92,11 +82,11 @@ avalon.component("ms-pop4", {
             this.updateValue()
         },
         updateValue: function () {
-            var diagnoseCodes = []
+            var operationCodes = []
             for (var i = 0; i < this.selection.length; i++) {
-                diagnoseCodes.push(this.selection[i].diagnoseCode)
+                operationCodes.push(this.selection[i].operationCode)
             }
-            return this.onUpdateSelect(diagnoseCodes)
+            return this.onUpdateSelect(operationCodes)
         },
         onInit: function () {
             var that = this;
@@ -118,7 +108,7 @@ avalon.component("ms-pop4", {
                 })
         },
         onReady: function (v) {
-            var $inputContent = $('.ms-pop4 .input-content')
+            var $inputContent = $('.ms-pop3 .input-content')
             var width = $inputContent.width()
             $inputContent.css("width", width + 'px');
         },

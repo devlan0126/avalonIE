@@ -38,6 +38,11 @@ avalon.component("ms-ssfzdrg", {
             medFeeAmt: 0,// 总费用
         },
         warnMsgList: [],
+        processInfo: {
+            real_short_amount: 0,
+            drg_limit: 0,
+            total_amount: 0,
+        },
         onClick: function ($event) {
         },
         onChange: function ($event) {

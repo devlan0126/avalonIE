@@ -83,8 +83,9 @@
 
       <div class="center">
         <i class="icon-warning" style="color: #c00000; margin-left: 10px"></i>
-        医疗费用为DRG付费标准的<span id="feePec" ms-class="{'fee-pec-warn': @feePercent > 100}">{{@feePercent}}%</span
-        >，住院天数为DRG天数标准的<span id="daysPec" ms-class="{'day-pec-warn': @dayPercent > 0}">{{@dayPercent}}%</span>
+        医疗费用为DRG/DIP费用标准的<span id="feePec" ms-class="{'fee-pec-warn': @feePercent > 100}">{{@feePercent}}%</span
+        >，按照当前诊疗及费用预测盈亏为<span id="daysPec" ms-class="{'day-pec-warn': @setlInfo.predictProfit < 0}">{{@setlInfo.predictProfit}}元</span>
+        ；请根据患者病情进行完整治疗，避免分解出院！
       </div>
       <table class="bottom full-width">
         <tr class="center-row">
@@ -124,7 +125,7 @@
                 </td>
                 <td>
                   <xmp
-                    ms-widget="{is:'ms-pop',data:@mainOperation,zIndex:10,onUpdateSelect:@onUpdateMainOperation}"
+                    ms-widget="{is:'ms-pop5',data:@mainOperation,zIndex:10,onUpdateSelect:@onUpdateMainOperation}"
                   ></xmp>
                 </td>
               </tr>
@@ -274,7 +275,7 @@
               <div slot="content" class="ui-tabs-panel-content">
                 <xmp
                   ms-visible="@clrWay === '40'"
-                  ms-widget="{is:'ms-ssfzdrg',groupInfo:@groupInfo,setlInfo:@setlInfo,warnMsgList:@warnMsgList}"
+                  ms-widget="{is:'ms-ssfzdrg',groupInfo:@groupInfo,setlInfo:@setlInfo,warnMsgList:@warnMsgList,processInfo:@processInfo}"
                 ></xmp>
                 <xmp
                   ms-visible="@clrWay === '50'"
