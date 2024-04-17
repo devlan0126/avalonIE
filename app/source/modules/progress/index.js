@@ -9,7 +9,6 @@ avalon.component('ms-progress', {
         onInit: function (vm, el) {
             var that = this
             that.$watch('processInfo', function () {
-                console.log('**********************************************processInfo is changed', that.processInfo);
                 if (that.processInfo) {
                     onProgressHandle(
                         that.processInfo,
@@ -59,9 +58,12 @@ function onProgressHandle(drgGroupInfo, dom) {
     var percent = Math.round(percentVal * 100);
 
     var colors = getColor(percent);
-    console.log('percent>>', percent);
     dom.style.width = percent + '%'
-    dom.style.background = 'linear-gradient(to right,' + colors[0] + ', ' + colors[1] + ')'
+    if ([6, 7, 8, 9].indexOf(window.IEVersion) > -1) {
+        dom.style.background = colors[1]
+    } else {
+        dom.style.background = 'linear-gradient(to right,' + colors[0] + ', ' + colors[1] + ')'
+    }
     dom.style.filter = 'progid:DXImageTransform.Microsoft.gradient(GradientType=1, startColorstr=' + colors[0] + ', endColorstr=' + colors[1] + ')'
     dom.style['-ms-filter'] = '"progid:DXImageTransform.Microsoft.gradient (GradientType=1, startColorstr=' + colors[0] + ', endColorstr=' + colors[1] + ')"'
 }
