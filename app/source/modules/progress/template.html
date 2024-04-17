@@ -13,21 +13,32 @@
   </div>
   <div class="posR">
     <div class="el-row progress-tipbar" style="width: 100%">
-      <div class="el-col el-col-8">
-        <div class="progress-item">
-          <span class="label label1">低倍</span>
-        </div>
-      </div>
-      <div class="el-col el-col-8">
-        <div class="progress-item">
-          <span class="label label2">正常</span>
-        </div>
-      </div>
-      <div class="el-col el-col-8">
-        <div class="progress-item" style="border-right: 0">
-          <span class="label label3">高倍</span>
-        </div>
-      </div>
+      <table style="width: 100%">
+        <tr>
+          <td class="progress-item" style="width: 33%; text-align: center">
+            <span class="label label1">低倍</span>
+          </td>
+          <td class="progress-item" style="width: 33%; text-align: center">
+            <span class="label label2">正常</span>
+          </td>
+          <td class="progress-item" style="width: 33%; text-align: center">
+            <span class="label label3">高倍</span>
+          </td>
+        </tr>
+      </table>
+      <table  style="width: 100%;position: absolute;top: 0px;">
+        <tr>
+          <td class="progress-item" style="width: 50%; text-align: center">
+            <span class="line"></span>
+            <span class="text">{{ @processInfo.real_short_amount || "" }}</span>
+          </td>
+          <td class="progress-item" style="width: 50%; text-align: center">
+            <span class="line"></span>
+            <span class="text">{{ @processInfo.drg_limit ||"" }}</span>
+          </td>
+        </tr>
+      </table>
+<!-- 
       <div class="progress-label">
         <div class="progress-item progress-item-l">
           <span class="line"></span>
@@ -49,7 +60,7 @@
               >{{ @processInfo.drg_limit ||"" }}</span>
           </span>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
