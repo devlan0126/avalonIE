@@ -244,18 +244,22 @@ var vm = avalon.define({
 });
 
 vm.$watch('onReady', function (v) {
-  if (window.clientWidth < 1367) {
-    // 1366*768
-    this.pageClass = 'w-1366'
-  } else if (window.clientWidth < 1441) {
-    // 1440*900
-    this.pageClass = 'w-1440'
-  } else if (window.clientWidth < 1601) {
-    // 1600*1024
-    this.pageClass = 'w-1600'
-  } else if (window.clientWidth < 1921) {
-    // 1920*1080
+  var clientWidth = document.documentElement.clientWidth;
+  // 分辨率大于等于1680，大部分为1920的情况下，调用此css
+  if (clientWidth >= 1680) {
     this.pageClass = 'w-1920'
+  }
+  // 分辨率再在1600-1680的情况下，调用此css
+  else if (clientWidth >= 1600) {
+    this.pageClass = 'w-1600'
+  }
+  // 分辨率再在1366-1600的情况下，调用此css
+  else if (clientWidth >= 1366) {
+    this.pageClass = 'w-1366'
+  }
+  // 分辨率小于1366的情况下，调用此css
+  else {
+    this.pageClass = 'w-mini'
   }
 
   var that = this

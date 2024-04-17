@@ -1,1 +1,31 @@
-body {}
+.w-mini {
+    font-size: 12px;
+}
+
+.w-mini .top .row-item,
+.w-mini.top .row-item .item-content {
+    font-size: 12px;
+}
+
+.w-mini .page-center .center {
+    font-size: 13px;
+}
+
+.w-mini.action-btns .reset-btn,
+.w-mini .action-btns .submit-btn {
+    font-size: 12px;
+    padding: 3px 10px;
+}
+
+.w-mini .ms-pop .pop-input {
+    font-size: 12px;
+    padding: 2px 0;
+}
+
+.w-mini #pageTitle {
+    font-size: 16px;
+}
+
+.w-mini .page-center .bottom .center-row td {
+    height: 30px;
+}
