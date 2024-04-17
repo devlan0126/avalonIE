@@ -150,7 +150,7 @@ var vm = avalon.define({
     othOprnCodeList = othOprnCodeList.substring(0, othOprnCodeList.length - 1)
 
     var str = '{'
-    str += '"serialNo":"' + obj.serialNo + '",'
+    str += '"setlId":"' + obj.setlId + '",'
     str += '"actIptDays":"' + obj.actIptDays + '",'
     str += '"age":"' + obj.age + '",'
     str += '"ageDays":"' + obj.ageDays + '",'
@@ -180,82 +180,22 @@ var vm = avalon.define({
       },
       data: that.getParams(),
       dataType: 'json',
-      success: function (response) {
-        if (response.code === 200) {
+      success: function (res) {
+        if (res.code === 200) {
+          if (res.code === 200) {
+            res.data.medFeeAmt = that.dataForm.medFeeAmt;
+            that.groupInfo = res.data;
+            that.setlInfo = encodeGroupInfo(res.data);
+            that.warnMsgList = res.data.warnMsgList || [];
+            that.processInfo = {
+              real_short_amount: that.setlInfo.lowAmt || 0,
+              drg_limit: that.setlInfo.highAmt || 0,
+              total_amount: that.dataForm.medFeeAmt || 0,
+            }
+          }
         }
       }
     });
-    var res = {
-      "msg": "成功",
-      "code": 200,
-      "data": {
-        "gid": "c5eabfe6-0db9-407b-9101-f1468952190a",
-        "code": 200,
-        "fine": true,
-        "message": null,
-        "setlId": null,
-        "fixmedinsCode": "H13068200954",
-        "clrOptins": "130682",
-        "setlMon": "202404",
-        "insuType": "390",
-        "actIptDays": 12,
-        "setlAmt": 66789,
-        "drgInfo": {
-          "fine": true,
-          "message": "",
-          "drgCode": "ES35",
-          "drgName": "呼吸系统感染/炎症，不伴并发症或合并症",
-          "adrg": "ES3",
-          "adrgName": "呼吸系统感染/炎症",
-          "ccmcc": "NO",
-          "cod": "100",
-          "codd": "内科组",
-          "mdc": "MDCE",
-          "mdcName": "呼吸系统疾病及功能障碍",
-          "ccList": "K91.833,胃肠吻合口水肿|E11.600x015+M14.2*,2型糖尿病性肩关节周围炎",
-          "mccList": "K91.833,胃肠吻合口水肿|E11.600x015+M14.3"
-        },
-        "dipInfo": null,
-        "setlInfo": {
-          "fine": true,
-          "message": null,
-          "caseType": "高限病例",
-          "feeRatio": null,
-          "grpStdAmt": 0.00,
-          "stdDiffAmt": 66789.00,
-          "dayDiff": null,
-          "predictProfit": -63848.56,
-          "predictAmt": 2940.44,
-          "predictPointValue": 0.4527,
-          "pointValue": 6495.3400,
-          "basePointScore": 0.4527,
-          "grpAvgAmt": 0.00,
-          "adjustmentFactor": 1.0000,
-          "stdGrpDays": 0.00,
-          "lowAmt": 599.85,
-          "highAmt": 4498.87,
-          "msg": null
-        },
-        "mccOutcome": "K91.833",
-        "ccOutcome": "K91.833,胃肠吻合口水肿|E11.600x015+M14.2*,2型糖尿病性肩关节周围炎",
-        "icd10Adrg": "ES3",
-        "icd9Adrg": "",
-        "warnMsgList": ['主诊断不满足分组要求，请修订主诊断；', '主诊断与主手术不匹配，入歧义(QY)病组，建议核查修订主诊断或主手术；', '高倍率病例，费用较高，需合理控费或核对诊疗信息准确性;']
-      }
-    }
-
-    if (res.code === 200) {
-      res.data.medFeeAmt = that.dataForm.medFeeAmt;
-      that.groupInfo = res.data;
-      that.setlInfo = encodeGroupInfo(res.data);
-      that.warnMsgList = res.data.warnMsgList || [];
-      that.processInfo = {
-        real_short_amount: that.setlInfo.lowAmt || 0,
-        drg_limit: that.setlInfo.highAmt || 0,
-        total_amount: that.dataForm.medFeeAmt || 0,
-      }
-    }
-    console.log('groupInfo>', that.groupInfo)
   },
   onUpdateMainDiagnose: function (mainDiagCode) {
     this.dataForm.mainDiagCode = mainDiagCode

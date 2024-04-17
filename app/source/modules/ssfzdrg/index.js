@@ -15,13 +15,13 @@ avalon.component("ms-ssfzdrg", {
         zIndex: 1,
         timer: {},
         groupInfo: {
-            mccOutcome: '',
-            ccOutcome: '',
-            icd10Adrg: '',
-            icd9Adrg: '',
             drgInfo: {
                 drgCode: '',
-                drgName: ''
+                drgName: '',
+                mccOutcome: '',
+                ccOutcome: '',
+                icd10Adrg: '',
+                icd9Adrg: '',
             }
         },
         setlInfo: {
