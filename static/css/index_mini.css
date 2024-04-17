@@ -29,3 +29,7 @@
 .w-mini .page-center .bottom .center-row td {
     height: 30px;
 }
+
+.w-mini .page-bottom #tabs-1 .result-grp {
+    font-size: 14px;
+}
