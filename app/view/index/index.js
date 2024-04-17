@@ -88,7 +88,7 @@ var vm = avalon.define({
     total_amount: 0,
   },
   tabClick: function ($event, index) {
-    var visible = this.tabConfig['tabVisible' + index]
+    var that = this
     this.tabConfig.tabVisible1 = false
     this.tabConfig.tabVisible2 = false
     this.tabConfig.tabVisible3 = false
@@ -99,6 +99,9 @@ var vm = avalon.define({
     this.tabConfig['tabVisible' + index] = true
     setTimeout(function () {
       setLargeBtnHeight()
+      if (index == 2) {
+        that.grpAdvice()
+      }
     }, 100)
   },
   enlarge: function () {
@@ -122,7 +125,7 @@ var vm = avalon.define({
       othOprnCodeList: this.dataForm.othOprnCodeList,
       sex: this.dataForm.sex,
       ventUsedHCnt: this.dataForm.ventUsedHCnt || '',
-      setlMon: this.dataForm.setlMon,
+      setlMon: this.dataForm.setlMon || '',
       fixmedinsCode: this.dataForm.fixmedinsCode || '',
       setlId: this.serialNo,
     };
@@ -204,6 +207,24 @@ var vm = avalon.define({
   },
   onupdateQtss: function (othOprnCodeList) {
     this.dataForm.othOprnCodeList = othOprnCodeList
+  },
+  grpAdvice: function () {
+    var that = this;
+    $.ajax({
+      url: '/hprs/sim/grpAdvice',
+      type: 'POST',
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      dataType: 'json',
+      data: this.getParams(),
+      success: function (res) {
+        if (res.code === 200) {
+          console.log('getAdvice>', res);
+        }
+      }
+    });
   },
   onRest: function () {
     window.location.reload()

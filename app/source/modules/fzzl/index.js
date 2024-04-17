@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-16 13:26:06
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-15 11:51:18
+ * @LastEditTime: 2024-04-17 16:13:35
  * @FilePath: \avalonIE\app\source\modules\fzzl\index.js
  * @Description: 文档描述
  */
@@ -76,30 +76,11 @@ avalon.component("ms-fzzl", {
         onInit: function () {
         },
         onReady: function (v) {
-            this.requestList()
         },
         onViewChange: function (v) {
         },
         onDispose: function (v) {
             console.log("onDispose:", v);
         },
-        requestList: function () {
-            var that = this;
-            $.ajax({
-                url: '/hprs/sim/grpAdvice',
-                type: 'POST',
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json",
-                },
-                dataType: 'json',
-                data: 'ver=CHS628&pageNum=' + that.diagCurrentPage + '&pageSize=10&data=' + that.searchDiagValue,
-                success: function (res) {
-                    if (res.code === 200) {
-                        that.list = res.data
-                    }
-                }
-            });
-        }
     },
 });

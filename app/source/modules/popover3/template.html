@@ -5,7 +5,7 @@
   <div class="pop-content" ms-visible="@show">
     <table style="width: 100%; margin-top: 10px">
       <tr>
-        <td style="width: 50%">
+        <td>
           <div class="left-table-wrap">
             <table class="left-table">
               <thead>
@@ -18,7 +18,7 @@
               </thead>
               <tbody>
                 <tr ms-for="(index,row) in @selection">
-                  <td class="title" style="width: 50px">
+                  <td class="title index" style="width: 50px">
                     <div class="item-inner">{{@index+1}}</div>
                   </td>
                   <td class="content diagnose-code" style="width: 120px">
@@ -38,7 +38,7 @@
                     </div>
                   </td>
                   <td
-                    class="content"
+                    class="content action"
                     style="width: 50px; cursor: pointer"
                     ms-on-click="@onRemoveRow($event,index)"
                   >
@@ -63,7 +63,7 @@
             <img src="./left-arrow.png" />
           </div>
         </td>
-        <td>
+        <td style="width: 400px">
           <table class="search-content">
             <tr>
               <td class="search-input-prefix">新增</td>

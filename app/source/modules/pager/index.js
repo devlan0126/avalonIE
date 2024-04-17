@@ -13,7 +13,7 @@ avalon.component("ms-pager", {
             return disabled
         },
         $buttons: {},
-        showPages: 5,
+        showPages: 3,
         pages: [],
         totalPages: 0,
         currentPage: 1,
