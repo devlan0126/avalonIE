@@ -6,8 +6,6 @@ require('../../source/img/warning.png');
 require('../../source/img/row.png');
 require('../../source/img/bjcz-logo.png');
 require('../../source/img/left-arrow.png');
-
-
 require('../../source/js/main.js')
 require('../../source/js/console.js')
 require('../../source/js/fix.js')
@@ -28,8 +26,6 @@ require('../../source/modules/ssfzdip/index')
 require('../../source/modules/adrg/index')
 require('../../source/modules/mcc/index')
 require('../../source/modules/dfcs/index')
-
-
 
 var vm = avalon.define({
   $id: "native",
