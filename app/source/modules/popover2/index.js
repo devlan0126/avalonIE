@@ -93,6 +93,9 @@ avalon.component("ms-pop2", {
                 })
         },
         onReady: function (v) {
+            var $inputContent = $('.ms-pop2 .input-content')
+            var width = $inputContent.width()
+            $inputContent.css("width", width + 'px');
         },
         onViewChange: function (v) {
         },

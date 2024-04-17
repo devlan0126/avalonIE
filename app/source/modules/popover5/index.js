@@ -108,7 +108,7 @@ avalon.component("ms-pop5", {
                 })
         },
         onReady: function (v) {
-            var $inputContent = $('.ms-pop3 .input-content')
+            var $inputContent = $('.ms-pop5 .input-content')
             var width = $inputContent.width()
             $inputContent.css("width", width + 'px');
         },
