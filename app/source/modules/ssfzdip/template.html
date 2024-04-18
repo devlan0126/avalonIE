@@ -1,16 +1,20 @@
 <div class="ssfzdip-template">
-  <div class="result-grp" id="resultGrp">DIP</div>
-  <div class="result-progress" id="resultProgress">
-    <div class="split split-1"></div>
-    <div class="split split-2"></div>
-    <div class="desp">
-      <div class="desp-item low">低倍</div>
-      <div class="desp-item num1">1211212</div>
-      <div class="desp-item normal">正常</div>
-      <div class="desp-item num2">38383</div>
-      <div class="desp-item high">高倍</div>
+  <div class="result-grp" id="resultGrp">
+    <span>
+      <span>诊断信息：</span>{{ @groupInfo.dipInfo.diagCode  }} {{ @groupInfo.dipInfo.diagName ||
+      "-" }}；
+    </span>
+    <span>
+      <span>手术信息：</span> {{ @groupInfo.dipInfo.oprnGrpCode  }} {{
+      @groupInfo.dipInfo.oprnGrpName   }}；
+    </span>
+    <div>
+      <span ms-visible="@groupInfo.dipInfo.asstListItemCode">
+        <span>辅助目录：</span>{{ @groupInfo.dipInfo.asstListItemName   }}
+      </span>
     </div>
   </div>
+  <xmp ms-widget="{is:'ms-progress',processInfo:@processInfo}"></xmp>
   <div class="result-table" id="resultTable">
     <table class="table-esp">
       <tbody>
@@ -18,19 +22,19 @@
           <td>
             <span class="item">
               <span class="item-title">病组均费：</span>
-              <span class="item-val">11.44</span>
+              <span class="item-val">{{@setlInfo.grpAvgAmt || "0"}}</span>
             </span>
           </td>
           <td>
             <span class="item">
-              <span class="item-title">基准点数：</span>
-              <span class="item-val">11.44</span>
+              <span class="item-title">病种分值：</span>
+              <span class="item-val">{{@setlInfo.score || "0"}}</span>
             </span>
           </td>
           <td>
             <span class="item">
               <span class="item-title">病例类型：</span>
-              <span class="item-val">11.44</span>
+              <span class="item-val">{{@setlInfo.caseType || "-"}}</span>
             </span>
           </td>
           <td style="background-color: rgb(206, 162, 154); text-align: center">
@@ -44,25 +48,26 @@
           <td>
             <span class="item">
               <span class="item-title">费用比例：</span>
-              <span class="item-val">11.44</span>
+              <span class="item-val">{{@setlInfo.feeRatio || "-"}}</span>
             </span>
           </td>
           <td>
             <span class="item">
               <span class="item-title">调整系数：</span>
-              <span class="item-val">11.44</span>
+              <span class="item-val"
+                >{{@setlInfo.adjustmentFactor || "-"}}</span>
             </span>
           </td>
           <td>
             <span class="item">
-              <span class="item-title">预测点数：</span>
-              <span class="item-val">11.44</span>
+              <span class="item-title">预测分值：</span>
+              <span class="item-val">{{@setlInfo.yhds || "-"}}</span>
             </span>
           </td>
-          <td rowspan="2" style="text-align: center; vertical-align: middle">
+          <td rowspan="3" style="text-align: center; vertical-align: middle">
             <span class="item">
               <span class="item-title"> </span>
-              <span class="item-val">11.44</span>
+              <span class="item-val">{{@setlInfo.predictProfit || "-"}}</span>
             </span>
           </td>
         </tr>
@@ -70,19 +75,19 @@
           <td>
             <span class="item">
               <span class="item-title">标准差额：</span>
-              <span class="item-val">11.44</span>
+              <span class="item-val">{{@setlInfo.stdDiffAmt || "-"}}</span>
             </span>
           </td>
           <td>
             <span class="item">
               <span class="item-title">费用标准：</span>
-              <span class="item-val">11.44</span>
+              <span class="item-val">{{@setlInfo.grpStdAmt || "-"}}</span>
             </span>
           </td>
           <td>
             <span class="item">
               <span class="item-title">预测费用：</span>
-              <span class="item-val">11.44</span>
+              <span class="item-val">{{@setlInfo.predictAmt || "-"}}</span>
             </span>
           </td>
         </tr>
