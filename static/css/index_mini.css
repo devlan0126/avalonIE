@@ -11,7 +11,7 @@
     font-size: 13px;
 }
 
-.w-mini.action-btns .reset-btn,
+.w-mini .action-btns .reset-btn,
 .w-mini .action-btns .submit-btn {
     font-size: 12px;
     padding: 3px 10px;
@@ -44,4 +44,18 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     white-space: unset !important;
+}
+
+.w-mini .page-bottom #tabs-1 .result-table .table-esp td {
+    padding: 5px 10px
+}
+
+.w-mini .ssfzdrg-template #ltTable .item-inner.left {
+    height: 26px;
+    line-height: 26px;
+}
+
+.w-mini .ssfzdrg-template #ltTable .item-inner.center {
+    height: 24px;
+    line-height: 24px;
 }

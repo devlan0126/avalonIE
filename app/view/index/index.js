@@ -268,6 +268,9 @@ vm.$watch('onReady', function (v) {
     this.pageClass = 'w-mini'
   }
 
+  var body = document.getElementsByTagName('body')
+  body[0].classList.add(this.pageClass)
+
   var that = this
   that.clrWay = getUrlParam('clrWay') || '40';
   that.serialNo = getUrlParam('serialNo') || 'ZY020000667561'
