@@ -1,16 +1,16 @@
 <div class="ssfzdip-template">
   <div class="result-grp" id="resultGrp">
     <span>
-      <span>诊断信息：</span>{{ @groupInfo.dipInfo.diagCode  }} {{ @groupInfo.dipInfo.diagName ||
-      "-" }}；
+      <span>诊断信息：</span>{{ groupInfo.dipInfo.diagCode }} {{
+      groupInfo.dipInfo.diagName || "-" }}；
     </span>
     <span>
-      <span>手术信息：</span> {{ @groupInfo.dipInfo.oprnGrpCode  }} {{
-      @groupInfo.dipInfo.oprnGrpName   }}；
+      <span>手术信息：</span> {{ groupInfo.dipInfo.oprnGrpCode }} {{
+      groupInfo.dipInfo.oprnGrpName }}；
     </span>
     <div>
       <span ms-visible="@groupInfo.dipInfo.asstListItemCode">
-        <span>辅助目录：</span>{{ @groupInfo.dipInfo.asstListItemName   }}
+        <span>辅助目录：</span>{{ groupInfo.dipInfo.asstListItemName }}
       </span>
     </div>
   </div>
