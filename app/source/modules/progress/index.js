@@ -7,15 +7,6 @@ avalon.component('ms-progress', {
             total_amount: 0,
         },
         onInit: function (vm, el) {
-            var that = this
-            that.$watch('processInfo', function () {
-                if (that.processInfo) {
-                    onProgressHandle(
-                        that.processInfo,
-                        document.getElementById('progressBarActive')
-                    );
-                }
-            })
         },
         onReady: function () {
         },

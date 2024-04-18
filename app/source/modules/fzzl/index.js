@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-16 13:26:06
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-17 16:13:35
+ * @LastEditTime: 2024-04-18 17:51:01
  * @FilePath: \avalonIE\app\source\modules\fzzl\index.js
  * @Description: 文档描述
  */
@@ -13,19 +13,19 @@ avalon.component("ms-fzzl", {
         columns: [
             {
                 label: "主诊断编码",
-                prop: "主诊断编码",
+                prop: "diagCode",
             },
             {
                 label: "主诊断名称",
-                prop: "主诊断名称",
+                prop: "diagName",
             },
             {
                 label: "主手术编码",
-                prop: "主手术编码",
+                prop: "oprnCode",
             },
             {
                 label: "主手术名称",
-                prop: "主手术编码",
+                prop: "oprnName",
             },
             {
                 label: "DRG编码",
@@ -33,43 +33,43 @@ avalon.component("ms-fzzl", {
             },
             {
                 label: "DRG名称",
-                prop: "主手术编码",
+                prop: "drgCode",
             },
             {
                 label: "DRG类型",
-                prop: "主手术编码",
+                prop: "drgName",
             },
             {
                 label: "病组均费",
-                prop: "主手术编码",
+                prop: "avgFee",
             },
             {
                 label: "基准点数",
-                prop: "主手术编码",
+                prop: "score",
             },
             {
                 label: "调整系数",
-                prop: "主手术编码",
+                prop: "adjFactor",
             },
             {
                 label: "病例类型",
-                prop: "主手术编码",
+                prop: "grpType",
             },
             {
                 label: "预测点数",
-                prop: "主手术编码",
+                prop: "predictPoint",
             },
             {
                 label: "预测费用",
-                prop: "主手术编码",
+                prop: "predictAmt",
             },
             {
                 label: "预测盈亏",
-                prop: "主手术编码",
+                prop: "profitAmt",
             },
             {
                 label: "治理提升",
-                prop: "主手术编码",
+                prop: "advice",
             },
         ],
 
