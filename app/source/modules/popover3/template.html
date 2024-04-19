@@ -3,9 +3,9 @@
     <div class="input-content" ms-attr="{title: @data}">{{@data}}</div>
   </div>
   <div class="pop-content" ms-visible="@show">
-    <table style="width: 100%; margin-top: 10px">
+    <table class="two-side-table">
       <tr>
-        <td>
+        <td class="two-side-table-td">
           <div class="left-table-wrap">
             <table class="left-table">
               <thead>
@@ -51,19 +51,12 @@
             </table>
           </div>
         </td>
-        <td
-          style="
-            width: 50px;
-            vertical-align: top;
-            padding: 10px 0;
-            text-align: center;
-          "
-        >
+        <td class="arrow-td">
           <div class="left-arrow">
             <img src="./left-arrow.png" />
           </div>
         </td>
-        <td style="width: 400px">
+        <td class="two-side-table-td">
           <table class="search-content">
             <tr>
               <td class="search-input-prefix">新增</td>

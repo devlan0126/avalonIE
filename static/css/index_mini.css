@@ -31,6 +31,15 @@
     height: 30px;
 }
 
+.w-mini .page-center .bottom .pop-content .search-content td {
+    height: 30px;
+}
+
+.w-mini .page-center .bottom .pop-content td {
+    height: auto;
+    _height: auto;
+}
+
 .w-mini .page-bottom #tabs-1 .result-grp {
     font-size: 14px;
     margin-bottom: 5px;

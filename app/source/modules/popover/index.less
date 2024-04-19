@@ -37,7 +37,6 @@
     background-color: #fff;
     z-index: 101;
     box-sizing: border-box;
-    padding: 10px 0;
     .search-content {
       width: 100%;
       margin-right: 0 !important;
@@ -73,8 +72,8 @@
     }
     .list-content {
       padding: 10px 0;
-      max-height: 300px;
-      height: 300px; /*兼容ie6*/
+      max-height: 280px;
+      height: 280px; /*兼容ie6*/
       overflow: auto;
       background-color: #fff;
       .list-ul {
@@ -91,7 +90,7 @@
             border: 1px dashed #c7c3bc;
             cursor: pointer;
             .item-inner {
-              padding: 10px;
+              padding: 5px 10px;
               &:hover {
                 cursor: pointer;
                 color: #6a88c5;
@@ -125,9 +124,37 @@
       }
     }
 
+    .two-side-table {
+      table-layout: fixed;
+      width: 100%;
+      tbody {
+        td {
+          vertical-align: top;
+        }
+      }
+      .two-side-table-td {
+        _height: 320px;
+        height: 320px !important;
+        padding: 10px 0;
+        .list-content {
+          padding: 0;
+        }
+        .pagination {
+          margin: 0;
+        }
+      }
+      .arrow-td {
+        width: 50px;
+        vertical-align: top;
+        text-align: center;
+        background-color: #f3f6fa;
+        padding: 20px 0;
+      }
+    }
+
     .left-table-wrap {
-      max-height: 350px;
-      height: 350px; /*兼容ie6*/
+      max-height: 312px;
+      height: 312px; /*兼容ie6*/
       overflow-y: auto;
       background-color: #fff;
       padding: 0 10px;
@@ -151,9 +178,10 @@
           font-size: 12px;
           text-align: center;
           border: 0.5px dashed #c7c3bc;
-          height: unset;
+          height: unset !important;
+          vertical-align: middle;
           .item-inner {
-            padding: 10px;
+            padding: 5px 10px;
             &:hover {
               cursor: pointer;
               color: #6a88c5;
@@ -215,6 +243,7 @@
     -webkit-line-clamp: 1;
   }
 }
-.pagination {
-  margin: 10px 0;
+
+.pagination-wrap {
+  margin-top: 5px;
 }
