@@ -7,7 +7,6 @@ require('../../source/img/bar.png');
 require('../../source/img/up-arrow.png');
 require('../../source/img/down-arrow.png');
 require('../../source/img/bjcz-logo.png');
-require('../../source/img/left-arrow.png');
 require('../../source/js/main.js')
 require('../../source/js/console.js')
 require('../../source/js/fix.js')
