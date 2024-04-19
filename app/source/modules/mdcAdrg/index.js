@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-19 21:01:59
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-12 16:50:56
+ * @LastEditTime: 2024-04-19 16:40:04
  * @FilePath: \avalonIE\app\source\modules\mdcAdrg\index.js
  * @Description: 文档描述
  */
@@ -18,6 +18,7 @@ avalon.component("ms-mdcAdrg", {
         operTimer: {},
         searchDiagValue: "",
         searchOperValue: "",
+        isLarge: false,
         onDiagChange: function ($event) {
             var that = this
             clearTimeout(that.diagTimer);
@@ -112,6 +113,11 @@ avalon.component("ms-mdcAdrg", {
         },
         onReady: function (v) {
             resetListHeight()
+            this.$watch('isLarge', function () {
+                setTimeout(() => {
+                    resetListHeight()
+                }, 100);
+            })
         },
         onViewChange: function (v) {
         },
@@ -126,5 +132,4 @@ function resetListHeight() {
     var $tab = $('.ui-tabs-panel')
     var h = $tab.height() - 50 - 45;
     $('.mdc-mdcAdrg-tab__list').css('height', h + 'px');
-
 }

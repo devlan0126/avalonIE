@@ -11,6 +11,7 @@ require('../../source/js/main.js')
 require('../../source/js/console.js')
 require('../../source/js/fix.js')
 
+require('./resize.js')
 require('../../source/modules/content/index')
 require('../../source/modules/pager/index')
 require('../../source/modules/progress/index')
@@ -108,6 +109,7 @@ var vm = avalon.define({
     this.isLarge = !this.isLarge
     setTimeout(function () {
       setLargeBtnHeight()
+      resetBottomHeight()
     }, 100)
   },
   getParams: function () {

@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-04-10 18:20:40
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-15 11:48:55
+ * @LastEditTime: 2024-04-19 16:48:46
  * @FilePath: \avalonIE\app\source\modules\dfcs\index.js
  * @Description: 文档描述
  */
@@ -29,11 +29,16 @@ avalon.component("ms-dfcs", {
                 prop: "part",
             },
         ],
-
+        isLarge: false,
         onInit: function () {
         },
         onReady: function (v) {
             resetListHeight()
+            this.$watch('isLarge', function () {
+                setTimeout(() => {
+                    resetListHeight()
+                }, 100);
+            })
         },
         onViewChange: function (v) {
         },

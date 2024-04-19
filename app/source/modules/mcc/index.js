@@ -19,11 +19,16 @@ avalon.component("ms-mcc", {
         ccCurrentPage: 1,
         searchCcValue: "",
         ccTimer: {},
-
+        isLarge: false,
         onInit: function () {
         },
         onReady: function (v) {
             resetListHeight()
+            this.$watch('isLarge', function () {
+                setTimeout(() => {
+                    resetListHeight()
+                }, 100);
+            })
         },
         onViewChange: function (v) {
         },

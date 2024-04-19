@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-04-10 17:59:09
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-19 16:27:51
+ * @LastEditTime: 2024-04-19 17:21:50
  * @FilePath: \avalonIE\app\source\modules\adrg\index.js
  * @Description: 文档描述
  */
@@ -25,11 +25,17 @@ avalon.component("ms-adrg", {
         operCurrentPage: 1,
         operTimer: {},
         searchOperValue: "",
+        isLarge: false,
         onInit: function () {
         },
         onReady: function (v) {
             resetListHeight()
             initStyle()
+            this.$watch('isLarge', function () {
+                setTimeout(() => {
+                    resetListHeight()
+                }, 500);
+            })
         },
         onViewChange: function (v) {
         },
@@ -184,8 +190,14 @@ avalon.component("ms-adrg", {
 
 
 function resetListHeight() {
-    var $tab = $('.ui-tabs-panel')
-    var h = $tab.height() - 50 - 20;
+    var $tab = document.getElementById('tabs-4')
+    var tabHeight = $tab.offsetHeight;
+    if ($tab.offsetHeight === 0) {
+        tabHeight = $('.ui-tabs-panel').height()
+        var h = tabHeight - 50 - 20;
+    } else {
+        var h = tabHeight - 50 - 40;
+    }
     $('.mdc-adrg-tab__list').css('height', h + 'px');
 }
 
