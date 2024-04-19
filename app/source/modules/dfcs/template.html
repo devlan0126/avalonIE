@@ -13,9 +13,8 @@
                   id="dfDiagInput"
                   name="dfDiagInput"
                   placeholder="请输入诊断编码或名称，可模糊查询"
-                  ms-on-change="@onDiagChange"
                   ms-on-input="@onDiagChange"
-                  ms-on-blur="@onDiagBlur"
+                  ms-on-keyup="@onDiagChange"
                 />
               </td>
             </tr>
@@ -34,9 +33,8 @@
                   id="dfPartInput"
                   name="dfPartInput"
                   placeholder="请输入部位编码或名称，可模糊查询"
-                  ms-on-change="@onPartChange"
                   ms-on-input="@onPartChange"
-                  ms-on-blur="@onPartBlur"
+                  ms-on-keyup="@onPartChange"
                 />
               </td>
             </tr>

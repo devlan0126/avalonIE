@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-04-10 17:59:09
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-19 18:59:02
+ * @LastEditTime: 2024-04-19 20:09:18
  * @FilePath: \avalonIE\app\source\modules\adrg\index.js
  * @Description: 文档描述
  */
@@ -62,7 +62,7 @@ avalon.component("ms-adrg", {
             this.diagCurrentPage = page;
             this.requestDiagList()
         },
-        requestDiagList: function () {
+        requestDiagList: function (params) {
             var that = this
             $.ajax({
                 url: '/hprs/sim/adrgCondDiag',
@@ -72,7 +72,7 @@ avalon.component("ms-adrg", {
                     "Content-Type": "application/json",
                 },
                 dataType: 'json',
-                data: 'ver=CHS628&pageNum=' + that.diagCurrentPage + '&pageSize=10&data=' + that.searchDiagValue,
+                data: params || 'ver=CHS628&pageNum=' + that.diagCurrentPage + '&pageSize=10&data=' + that.searchDiagValue,
                 success: function (res) {
                     if (res.code === 200) {
                         that.diagList = res.data
@@ -152,7 +152,7 @@ avalon.component("ms-adrg", {
             this.operCurrentPage = page;
             this.requestOperList()
         },
-        requestOperList: function () {
+        requestOperList: function (params) {
             var that = this
             $.ajax({
                 url: '/hprs/sim/adrgCondOper',
@@ -162,7 +162,7 @@ avalon.component("ms-adrg", {
                     "Content-Type": "application/json",
                 },
                 dataType: 'json',
-                data: 'ver=CHS628&pageNum=' + that.operCurrentPage + '&pageSize=10&data=' + that.searchOperValue,
+                data: params || 'ver=CHS628&pageNum=' + that.operCurrentPage + '&pageSize=10&data=' + that.searchOperValue,
                 success: function (res) {
                     if (res.code === 200) {
                         that.operList = res.data
@@ -176,6 +176,12 @@ avalon.component("ms-adrg", {
             this.operTotal = 0
             this.operCurrentPage = 1
             this.searchOperValue = ""
+        },
+        onAdrgClick: function ($event, row) {
+            this.diagCurrentPage = 1;
+            this.operCurrentPage = 1;
+            this.requestDiagList('ver=CHS628&pageNum=1&pageSize=10&adrgCode=' + row.code)
+            this.requestOperList('ver=CHS628&pageNum=1&pageSize=10&adrgCode=' + row.code)
         },
         onDiagClick: function ($event, row) {
             this.adrgCurrentPage = 1;
