@@ -124,7 +124,12 @@ avalon.component("ms-pop4", {
 
             var $pop4 = $('.ms-pop4')
             var pop4Width = $pop4.width()
-            $('.ms-pop4 .pop-content').css('left', (pop4Width - 1000) + 'px')
+
+            if (pop4Width > 1000) {
+                $('.ms-pop4 .pop-content').css('left', '0px')
+            } else {
+                $('.ms-pop4 .pop-content').css('left', (pop4Width - 1000) + 'px')
+            }
         },
         onViewChange: function (v) {
         },

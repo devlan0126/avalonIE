@@ -114,7 +114,11 @@ avalon.component("ms-pop3", {
 
             var $pop3 = $('.ms-pop3')
             var pop3Width = $pop3.width()
-            $('.ms-pop3 .pop-content').css('left', (pop3Width - 1000) + 'px')
+            if (pop3Width > 1000) {
+                $('.ms-pop3 .pop-content').css('left', '0px')
+            } else {
+                $('.ms-pop3 .pop-content').css('left', (pop3Width - 1000) + 'px')
+            }
         },
         onViewChange: function (v) {
         },
