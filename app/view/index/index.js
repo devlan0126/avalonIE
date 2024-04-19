@@ -4,6 +4,8 @@ require('../../source/img/tab-img2.png');
 require('../../source/img/tab-img3.png');
 require('../../source/img/warning.png');
 require('../../source/img/bar.png');
+require('../../source/img/up-arrow.png');
+require('../../source/img/down-arrow.png');
 require('../../source/img/bjcz-logo.png');
 require('../../source/img/left-arrow.png');
 require('../../source/js/main.js')
@@ -395,10 +397,11 @@ function setLargeBtnHeight() {
   var $activeTab = document.getElementsByClassName('active-tab')[0];
   var activatTabRect = $activeTab.getBoundingClientRect();
   var activeTabLeft = activatTabRect.left
+  var activeTabWidth = $activeTab.offsetWidth
   var activeTabTop = activatTabRect.top
   $largeBtn.style.top =
     activeTabTop - 13 + "px";
-  $largeBtn.style.left = activeTabLeft + 50 + "px";
+  $largeBtn.style.left = activeTabLeft + activeTabWidth / 2 - 30 + "px";
 }
 
 function getOperationList() {
