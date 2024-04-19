@@ -1,9 +1,9 @@
 // 引入图片资源
-require('../../source/img/tab1.png');
-require('../../source/img/tab2.png');
-require('../../source/img/tab3.png');
+require('../../source/img/tab-img1.png');
+require('../../source/img/tab-img2.png');
+require('../../source/img/tab-img3.png');
 require('../../source/img/warning.png');
-require('../../source/img/row.png');
+require('../../source/img/bar.png');
 require('../../source/img/bjcz-logo.png');
 require('../../source/img/left-arrow.png');
 require('../../source/js/main.js')
