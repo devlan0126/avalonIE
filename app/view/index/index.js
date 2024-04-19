@@ -10,8 +10,6 @@ require('../../source/img/bjcz-logo.png');
 require('../../source/js/main.js')
 require('../../source/js/console.js')
 require('../../source/js/fix.js')
-require('../../source/bootstrap/bootstrap-ie.js')
-require('../../source/bootstrap/bootstrap.min.js')
 
 require('../../source/modules/content/index')
 require('../../source/modules/pager/index')
