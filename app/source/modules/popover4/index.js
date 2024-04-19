@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-09 13:02:16
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-17 10:16:24
+ * @LastEditTime: 2024-04-19 14:12:12
  * @FilePath: \avalonIE\app\source\modules\popover4\index.js
  * @Description: 文档描述
  */
@@ -121,6 +121,10 @@ avalon.component("ms-pop4", {
             var $inputContent = $('.ms-pop4 .input-content')
             var width = $inputContent.width()
             $inputContent.css("width", width + 'px');
+
+            var $pop4 = $('.ms-pop4')
+            var pop4Width = $pop4.width()
+            $('.ms-pop4 .pop-content').css('left', (pop4Width - 1000) + 'px')
         },
         onViewChange: function (v) {
         },
