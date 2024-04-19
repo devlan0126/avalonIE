@@ -20,7 +20,7 @@
 
 .w-1920 .ms-pop .pop-input {
     font-size: 12px;
-    padding: 5px 0;
+    padding: 10px 0;
 }
 
 .w-1920 #pageTitle {
@@ -28,11 +28,11 @@
 }
 
 .w-1920 .page-center .bottom .center-row td {
-    height: 30px;
+    height: 40px;
 }
 
 .w-1920 .page-center .bottom .pop-content .search-content td {
-    height: 30px;
+    height: 40px;
 }
 
 .w-1920 .page-center .bottom .pop-content td {
@@ -57,22 +57,26 @@
 }
 
 .w-1920 .page-bottom #tabs-1 .result-table .table-esp td {
-    padding: 5px 10px
+    padding: 10px
 }
 
 .w-1920 .ssfzdrg-template #ltTable .item-inner.left {
-    height: 24px;
-    line-height: 24px;
+    height: 30px;
+    line-height: 30px;
 }
 
 .w-1920 .ssfzdrg-template #ltTable .item-inner.center {
-    height: 22px;
-    line-height: 22px;
+    height: 28px;
+    line-height: 28px;
 }
 
 .w-1920 .page-card {
     margin-bottom: 10px;
-    padding: 5px 10px;
+    padding: 10px;
+}
+
+.w-1920 .page-bottom.page-card {
+    padding-top: 0;
 }
 
 .w-1920 .page-title .page-title-imgs {
@@ -102,4 +106,12 @@
 
 .w-1920 .ms-pop.ms-pop5 .pop-content {
     width: 1200px;
+}
+
+.w-1920 .ssfzdrg-template #ltTableWrap {
+    margin-top: 30px;
+}
+
+.w-1920 .ssfzdrg-template td {
+    border-bottom-width: 10px;
 }

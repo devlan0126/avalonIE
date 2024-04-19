@@ -2,7 +2,6 @@
   height: 100%;
   width: 100%;
   .list-ul {
-    height: 100%;
     width: 100%;
     border-collapse: collapse;
     .head-th {
@@ -14,12 +13,14 @@
       .item {
         border: 1px solid #c7c3bc;
         text-align: left;
-        padding: 10px;
+        height: 28px;
+        line-height: 28px;
+        .item-inner {
+          height: 28px;
+          line-height: 28px;
+          padding: 0 10px;
+        }
       }
-    }
-    .left {
-    }
-    .right {
     }
   }
 }
