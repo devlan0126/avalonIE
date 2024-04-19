@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-04-10 18:20:40
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-19 16:48:46
+ * @LastEditTime: 2024-04-19 18:28:36
  * @FilePath: \avalonIE\app\source\modules\dfcs\index.js
  * @Description: 文档描述
  */
@@ -33,11 +33,11 @@ avalon.component("ms-dfcs", {
         onInit: function () {
         },
         onReady: function (v) {
-            resetListHeight()
+            window.dfcsResize()
             this.$watch('isLarge', function () {
                 setTimeout(() => {
-                    resetListHeight()
-                }, 100);
+                    window.dfcsResize()
+                }, 500);
             })
         },
         onViewChange: function (v) {
@@ -117,9 +117,3 @@ avalon.component("ms-dfcs", {
         }
     },
 });
-
-function resetListHeight() {
-    var $tab = $('.ui-tabs-panel')
-    var h = $tab.height() - 50 - 45;
-    $('.ms-dfcs-tab .list-ul').css('height', h + 'px');
-}

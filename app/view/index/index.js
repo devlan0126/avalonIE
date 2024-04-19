@@ -103,6 +103,18 @@ var vm = avalon.define({
       if (index == 2) {
         that.grpAdvice()
       }
+      if (index === 3) {
+        window.mdcAdrgResize()
+      }
+      if (index === 4) {
+        window.adrgResize()
+      }
+      if (index === 5) {
+        window.mccResize()
+      }
+      if (index === 6) {
+        window.dfcsResize()
+      }
     }, 100)
   },
   enlarge: function () {

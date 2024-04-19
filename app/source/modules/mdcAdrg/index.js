@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-19 21:01:59
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-19 18:08:46
+ * @LastEditTime: 2024-04-19 18:30:32
  * @FilePath: \avalonIE\app\source\modules\mdcAdrg\index.js
  * @Description: 文档描述
  */
@@ -112,10 +112,10 @@ avalon.component("ms-mdcAdrg", {
         onInit: function () {
         },
         onReady: function (v) {
-            resetListHeight()
+            window.mdcAdrgResize()
             this.$watch('isLarge', function () {
                 setTimeout(() => {
-                    resetListHeight()
+                    window.mdcAdrgResize()
                 }, 500);
             })
         },
@@ -127,15 +127,3 @@ avalon.component("ms-mdcAdrg", {
     },
 });
 
-
-function resetListHeight() {
-    var $tab = document.getElementById('tabs-3')
-    var tabHeight = $tab.offsetHeight;
-    if ($tab.offsetHeight === 0) {
-        tabHeight = $('.ui-tabs-panel').height()
-        var h = tabHeight - 50 - 40;
-    } else {
-        var h = tabHeight - 50 - 60;
-    }
-    $('.mdc-mdcAdrg-tab__list').css('height', h + 'px');
-}

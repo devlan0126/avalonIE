@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-04-10 18:13:59
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-16 11:14:57
+ * @LastEditTime: 2024-04-19 18:30:24
  * @FilePath: \avalonIE\app\source\modules\mcc\index.js
  * @Description: 文档描述
  */
@@ -23,11 +23,11 @@ avalon.component("ms-mcc", {
         onInit: function () {
         },
         onReady: function (v) {
-            resetListHeight()
+            window.mccResize()
             this.$watch('isLarge', function () {
                 setTimeout(() => {
-                    resetListHeight()
-                }, 100);
+                    window.mccResize()
+                }, 500);
             })
         },
         onViewChange: function (v) {
@@ -127,11 +127,3 @@ avalon.component("ms-mcc", {
         },
     },
 });
-
-
-function resetListHeight() {
-    var $tab = $('.ui-tabs-panel')
-    var h = $tab.height() - 50 - 45;
-    $('.mdc-mcc-tab__list').css('height', h + 'px');
-
-}
