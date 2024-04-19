@@ -155,10 +155,10 @@
     </table>
   </div>
   <div id="largeBtn" class="large-btn" ms-visible="!@tabConfig.tabVisible1" ms-click="@enlarge | prevent">
-    <div :if="@isLarge">
+    <div :if="@isLarge" style="width:100% ;">
       <img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/down-arrow.png" />
     </div>
-    <div :if="!@isLarge">
+    <div :if="!@isLarge" style="width:100% ;">
       <img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/up-arrow.png" />
     </div>
   </div>
