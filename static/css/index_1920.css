@@ -1,0 +1,94 @@
+.w-1920 {
+    font-size: 12px;
+}
+
+.w-1920 .top .row-item,
+.w-1920.top .row-item .item-content {
+    font-size: 12px;
+}
+
+.w-1920 .page-center .center {
+    font-size: 12px;
+    padding: 5px 0;
+}
+
+.w-1920 .action-btns .reset-btn,
+.w-1920 .action-btns .submit-btn {
+    font-size: 12px;
+    padding: 3px 10px;
+}
+
+.w-1920 .ms-pop .pop-input {
+    font-size: 12px;
+    padding: 5px 0;
+}
+
+.w-1920 #pageTitle {
+    font-size: 16px;
+}
+
+.w-1920 .page-center .bottom .center-row td {
+    height: 30px;
+}
+
+.w-1920 .page-center .bottom .pop-content .search-content td {
+    height: 30px;
+}
+
+.w-1920 .page-center .bottom .pop-content td {
+    height: auto;
+    _height: auto;
+}
+
+.w-1920 .page-bottom #tabs-1 .result-grp {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+
+.w-1920 td .item-inner {
+    overflow: hidden;
+    word-break: break-all;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    white-space: unset !important;
+}
+
+.w-1920 .page-bottom #tabs-1 .result-table .table-esp td {
+    padding: 5px 10px
+}
+
+.w-1920 .ssfzdrg-template #ltTable .item-inner.left {
+    height: 24px;
+    line-height: 24px;
+}
+
+.w-1920 .ssfzdrg-template #ltTable .item-inner.center {
+    height: 22px;
+    line-height: 22px;
+}
+
+.w-1920 .page-card {
+    margin-bottom: 10px;
+    padding: 5px 10px;
+}
+
+.w-1920 .page-title .page-title-imgs {
+    bottom: 0px;
+    right: 10px;
+}
+
+.w-1920 .progress-container .progress-bar {
+    height: 18px;
+    line-height: 18px;
+    background: #ebeef5;
+    border-radius: 12px;
+}
+
+.w-1920 .progress-container .progress-bar .progress-bar-active {
+    height: 18px;
+    line-height: 18px;
+}
