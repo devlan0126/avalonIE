@@ -35,7 +35,7 @@ avalon.component("ms-dfcs", {
         onReady: function (v) {
             window.dfcsResize()
             this.$watch('isLarge', function () {
-                setTimeout(() => {
+                setTimeout(function () {
                     window.dfcsResize()
                 }, 500);
             })

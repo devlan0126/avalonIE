@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-04-10 17:59:09
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-19 18:29:51
+ * @LastEditTime: 2024-04-19 18:59:02
  * @FilePath: \avalonIE\app\source\modules\adrg\index.js
  * @Description: 文档描述
  */
@@ -32,7 +32,7 @@ avalon.component("ms-adrg", {
             window.adrgResize()
             initStyle()
             this.$watch('isLarge', function () {
-                setTimeout(() => {
+                setTimeout(function () {
                     window.adrgResize()
                 }, 500);
             })

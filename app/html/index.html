@@ -65,7 +65,7 @@
     </table>
 
     <div class="center">
-      <img src="../../app/source/img/warning.png" style="width:15px;height:15px; margin-left: 10px;margin-right: 5px"/>
+      <img src="../../app/source/img/warning.png" style="width:15px;height:15px; margin-left: 10px;margin-right: 5px" />
       医疗费用为DRG/DIP费用标准的<span id="feePec" ms-class="{'fee-pec-warn': @feePercent > 100}">{{@feePercent}}%</span>，按照当前诊疗及费用预测盈亏为<span id="daysPec"
         ms-class="{'day-pec-warn': @setlInfo.predictProfit < 0}">{{@setlInfo.predictProfit}}元</span>
       ；请根据患者病情进行完整治疗，避免分解出院！
@@ -167,38 +167,38 @@
       <div class="tabs-ul" id="tabsUl">
         <div class="ui-state-default ui-tabs-nav" :class="[@tabConfig.tabVisible1 && 'active-tab']" ms-click="@tabClick($event, 1) | prevent">
           <div class="ui-tab-content">
-            <a href="#tabs-1"><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img1.png" /> 实时分组预警
+            <a><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img1.png" /> 实时分组预警
             </a>
           </div>
         </div>
         <div class="ui-state-default ui-tabs-nav" :class="[@tabConfig.tabVisible2 && 'active-tab']" ms-click="@tabClick($event, 2) | prevent" ms-visible="@showTabs.loopGroupEnabled">
           <div class="ui-tab-content">
-            <a href="#tabs-2"><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img2.png" />分组数据治理</a>
+            <a><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img2.png" />分组数据治理</a>
           </div>
         </div>
         <div class="ui-state-default ui-tabs-nav" :class="[@tabConfig.tabVisible3 && 'active-tab']" ms-click="@tabClick($event, 3) | prevent" ms-visible="@showTabs.mdcAdrgEnabled">
           <div class="ui-tab-content">
-            <a href="#tabs-3"><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img3.png" />MDC/ADRG查询</a>
+            <a><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img3.png" />MDC/ADRG查询</a>
           </div>
         </div>
         <div class="ui-state-default ui-tabs-nav" :class="[@tabConfig.tabVisible4 && 'active-tab']" ms-click="@tabClick($event, 4) | prevent" ms-visible="@showTabs.adrgCondEnabled">
           <div class="ui-tab-content">
-            <a href="#tabs-3"><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img3.png" />ADRG条件查询</a>
+            <a><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img3.png" />ADRG条件查询</a>
           </div>
         </div>
         <div class="ui-state-default ui-tabs-nav" :class="[@tabConfig.tabVisible5 && 'active-tab']" ms-click="@tabClick($event, 5) | prevent" ms-visible="@showTabs.ccmccEnabled">
           <div class="ui-tab-content">
-            <a href="#tabs-3"><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img3.png" />MCC/CC查询</a>
+            <a><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img3.png" />MCC/CC查询</a>
           </div>
         </div>
         <div class="ui-state-default ui-tabs-nav" :class="[@tabConfig.tabVisible6 && 'active-tab']" ms-click="@tabClick($event, 6) | prevent" ms-visible="@showTabs.multiTraumaEnabled">
           <div class="ui-tab-content">
-            <a href="#tabs-3"><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img3.png" />多发创伤查询</a>
+            <a><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img3.png" />多发创伤查询</a>
           </div>
         </div>
         <div class="ui-state-default ui-tabs-nav" :class="[@tabConfig.tabVisible7 && 'active-tab']" ms-click="@tabClick($event, 7) | prevent" ms-visible="@showTabs.clinPathEnabled">
           <div class="ui-tab-content">
-            <a href="#tabs-3"><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img3.png" />临床路径指南</a>
+            <a><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img3.png" />临床路径指南</a>
           </div>
         </div>
       </div>

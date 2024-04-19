@@ -25,7 +25,7 @@ avalon.component("ms-mcc", {
         onReady: function (v) {
             window.mccResize()
             this.$watch('isLarge', function () {
-                setTimeout(() => {
+                setTimeout(function () {
                     window.mccResize()
                 }, 500);
             })

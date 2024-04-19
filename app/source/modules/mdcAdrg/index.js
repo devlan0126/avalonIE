@@ -114,7 +114,7 @@ avalon.component("ms-mdcAdrg", {
         onReady: function (v) {
             window.mdcAdrgResize()
             this.$watch('isLarge', function () {
-                setTimeout(() => {
+                setTimeout(function () {
                     window.mdcAdrgResize()
                 }, 500);
             })
