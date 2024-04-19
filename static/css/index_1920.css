@@ -54,7 +54,6 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
-    white-space: unset !important;
 }
 
 .w-1920 .page-bottom #tabs-1 .result-table .table-esp td {
@@ -91,4 +90,16 @@
 .w-1920 .progress-container .progress-bar .progress-bar-active {
     height: 18px;
     line-height: 18px;
+}
+
+.w-1920 .ms-pop.ms-pop4 .pop-content {
+    width: 100%;
+}
+
+.w-1920 .ms-pop.ms-pop3 .pop-content {
+    width: 100%;
+}
+
+.w-1920 .ms-pop.ms-pop5 .pop-content {
+    width: 1200px;
 }

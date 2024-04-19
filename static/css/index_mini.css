@@ -54,7 +54,6 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
-    white-space: unset !important;
 }
 
 .w-mini .page-bottom #tabs-1 .result-table .table-esp td {
