@@ -8,7 +8,8 @@
 }
 
 .w-mini .page-center .center {
-    font-size: 13px;
+    font-size: 12px;
+    padding: 5px 0;
 }
 
 .w-mini .action-btns .reset-btn,
@@ -19,7 +20,7 @@
 
 .w-mini .ms-pop .pop-input {
     font-size: 12px;
-    padding: 2px 0;
+    padding: 5px 0;
 }
 
 .w-mini #pageTitle {
@@ -32,6 +33,7 @@
 
 .w-mini .page-bottom #tabs-1 .result-grp {
     font-size: 14px;
+    margin-bottom: 5px;
 }
 
 
@@ -51,11 +53,33 @@
 }
 
 .w-mini .ssfzdrg-template #ltTable .item-inner.left {
-    height: 26px;
-    line-height: 26px;
+    height: 24px;
+    line-height: 24px;
 }
 
 .w-mini .ssfzdrg-template #ltTable .item-inner.center {
-    height: 24px;
-    line-height: 24px;
+    height: 22px;
+    line-height: 22px;
+}
+
+.w-mini .page-card {
+    margin-bottom: 10px;
+    padding: 5px 10px;
+}
+
+.w-mini .page-title .page-title-imgs {
+    bottom: 0px;
+    right: 10px;
+}
+
+.w-mini .progress-container .progress-bar {
+    height: 18px;
+    line-height: 18px;
+    background: #ebeef5;
+    border-radius: 12px;
+}
+
+.w-mini .progress-container .progress-bar .progress-bar-active {
+    height: 18px;
+    line-height: 18px;
 }
