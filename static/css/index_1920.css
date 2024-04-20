@@ -51,7 +51,6 @@
     word-break: break-all;
     white-space: nowrap;
     text-overflow: ellipsis;
-    display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     font-size: 14px;
@@ -120,4 +119,24 @@
 
 .w-1920 .ui-tab-content a {
     font-size: 15px;
+}
+
+.w-1920 .ms-pop .pop-content .left-table .diagnose-name,
+.ms-pop .pop-content .left-table .diagnose-name .item-inner {
+    width: 330px;
+}
+
+.w-1920 .ms-pop .pop-content .left-table .diagnose-name,
+.ms-pop .pop-content .left-table .diagnose-name {
+    width: 330px;
+}
+
+.w-1920 .ms-pop .pop-content .list-content .list-ul .row td.item.right,
+.w-1920 .ms-pop .pop-content .list-content .list-ul .row td.item.right .item-inner {
+    width: 440px;
+}
+
+.w-1920 .ms-pop .pop-content .list-content .list-ul .row td.item.left,
+.w-1920 .ms-pop .pop-content .list-content .list-ul .row td.item.left .item-inner {
+    width: 130px;
 }

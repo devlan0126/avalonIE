@@ -15,7 +15,7 @@
 .w-mini .action-btns .reset-btn,
 .w-mini .action-btns .submit-btn {
     font-size: 12px;
-    padding: 3px 10px;
+    padding: 5px 10px;
 }
 
 .w-mini .ms-pop .pop-input {
@@ -51,7 +51,6 @@
     word-break: break-all;
     white-space: nowrap;
     text-overflow: ellipsis;
-    display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
 }
@@ -94,4 +93,14 @@
 
 .w-mini .page-bottom.page-card {
     padding-top: 0;
+}
+
+.w-1920 .ms-pop .pop-content .left-table .diagnose-name,
+.ms-pop .pop-content .left-table .diagnose-name .item-inner {
+    width: 180px;
+}
+
+.w-1920 .ms-pop .pop-content .left-table .diagnose-name,
+.ms-pop .pop-content .left-table .diagnose-name {
+    width: 180px;
 }
