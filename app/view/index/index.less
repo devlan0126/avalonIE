@@ -71,6 +71,19 @@ body {
     cursor: pointer;
   }
 }
+.tab-actions {
+  position: absolute;
+  right: 0;
+  .pdf-btn {
+    display: inline-block;
+    padding: 8px 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #e1945f;
+    color: #e1945f;
+  }
+}
 
 .page-card {
   background: #fff;
@@ -361,6 +374,7 @@ body {
 .tabs-ul {
   height: 40px;
   padding: 0;
+  position: relative;
   &::after {
     clear: both;
   }

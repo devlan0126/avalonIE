@@ -201,6 +201,13 @@
             <a><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img3.png" />临床路径指南</a>
           </div>
         </div>
+        <div class="tab-actions">
+          <span class="action-btns">
+            <span class="pdf-btn" ms-on-click="@onDownloadPdf |stop">
+              <img src='../source/img/pdf.png' width="15px" height="15px"/> PDF下载
+            </span>
+          </span>
+        </div>
       </div>
       <div class="tab-ul-content" id="tabContent">
         <div id="tabs-1" class="ui-tabs-panel" ms-visible="@tabConfig.tabVisible1">
@@ -236,7 +243,7 @@
         </div>
         <div id="tabs-7" class="ui-tabs-panel" ms-visible="@tabConfig.tabVisible7">
           <div slot="content" class="ui-tabs-panel-content">
-            <xmp ms-widget="{is:'ms-guide',list:@guideList,isLarge:@isLarge,previewImg:@previewImg}"></xmp>
+            <xmp ms-widget="{is:'ms-guide',list:@guideList,isLarge:@isLarge,previewImg:@previewImg,guideEmit:@guideEmit}"></xmp>
           </div>
         </div>
       </div>

@@ -7,6 +7,7 @@ require('../../source/img/bar.png');
 require('../../source/img/up-arrow.png');
 require('../../source/img/down-arrow.png');
 require('../../source/img/bjcz-logo.png');
+require('../../source/img/pdf.png');
 require('../../source/js/main.js')
 require('../../source/js/console.js')
 require('../../source/js/fix.js')
@@ -94,6 +95,7 @@ var vm = avalon.define({
   curImg: '',
   imgList: [],
   imgPreviewVisible: false,
+  pdfUrl: '',
   tabClick: function ($event, index) {
     var that = this
     this.tabConfig.tabVisible1 = false
@@ -272,63 +274,27 @@ var vm = avalon.define({
         }
       }
     });
-    // var res = {
-    //   code: 200,
-    //   msg: "成功",
-    //   data: [
-    //     {
-    //       "pathNo": "1",
-    //       "pathName": "1-1. 鼻腔鼻窦恶性肿瘤临床路径（2019年版）",
-    //       "folderName": "鼻腔鼻窦恶性肿瘤",
-    //       "msg": "因 1_1_456 诊断 C30.000 进入临床路径 1-1. 鼻腔鼻窦恶性肿瘤临床路径（2019年版）",
-    //       "pngFiles": [
-    //         "01鼻腔鼻窦恶性肿瘤临床路径.jpg",
-    //         "02鼻腔鼻窦恶性肿瘤临床路径.jpg",
-    //         "03鼻腔鼻窦恶性肿瘤临床路径.jpg",
-    //         "04鼻腔鼻窦恶性肿瘤临床路径.jpg",
-    //         "05鼻腔鼻窦恶性肿瘤临床路径.jpg",
-    //         "06鼻腔鼻窦恶性肿瘤临床路径.jpg"
-    //       ],
-    //       "pdfFiles": [
-    //         "鼻腔鼻窦恶性肿瘤临床路径（2019年版）.pdf"
-    //       ]
-    //     },
-    //     {
-    //       "pathNo": "2",
-    //       "pathName": "1-2. 鼻腔鼻窦恶性肿瘤临床路径（2019年版）",
-    //       "folderName": "感冒发烧头疼",
-    //       "msg": "因 1_1_456 诊断 C30.000 进入临床路径 1-1. 鼻腔鼻窦恶性肿瘤临床路径（2019年版）",
-    //       "pngFiles": [
-    //         "01鼻腔鼻窦恶性肿瘤临床路径.jpg",
-    //         "02鼻腔鼻窦恶性肿瘤临床路径.jpg",
-    //         "03鼻腔鼻窦恶性肿瘤临床路径.jpg",
-    //         "04鼻腔鼻窦恶性肿瘤临床路径.jpg",
-    //         "05鼻腔鼻窦恶性肿瘤临床路径.jpg",
-    //         "06鼻腔鼻窦恶性肿瘤临床路径.jpg"
-    //       ],
-    //       "pdfFiles": [
-    //         "鼻腔鼻窦恶性肿瘤临床路径（2019年版）.pdf"
-    //       ]
-    //     }
-    //   ]
-    // }
-
-    // if (res.code === 200) {
-    //   that.guideList = res.data || []
-    // }
   },
   onRest: function () {
     window.location.reload()
   },
-  previewImg(imgSrc, imgList) {
-    console.log('++++++++++++++++++++++++++++++previewImg>', imgSrc, imgList)
+  previewImg() {
     $('#ImgSelect').hide()
-    this.imgList = imgList
     this.imgPreviewVisible = true
   },
   closeImgPreview: function () {
     $('#ImgSelect').show()
     this.imgPreviewVisible = false
+  },
+  onDownloadPdf: function () {
+    if (!window.location.origin) {
+      window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+    }
+    window.open(window.location.origin + window.pdfUrl, 'win_name')
+  },
+  guideEmit: function (imgList) {
+    this.imgList = imgList
+    this.pdfUrl = pdfUrl
   },
   config: {
     isShow: false,
