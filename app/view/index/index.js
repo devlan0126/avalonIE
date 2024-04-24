@@ -290,7 +290,13 @@ var vm = avalon.define({
     if (!window.location.origin) {
       window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
     }
-    window.open(window.location.origin + window.pdfUrl, 'win_name')
+    function downloadFile(url) {
+      var elemIF = document.createElement("iframe");
+      elemIF.src = url;
+      elemIF.style.display = "none";
+      document.body.appendChild(elemIF);
+    }
+    downloadFile(window.location.origin + window.pdfUrl);
   },
   guideEmit: function (imgList) {
     this.imgList = imgList
