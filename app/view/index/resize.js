@@ -51,7 +51,20 @@ function dfcsResize() {
     $('.ms-dfcs-tab .list-ul').css('height', h + 'px');
 }
 
+function guideResize() {
+    var $tab = document.getElementById('tabs-7')
+    var tabHeight = $tab.offsetHeight;
+    if ($tab.offsetHeight === 0) {
+        tabHeight = $('.ui-tabs-panel').height()
+        var h = tabHeight - 50;
+    } else {
+        var h = tabHeight - 40;
+    }
+    $('.guide-content').css('height', h + 'px');
+}
+
 window.mdcAdrgResize = mdcAdrgResize
 window.adrgResize = adrgResize
 window.mccResize = mccResize
 window.dfcsResize = dfcsResize
+window.guideResize = guideResize

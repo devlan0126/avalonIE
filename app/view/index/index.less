@@ -565,3 +565,25 @@ body {
 .page-center .bottom .center-row td {
   vertical-align: middle;
 }
+
+.high-row {
+  transition: all 0.5s;
+  cursor: pointer;
+  td {
+    vertical-align: middle;
+    padding: 0 5px;
+  }
+
+  &:hover {
+    background-color: #9ea4b3;
+    color: #fff !important;
+    .item-inner {
+      color: #fff !important;
+    }
+  }
+  .item-inner {
+    &:hover {
+      color: #fff !important;
+    }
+  }
+}

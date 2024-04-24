@@ -1,0 +1,16 @@
+<div class="ms-guide-tab">
+  <div class="guide-select">
+    <select name="ImgSelect" id="ImgSelect" ms-change="@onChange">
+      <option ms-for="(index,row) in @list" value="dog">
+        {{row.folderName}}
+      </option>
+    </select>
+  </div>
+  <div class="guide-content">
+    <img
+      ms-for="(index,imgSrc) in @imgList"
+      ms-attr="{src:imgSrc}"
+      ms-click="onImgClick($event,imgSrc)"
+    />
+  </div>
+</div>

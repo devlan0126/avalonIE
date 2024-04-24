@@ -1,0 +1,14 @@
+<div class="ms-imgPreview">
+  <div class="el-image-viewer__mask">
+    <div class="preivew-close" ms-click="closePreview">
+      <img src="./img/close.png" />
+    </div>
+  </div>
+  <div class="preview-content">
+    <img
+      ms-for="(index,imgSrc) in @imgList"
+      ms-attr="{src:imgSrc}"
+      ms-click="onImgClick(imgSrc)"
+    />
+  </div>
+</div>

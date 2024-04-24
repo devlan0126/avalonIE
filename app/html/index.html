@@ -205,8 +205,8 @@
       <div class="tab-ul-content" id="tabContent">
         <div id="tabs-1" class="ui-tabs-panel" ms-visible="@tabConfig.tabVisible1">
           <div slot="content" class="ui-tabs-panel-content">
-            <xmp ms-visible="@clrWay === '40'" ms-widget="{is:'ms-ssfzdrg',groupInfo:@groupInfo,setlInfo:@setlInfo,warnMsgList:@warnMsgList,processInfo:@processInfo}"></xmp>
-            <xmp ms-visible="@clrWay === '50'" ms-widget="{is:'ms-ssfzdip',groupInfo:@groupInfo,setlInfo:@setlInfo}"></xmp>
+            <xmp ms-visible="@clrWay == '40'" ms-widget="{is:'ms-ssfzdrg',groupInfo:@groupInfo,setlInfo:@setlInfo,warnMsgList:@warnMsgList,processInfo:@processInfo}"></xmp>
+            <xmp ms-visible="@clrWay == '50'" ms-widget="{is:'ms-ssfzdip',groupInfo:@groupInfo,setlInfo:@setlInfo}"></xmp>
           </div>
         </div>
         <div id="tabs-2" class="ui-tabs-panel" ms-visible="@tabConfig.tabVisible2">
@@ -234,11 +234,17 @@
             <xmp ms-widget="{is:'ms-dfcs',isLarge:@isLarge}"></xmp>
           </div>
         </div>
+        <div id="tabs-7" class="ui-tabs-panel" ms-visible="@tabConfig.tabVisible7">
+          <div slot="content" class="ui-tabs-panel-content">
+            <xmp ms-widget="{is:'ms-guide',list:@guideList,isLarge:@isLarge,previewImg:@previewImg}"></xmp>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   </div>
   </div>
+    <xmp ms-visible="@imgPreviewVisible" ms-widget="{is:'ms-imgPreview',curImg:@curImg,imgList:@imgList,closeEvent:@closeImgPreview}"></xmp>
 </body>
 
 </html>

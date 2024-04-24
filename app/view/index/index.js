@@ -26,6 +26,8 @@ require('../../source/modules/ssfzdip/index')
 require('../../source/modules/adrg/index')
 require('../../source/modules/mcc/index')
 require('../../source/modules/dfcs/index')
+require('../../source/modules/guide/index')
+require('../../source/modules/imgPreview/index')
 
 var vm = avalon.define({
   $id: "native",
@@ -88,6 +90,10 @@ var vm = avalon.define({
     total_amount: 0,
   },
   fzzlList: [],
+  guideList: [],
+  curImg: '',
+  imgList: [],
+  imgPreviewVisible: false,
   tabClick: function ($event, index) {
     var that = this
     this.tabConfig.tabVisible1 = false
@@ -114,6 +120,10 @@ var vm = avalon.define({
       }
       if (index === 6) {
         window.dfcsResize()
+      }
+      if (index === 7) {
+        that.getClinic()
+        // window.dfcsResize()
       }
     }, 100)
   },
@@ -245,8 +255,80 @@ var vm = avalon.define({
       }
     });
   },
+  getClinic: function () {
+    var that = this;
+    $.ajax({
+      url: '/hprs/sim/clinic',
+      type: 'POST',
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      dataType: 'json',
+      data: this.getParams(),
+      success: function (res) {
+        if (res.code === 200) {
+          that.guideList = res.data || []
+        }
+      }
+    });
+    // var res = {
+    //   code: 200,
+    //   msg: "成功",
+    //   data: [
+    //     {
+    //       "pathNo": "1",
+    //       "pathName": "1-1. 鼻腔鼻窦恶性肿瘤临床路径（2019年版）",
+    //       "folderName": "鼻腔鼻窦恶性肿瘤",
+    //       "msg": "因 1_1_456 诊断 C30.000 进入临床路径 1-1. 鼻腔鼻窦恶性肿瘤临床路径（2019年版）",
+    //       "pngFiles": [
+    //         "01鼻腔鼻窦恶性肿瘤临床路径.jpg",
+    //         "02鼻腔鼻窦恶性肿瘤临床路径.jpg",
+    //         "03鼻腔鼻窦恶性肿瘤临床路径.jpg",
+    //         "04鼻腔鼻窦恶性肿瘤临床路径.jpg",
+    //         "05鼻腔鼻窦恶性肿瘤临床路径.jpg",
+    //         "06鼻腔鼻窦恶性肿瘤临床路径.jpg"
+    //       ],
+    //       "pdfFiles": [
+    //         "鼻腔鼻窦恶性肿瘤临床路径（2019年版）.pdf"
+    //       ]
+    //     },
+    //     {
+    //       "pathNo": "2",
+    //       "pathName": "1-2. 鼻腔鼻窦恶性肿瘤临床路径（2019年版）",
+    //       "folderName": "感冒发烧头疼",
+    //       "msg": "因 1_1_456 诊断 C30.000 进入临床路径 1-1. 鼻腔鼻窦恶性肿瘤临床路径（2019年版）",
+    //       "pngFiles": [
+    //         "01鼻腔鼻窦恶性肿瘤临床路径.jpg",
+    //         "02鼻腔鼻窦恶性肿瘤临床路径.jpg",
+    //         "03鼻腔鼻窦恶性肿瘤临床路径.jpg",
+    //         "04鼻腔鼻窦恶性肿瘤临床路径.jpg",
+    //         "05鼻腔鼻窦恶性肿瘤临床路径.jpg",
+    //         "06鼻腔鼻窦恶性肿瘤临床路径.jpg"
+    //       ],
+    //       "pdfFiles": [
+    //         "鼻腔鼻窦恶性肿瘤临床路径（2019年版）.pdf"
+    //       ]
+    //     }
+    //   ]
+    // }
+
+    // if (res.code === 200) {
+    //   that.guideList = res.data || []
+    // }
+  },
   onRest: function () {
     window.location.reload()
+  },
+  previewImg(imgSrc, imgList) {
+    console.log('++++++++++++++++++++++++++++++previewImg>', imgSrc, imgList)
+    $('#ImgSelect').hide()
+    this.imgList = imgList
+    this.imgPreviewVisible = true
+  },
+  closeImgPreview: function () {
+    $('#ImgSelect').show()
+    this.imgPreviewVisible = false
   },
   config: {
     isShow: false,

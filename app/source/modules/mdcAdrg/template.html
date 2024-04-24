@@ -25,7 +25,7 @@
           </div>
           <div class="mdc-mdcAdrg-tab__list">
             <table class="mdcAdrg-table">
-              <tr ms-for="row in @diagList">
+              <tr ms-for="row in @diagList" class="high-row">
                 <td class="mdcAdrg-table-cell code">
                   <div class="item-inner" ms-attr="{title: @row.code}">
                     {{row.code}}
@@ -62,13 +62,13 @@
             <table class="search-content">
               <tbody>
                 <tr>
-                  <td class="search-input-prefix">诊断</td>
+                  <td class="search-input-prefix">手术</td>
                   <td class="search-input-content">
                     <input
                       class="search-input"
                       type="text"
                       name="name"
-                      placeholder="请输入诊断编码或名称，可模糊查询"
+                      placeholder="请输入手术编码或名称，可模糊查询"
                       ms-on-change="@onOperChange"
                       ms-on-input="@onOperChange"
                       ms-on-keyup="@onOperChange"
@@ -80,7 +80,7 @@
           </div>
           <div class="mdc-mdcAdrg-tab__list">
             <table class="mdcAdrg-table">
-              <tr ms-for="row in @operList">
+              <tr ms-for="row in @operList" class="high-row">
                 <td class="mdcAdrg-table-cell code">
                   <div class="item-inner" ms-attr="{title: @row.code}">
                     {{row.code}}

@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-16 13:26:06
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-18 17:51:01
+ * @LastEditTime: 2024-04-24 13:31:21
  * @FilePath: \avalonIE\app\source\modules\fzzl\index.js
  * @Description: 文档描述
  */
@@ -29,15 +29,15 @@ avalon.component("ms-fzzl", {
             },
             {
                 label: "DRG编码",
-                prop: "主手术编码",
-            },
-            {
-                label: "DRG名称",
                 prop: "drgCode",
             },
             {
-                label: "DRG类型",
+                label: "DRG名称",
                 prop: "drgName",
+            },
+            {
+                label: "DRG类型",
+                prop: "grpType",
             },
             {
                 label: "病组均费",
@@ -45,7 +45,7 @@ avalon.component("ms-fzzl", {
             },
             {
                 label: "基准点数",
-                prop: "score",
+                prop: "basePoint",
             },
             {
                 label: "调整系数",

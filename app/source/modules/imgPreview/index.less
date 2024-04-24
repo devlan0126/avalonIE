@@ -1,0 +1,44 @@
+.ms-imgPreview {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  text-align: center;
+  .el-image-viewer__mask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+    background: #7f7f7f;
+    opacity: 0.5;
+    z-index: 1;
+    .preivew-close {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      background-color: #000;
+      img {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+      }
+    }
+  }
+  .preview-content {
+    background-color: #fff;
+    width: 700px;
+    height: 100%;
+    left: 300px;
+    overflow: auto;
+    position: absolute;
+    z-index: 2;
+    text-align: center;
+    img {
+      width: 100%;
+    }
+  }
+}
