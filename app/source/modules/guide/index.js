@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-04-24 14:16:38
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-25 09:43:14
+ * @LastEditTime: 2024-04-25 10:05:01
  * @FilePath: \avalonIE\app\source\modules\guide\index.js
  * @Description: 文档描述
  */
@@ -41,6 +41,7 @@ avalon.component("ms-guide", {
                 }
                 that.imgList = imgList
                 window.pdfUrl = pdfUrl
+                insertImgs(imgList)
                 return that.guideEmit(imgList)
             })
         },
@@ -59,8 +60,17 @@ avalon.component("ms-guide", {
         onChange: function ($event) {
             console.log('select change');
         },
-        onImgClick: function ($event, imgSrc) {
-            return this.previewImg(imgSrc)
+        onImgClick: function ($event) {
+            return this.previewImg('')
         }
     },
 });
+
+
+function insertImgs(imgList) {
+    var htmlStr = "";
+    for (var i = 0; i < imgList.length; i++) {
+        htmlStr += "<img src='" + imgList[i] + "' />";
+    }
+    $('#guideImgContent').html(htmlStr);
+}
