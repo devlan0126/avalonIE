@@ -140,3 +140,9 @@
 .w-1920 .ms-pop .pop-content .list-content .list-ul .row td.item.left .item-inner {
     width: 130px;
 }
+
+.w-1920 .ssfzdrg-template .combined-td {
+    border-bottom: 30px solid #fff !important;
+    border-bottom: 10px solid #fff;
+    background-color: #9bafc7;
+}

@@ -95,12 +95,18 @@
     padding-top: 0;
 }
 
-.w-1920 .ms-pop .pop-content .left-table .diagnose-name,
+.w-mini .ms-pop .pop-content .left-table .diagnose-name,
 .ms-pop .pop-content .left-table .diagnose-name .item-inner {
     width: 180px;
 }
 
-.w-1920 .ms-pop .pop-content .left-table .diagnose-name,
+.w-mini .ms-pop .pop-content .left-table .diagnose-name,
 .ms-pop .pop-content .left-table .diagnose-name {
     width: 180px;
+}
+
+.w-mini .ssfzdrg-template .combined-td {
+    border-bottom: 15px solid #fff !important;
+    border-bottom: 10px solid #fff;
+    background-color: #9bafc7;
 }
