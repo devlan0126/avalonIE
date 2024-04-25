@@ -196,6 +196,8 @@ var vm = avalon.define({
   },
   onSubmit: function () {
     var that = this
+
+    this.tabClick(null, 1)
     $.ajax({
       url: '/hprs/api/pop/regroup',
       type: 'POST',
