@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-16 13:26:06
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-24 13:31:21
+ * @LastEditTime: 2024-04-25 14:13:31
  * @FilePath: \avalonIE\app\source\modules\fzzl\index.js
  * @Description: 文档描述
  */
@@ -53,7 +53,7 @@ avalon.component("ms-fzzl", {
             },
             {
                 label: "病例类型",
-                prop: "grpType",
+                prop: "casType",
             },
             {
                 label: "预测点数",

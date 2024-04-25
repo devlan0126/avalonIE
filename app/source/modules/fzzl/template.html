@@ -6,7 +6,12 @@
       </tr>
     </thead>
     <tr ms-for="(index,row) in @list" class="tr-row">
-      <td ms-for="column in @columns" class="item left">
+      <td
+        ms-for="column in @columns"
+        class="item left"
+        ms-class="column.prop"
+        ms-attr="{title: row[column.prop] }"
+      >
         <div class="item-inner">{{row[column.prop]}}</div>
       </td>
     </tr>

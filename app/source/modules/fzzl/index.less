@@ -1,6 +1,7 @@
 .ms-fzzl-tab {
   height: 100%;
   width: 100%;
+  overflow: auto;
   .list-ul {
     width: 100%;
     border-collapse: collapse;
@@ -19,6 +20,102 @@
           height: 28px;
           line-height: 28px;
           padding: 0 10px;
+          overflow: hidden;
+          word-break: break-all;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+        }
+        &.diagCode {
+          width: 80px;
+          .item-inner {
+            width: 80px;
+          }
+        }
+        &.diagName {
+          width: 150px;
+          .item-inner {
+            width: 150px;
+          }
+        }
+        &.oprnCode {
+          width: 80px;
+          .item-inner {
+            width: 80px;
+          }
+        }
+        &.oprnName {
+          width: 150px;
+          .item-inner {
+            width: 150px;
+          }
+        }
+        &.drgCode {
+          width: 80px;
+          .item-inner {
+            width: 80px;
+          }
+        }
+        &.drgName {
+          width: 150px;
+          .item-inner {
+            width: 150px;
+          }
+        }
+        &.grpType {
+          width: 80px;
+          .item-inner {
+            width: 80px;
+          }
+        }
+        &.avgFee {
+          width: 100px;
+          .item-inner {
+            width: 100px;
+          }
+        }
+        &.basePoint {
+          width: 100px;
+          .item-inner {
+            width: 100px;
+          }
+        }
+        &.adjFactor {
+          width: 100px;
+          .item-inner {
+            width: 100px;
+          }
+        }
+        &.casType {
+          width: 80px;
+          .item-inner {
+            width: 80px;
+          }
+        }
+        &.predictPoint {
+          width: 100px;
+          .item-inner {
+            width: 100px;
+          }
+        }
+        &.predictAmt {
+          width: 100px;
+          .item-inner {
+            width: 100px;
+          }
+        }
+        &.profitAmt {
+          width: 100px;
+          .item-inner {
+            width: 100px;
+          }
+        }
+        &.advice {
+          width: 100px;
+          .item-inner {
+            width: 100px;
+          }
         }
       }
     }

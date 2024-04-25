@@ -202,6 +202,17 @@
           </div>
         </div>
         <div class="tab-actions">
+          <div class="zl-checkbox" ms-visible="@tabConfig.tabVisible2">
+            <span style="padding-right:15px;">
+              <input type="checkbox" id="zlDiagnose" name="zlDiagnose" value="1" ms-click="@onZlChange($event,'zlDiagnose')" />
+              <label for="zlDiagnose"> 主诊断不变</label>
+            </span>
+
+            <span>
+              <input type="checkbox" id="zlOperation" name="zlOperation" value="2"  ms-click="@onZlChange($event,'zlOperation')" >
+              <label for="zlOperation"> 主手术不变</label>
+            </span>
+          </div>
           <span class="action-btns">
             <span class="pdf-btn" ms-on-click="@onDownloadPdf |stop" ms-visible="@tabConfig.tabVisible7">
               <img src='../source/img/pdf.png' width="15px" height="15px" /> PDF下载

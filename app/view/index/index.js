@@ -91,6 +91,7 @@ var vm = avalon.define({
     total_amount: 0,
   },
   fzzlList: [],
+  fzzlAllList: [],
   guideList: [],
   curImg: '',
   imgList: [],
@@ -125,7 +126,6 @@ var vm = avalon.define({
       }
       if (index === 7) {
         that.getClinic()
-        // window.dfcsResize()
       }
     }, 100)
   },
@@ -196,8 +196,9 @@ var vm = avalon.define({
   },
   onSubmit: function () {
     var that = this
-
     this.tabClick(null, 1)
+    document.getElementById("zlDiagnose").checked = false
+    document.getElementById("zlOperation").checked = false
     $.ajax({
       url: '/hprs/api/pop/regroup',
       type: 'POST',
@@ -253,7 +254,7 @@ var vm = avalon.define({
       data: this.getParams(),
       success: function (res) {
         if (res.code === 200) {
-          console.log('getAdvice>', res);
+          that.fzzlAllList = res.data || []
           that.fzzlList = res.data || []
         }
       }
@@ -304,6 +305,12 @@ var vm = avalon.define({
     this.imgList = imgList
     this.pdfUrl = pdfUrl
   },
+  onZlChange: function ($event, val) {
+    window[val] = $event.target.checked
+    window.zlDiagnose = typeof window.zlDiagnose === 'boolean' ? window.zlDiagnose : false
+    window.zlOperation = typeof window.zlOperation === 'boolean' ? window.zlOperation : false
+    this.fzzlList = filterZlList(this.fzzlAllList, window.zlDiagnose, window.zlOperation, this.dataForm.mainDiagCode, this.dataForm.mainOprnCodeList)
+  },
   config: {
     isShow: false,
     onCancel: function () {
@@ -353,8 +360,9 @@ vm.$watch('onReady', function (v) {
       actIptDays: req.sjzyts,
       age: req.nl,
       insuType: req.insurTypeId,
-      setlMon: req.settlTime,
+      // setlMon: req.settlTime,
       fixmedinsCode: req.fixmedinsCode,
+      // fixmedinsCode: 'H13040400584',
       sex: req.xb,
       serialNo: that.serialNo,
       hospitalNo: req.bah,
@@ -466,8 +474,6 @@ function setLargeBtnHeight() {
   var activeTabLeft = activatTabRect.left
   var activeTabWidth = $activeTab.offsetWidth
   var activeTabTop = activatTabRect.top
-  // $largeBtn.style.top =
-  //   activeTabTop - 13 + "px";
   $largeBtn.style.left = activeTabLeft + activeTabWidth / 2 - 30 + "px";
 }
 
@@ -676,4 +682,60 @@ function gradientColors(start, end, steps, gamma) {
     output.push('#' + so.join(''))
   }
   return output
+}
+
+
+function filterZlList(list, dflag, oflag, mainDiagCode, mainOprnCodeList) {
+  var result = []
+  var length = list.length;
+  if (!dflag && !oflag) {
+    result = list;
+  }
+  if (dflag && !oflag) {
+    for (var index = 0; index < length; index++) {
+      if (list[index].diagCode === mainDiagCode) {
+        result.push(list[index]);
+      }
+    }
+  }
+  if (!dflag && oflag) {
+    for (var index = 0; index < length; index++) {
+      var item = list[index]
+      var flag = false
+      for (var i = 0; i < mainOprnCodeList.length; i++) {
+        var mo = mainOprnCodeList[i];
+        if (item.oprnCode && item.oprnCode.indexOf(mo) !== -1) {
+          flag = true
+        }
+      }
+      if (flag) {
+        result.push(list[index]);
+      }
+    }
+  }
+
+  if (dflag && oflag) {
+    var tempList = []
+    for (var index = 0; index < length; index++) {
+      if (list[index].diagCode === mainDiagCode) {
+        tempList.push(list[index]);
+      }
+    }
+    console.log('tempList>', tempList);
+    for (var index = 0; index < tempList.length; index++) {
+      var item = tempList[index]
+      var flag = false
+      for (var i = 0; i < mainOprnCodeList.length; i++) {
+        var mo = mainOprnCodeList[i];
+        if (item.oprnCode && item.oprnCode.indexOf(mo) !== -1) {
+          flag = true
+        }
+      }
+      if (flag) {
+        result.push(tempList[index]);
+      }
+    }
+
+  }
+  return result;
 }
