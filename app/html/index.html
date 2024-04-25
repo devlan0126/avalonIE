@@ -25,6 +25,14 @@
     else {
       document.write('<link rel="stylesheet" href="css/index_mini.css">');
     }
+
+    function imgerrorfun(event) {
+      alert('imgerrorfun');
+      var img = event.srcElement;
+      img.src = "./img/default-img.png";
+      img.onerror = null;
+    }
+
   </script>
 </head>
 
@@ -204,7 +212,7 @@
         <div class="tab-actions">
           <span class="action-btns">
             <span class="pdf-btn" ms-on-click="@onDownloadPdf |stop" ms-visible="@tabConfig.tabVisible7">
-              <img src='../source/img/pdf.png' width="15px" height="15px"/> PDF下载
+              <img src='../source/img/pdf.png' width="15px" height="15px" /> PDF下载
             </span>
           </span>
         </div>
@@ -251,7 +259,7 @@
   </div>
   </div>
   </div>
-    <xmp ms-visible="@imgPreviewVisible" ms-widget="{is:'ms-imgPreview',curImg:@curImg,imgList:@imgList,closeEvent:@closeImgPreview}"></xmp>
+  <xmp ms-visible="@imgPreviewVisible" ms-widget="{is:'ms-imgPreview',curImg:@curImg,imgList:@imgList,closeEvent:@closeImgPreview}"></xmp>
 </body>
 
 </html>
