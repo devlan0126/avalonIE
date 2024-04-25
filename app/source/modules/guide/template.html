@@ -1,16 +1,34 @@
 <div class="ms-guide-tab">
   <div class="guide-select">
-    <select name="ImgSelect" id="ImgSelect" ms-change="@onChange">
-      <option ms-for="(index,row) in @list" value="dog">
+    <!-- <select
+      name="ImgSelect"
+      id="ImgSelect"
+      class="shortselect"
+      ms-change="@onChange"
+    >
+      <option ms-for="(index,row) in @list" ms-attr="{value:index}">
         {{row.folderName}}
       </option>
-    </select>
+    </select> -->
+    <div
+      id="ImgSelect"
+      class="bok-select select--white select dowebok"
+      ms-click="onSelectClick($event)"
+    >
+      <span class="placeholder">请选择</span>
+      <ul>
+        <li
+          ms-for="(index,row) in @list"
+          ms-click="onSelectItemClick($event, index)"
+        >
+          {{row.folderName}}
+        </li>
+      </ul>
+    </div>
   </div>
-  <div class="guide-content" id="guideImgContent" ms-click="onImgClick($event)">
-    <!-- <img
-      ms-for="(index,imgSrc) in @imgList"
-      ms-attr="{src:imgSrc}"
-      ms-click="onImgClick($event,imgSrc)"
-    /> -->
-  </div>
+  <div
+    class="guide-content"
+    id="guideImgContent"
+    ms-click="onImgClick($event)"
+  ></div>
 </div>
