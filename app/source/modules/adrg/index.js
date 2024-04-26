@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-04-10 17:59:09
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-19 20:09:18
+ * @LastEditTime: 2024-04-26 15:56:08
  * @FilePath: \avalonIE\app\source\modules\adrg\index.js
  * @Description: 文档描述
  */
@@ -26,6 +26,12 @@ avalon.component("ms-adrg", {
         operTimer: {},
         searchOperValue: "",
         isLarge: false,
+        diagSortClear: false,
+        operaSortClear: false,
+        diagSortBy: '',
+        diagSortProp: '',
+        operaSortBy: '',
+        operaSortProp: '',
         onInit: function () {
         },
         onReady: function (v) {
@@ -53,6 +59,9 @@ avalon.component("ms-adrg", {
                     that.searchDiagValue = value
                     if (value) {
                         that.diagCurrentPage = 1;
+                        that.diagSortClear = true
+                        that.diagSortBy = ''
+                        that.diagSortProp = ''
                         that.requestDiagList()
                     }
                 }
@@ -64,6 +73,7 @@ avalon.component("ms-adrg", {
         },
         requestDiagList: function (params) {
             var that = this
+            var sortParams = !this.diagSortBy ? '' : '&isAsc=' + this.diagSortBy + '&orderByColumn=' + this.diagSortProp
             $.ajax({
                 url: '/hprs/sim/adrgCondDiag',
                 type: 'GET',
@@ -72,7 +82,7 @@ avalon.component("ms-adrg", {
                     "Content-Type": "application/json",
                 },
                 dataType: 'json',
-                data: params || 'ver=CHS628&pageNum=' + that.diagCurrentPage + '&pageSize=10&data=' + that.searchDiagValue,
+                data: params || 'ver=CHS628&pageNum=' + that.diagCurrentPage + '&pageSize=10&data=' + that.searchDiagValue + sortParams,
                 success: function (res) {
                     if (res.code === 200) {
                         that.diagList = res.data
@@ -143,6 +153,9 @@ avalon.component("ms-adrg", {
                     that.searchOperValue = value
                     if (value) {
                         that.operCurrentPage = 1;
+                        that.operaSortClear = true
+                        that.operaSortBy = ''
+                        that.operaSortProp = ''
                         that.requestOperList()
                     }
                 }
@@ -154,6 +167,7 @@ avalon.component("ms-adrg", {
         },
         requestOperList: function (params) {
             var that = this
+            var sortParams = !this.operaSortBy ? '' : '&isAsc=' + this.operaSortBy + '&orderByColumn=' + this.operaSortProp
             $.ajax({
                 url: '/hprs/sim/adrgCondOper',
                 type: 'GET',
@@ -162,7 +176,7 @@ avalon.component("ms-adrg", {
                     "Content-Type": "application/json",
                 },
                 dataType: 'json',
-                data: params || 'ver=CHS628&pageNum=' + that.operCurrentPage + '&pageSize=10&data=' + that.searchOperValue,
+                data: params || 'ver=CHS628&pageNum=' + that.operCurrentPage + '&pageSize=10&data=' + that.searchOperValue + sortParams,
                 success: function (res) {
                     if (res.code === 200) {
                         that.operList = res.data
@@ -190,7 +204,21 @@ avalon.component("ms-adrg", {
         onOperClick: function ($event, row) {
             this.adrgCurrentPage = 1;
             this.requestAdrgList('ver=CHS628&pageNum=1&pageSize=10&operationCode=' + row.code)
-        }
+        },
+        diagSortEmit: function (prop, sortBy) {
+            this.diagSortClear = false
+            this.diagCurrentPage = 1
+            this.diagSortBy = sortBy === 'default' ? '' : sortBy
+            this.diagSortProp = prop
+            this.requestDiagList()
+        },
+        operationSortEmit: function (prop, sortBy) {
+            this.operaSortClear = false
+            this.operCurrentPage = 1
+            this.operaSortBy = sortBy === 'default' ? '' : sortBy
+            this.operaSortProp = prop
+            this.requestOperList()
+        },
     }
 });
 

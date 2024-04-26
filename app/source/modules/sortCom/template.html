@@ -1,0 +1,23 @@
+<div class="ms-sort-com">
+  <table class="ms-sort-table" ms-click="@onSort">
+    <tr>
+      <td class="ms-sort-title">{{@title}}</td>
+      <td class="ms-sort-icon">
+        <div class="ms-sort-icon-up" ms-click="@setSort('asc') |stop">
+          <img
+            ms-visible="@sortBy ==='default' || sortBy ==='desc'"
+            src="./img/sort-asc-default.png"
+          />
+          <img ms-visible="@sortBy ==='asc'" src="./img/sort-asc-light.png" />
+        </div>
+        <div class="ms-sort-icon-down" ms-click="@setSort('desc') | stop">
+          <img
+            ms-visible="@sortBy ==='default' || sortBy ==='asc'"
+            src="./img/sort-desc-default.png"
+          />
+          <img ms-visible="@sortBy ==='desc'" src="./img/sort-desc-light.png" />
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

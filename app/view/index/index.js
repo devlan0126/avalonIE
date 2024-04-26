@@ -29,6 +29,7 @@ require('../../source/modules/mcc/index')
 require('../../source/modules/dfcs/index')
 require('../../source/modules/guide/index')
 require('../../source/modules/imgPreview/index')
+require('../../source/modules/sortCom/index')
 
 var vm = avalon.define({
   $id: "native",

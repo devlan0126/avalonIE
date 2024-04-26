@@ -102,10 +102,33 @@
                     <div class="item-inner">诊断名称</div>
                   </th>
                   <th>
-                    <div class="item-inner">主要诊断</div>
+                    <div class="item-inner">
+                      <xmp
+                        ms-widget="{is:'ms-sort',title:'主诊1',prop:'mainDise1Flag',sortEmit:@diagSortEmit,clear:@diagSortClear}"
+                      ></xmp>
+                    </div>
                   </th>
                   <th>
-                    <div class="item-inner">其他诊断</div>
+                    <div class="item-inner">
+                      <xmp
+                        ms-widget="{is:'ms-sort',title:'主诊2',prop:'mainDise2Flag',sortEmit:@diagSortEmit,clear:@diagSortClear}"
+                      ></xmp>
+                    </div>
+                  </th>
+
+                  <th>
+                    <div class="item-inner">
+                      <xmp
+                        ms-widget="{is:'ms-sort',title:'其他1',prop:'othDise1Flag',sortEmit:@diagSortEmit,clear:@diagSortClear}"
+                      ></xmp>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="item-inner">
+                      <xmp
+                        ms-widget="{is:'ms-sort',title:'其他2',prop:'othDise2Flag',sortEmit:@diagSortEmit,clear:@diagSortClear}"
+                      ></xmp>
+                    </div>
                   </th>
                 </tr>
               </thead>
@@ -136,7 +159,27 @@
                   </div>
                 </td>
                 <td class="item td4">
+                  <div class="item-inner" ms-attr="{title: @row.mainDise2Flag}">
+                    <input
+                      class="form-check-input"
+                      disabled
+                      ms-attr="{checked: @row.mainDise1Flag == 1? 'checked' : false}"
+                      type="radio"
+                    />
+                  </div>
+                </td>
+                <td class="item td5">
                   <div class="item-inner" ms-attr="{title: @row.othDise1Flag}">
+                    <input
+                      class="form-check-input"
+                      disabled
+                      ms-attr="{checked: @row.othDise1Flag == 1? 'checked' : false}"
+                      type="radio"
+                    />
+                  </div>
+                </td>
+                <td class="item td6">
+                  <div class="item-inner" ms-attr="{title: @row.othDise2Flag}">
                     <input
                       class="form-check-input"
                       disabled
@@ -188,19 +231,39 @@
                     <div class="item-inner">手术名称</div>
                   </th>
                   <th>
-                    <div class="item-inner">表1</div>
+                    <div class="item-inner">
+                      <xmp
+                        ms-widget="{is:'ms-sort',title:'表1',prop:'operation1',sortEmit:@operationSortEmit,clear:@operaSortClear}"
+                      ></xmp>
+                    </div>
                   </th>
                   <th>
-                    <div class="item-inner">表2</div>
+                    <div class="item-inner">
+                      <xmp
+                        ms-widget="{is:'ms-sort',title:'表2',prop:'operation2',sortEmit:@operationSortEmit,clear:@operaSortClear}"
+                      ></xmp>
+                    </div>
                   </th>
                   <th>
-                    <div class="item-inner">表3</div>
+                    <div class="item-inner">
+                      <xmp
+                        ms-widget="{is:'ms-sort',title:'表3',prop:'operation3',sortEmit:@operationSortEmit,clear:@operaSortClear}"
+                      ></xmp>
+                    </div>
                   </th>
                   <th>
-                    <div class="item-inner">表4</div>
+                    <div class="item-inner">
+                      <xmp
+                        ms-widget="{is:'ms-sort',title:'表4',prop:'operation4',sortEmit:@operationSortEmit,clear:@operaSortClear}"
+                      ></xmp>
+                    </div>
                   </th>
                   <th>
-                    <div class="item-inner">表5</div>
+                    <div class="item-inner">
+                      <xmp
+                        ms-widget="{is:'ms-sort',title:'表5',prop:'operation5',sortEmit:@operationSortEmit,clear:@operaSortClear}"
+                      ></xmp>
+                    </div>
                   </th>
                 </tr>
               </thead>
