@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-04-10 14:53:21
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-18 18:18:41
+ * @LastEditTime: 2024-04-29 16:00:38
  * @FilePath: \avalonIE\app\source\modules\ssfzdip\index.js
  * @Description: 文档描述
  */
@@ -36,6 +36,8 @@ avalon.component("ms-ssfzdip", {
             predictAmt: '0',// 预测费用
             predictProfit: 0,// 预测盈亏
             medFeeAmt: 0,// 总费用
+            basePointscore: 0,
+            predictPointValue: 0,
         },
         warnMsgList: [],
         processInfo: {

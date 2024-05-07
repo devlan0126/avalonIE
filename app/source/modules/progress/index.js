@@ -1,6 +1,7 @@
 avalon.component('ms-progress', {
     template: require("./template.html"),
     defaults: {
+        domId: 'progressBarActive',
         processInfo: {
             real_short_amount: 0,
             drg_limit: 0,

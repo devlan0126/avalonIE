@@ -3,7 +3,7 @@
     {{ @groupInfo.drgInfo.drgCode || "" }} {{ @groupInfo.drgInfo.drgName || ""
     }}
   </div>
-  <xmp ms-widget="{is:'ms-progress',processInfo:@processInfo}"></xmp>
+  <xmp ms-widget="{is:'ms-progress',processInfo:@processInfo,domId:'drgProgress'}"></xmp>
   <div class="result-table" id="resultTable">
     <table class="table-esp">
       <tbody>
@@ -17,7 +17,7 @@
           <td>
             <span class="item">
               <span class="item-title">基准点数：</span>
-              <span class="item-val">{{@setlInfo.score || "0"}}</span>
+              <span class="item-val">{{@setlInfo.basePointScore || "0"}}</span>
             </span>
           </td>
           <td>
@@ -49,7 +49,7 @@
           <td>
             <span class="item">
               <span class="item-title">预测点数：</span>
-              <span class="item-val">{{@setlInfo.yhds || "-"}}</span>
+              <span class="item-val">{{@setlInfo.predictPointValue || "-"}}</span>
             </span>
           </td>
           <td rowspan="3" style="text-align: center; vertical-align: middle">

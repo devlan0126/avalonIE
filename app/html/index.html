@@ -56,7 +56,7 @@
           </div>
         </td>
         <td class="right">
-          <span class="action-btns">
+          <span class="action-btns" ms-visible="@showTabs.queryResetEnabled">
             <span class="submit-btn" ms-on-click="@onSubmit |stop">模拟查询</span>
             <span class="reset-btn" ms-on-click="@onRest |stop">重置</span>
           </span>
@@ -167,38 +167,38 @@
       <div class="tabs-ul" id="tabsUl">
         <div class="ui-state-default ui-tabs-nav" :class="[@tabConfig.tabVisible1 && 'active-tab']" ms-click="@tabClick($event, 1) | prevent">
           <div class="ui-tab-content">
-            <a><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img1.png" /> 实时分组预警
+            <a><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img1.png" /> {{@showTabs.groupWarnName}}
             </a>
           </div>
         </div>
         <div class="ui-state-default ui-tabs-nav" :class="[@tabConfig.tabVisible2 && 'active-tab']" ms-click="@tabClick($event, 2) | prevent" ms-visible="@showTabs.loopGroupEnabled">
           <div class="ui-tab-content">
-            <a><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img2.png" />分组数据治理</a>
+            <a><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img2.png" />{{@showTabs.loopGroupName}}</a>
           </div>
         </div>
         <div class="ui-state-default ui-tabs-nav" :class="[@tabConfig.tabVisible3 && 'active-tab']" ms-click="@tabClick($event, 3) | prevent" ms-visible="@showTabs.mdcAdrgEnabled">
           <div class="ui-tab-content">
-            <a><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img3.png" />MDC/ADRG查询</a>
+            <a><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img3.png" />{{@showTabs.mdcAdrgName}}</a>
           </div>
         </div>
         <div class="ui-state-default ui-tabs-nav" :class="[@tabConfig.tabVisible4 && 'active-tab']" ms-click="@tabClick($event, 4) | prevent" ms-visible="@showTabs.adrgCondEnabled">
           <div class="ui-tab-content">
-            <a><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img3.png" />ADRG条件查询</a>
+            <a><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img3.png" />{{@showTabs.adrgCondName}}</a>
           </div>
         </div>
         <div class="ui-state-default ui-tabs-nav" :class="[@tabConfig.tabVisible5 && 'active-tab']" ms-click="@tabClick($event, 5) | prevent" ms-visible="@showTabs.ccmccEnabled">
           <div class="ui-tab-content">
-            <a><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img3.png" />MCC/CC查询</a>
+            <a><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img3.png" />{{@showTabs.ccmccName}}</a>
           </div>
         </div>
         <div class="ui-state-default ui-tabs-nav" :class="[@tabConfig.tabVisible6 && 'active-tab']" ms-click="@tabClick($event, 6) | prevent" ms-visible="@showTabs.multiTraumaEnabled">
           <div class="ui-tab-content">
-            <a><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img3.png" />多发创伤查询</a>
+            <a><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img3.png" />{{@showTabs.multiTraumaName}}</a>
           </div>
         </div>
         <div class="ui-state-default ui-tabs-nav" :class="[@tabConfig.tabVisible7 && 'active-tab']" ms-click="@tabClick($event, 7) | prevent" ms-visible="@showTabs.clinPathEnabled">
           <div class="ui-tab-content">
-            <a><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img3.png" />临床路径指南</a>
+            <a><img style="height:16px;width:16px;margin-right: 3px" src="../../app/source/img/tab-img3.png" />{{@showTabs.clinPathName}}</a>
           </div>
         </div>
         <div class="tab-actions">
