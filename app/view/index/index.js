@@ -397,7 +397,9 @@ vm.$watch('onReady', function (v) {
     var othDiagCodeList = []
     var qtzdTemp = []
     for (var i = 0; i < qtzdList.length; i++) {
-      qtzdTemp.push(qtzdList[i].qtzddm + ',' + qtzdList[i].qtzdmc)
+      if (qtzdList[i].qtzddm || qtzdList[i].qtzdmc) {
+        qtzdTemp.push(qtzdList[i].qtzddm + ',' + qtzdList[i].qtzdmc)
+      }
       othDiagCodeList.push(qtzdList[i].qtzddm)
     }
     that.qtzd = qtzdTemp.join(' | ')
@@ -408,7 +410,9 @@ vm.$watch('onReady', function (v) {
     var zyssTemp = []
 
     for (var i = 0; i < zyssjczList.length; i++) {
-      zyssTemp.push(zyssjczList[i].ssjczbm + ',' + zyssjczList[i].ssjczmc)
+      if (zyssjczList[i].ssjczbm || zyssjczList[i].ssjczmc) {
+        zyssTemp.push(zyssjczList[i].ssjczbm + ',' + zyssjczList[i].ssjczmc)
+      }
       mainOprnCodeList.push(zyssjczList[i].ssjczbm)
     }
     that.mainOperation = zyssTemp.join(' | ')
@@ -418,7 +422,9 @@ vm.$watch('onReady', function (v) {
     var othOprnCodeList = []
     var ssTemp = []
     for (var i = 0; i < ssjczList.length; i++) {
-      ssTemp.push(ssjczList[i].ssjczbm + ',' + ssjczList[i].ssjczmc)
+      if (ssjczList[i].ssjczbm || ssjczList[i].ssjczmc) {
+        ssTemp.push(ssjczList[i].ssjczbm + ',' + ssjczList[i].ssjczmc)
+      }
       othOprnCodeList.push(ssjczList[i].ssjczbm)
     }
     that.qtss = ssTemp.join(' | ')
