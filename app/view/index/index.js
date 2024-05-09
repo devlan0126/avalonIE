@@ -264,7 +264,13 @@ var vm = avalon.define({
       success: function (res) {
         if (res.code === 200) {
           that.fzzlAllList = res.data || []
-          that.fzzlList = res.data || []
+          var fzzlList = res.data || []
+          for (var i = 0; i < fzzlList.length; i++) {
+            if (i === fzzlList.length - 1) {
+              fzzlList[i].isLast = true
+            }
+          }
+          that.fzzlList = fzzlList
         }
       }
     });

@@ -75,6 +75,7 @@ avalon.component("ms-pager", {
         },
         onDispose: function (v) {
         },
+        getHref: function (v) { }
     },
 });
 

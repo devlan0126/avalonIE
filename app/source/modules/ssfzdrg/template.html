@@ -3,9 +3,7 @@
     {{ @groupInfo.drgInfo.drgCode || "" }} {{ @groupInfo.drgInfo.drgName || ""
     }}
   </div>
-  <xmp
-    ms-widget="{is:'ms-progress',processInfo:@processInfo,domId:'drgProgress'}"
-  ></xmp>
+  <xmp ms-widget="{is:'ms-progress',processInfo:@processInfo,domId:'drgProgress'}"></xmp>
   <div class="result-table" id="resultTable">
     <table class="table-esp">
       <tbody>
@@ -38,26 +36,20 @@
         <tr class="table-tr">
           <td>
             <span class="item">
-              <span class="item-title" title="住院总费用 ÷ 病组均费"
-                >费用比例：</span
-              >
+              <span class="item-title" title="住院总费用 ÷ 病组均费">费用比例：</span>
               <span class="item-val">{{@setlInfo.feeRatio || "-"}}</span>
             </span>
           </td>
           <td>
             <span class="item">
               <span class="item-title">调整系数：</span>
-              <span class="item-val"
-                >{{@setlInfo.adjustmentFactor || "-"}}</span
-              >
+              <span class="item-val">{{@setlInfo.adjustmentFactor || "-"}}</span>
             </span>
           </td>
           <td>
             <span class="item">
               <span class="item-title">预测点数：</span>
-              <span class="item-val"
-                >{{@setlInfo.predictPointValue || "-"}}</span
-              >
+              <span class="item-val">{{@setlInfo.predictPointValue || "-"}}</span>
             </span>
           </td>
           <td rowspan="3" style="text-align: center; vertical-align: middle">
@@ -70,17 +62,13 @@
         <tr class="table-tr">
           <td>
             <span class="item">
-              <span class="item-title" title="住院总费用 – 费用标准"
-                >标准差额：</span
-              >
+              <span class="item-title" title="住院总费用 – 费用标准">标准差额：</span>
               <span class="item-val">{{@setlInfo.stdDiffAmt || "-"}}</span>
             </span>
           </td>
           <td>
             <span class="item">
-              <span class="item-title" title="病组均费 × 调整系数"
-                >费用标准：</span
-              >
+              <span class="item-title" title="病组均费 × 调整系数">费用标准：</span>
               <span class="item-val">{{@setlInfo.grpStdAmt || "-"}}</span>
             </span>
           </td>

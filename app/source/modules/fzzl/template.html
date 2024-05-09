@@ -5,7 +5,11 @@
         <th ms-for="column in @columns" class="head-th">{{column.label}}</th>
       </tr>
     </thead>
-    <tr ms-for="(index,row) in @list" class="tr-row">
+    <tr
+      ms-for="(index,row) in @list"
+      class="tr-row"
+      ms-class="{'last-row': @row.isLast}"
+    >
       <td
         ms-for="column in @columns"
         class="item left"
