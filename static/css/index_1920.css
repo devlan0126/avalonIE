@@ -123,12 +123,22 @@
 
 .w-1920 .ms-pop .pop-content .left-table .diagnose-name,
 .ms-pop .pop-content .left-table .diagnose-name .item-inner {
-    width: 330px;
+    width: 160px;
 }
 
 .w-1920 .ms-pop .pop-content .left-table .diagnose-name,
 .ms-pop .pop-content .left-table .diagnose-name {
-    width: 330px;
+    width: 160px;
+}
+
+.w-1920 .ms-pop.ms-pop5 .pop-content .left-table .diagnose-name,
+.ms-pop .pop-content .left-table .diagnose-name .item-inner {
+    width: 250px;
+}
+
+.w-1920 .ms-pop.ms-pop5 .pop-content .left-table .diagnose-name,
+.ms-pop .pop-content .left-table .diagnose-name {
+    width: 250px;
 }
 
 .w-1920 .ms-pop .pop-content .list-content .list-ul .row td.item.right,
