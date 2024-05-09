@@ -65,7 +65,7 @@ avalon.component("ms-pager", {
             })
             this.totalPages = getTotalPages(this.total, this.pageSize)
             that.$watch('total', function () {
-                this.totalPages = getTotalPages(this.total, this.pageSize)
+                that.totalPages = getTotalPages(that.total, that.pageSize)
             })
             that.render(cur)
         },
@@ -75,7 +75,9 @@ avalon.component("ms-pager", {
         },
         onDispose: function (v) {
         },
-        getHref: function (v) { }
+        getHref: function (v) {
+            return false
+        }
     },
 });
 

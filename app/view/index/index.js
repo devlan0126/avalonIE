@@ -38,6 +38,11 @@ var vm = avalon.define({
   mainOperation: '31.1x00x005,暂时性气管切开术',
   qtzd: '',
   qtss: '',
+  originData: {
+    mainOperation: [],
+    qtzd: [],
+    qtss: [],
+  },
   dayPercent: 0,
   feePercent: 0,
   clrWay: '40',
@@ -402,6 +407,7 @@ vm.$watch('onReady', function (v) {
       }
       othDiagCodeList.push(qtzdList[i].qtzddm)
     }
+    that.originData.qtzd = qtzdList
     that.qtzd = qtzdTemp.join(' | ')
     that.dataForm.othDiagCodeList = othDiagCodeList
 
@@ -415,6 +421,7 @@ vm.$watch('onReady', function (v) {
       }
       mainOprnCodeList.push(zyssjczList[i].ssjczbm)
     }
+    that.originData.mainOperation = zyssjczList
     that.mainOperation = zyssTemp.join(' | ')
     that.dataForm.mainOprnCodeList = mainOprnCodeList
 
@@ -427,6 +434,7 @@ vm.$watch('onReady', function (v) {
       }
       othOprnCodeList.push(ssjczList[i].ssjczbm)
     }
+    that.originData.qtss = ssjczList
     that.qtss = ssTemp.join(' | ')
     that.dataForm.othOprnCodeList = othOprnCodeList
 

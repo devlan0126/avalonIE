@@ -2,6 +2,7 @@ avalon.component("ms-pop3", {
     template: require("./template.html"),
     defaults: {
         show: false,
+        originData: [],
         data: "",
         list: [],
         source: [],
@@ -90,6 +91,17 @@ avalon.component("ms-pop3", {
         },
         onInit: function () {
             var that = this;
+            that.$watch('originData', function () {
+                this.selection = []
+                for (var i = 0; i < that.originData.length; i++) {
+                    this.selection.push({
+                        operationCode: that.originData[i].ssjczbm,
+                        operationName: that.originData[i].ssjczmc
+                    })
+                }
+                this.updateValue()
+            })
+
             window.addEvent(document
                 .getElementsByTagName("body")[0], 'click', function ($event) {
                     var $child = $event.srcElement;

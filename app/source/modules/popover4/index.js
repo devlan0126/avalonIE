@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-09 13:02:16
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-19 14:12:12
+ * @LastEditTime: 2024-05-09 11:15:40
  * @FilePath: \avalonIE\app\source\modules\popover4\index.js
  * @Description: 文档描述
  */
@@ -10,6 +10,7 @@ avalon.component("ms-pop4", {
     defaults: {
         show: false,
         data: "",
+        originData: [],
         list: [],
         source: [],
         selection: [],
@@ -100,6 +101,17 @@ avalon.component("ms-pop4", {
         },
         onInit: function () {
             var that = this;
+            that.$watch('originData', function () {
+                this.selection = []
+                for (var i = 0; i < that.originData.length; i++) {
+                    this.selection.push({
+                        diagnoseCode: that.originData[i].qtzddm,
+                        diagnoseName: that.originData[i].qtzdmc
+                    })
+                }
+                this.updateValue()
+            })
+
             window.addEvent(document
                 .getElementsByTagName("body")[0], 'click', function ($event) {
                     var $child = $event.srcElement;
