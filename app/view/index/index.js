@@ -34,8 +34,8 @@ require('../../source/modules/sortCom/index')
 var vm = avalon.define({
   $id: "native",
   serialNo: '',
-  mainDiagnose: 'J18.90311,重症肺炎',
-  mainOperation: '31.1x00x005,暂时性气管切开术',
+  mainDiagnose: '',
+  mainOperation: '',
   qtzd: '',
   qtss: '',
   originData: {
@@ -773,6 +773,8 @@ function getPageInfo(serialNo, callback) {
         //     "westDrugFee": null
         //   }
         // })
+      } else {
+        alert(res.msg)
       }
     }
   });
