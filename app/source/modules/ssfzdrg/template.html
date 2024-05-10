@@ -141,6 +141,10 @@
             <p ms-for="(index,item) in @warnMsgList">{{@index+1}}. {{@item}}</p>
           </div>
         </div>
+        <div class="empty-tip" ms-visible="@warnMsgList.length==0">
+          <img src="./img/nodata.png" width="80px" height="80px" />
+          <div>暂无提醒</div>
+        </div>
       </td>
     </tr>
   </table>

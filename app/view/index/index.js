@@ -404,10 +404,10 @@ vm.$watch('onReady', function (v) {
     for (var i = 0; i < qtzdList.length; i++) {
       if (qtzdList[i].qtzddm || qtzdList[i].qtzdmc) {
         qtzdTemp.push(qtzdList[i].qtzddm + ',' + qtzdList[i].qtzdmc)
+        that.originData.qtzd.push(qtzdList[i])
       }
       othDiagCodeList.push(qtzdList[i].qtzddm)
     }
-    that.originData.qtzd = qtzdList
     that.qtzd = qtzdTemp.join(' | ')
     that.dataForm.othDiagCodeList = othDiagCodeList
 
@@ -418,10 +418,10 @@ vm.$watch('onReady', function (v) {
     for (var i = 0; i < zyssjczList.length; i++) {
       if (zyssjczList[i].ssjczbm || zyssjczList[i].ssjczmc) {
         zyssTemp.push(zyssjczList[i].ssjczbm + ',' + zyssjczList[i].ssjczmc)
+        that.originData.mainOperation.push(zyssjczList[i])
       }
       mainOprnCodeList.push(zyssjczList[i].ssjczbm)
     }
-    that.originData.mainOperation = zyssjczList
     that.mainOperation = zyssTemp.join(' | ')
     that.dataForm.mainOprnCodeList = mainOprnCodeList
 
@@ -431,10 +431,10 @@ vm.$watch('onReady', function (v) {
     for (var i = 0; i < ssjczList.length; i++) {
       if (ssjczList[i].ssjczbm || ssjczList[i].ssjczmc) {
         ssTemp.push(ssjczList[i].ssjczbm + ',' + ssjczList[i].ssjczmc)
+        that.originData.qtss.push(ssjczList[i])
       }
       othOprnCodeList.push(ssjczList[i].ssjczbm)
     }
-    that.originData.qtss = ssjczList
     that.qtss = ssTemp.join(' | ')
     that.dataForm.othOprnCodeList = othOprnCodeList
 

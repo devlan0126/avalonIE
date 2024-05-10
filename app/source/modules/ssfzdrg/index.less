@@ -35,7 +35,9 @@
     border: 0;
     border-bottom: 30px solid #fff !important;
     border-bottom: 10px solid #fff;
-    background-color: #9bafc7;
+    background-color: #f0f3f6;
+    border-radius: 5px;
+    position: relative;
     .combined-td-table {
       width: 100%;
       height: 100%;
@@ -48,6 +50,24 @@
       width: 100%;
       overflow: auto;
       padding-left: 10px;
+    }
+    .empty-tip {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      img {
+        position: relative;
+        top: -30px;
+      }
+      div {
+        position: relative;
+        top: -30px;
+      }
     }
   }
 }
