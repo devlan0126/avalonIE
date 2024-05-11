@@ -368,10 +368,7 @@ vm.$watch('onReady', function (v) {
   body[0].classList.add(this.pageClass)
 
   var that = this
-  that.serialNo = getUrlParam('serialNo')
-  if (!that.serialNo) {
-    return false
-  }
+  that.serialNo = getUrlParam('serialNo') || 'ZY020000667561'
 
   getPageInfo(that.serialNo, function (data) {
     var req = data.req
@@ -592,7 +589,10 @@ function getPageInfo(serialNo, callback) {
       if (res.code === 200) {
         callback(res)
       } else {
-        alert(res.msg)
+        const previewParam = getUrlParam('preview')
+        if (!previewParam) {
+          alert(res.msg)
+        }
       }
     }
   });
