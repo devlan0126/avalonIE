@@ -87,9 +87,9 @@ var vm = avalon.define({
     ventUsedHCnt: '',
     nwbBirWt: 0,
     sex: "1",
-    serialNo: '',
-    hospitalNo: '',
-    inHospitalTime: '',
+    serialNo: '-',
+    hospitalNo: '-',
+    inHospitalTime: '-',
     mainDiagCode: '',
     mainOprnCodeList: [],
     othDiagCodeList: [],
@@ -368,7 +368,10 @@ vm.$watch('onReady', function (v) {
   body[0].classList.add(this.pageClass)
 
   var that = this
-  that.serialNo = getUrlParam('serialNo') || 'ZY020000667561'
+  that.serialNo = getUrlParam('serialNo')
+  if (!that.serialNo) {
+    return false
+  }
 
   getPageInfo(that.serialNo, function (data) {
     var req = data.req
@@ -588,191 +591,6 @@ function getPageInfo(serialNo, callback) {
     success: function (res) {
       if (res.code === 200) {
         callback(res)
-        // callback({
-        //   "msg": "操作成功",
-        //   "res": {
-        //     "gid": "1fb3a6db-5955-4e0a-9a5e-2f32cbae782a",
-        //     "code": 200,
-        //     "fine": true,
-        //     "message": null,
-        //     "setlId": "ZY020000667561",
-        //     "fixmedinsCode": "H22070200098",
-        //     "clrOptins": "220700",
-        //     "setlMon": "202403",
-        //     "insuType": "310",
-        //     "actIptDays": 5,
-        //     "setlAmt": 5654.97,
-        //     "drgInfo": null,
-        //     "dipInfo": {
-        //       "fine": true,
-        //       "message": "诊断匹配核心目录数量：11",
-        //       "diagCnt": 5,
-        //       "diagCode": "N84.0",
-        //       "diagName": "子宫体息肉",
-        //       "oprnGrpCode": "68.1200x001",
-        //       "oprnGrpName": "宫腔镜检查",
-        //       "dipListType": "1",
-        //       "dipDiseGrpCode": "N84.0-68.1200x001(1)0",
-        //       "dipDiseGrpName": "",
-        //       "oprnCnt": 1,
-        //       "grstDiseFlag": "0",
-        //       "keySpcyFlag": null,
-        //       "tcmAdtDiseFlag": null,
-        //       "tcmAdtDiseCof": null,
-        //       "tcmAdtDiseCode": null,
-        //       "tcmAdtDiseName": null,
-        //       "tcmAdtDiseUsedFlag": null,
-        //       "asstListSchmType": null,
-        //       "asstListSchmTypeName": null,
-        //       "asstListItemCode": null,
-        //       "asstListItemName": null,
-        //       "asstCof": null
-        //     },
-        //     "cnDrgInfo": null,
-        //     "setlInfo": {
-        //       "fine": true,
-        //       "message": null,
-        //       "caseType": "正常病例",
-        //       "feeRatio": 78.37,
-        //       "grpStdAmt": 7216.05,
-        //       "stdDiffAmt": -1561.08,
-        //       "dayDiff": null,
-        //       "predictProfit": -464.24,
-        //       "predictAmt": 5190.73,
-        //       "predictPointValue": 736.0644,
-        //       "pointValue": 7.0520,
-        //       "basePointScore": 680.4700,
-        //       "grpAvgAmt": 6671.03,
-        //       "adjustmentFactor": 1.0817,
-        //       "stdGrpDays": null,
-        //       "lowAmt": 3335.52,
-        //       "highAmt": 13342.06,
-        //       "msg": null
-        //     },
-        //     "mccOutcome": null,
-        //     "ccOutcome": null,
-        //     "icd10Adrg": null,
-        //     "icd9Adrg": null,
-        //     "warnMsgList": null
-        //   },
-        //   "code": 200,
-        //   "dayPercent": null,
-        //   "feePercent": 78.37,
-        //   "title": "医院DRG/DIP数据精细化治理",
-        //   "req": {
-        //     "visitId": "ZY020000667561",
-        //     "clrOptins": "220700",
-        //     "fixmedinsCode": "H22070200098",
-        //     "xm": "雷友平",
-        //     "xb": "2",
-        //     "bah": "0000667561",
-        //     "cysj": "2022-10-15",
-        //     "rysj": "2022-10-10",
-        //     "nl": "52",
-        //     "zfy": "5654.97",
-        //     "sjzyts": "5",
-        //     "rybq": "2",
-        //     "rytj": "9",
-        //     "lyfs": "1",
-        //     "insurTypeId": "310",
-        //     "xsecstz": "",
-        //     "xserytz": "",
-        //     "bzyzsnl": "0",
-        //     "zyzd": "子宫内膜息肉",
-        //     "jbdm": "N84.001",
-        //     "jbdm1": "O34.100x001",
-        //     "jbdm2": null,
-        //     "jbdm3": null,
-        //     "jbdm4": null,
-        //     "jbdm5": null,
-        //     "jbdm6": null,
-        //     "jbdm7": null,
-        //     "jbdm8": null,
-        //     "jbdm9": null,
-        //     "jbdm10": null,
-        //     "jbdm11": null,
-        //     "jbdm12": null,
-        //     "jbdm13": null,
-        //     "jbdm14": null,
-        //     "jbdm15": null,
-        //     "qtzd1": "妊娠合并子宫肌瘤",
-        //     "qtzd2": null,
-        //     "qtzd3": null,
-        //     "qtzd4": null,
-        //     "qtzd5": null,
-        //     "qtzd6": null,
-        //     "qtzd7": null,
-        //     "qtzd8": null,
-        //     "qtzd9": null,
-        //     "qtzd10": null,
-        //     "qtzd11": null,
-        //     "qtzd12": null,
-        //     "qtzd13": null,
-        //     "qtzd14": null,
-        //     "qtzd15": null,
-        //     "qtzdList": [
-        //       {
-        //         "qtzddm": "O34.100x001",
-        //         "qtzdmc": "妊娠合并子宫肌瘤"
-        //       },
-        //       {
-        //         "qtzddm": "K64.811",
-        //         "qtzdmc": "混合痔"
-        //       },
-        //       {
-        //         "qtzddm": "J18.000",
-        //         "qtzdmc": "支气管肺炎"
-        //       }
-        //     ],
-        //     "zyzbdm": "A08.03.01.03",
-        //     "zyzbmc": "混合痔",
-        //     "zyssjczList": [
-        //       {
-        //         "ssjczbm": "68.1200x001",
-        //         "ssjczmc": "宫腔镜检查"
-        //       }
-        //     ],
-        //     "ssjczbm1": "68.1200x001",
-        //     "ssjczbm2": "97.7101",
-        //     "ssjczbm3": null,
-        //     "ssjczbm4": null,
-        //     "ssjczbm5": null,
-        //     "ssjczbm6": null,
-        //     "ssjczmc1": "宫腔镜检查",
-        //     "ssjczmc2": "子宫内避孕器取出术",
-        //     "ssjczmc3": null,
-        //     "ssjczmc4": null,
-        //     "ssjczmc5": null,
-        //     "ssjczmc6": null,
-        //     "ssjczList": [
-        //       {
-        //         "ssjczbm": "97.7101",
-        //         "ssjczmc": "子宫内避孕器取出术"
-        //       },
-        //       {
-        //         "ssjczbm": "17.91350",
-        //         "ssjczmc": "温针灸治疗"
-        //       },
-        //       {
-        //         "ssjczbm": "45.2302",
-        //         "ssjczmc": "电子结肠镜检查"
-        //       }
-        //     ],
-        //     "settlTime": "2024-03-24T16:25:02.128+08:00",
-        //     "selfPay": "111",
-        //     "psnOwnpay": "222",
-        //     "cdntnPay": "333",
-        //     "illPay": "444",
-        //     "civilMdcServant": "555",
-        //     "largeSupp": "666",
-        //     "mafPay": "777",
-        //     "chMedFee": null,
-        //     "chProFee": null,
-        //     "treatFee": null,
-        //     "oprtFee": null,
-        //     "westDrugFee": null
-        //   }
-        // })
       } else {
         alert(res.msg)
       }
