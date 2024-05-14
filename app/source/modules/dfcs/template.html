@@ -7,15 +7,7 @@
             <tr>
               <td class="search-input-prefix">诊断</td>
               <td class="search-input-content">
-                <input
-                  class="search-input"
-                  type="text"
-                  id="dfDiagInput"
-                  name="dfDiagInput"
-                  placeholder="请输入诊断编码或名称，可模糊查询"
-                  ms-on-input="@onDiagChange"
-                  ms-on-keyup="@onDiagChange"
-                />
+                <input class="search-input" type="text" id="dfDiagInput" name="dfDiagInput" placeholder="请输入诊断编码或名称，可模糊查询" ms-on-input="@onDiagChange" ms-on-keyup="@onDiagChange" />
               </td>
             </tr>
           </tbody>
@@ -27,15 +19,7 @@
             <tr>
               <td class="search-input-prefix">部位</td>
               <td class="search-input-content">
-                <input
-                  class="search-input"
-                  type="text"
-                  id="dfPartInput"
-                  name="dfPartInput"
-                  placeholder="请输入部位编码或名称，可模糊查询"
-                  ms-on-input="@onPartChange"
-                  ms-on-keyup="@onPartChange"
-                />
+                <input class="search-input" type="text" id="dfPartInput" name="dfPartInput" placeholder="请输入部位编码或名称，可模糊查询" ms-on-input="@onPartChange" ms-on-keyup="@onPartChange" />
               </td>
             </tr>
           </tbody>
@@ -51,7 +35,7 @@
           <th ms-for="column in @columns" class="head-th">{{column.label}}</th>
         </tr>
       </thead>
-      <tr ms-for="(index,row) in @list" class="row-tr">
+      <tr ms-for="(index,row) in @list" class="row-tr" ms-click="@onRowClick($event, index)" ms-class="{highlight: index == @highIndex}">
         <td ms-for="column in @columns" class="item">
           <div class="item-inner">{{row[column.prop]}}</div>
         </td>
@@ -59,8 +43,6 @@
     </table>
   </div>
   <div class="pagination-wrap" style="float: right">
-    <xmp
-      ms-widget="{is:'ms-pager',total:@total,currentPage:@currentPage,onPageClick:@onPageClick}"
-    ></xmp>
+    <xmp ms-widget="{is:'ms-pager',total:@total,currentPage:@currentPage,onPageClick:@onPageClick}"></xmp>
   </div>
 </div>

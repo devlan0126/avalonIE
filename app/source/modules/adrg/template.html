@@ -9,15 +9,7 @@
                 <tr>
                   <td class="search-input-prefix">ADRG</td>
                   <td class="search-input-content">
-                    <input
-                      class="search-input"
-                      type="text"
-                      name="name"
-                      placeholder="请输入ADRG编码或名称，可模糊查询"
-                      ms-on-change="@onAdrgChange"
-                      ms-on-input="@onAdrgChange"
-                      ms-on-keyup="@onAdrgChange"
-                    />
+                    <input class="search-input" type="text" name="adrgInputName" placeholder="请输入ADRG编码或名称，可模糊查询" ms-on-change="@onAdrgChange" ms-on-input="@onAdrgChange" ms-on-keyup="@onAdrgChange" />
                   </td>
                 </tr>
               </tbody>
@@ -38,11 +30,7 @@
                   </th>
                 </tr>
               </thead>
-              <tr
-                ms-for="row in @adrgList"
-                class="tr-row"
-                ms-click="@onAdrgClick($event, row)"
-              >
+              <tr ms-for="(index,row) in @adrgList" class="tr-row" ms-click="@onAdrgClick($event, row,index)" ms-class="{highlight: index == @adrgHighIndex}">
                 <td class="item td1">
                   <div class="item-inner" ms-attr="{title: @row.code}">
                     {{@row.code}}
@@ -63,9 +51,7 @@
             </table>
           </div>
           <div class="pagination-wrap" style="float: right">
-            <xmp
-              ms-widget="{is:'ms-pager',total:@adrgTotal,currentPage:@adrgCurrentPage,onPageClick:@onAdrgPageClick}"
-            ></xmp>
+            <xmp ms-widget="{is:'ms-pager',total:@adrgTotal,currentPage:@adrgCurrentPage,onPageClick:@onAdrgPageClick}"></xmp>
           </div>
         </div>
       </td>
@@ -77,15 +63,7 @@
                 <tr>
                   <td class="search-input-prefix">诊断</td>
                   <td class="search-input-content">
-                    <input
-                      class="search-input"
-                      type="text"
-                      name="name"
-                      placeholder="请输入诊断编码或名称，可模糊查询"
-                      ms-on-change="@onDiagChange"
-                      ms-on-input="@onDiagChange"
-                      ms-on-keyup="@onDiagChange"
-                    />
+                    <input class="search-input" type="text" name="diagInputName" placeholder="请输入诊断编码或名称，可模糊查询" ms-on-change="@onDiagChange" ms-on-input="@onDiagChange" ms-on-keyup="@onDiagChange" />
                   </td>
                 </tr>
               </tbody>
@@ -103,40 +81,28 @@
                   </th>
                   <th>
                     <div class="item-inner">
-                      <xmp
-                        ms-widget="{is:'ms-sort',title:'主诊1',prop:'mainDise1Flag',sortEmit:@diagSortEmit,clear:@diagSortClear}"
-                      ></xmp>
+                      <xmp ms-widget="{is:'ms-sort',title:'主诊1',prop:'mainDise1Flag',sortEmit:@diagSortEmit,clear:@diagSortClear}"></xmp>
                     </div>
                   </th>
                   <th>
                     <div class="item-inner">
-                      <xmp
-                        ms-widget="{is:'ms-sort',title:'主诊2',prop:'mainDise2Flag',sortEmit:@diagSortEmit,clear:@diagSortClear}"
-                      ></xmp>
+                      <xmp ms-widget="{is:'ms-sort',title:'主诊2',prop:'mainDise2Flag',sortEmit:@diagSortEmit,clear:@diagSortClear}"></xmp>
                     </div>
                   </th>
 
                   <th>
                     <div class="item-inner">
-                      <xmp
-                        ms-widget="{is:'ms-sort',title:'其他1',prop:'othDise1Flag',sortEmit:@diagSortEmit,clear:@diagSortClear}"
-                      ></xmp>
+                      <xmp ms-widget="{is:'ms-sort',title:'其他1',prop:'othDise1Flag',sortEmit:@diagSortEmit,clear:@diagSortClear}"></xmp>
                     </div>
                   </th>
                   <th>
                     <div class="item-inner">
-                      <xmp
-                        ms-widget="{is:'ms-sort',title:'其他2',prop:'othDise2Flag',sortEmit:@diagSortEmit,clear:@diagSortClear}"
-                      ></xmp>
+                      <xmp ms-widget="{is:'ms-sort',title:'其他2',prop:'othDise2Flag',sortEmit:@diagSortEmit,clear:@diagSortClear}"></xmp>
                     </div>
                   </th>
                 </tr>
               </thead>
-              <tr
-                ms-for="row in @diagList"
-                class="tr-row"
-                ms-click="@onDiagClick($event, row)"
-              >
+              <tr ms-for="(index,row) in @diagList" class="tr-row" ms-click="@onDiagClick($event, row,index)" ms-class="{highlight: index == @diagHighIndex}">
                 <td class="item td1">
                   <div class="item-inner" ms-attr="{title: @row.code}">
                     {{@row.code}}
@@ -150,51 +116,29 @@
 
                 <td class="item td3">
                   <div class="item-inner" ms-attr="{title: @row.mainDise1Flag}">
-                    <input
-                      class="form-check-input"
-                      disabled
-                      ms-attr="{checked: @row.mainDise1Flag == 1? 'checked' : false}"
-                      type="radio"
-                    />
+                    <input class="form-check-input" disabled ms-attr="{checked: @row.mainDise1Flag == 1? 'checked' : false}" type="radio" />
                   </div>
                 </td>
                 <td class="item td4">
                   <div class="item-inner" ms-attr="{title: @row.mainDise2Flag}">
-                    <input
-                      class="form-check-input"
-                      disabled
-                      ms-attr="{checked: @row.mainDise1Flag == 1? 'checked' : false}"
-                      type="radio"
-                    />
+                    <input class="form-check-input" disabled ms-attr="{checked: @row.mainDise2Flag == 1? 'checked' : false}" type="radio" />
                   </div>
                 </td>
                 <td class="item td5">
                   <div class="item-inner" ms-attr="{title: @row.othDise1Flag}">
-                    <input
-                      class="form-check-input"
-                      disabled
-                      ms-attr="{checked: @row.othDise1Flag == 1? 'checked' : false}"
-                      type="radio"
-                    />
+                    <input class="form-check-input" disabled ms-attr="{checked: @row.othDise1Flag == 1? 'checked' : false}" type="radio" />
                   </div>
                 </td>
                 <td class="item td6">
                   <div class="item-inner" ms-attr="{title: @row.othDise2Flag}">
-                    <input
-                      class="form-check-input"
-                      disabled
-                      ms-attr="{checked: @row.othDise1Flag == 1? 'checked' : false}"
-                      type="radio"
-                    />
+                    <input class="form-check-input" disabled ms-attr="{checked: @row.othDise1Flag == 1? 'checked' : false}" type="radio" />
                   </div>
                 </td>
               </tr>
             </table>
           </div>
           <div class="pagination-wrap" style="float: right">
-            <xmp
-              ms-widget="{is:'ms-pager',total:@diagTotal,currentPage:@diagCurrentPage,onPageClick:@onDiagPageClick}"
-            ></xmp>
+            <xmp ms-widget="{is:'ms-pager',total:@diagTotal,currentPage:@diagCurrentPage,onPageClick:@onDiagPageClick}"></xmp>
           </div>
         </div>
       </td>
@@ -206,15 +150,7 @@
                 <tr>
                   <td class="search-input-prefix">手术</td>
                   <td class="search-input-content">
-                    <input
-                      class="search-input"
-                      type="text"
-                      name="name"
-                      placeholder="请输入手术编码或名称，可模糊查询"
-                      ms-on-change="@onOperChange"
-                      ms-on-input="@onOperChange"
-                      ms-on-keyup="@onOperChange"
-                    />
+                    <input class="search-input" type="text" name="operInputName" placeholder="请输入手术编码或名称，可模糊查询" ms-on-change="@onOperChange" ms-on-input="@onOperChange" ms-on-keyup="@onOperChange" />
                   </td>
                 </tr>
               </tbody>
@@ -232,46 +168,32 @@
                   </th>
                   <th>
                     <div class="item-inner">
-                      <xmp
-                        ms-widget="{is:'ms-sort',title:'表1',prop:'operation1',sortEmit:@operationSortEmit,clear:@operaSortClear}"
-                      ></xmp>
+                      <xmp ms-widget="{is:'ms-sort',title:'表1',prop:'operation1',sortEmit:@operationSortEmit,clear:@operaSortClear}"></xmp>
                     </div>
                   </th>
                   <th>
                     <div class="item-inner">
-                      <xmp
-                        ms-widget="{is:'ms-sort',title:'表2',prop:'operation2',sortEmit:@operationSortEmit,clear:@operaSortClear}"
-                      ></xmp>
+                      <xmp ms-widget="{is:'ms-sort',title:'表2',prop:'operation2',sortEmit:@operationSortEmit,clear:@operaSortClear}"></xmp>
                     </div>
                   </th>
                   <th>
                     <div class="item-inner">
-                      <xmp
-                        ms-widget="{is:'ms-sort',title:'表3',prop:'operation3',sortEmit:@operationSortEmit,clear:@operaSortClear}"
-                      ></xmp>
+                      <xmp ms-widget="{is:'ms-sort',title:'表3',prop:'operation3',sortEmit:@operationSortEmit,clear:@operaSortClear}"></xmp>
                     </div>
                   </th>
                   <th>
                     <div class="item-inner">
-                      <xmp
-                        ms-widget="{is:'ms-sort',title:'表4',prop:'operation4',sortEmit:@operationSortEmit,clear:@operaSortClear}"
-                      ></xmp>
+                      <xmp ms-widget="{is:'ms-sort',title:'表4',prop:'operation4',sortEmit:@operationSortEmit,clear:@operaSortClear}"></xmp>
                     </div>
                   </th>
                   <th>
                     <div class="item-inner">
-                      <xmp
-                        ms-widget="{is:'ms-sort',title:'表5',prop:'operation5',sortEmit:@operationSortEmit,clear:@operaSortClear}"
-                      ></xmp>
+                      <xmp ms-widget="{is:'ms-sort',title:'表5',prop:'operation5',sortEmit:@operationSortEmit,clear:@operaSortClear}"></xmp>
                     </div>
                   </th>
                 </tr>
               </thead>
-              <tr
-                ms-for="row in @operList"
-                class="tr-row"
-                ms-click="@onOperClick($event, row)"
-              >
+              <tr ms-for="(index,row) in @operList" class="tr-row" ms-click="@onOperClick($event, row,index)" ms-class="{highlight: index == @operHighIndex}">
                 <td class="item td1">
                   <div class="item-inner" ms-attr="{title: @row.code}">
                     {{@row.code}}
@@ -285,61 +207,34 @@
 
                 <td class="item td3">
                   <div class="item-inner" ms-attr="{title: @row.operation1}">
-                    <input
-                      class="form-check-input"
-                      disabled
-                      ms-attr="{checked: @row.operation1 == 1? 'checked' : false}"
-                      type="radio"
-                    />
+                    <input class="form-check-input" disabled ms-attr="{checked: @row.operation1 == 1? 'checked' : false}" type="radio" />
                   </div>
                 </td>
                 <td class="item td4">
                   <div class="item-inner" ms-attr="{title: @row.operation2}">
-                    <input
-                      class="form-check-input"
-                      disabled
-                      ms-attr="{checked: @row.operation2 == 1? 'checked' : false}"
-                      type="radio"
-                    />
+                    <input class="form-check-input" disabled ms-attr="{checked: @row.operation2 == 1? 'checked' : false}" type="radio" />
                   </div>
                 </td>
                 <td class="item td5">
                   <div class="item-inner" ms-attr="{title: @row.operation3}">
-                    <input
-                      class="form-check-input"
-                      disabled
-                      ms-attr="{checked: @row.operation3 == 1? 'checked' : false}"
-                      type="radio"
-                    />
+                    <input class="form-check-input" disabled ms-attr="{checked: @row.operation3 == 1? 'checked' : false}" type="radio" />
                   </div>
                 </td>
                 <td class="item td6">
                   <div class="item-inner" ms-attr="{title: @row.operation4}">
-                    <input
-                      class="form-check-input"
-                      disabled
-                      ms-attr="{checked: @row.operation4 == 1? 'checked' : false}"
-                      type="radio"
-                    />
+                    <input class="form-check-input" disabled ms-attr="{checked: @row.operation4 == 1? 'checked' : false}" type="radio" />
                   </div>
                 </td>
                 <td class="item td7">
                   <div class="item-inner" ms-attr="{title: @row.operation5}">
-                    <input
-                      class="form-check-input"
-                      disabled
-                      ms-attr="{checked: @row.operation5 == 1? 'checked' : false}"
-                      type="radio"
-                    />
+                    <input class="form-check-input" disabled ms-attr="{checked: @row.operation5 == 1? 'checked' : false}" type="radio" />
                   </div>
                 </td>
               </tr>
             </table>
           </div>
           <div class="pagination-wrap" style="float: right">
-            <xmp
-              ms-widget="{is:'ms-pager',total:@operTotal,currentPage:@operCurrentPage,onPageClick:@onOperPageClick}"
-            ></xmp>
+            <xmp ms-widget="{is:'ms-pager',total:@operTotal,currentPage:@operCurrentPage,onPageClick:@onOperPageClick}"></xmp>
           </div>
         </div>
       </td>

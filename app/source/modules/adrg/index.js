@@ -1,25 +1,28 @@
 /*
  * @Date: 2024-04-10 17:59:09
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-26 15:56:08
+ * @LastEditTime: 2024-05-14 11:07:56
  * @FilePath: \avalonIE\app\source\modules\adrg\index.js
  * @Description: 文档描述
  */
 avalon.component("ms-adrg", {
     template: require("./template.html"),
     defaults: {
+        diagHighIndex: -1,
         diagList: [],
         diagTotal: 0,
         diagCurrentPage: 1,
         diagTimer: {},
         searchDiagValue: "",
 
+        adrgHighIndex: -1,
         adrgList: [],
         adrgTotal: 0,
         adrgCurrentPage: 1,
         adrgTimer: {},
         searchAdrgValue: "",
 
+        operHighIndex: -1,
         operList: [],
         operTotal: 0,
         operCurrentPage: 1,
@@ -32,6 +35,7 @@ avalon.component("ms-adrg", {
         diagSortProp: '',
         operaSortBy: '',
         operaSortProp: '',
+
         onInit: function () {
         },
         onReady: function (v) {
@@ -96,6 +100,7 @@ avalon.component("ms-adrg", {
             this.diagTotal = 0
             this.diagCurrentPage = 1
             this.searchDiagValue = ""
+            this.diagHighIndex = -1
         },
         onAdrgChange: function ($event) {
             var that = this
@@ -141,6 +146,7 @@ avalon.component("ms-adrg", {
             this.adrgTotal = 0
             this.adrgCurrentPage = 1
             this.searchAdrgValue = ""
+            this.adrgHighIndex = -1
         },
         onOperChange: function ($event) {
             var that = this
@@ -190,19 +196,35 @@ avalon.component("ms-adrg", {
             this.operTotal = 0
             this.operCurrentPage = 1
             this.searchOperValue = ""
+            this.operHighIndex = -1
         },
-        onAdrgClick: function ($event, row) {
+        onAdrgClick: function ($event, row, index) {
             this.diagCurrentPage = 1;
             this.operCurrentPage = 1;
+            this.adrgHighIndex = index;
+            this.diagHighIndex = -1;
+            this.operHighIndex = -1;
+            this.searchDiagValue = "";
+            this.searchOperValue = "";
+            document.getElementsByName('diagInputName')[0].value = ''
+            document.getElementsByName('operInputName')[0].value = ''
             this.requestDiagList('ver=CHS628&pageNum=1&pageSize=10&adrgCode=' + row.code)
             this.requestOperList('ver=CHS628&pageNum=1&pageSize=10&adrgCode=' + row.code)
         },
-        onDiagClick: function ($event, row) {
+        onDiagClick: function ($event, row, index) {
             this.adrgCurrentPage = 1;
+            this.diagHighIndex = index;
+            this.adrgHighIndex = -1;
+            this.searchAdrgValue = "";
+            document.getElementsByName('adrgInputName')[0].value = ''
             this.requestAdrgList('ver=CHS628&pageNum=1&pageSize=10&diagnoseCode=' + row.code)
         },
-        onOperClick: function ($event, row) {
+        onOperClick: function ($event, row, index) {
             this.adrgCurrentPage = 1;
+            this.operHighIndex = index;
+            this.adrgHighIndex = -1;
+            this.searchAdrgValue = "";
+            document.getElementsByName('adrgInputName')[0].value = ''
             this.requestAdrgList('ver=CHS628&pageNum=1&pageSize=10&operationCode=' + row.code)
         },
         diagSortEmit: function (prop, sortBy) {
