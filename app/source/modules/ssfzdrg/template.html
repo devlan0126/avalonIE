@@ -55,7 +55,7 @@
           <td rowspan="3" style="text-align: center; vertical-align: middle">
             <span class="item">
               <span class="item-title"> </span>
-              <span class="item-val">{{@setlInfo.predictProfit || "-"}}</span>
+              <span class="item-val"  ms-class="{'nagitve-num': @setlInfo.predictProfit<0}">{{@setlInfo.predictProfit || "-"}}</span>
             </span>
           </td>
         </tr>
