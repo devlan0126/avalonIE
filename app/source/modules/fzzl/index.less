@@ -9,10 +9,28 @@
       border: 1px solid #c7c3bc;
       text-align: left;
       padding: 10px;
+      &.profitAmt {
+        position: sticky;
+        right: 100px;
+        background-color: #fff;
+      }
+      &.advice {
+        position: sticky;
+        right: 0;
+        background-color: #fff;
+      }
     }
     .tr-row {
       &.last-row {
         background-color: #dcdddf;
+        .item{
+          &.profitAmt {
+            background-color: #dcdddf;
+          }
+          &.advice {
+            background-color: #dcdddf;
+          }
+        }
       }
       .item {
         border: 1px solid #c7c3bc;
@@ -110,12 +128,18 @@
         }
         &.profitAmt {
           width: 100px;
+          position: sticky;
+          right: 100px;
+          background-color: #fff;
           .item-inner {
             width: 100px;
           }
         }
         &.advice {
           width: 100px;
+          position: sticky;
+          right: 0;
+          background-color: #fff;
           .item-inner {
             width: 100px;
           }

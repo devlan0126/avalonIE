@@ -211,6 +211,16 @@ var vm = avalon.define({
   onSubmit: function () {
     var that = this
     this.tabClick(null, 1)
+    this.groupInfo = {}
+    this.setlInfo = {}
+    this.warnMsgList = []
+    this.processInfo = {
+      real_short_amount: 0,
+      drg_limit: 0,
+      total_amount: 0,
+    }
+    this.fzzlList = []
+
     document.getElementById("zlDiagnose").checked = false
     document.getElementById("zlOperation").checked = false
     $.ajax({
@@ -393,6 +403,7 @@ vm.$watch('onReady', function (v) {
       othOprnCodeList: [],
     }
     that.pageTitle = data.title || '医院DRG/DIP数据精细化治理'
+    document.title = data.title || '医院DRG/DIP数据精细化治理'
     that.dayPercent = data.dayPercent || 0
     that.feePercent = data.feePercent || 0
     that.mainDiagnose = req.jbdm + ',' + req.zyzd

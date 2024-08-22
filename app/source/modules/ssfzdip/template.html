@@ -14,7 +14,9 @@
       </span>
     </div>
   </div>
-  <xmp ms-widget="{is:'ms-progress',processInfo:@processInfo,domId:'dipProgress'}"></xmp>
+  <xmp
+    ms-widget="{is:'ms-progress',processInfo:@processInfo,domId:'dipProgress'}"
+  ></xmp>
   <div class="result-table" id="resultTable">
     <table class="table-esp">
       <tbody>
@@ -47,39 +49,53 @@
         <tr class="table-tr">
           <td>
             <span class="item">
-              <span class="item-title" title="住院总费用 ÷ 病种均费">费用比例：</span>
+              <span class="item-title" title="住院总费用 ÷ 病种均费"
+                >费用比例：</span
+              >
               <span class="item-val">{{@setlInfo.feeRatio || "-"}}</span>
             </span>
           </td>
           <td>
             <span class="item">
               <span class="item-title">调整系数：</span>
-              <span class="item-val">{{@setlInfo.adjustmentFactor || "-"}}</span>
+              <span class="item-val"
+                >{{@setlInfo.adjustmentFactor || "-"}}</span
+              >
             </span>
           </td>
           <td>
             <span class="item">
               <span class="item-title">预测分值：</span>
-              <span class="item-val">{{@setlInfo.predictPointValue || "-"}}</span>
+              <span class="item-val"
+                >{{@setlInfo.predictPointValue || "-"}}</span
+              >
             </span>
           </td>
           <td rowspan="3" style="text-align: center; vertical-align: middle">
             <span class="item">
               <span class="item-title"> </span>
-              <span class="item-val" ms-class="{'nagitve-num': @setlInfo.predictProfit<0}">{{@setlInfo.predictProfit || "-"}}</span>
+              <span
+                class="item-val"
+                ms-class="{'nagitve-num': @setlInfo.predictProfit<0}"
+                >{{@setlInfo.predictProfit || "-"}}</span
+              >
             </span>
           </td>
         </tr>
         <tr class="table-tr">
           <td>
             <span class="item">
-              <span class="item-title" title="住院总费用 – 费用标准">标准差额：</span>
+              <span class="item-title" title="住院总费用 – 费用标准"
+                >标准差额：</span
+              >
               <span class="item-val">{{@setlInfo.stdDiffAmt || "-"}}</span>
             </span>
           </td>
           <td>
             <span class="item">
-              <span class="item-title" title="病种均费 × 调整系数">费用标准：</span>
+              <span class="item-title" title="病种均费 × 调整系数"
+                >费用标准：</span
+              >
               <span class="item-val">{{@setlInfo.grpStdAmt || "-"}}</span>
             </span>
           </td>
@@ -92,5 +108,16 @@
         </tr>
       </tbody>
     </table>
+    <div class="combined-td dip-warning-list">
+      <div class="item-inner right">
+        <div class="lt-list">
+          <p ms-for="(index,item) in @warnMsgList">{{@index+1}}. {{@item}}</p>
+        </div>
+      </div>
+      <div class="empty-tip" ms-visible="@warnMsgList.length==0">
+        <img src="./img/nodata.png" width="80px" height="80px" />
+        <div>暂无提醒</div>
+      </div>
+    </div>
   </div>
 </div>
