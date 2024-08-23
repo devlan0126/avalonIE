@@ -219,7 +219,7 @@ body {
 
 .page-center .center {
   padding: 10px 0;
-  background: #ead4d1;
+  background: #edf1ff;
   border-radius: 5px;
   margin-top: 10px;
   display: flex;
@@ -227,20 +227,20 @@ body {
   margin-bottom: 10px;
   width: 100%;
   .fee-pec-warn {
-    color: #d90d4b;
+    color: #f55155;
   }
   .day-pec-warn {
-    color: #d90d4b;
+    color: #f55155;
   }
 }
 
 .page-center .center span {
   padding: 0 5px;
-  color: #0ca053;
+  color: #5ac051;
 }
 
 .page-center .center .green {
-  color: #0ca053;
+  color: #5ac051;
 }
 
 .page-center .center .red {
@@ -341,7 +341,7 @@ body {
 .page-bottom #tabs-1 .result-grp {
   font-weight: bold;
   font-size: 14px;
-  padding-top: 8px;
+  padding: 10px;
 }
 
 .page-bottom #tabs-1 .result-table {
@@ -361,6 +361,16 @@ body {
   &.nagitve-num {
     color: #d90d4b;
   }
+}
+
+.page-bottom #tabs-1 .result-table .item .item-val.predict-profit {
+  color: #5ac051;
+  font-weight: bold;
+}
+
+.page-bottom #tabs-1 .result-table .item .item-val.nagitve-num {
+  font-weight: bold;
+  color: #f55155
 }
 
 .page-bottom #tabs-1 .result-table .table-esp {
@@ -627,4 +637,9 @@ body {
 .tr-row.highlight,
 .row-tr.highlight {
   background-color: #dbeefb;
+}
+
+.item-val.predict-profit.nagitve-num {
+  color: #f55155;
+  font-weight: bold;
 }

@@ -2,41 +2,63 @@
   height: 100%;
   width: 100%;
   overflow: auto;
+
   .list-ul {
     width: 100%;
     border-collapse: collapse;
+
     .head-th {
       border: 1px solid #c7c3bc;
       text-align: left;
       padding: 10px;
+
       &.profitAmt {
         position: sticky;
-        right: 100px;
+        right: 120px;
         background-color: #fff;
+        padding: 0;
+
+        div {
+          border-left: 1px solid #c7c3bc;
+          padding: 10px;
+        }
       }
+
       &.advice {
         position: sticky;
         right: 0;
         background-color: #fff;
+        padding: 0;
+
+        div {
+          border-left: 1px solid #c7c3bc;
+          border-right: 1px solid #c7c3bc;
+          padding: 10px;
+        }
       }
     }
+
     .tr-row {
       &.last-row {
         background-color: #dcdddf;
-        .item{
+
+        .item {
           &.profitAmt {
             background-color: #dcdddf;
           }
+
           &.advice {
             background-color: #dcdddf;
           }
         }
       }
+
       .item {
         border: 1px solid #c7c3bc;
         text-align: left;
         height: 28px;
         line-height: 28px;
+
         .item-inner {
           height: 28px;
           line-height: 28px;
@@ -48,100 +70,133 @@
           -webkit-box-orient: vertical;
           -webkit-line-clamp: 1;
         }
+
         &.diagCode {
           width: 80px;
+
           .item-inner {
             width: 80px;
           }
         }
+
         &.diagName {
           width: 150px;
+
           .item-inner {
             width: 150px;
           }
         }
+
         &.oprnCode {
           width: 80px;
+
           .item-inner {
             width: 80px;
           }
         }
+
         &.oprnName {
           width: 150px;
+
           .item-inner {
             width: 150px;
           }
         }
+
         &.drgCode {
           width: 80px;
+
           .item-inner {
             width: 80px;
           }
         }
+
         &.drgName {
           width: 150px;
+
           .item-inner {
             width: 150px;
           }
         }
+
         &.grpType {
           width: 80px;
+
           .item-inner {
             width: 80px;
           }
         }
+
         &.avgFee {
           width: 100px;
+
           .item-inner {
             width: 100px;
           }
         }
+
         &.basePoint {
           width: 100px;
+
           .item-inner {
             width: 100px;
           }
         }
+
         &.adjFactor {
           width: 100px;
+
           .item-inner {
             width: 100px;
           }
         }
+
         &.casType {
           width: 80px;
+
           .item-inner {
             width: 80px;
           }
         }
+
         &.predictPoint {
           width: 100px;
+
           .item-inner {
             width: 100px;
           }
         }
+
         &.predictAmt {
           width: 100px;
+
           .item-inner {
             width: 100px;
           }
         }
+
         &.profitAmt {
           width: 100px;
           position: sticky;
-          right: 100px;
+          right: 120px;
           background-color: #fff;
+
           .item-inner {
             width: 100px;
+            border-left: 1px solid #c7c3bc;
           }
         }
+
         &.advice {
           width: 100px;
           position: sticky;
           right: 0;
           background-color: #fff;
+
           .item-inner {
             width: 100px;
+            border-left: 1px solid #c7c3bc;
+            border-right: 1px solid #c7c3bc;
           }
         }
       }
