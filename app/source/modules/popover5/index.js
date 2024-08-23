@@ -72,36 +72,38 @@ avalon.component("ms-pop5", {
         },
         setData: function () {
             if (this.selection.length > 0) {
-                var temp = []
-                for (var i = 0; i < this.selection.length; i++) {
-                    temp.push(this.selection[i].operationCode + ',' + this.selection[i].operationName)
-                }
-                this.data = temp.join(' | ');
+              var temp = [];
+              for (var i = 0; i < this.selection.length; i++) {
+                temp.push(
+                  this.selection[i].code + "," + this.selection[i].name
+                );
+              }
+              this.data = temp.join(" | ");
             } else {
-                this.data = ''
+              this.data = "";
             }
-            this.updateValue()
-        },
-        updateValue: function () {
-            var operationCodes = []
+            this.updateValue();
+          },
+          updateValue: function () {
+            var operationCodes = [];
             for (var i = 0; i < this.selection.length; i++) {
-                operationCodes.push(this.selection[i].operationCode)
+              operationCodes.push(this.selection[i].code);
             }
-            return this.onUpdateSelect(operationCodes)
-        },
+            return this.onUpdateSelect(operationCodes);
+          },
         onInit: function () {
             var that = this;
-            that.$watch('originData', function () {
-                this.selection = []
-                console.log('watch originData', that.originData);
+            that.$watch("originData", function () {
+                this.selection = [];
+                console.log("watch originData", that.originData);
                 for (var i = 0; i < that.originData.length; i++) {
-                    this.selection.push({
-                        operationCode: that.originData[i].ssjczbm,
-                        operationName: that.originData[i].ssjczmc
-                    })
+                  this.selection.push({
+                    code: that.originData[i].ssjczbm,
+                    name: that.originData[i].ssjczmc,
+                  });
                 }
-                this.updateValue()
-            })
+                this.updateValue();
+              });
 
             window.addEvent(document
                 .getElementsByTagName("body")[0], 'click', function ($event) {

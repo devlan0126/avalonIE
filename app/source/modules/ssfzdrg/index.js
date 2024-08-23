@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-04-10 14:53:21
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-17 11:03:28
+ * @LastEditTime: 2024-08-23 10:23:53
  * @FilePath: \avalonIE\app\source\modules\ssfzdrg\index.js
  * @Description: 文档描述
  */
@@ -14,6 +14,7 @@ avalon.component("ms-ssfzdrg", {
         source: [],
         zIndex: 1,
         timer: {},
+        simplifiedMap: {},
         groupInfo: {
             drgInfo: {
                 drgCode: '',

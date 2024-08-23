@@ -66,7 +66,7 @@
 
     <div class="center">
       <img src="../../app/source/img/warning.png" style="width:15px;height:15px; margin-left: 10px;margin-right: 5px" />
-      医疗费用为DRG/DIP费用标准的<span id="feePec" ms-class="{'fee-pec-warn': @feePercent > 100}">{{@feePercent}}%</span>，按照当前诊疗及费用预测盈亏为<span id="daysPec"
+      {{@warnTips}}<span id="feePec" ms-class="{'fee-pec-warn': @feePercent > 100}">{{@feePercent}}%</span>，按照当前诊疗及费用预测盈亏为<span id="daysPec"
         ms-class="{'day-pec-warn': @setlInfo.predictProfit < 0}">{{@setlInfo.predictProfit}}元</span>
       ；请根据患者病情进行完整治疗，避免分解出院！
     </div>
@@ -147,7 +147,10 @@
               <td style="width: 100px; line-height: 32px" class="text-right">
                 医疗费用：
               </td>
-              <td class="text-left" style="line-height: 32px">{{@dataForm.medFeeAmt}}</td>
+              <td class="text-left" style="line-height: 32px">
+			     {{@dataForm.medFeeAmt}} &nbsp;&nbsp;&nbsp;统筹金额：
+                {{@dataForm.hifpPay}}
+			  </td>
             </tr>
           </table>
         </td>
@@ -202,14 +205,14 @@
           </div>
         </div>
         <div class="tab-actions">
-          <div class="zl-checkbox" ms-visible="@tabConfig.tabVisible2">
+          <div class="zl-checkbox" ms-visible="@tabConfig.tabVisible2  && @clrWay==='40'">
             <span style="padding-right:15px;">
               <input type="checkbox" id="zlDiagnose" name="zlDiagnose" value="1" ms-click="@onZlChange($event,'zlDiagnose')" />
               <label for="zlDiagnose"> 主诊断不变</label>
             </span>
 
             <span>
-              <input type="checkbox" id="zlOperation" name="zlOperation" value="2"  ms-click="@onZlChange($event,'zlOperation')" >
+              <input type="checkbox" id="zlOperation" name="zlOperation" value="2" ms-click="@onZlChange($event,'zlOperation')">
               <label for="zlOperation"> 主手术不变</label>
             </span>
           </div>
@@ -229,7 +232,7 @@
         </div>
         <div id="tabs-2" class="ui-tabs-panel" ms-visible="@tabConfig.tabVisible2">
           <div slot="content" class="ui-tabs-panel-content">
-            <xmp ms-widget="{is:'ms-fzzl',list:@fzzlList,isLarge:@isLarge}"></xmp>
+            <xmp ms-widget="{is:'ms-fzzl',list:@fzzlList,isLarge:@isLarge,clrWay:@clrWay}"></xmp>
           </div>
         </div>
         <div id="tabs-3" class="ui-tabs-panel" ms-visible="@tabConfig.tabVisible3">

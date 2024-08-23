@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-09 13:02:16
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-05-09 11:15:40
+ * @LastEditTime: 2024-08-23 10:22:14
  * @FilePath: \avalonIE\app\source\modules\popover4\index.js
  * @Description: 文档描述
  */
@@ -82,35 +82,37 @@ avalon.component("ms-pop4", {
         },
         setData: function () {
             if (this.selection.length > 0) {
-                var temp = []
-                for (var i = 0; i < this.selection.length; i++) {
-                    temp.push(this.selection[i].diagnoseCode + ',' + this.selection[i].diagnoseName)
-                }
-                this.data = temp.join(' | ');
+              var temp = [];
+              for (var i = 0; i < this.selection.length; i++) {
+                temp.push(
+                  this.selection[i].code + "," + this.selection[i].name
+                );
+              }
+              this.data = temp.join(" | ");
             } else {
-                this.data = ''
+              this.data = "";
             }
-            this.updateValue()
-        },
-        updateValue: function () {
-            var diagnoseCodes = []
+            this.updateValue();
+          },
+          updateValue: function () {
+            var diagnoseCodes = [];
             for (var i = 0; i < this.selection.length; i++) {
-                diagnoseCodes.push(this.selection[i].diagnoseCode)
+              diagnoseCodes.push(this.selection[i].code);
             }
-            return this.onUpdateSelect(diagnoseCodes)
-        },
+            return this.onUpdateSelect(diagnoseCodes);
+          },
         onInit: function () {
             var that = this;
-            that.$watch('originData', function () {
-                this.selection = []
+            that.$watch("originData", function () {
+                this.selection = [];
                 for (var i = 0; i < that.originData.length; i++) {
-                    this.selection.push({
-                        diagnoseCode: that.originData[i].qtzddm,
-                        diagnoseName: that.originData[i].qtzdmc
-                    })
+                  this.selection.push({
+                    code: that.originData[i].qtzddm,
+                    name: that.originData[i].qtzdmc,
+                  });
                 }
-                this.updateValue()
-            })
+                this.updateValue();
+              });
 
             window.addEvent(document
                 .getElementsByTagName("body")[0], 'click', function ($event) {

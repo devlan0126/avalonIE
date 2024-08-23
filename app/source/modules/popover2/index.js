@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-03-09 11:39:44
  * @LastEditors: devlan0126 wyang0126@163.com
- * @LastEditTime: 2024-04-12 16:43:08
+ * @LastEditTime: 2024-08-23 10:20:10
  * @FilePath: \avalonIE\app\source\modules\popover2\index.js
  * @Description: 文档描述
  */
@@ -66,12 +66,12 @@ avalon.component("ms-pop2", {
             this.requestList()
         },
         onSelectRow: function ($event, row) {
-            this.data = row.diagnoseCode + "  " + row.diagnoseName
+            this.data = row.code + "  " + row.name;
             this.show = false;
-            this.updateValue(row.diagnoseCode)
+            this.updateValue(row.code);
         },
-        updateValue: function (diagnoseCode) {
-            return this.onUpdateSelect(diagnoseCode)
+        updateValue: function (code) {
+            return this.onUpdateSelect(code)
         },
         onInit: function () {
             var that = this;

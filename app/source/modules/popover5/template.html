@@ -22,19 +22,13 @@
                     <div class="item-inner">{{@index+1}}</div>
                   </td>
                   <td class="content diagnose-code" style="width: 120px">
-                    <div
-                      class="item-inner"
-                      ms-attr="{title: @row.operationCode}"
-                    >
-                      {{@row.operationCode}}
+                    <div class="item-inner" ms-attr="{title: @row.code}">
+                      {{@row.code}}
                     </div>
                   </td>
                   <td class="content diagnose-name">
-                    <div
-                      class="item-inner"
-                      ms-attr="{title: @row.operationName}"
-                    >
-                      {{@row.operationName}}
+                    <div class="item-inner" ms-attr="{title: @row.name}">
+                      {{@row.name}}
                     </div>
                   </td>
                   <td
@@ -55,9 +49,7 @@
           </div>
         </td>
         <td class="arrow-td">
-          <div class="left-arrow">
-            <img src="./img/left-arrow.png" />
-          </div>
+          <div class="left-arrow"><img src="./img/left-arrow.png" /></div>
         </td>
         <td class="two-side-table-td">
           <table class="search-content">
@@ -83,13 +75,13 @@
                 ms-on-click="@onSelectRow($event,row,index) |stop"
               >
                 <td class="item left">
-                  <div class="item-inner" ms-attr="{title: @row.operationCode}">
-                    {{@row.operationCode}}
+                  <div class="item-inner" ms-attr="{title: @row.code}">
+                    {{@row.code}}
                   </div>
                 </td>
                 <td class="item right">
-                  <div class="item-inner" ms-attr="{title: @row.operationName}">
-                    {{@row.operationName}}
+                  <div class="item-inner" ms-attr="{title: @row.name}">
+                    {{@row.name}}
                   </div>
                 </td>
               </tr>
